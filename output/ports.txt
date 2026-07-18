@@ -1,0 +1,4 @@
+google.com:80
+www.google.com:80
+mail.google.com:80
+login.google.com:80

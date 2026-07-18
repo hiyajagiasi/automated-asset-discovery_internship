@@ -1,0 +1,30 @@
+tools:
+  subfinder: subfinder
+  httpx: httpx
+  naabu: naabu
+  nmap: nmap
+  whatweb: whatweb
+
+output:
+  subdomains: output/subdomains.txt
+  live_hosts: output/live_hosts.txt
+  ports: output/ports.txt
+  technologies: output/technologies.txt
+
+logging:
+  file: logs/scan.log
+
+reports:
+  html: reports/report.html
+  excel: reports/report.xlsx
+
+timeouts:
+  subfinder: 60
+  httpx: 60
+  naabu: 60
+  nmap: 60
+  whatweb: 60
+
+threads: 5
+limits:
+  subdomains: 50
