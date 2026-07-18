@@ -63,7 +63,7 @@ def discover_subdomains(target: str, config: dict[str, Any]) -> list[str]:
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     subfinder_bin = config.get("tools", {}).get("subfinder", "subfinder")
-    timeout = int(config.get("timeouts", {}).get("subfinder", 60))
+    timeout = max(120, int(config.get("timeouts", {}).get("subfinder", 60)))
 
     discovered: list[str] = []
     subfinder_results: list[str] = []
@@ -71,7 +71,16 @@ def discover_subdomains(target: str, config: dict[str, Any]) -> list[str]:
     if shutil.which(subfinder_bin):
         try:
             result = subprocess.run(
-                [subfinder_bin, "-d", target, "-silent", "-all"],
+                [
+                    subfinder_bin,
+                    "-d",
+                    target,
+                    "-silent",
+                    "-all",
+                    "-disable-update-check",
+                    "-timeout",
+                    str(timeout),
+                ],
                 capture_output=True,
                 text=True,
                 timeout=timeout,
@@ -86,7 +95,16 @@ def discover_subdomains(target: str, config: dict[str, Any]) -> list[str]:
                 print(f'[DEBUG] subfinder timed out after {timeout} sec, retrying with {retry_timeout} sec')
                 try:
                     result = subprocess.run(
-                        [subfinder_bin, "-d", target, "-silent", "-all"],
+                        [
+                            subfinder_bin,
+                            "-d",
+                            target,
+                            "-silent",
+                            "-all",
+                            "-disable-update-check",
+                            "-timeout",
+                            str(retry_timeout),
+                        ],
                         capture_output=True,
                         text=True,
                         timeout=retry_timeout,

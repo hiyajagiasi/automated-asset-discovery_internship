@@ -31,6 +31,28 @@ def test_discover_subdomains_prefers_subfinder_results(tmp_path, monkeypatch):
     assert result == ["www.google.com", "api.google.com"]
 
 
+def test_discover_subdomains_uses_reliable_subfinder_flags(monkeypatch, tmp_path):
+    config = {
+        "output": {"subdomains": str(tmp_path / "subdomains.txt")},
+        "tools": {"subfinder": "subfinder"},
+        "timeouts": {"subfinder": 10},
+    }
+    captured = {}
+
+    def fake_run(*args, **kwargs):
+        captured["args"] = args[0]
+        return subprocess.CompletedProcess(args=args[0], returncode=0, stdout="www.google.com\n", stderr="")
+
+    monkeypatch.setattr("modules.subdomain.shutil.which", lambda _: "/usr/bin/subfinder")
+    monkeypatch.setattr("modules.subdomain.subprocess.run", fake_run)
+
+    result = discover_subdomains("google.com", config)
+
+    assert result == ["www.google.com"]
+    assert "-disable-update-check" in captured["args"]
+    assert "-timeout" in captured["args"]
+
+
 def test_discover_subdomains_falls_back_to_target(tmp_path):
     config = {
         "output": {"subdomains": str(tmp_path / "subdomains.txt")},
