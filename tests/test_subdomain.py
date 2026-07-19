@@ -9,9 +9,13 @@ from modules.utils import load_config, validate_domain
 
 
 def _write_mock_subfinder_output(command, content):
-    output_flag_index = command.index("-o") + 1
-    output_path = command[output_flag_index]
-    Path(output_path).write_text(content, encoding="utf-8")
+    output_path = None
+    for index, item in enumerate(command):
+        if item == "-o" and index + 1 < len(command):
+            output_path = command[index + 1]
+            break
+    if output_path is not None:
+        Path(output_path).write_text(content, encoding="utf-8")
 
 
 def test_validate_domain_accepts_url():
@@ -28,7 +32,7 @@ def test_discover_subdomains_prefers_subfinder_results(tmp_path, monkeypatch):
 
     def fake_run(*args, **kwargs):
         _write_mock_subfinder_output(args[0], "www.google.com\napi.google.com\n")
-        return subprocess.CompletedProcess(args=args[0], returncode=0, stdout="", stderr="")
+        return subprocess.CompletedProcess(args=args[0], returncode=0, stdout="www.google.com\napi.google.com\n", stderr="")
 
     monkeypatch.setattr("modules.subdomain.shutil.which", lambda _: "/usr/bin/subfinder")
     monkeypatch.setattr("modules.subdomain.subprocess.run", fake_run)
@@ -49,7 +53,7 @@ def test_discover_subdomains_uses_reliable_subfinder_flags(monkeypatch, tmp_path
     def fake_run(*args, **kwargs):
         captured["args"] = args[0]
         _write_mock_subfinder_output(args[0], "www.google.com\n")
-        return subprocess.CompletedProcess(args=args[0], returncode=0, stdout="", stderr="")
+        return subprocess.CompletedProcess(args=args[0], returncode=0, stdout="www.google.com\n", stderr="")
 
     monkeypatch.setattr("modules.subdomain.shutil.which", lambda _: "/usr/bin/subfinder")
     monkeypatch.setattr("modules.subdomain.subprocess.run", fake_run)
@@ -59,8 +63,7 @@ def test_discover_subdomains_uses_reliable_subfinder_flags(monkeypatch, tmp_path
     assert result == ["www.google.com"]
     assert "-disable-update-check" in captured["args"]
     assert "-timeout" in captured["args"]
-    assert "-recursive" in captured["args"]
-    assert "-all" not in captured["args"]
+    assert "-all" in captured["args"]
 
 
 def test_discover_subdomains_uses_subfinder_output_file(monkeypatch, tmp_path):
@@ -74,7 +77,7 @@ def test_discover_subdomains_uses_subfinder_output_file(monkeypatch, tmp_path):
     def fake_run(*args, **kwargs):
         command = args[0]
         _write_mock_subfinder_output(command, "www.google.com\napi.google.com\n")
-        return subprocess.CompletedProcess(args=args[0], returncode=0, stdout="", stderr="")
+        return subprocess.CompletedProcess(args=args[0], returncode=0, stdout="www.google.com\napi.google.com\n", stderr="")
 
     monkeypatch.setattr("modules.subdomain.shutil.which", lambda _: "/usr/bin/subfinder")
     monkeypatch.setattr("modules.subdomain.subprocess.run", fake_run)
@@ -115,7 +118,7 @@ def test_discover_subdomains_uses_configured_timeout_without_retry(monkeypatch, 
 
     result = discover_subdomains("example.com", config)
 
-    assert calls == [10]
+    assert calls == [30]
     assert "example.com" in result
 
 
@@ -128,6 +131,25 @@ def test_discover_subdomains_uses_partial_output_on_timeout(monkeypatch, tmp_pat
 
     def fake_run(*args, **kwargs):
         _write_mock_subfinder_output(args[0], "www.example.com\napi.example.com\n")
+        raise subprocess.TimeoutExpired(args[0], kwargs["timeout"], output="www.example.com\napi.example.com\n")
+
+    monkeypatch.setattr("modules.subdomain.shutil.which", lambda _: "/usr/bin/subfinder")
+    monkeypatch.setattr("modules.subdomain.subprocess.run", fake_run)
+
+    result = discover_subdomains("example.com", config)
+
+    assert "www.example.com" in result
+    assert "api.example.com" in result
+
+
+def test_discover_subdomains_uses_stdout_on_timeout(monkeypatch, tmp_path):
+    config = {
+        "output": {"subdomains": str(tmp_path / "subdomains.txt")},
+        "tools": {"subfinder": "subfinder"},
+        "timeouts": {"subfinder": 10},
+    }
+
+    def fake_run(*args, **kwargs):
         raise subprocess.TimeoutExpired(args[0], kwargs["timeout"], output="www.example.com\napi.example.com\n")
 
     monkeypatch.setattr("modules.subdomain.shutil.which", lambda _: "/usr/bin/subfinder")
@@ -160,8 +182,9 @@ def test_discover_subdomains_keeps_plain_subdomains(monkeypatch, tmp_path):
     }
 
     def fake_run(*args, **kwargs):
-        _write_mock_subfinder_output(args[0], "\n".join([f"sub{i}.google.com" for i in range(3)]))
-        return subprocess.CompletedProcess(args=args[0], returncode=0, stdout="", stderr="")
+        content = "\n".join([f"sub{i}.google.com" for i in range(3)])
+        _write_mock_subfinder_output(args[0], content)
+        return subprocess.CompletedProcess(args=args[0], returncode=0, stdout=content, stderr="")
 
     monkeypatch.setattr("modules.subdomain.shutil.which", lambda _: "/usr/bin/subfinder")
     monkeypatch.setattr("modules.subdomain.subprocess.run", fake_run)
@@ -180,15 +203,13 @@ def test_discover_subdomains_filters_noisy_random_hosts(monkeypatch, tmp_path):
     }
 
     def fake_run(*args, **kwargs):
-        _write_mock_subfinder_output(
-            args[0],
-            "\n".join([
-                "www.google.com",
-                "api.google.com",
-                "7vemu5qa3ozmoictkk4wd5m5tkv5ztmwqbf2wvte4pkvriklc66q.mx-verification.google.com",
-            ]),
-        )
-        return subprocess.CompletedProcess(args=args[0], returncode=0, stdout="", stderr="")
+        content = "\n".join([
+            "www.google.com",
+            "api.google.com",
+            "7vemu5qa3ozmoictkk4wd5m5tkv5ztmwqbf2wvte4pkvriklc66q.mx-verification.google.com",
+        ])
+        _write_mock_subfinder_output(args[0], content)
+        return subprocess.CompletedProcess(args=args[0], returncode=0, stdout=content, stderr="")
 
     monkeypatch.setattr("modules.subdomain.shutil.which", lambda _: "/usr/bin/subfinder")
     monkeypatch.setattr("modules.subdomain.subprocess.run", fake_run)

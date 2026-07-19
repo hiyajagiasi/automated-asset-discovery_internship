@@ -2,11 +2,9 @@ from __future__ import annotations
 
 import os
 import re
-import shlex
 import shutil
 import socket
 import subprocess
-import tempfile
 from pathlib import Path
 from typing import Any
 
@@ -91,8 +89,8 @@ def discover_subdomains(target: str, config: dict[str, Any]) -> list[str]:
                 "-timeout",
                 str(timeout),
             ]
-            result = subprocess.run(command, capture_output=True, text=True, timeout=timeout, check=False, env=env)
-            print(f'[DEBUG] subfinder returncode={result.returncode} output_file={temp_output} timeout={timeout}')
+            result = subprocess.run(command, capture_output=True, text=True, timeout=timeout + 20, check=False, env=env)
+            print(f'[DEBUG] subfinder returncode={result.returncode} output_file={temp_output} timeout={timeout + 20}')
             if result.stdout:
                 subfinder_results = [line.strip() for line in result.stdout.splitlines() if line.strip()]
             elif temp_output.exists():
@@ -100,9 +98,16 @@ def discover_subdomains(target: str, config: dict[str, Any]) -> list[str]:
                 subfinder_results = [line.strip() for line in file_contents.splitlines() if line.strip()]
             if not subfinder_results and result.returncode == 0:
                 print('[DEBUG] subfinder completed but produced no output file content')
-        except subprocess.TimeoutExpired:
+            else:
+                print(f'[DEBUG] subfinder produced {len(subfinder_results)} lines from stdout')
+        except subprocess.TimeoutExpired as exc:
             partial_output: list[str] = []
-            if temp_output and temp_output.exists():
+            partial_text = getattr(exc, "stdout", None) or getattr(exc, "output", None) or ""
+            if isinstance(partial_text, bytes):
+                partial_text = partial_text.decode("utf-8", errors="ignore")
+            if partial_text:
+                partial_output = [line.strip() for line in partial_text.splitlines() if line.strip()]
+            if not partial_output and temp_output and temp_output.exists():
                 partial_output = [line.strip() for line in temp_output.read_text(encoding="utf-8").splitlines() if line.strip()]
             if partial_output:
                 print(f'[DEBUG] subfinder timed out after {timeout} sec but returned {len(partial_output)} partial lines')
