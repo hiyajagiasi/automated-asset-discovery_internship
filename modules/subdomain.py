@@ -38,7 +38,7 @@ def _looks_like_real_subdomain(candidate: str, target: str) -> bool:
         return False
 
     labels = cleaned[: -len(target) - 1].split(".")
-    if not labels or len(labels) > 5:
+    if not labels or len(labels) > 10:
         return False
 
     for label in labels:
@@ -132,6 +132,8 @@ def discover_subdomains(target: str, config: dict[str, Any]) -> list[str]:
         if dns_result:
             discovered.extend(dns_result)
 
+    raw_count = len(discovered)
+
     unique_subdomains = []
     seen = set()
     for item in discovered:
@@ -143,5 +145,6 @@ def discover_subdomains(target: str, config: dict[str, Any]) -> list[str]:
             unique_subdomains.append(cleaned)
             seen.add(cleaned)
 
+    print(f'[DEBUG] subdomain filtering raw_count={raw_count} filtered_count={len(unique_subdomains)}')
     output_path.write_text("\n".join(unique_subdomains) + "\n", encoding="utf-8")
     return unique_subdomains

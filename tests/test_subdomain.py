@@ -161,6 +161,25 @@ def test_discover_subdomains_uses_stdout_on_timeout(monkeypatch, tmp_path):
     assert "api.example.com" in result
 
 
+def test_discover_subdomains_keeps_deeper_valid_subdomains(monkeypatch, tmp_path):
+    config = {
+        "output": {"subdomains": str(tmp_path / "subdomains.txt")},
+        "tools": {"subfinder": "subfinder"},
+        "timeouts": {"subfinder": 10},
+    }
+
+    def fake_run(*args, **kwargs):
+        content = "a.b.c.d.e.f.google.com\n"
+        return subprocess.CompletedProcess(args=args[0], returncode=0, stdout=content, stderr="")
+
+    monkeypatch.setattr("modules.subdomain.shutil.which", lambda _: "/usr/bin/subfinder")
+    monkeypatch.setattr("modules.subdomain.subprocess.run", fake_run)
+
+    result = discover_subdomains("google.com", config)
+
+    assert "a.b.c.d.e.f.google.com" in result
+
+
 def test_load_config_resolves_output_paths_relative_to_config_file(tmp_path):
     project_dir = tmp_path / "project"
     project_dir.mkdir()

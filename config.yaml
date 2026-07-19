@@ -28,3 +28,4 @@ timeouts:
 threads: 5
 limits:
   subdomains: 50
+  max_live_host_candidates: 500
