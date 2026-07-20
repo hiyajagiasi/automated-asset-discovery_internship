@@ -19,7 +19,7 @@ reports:
   excel: reports/report.xlsx
 
 timeouts:
-  subfinder: 120
+  subfinder: 600
   httpx: 60
   naabu: 60
   nmap: 60

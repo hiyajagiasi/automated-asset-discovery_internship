@@ -84,10 +84,9 @@ def discover_subdomains(target: str, config: dict[str, Any]) -> list[str]:
                 "-d",
                 target,
                 "-silent",
-                "-all",
+                "-o",
+                str(temp_output),
                 "-disable-update-check",
-                "-timeout",
-                str(timeout),
             ]
             result = subprocess.run(command, capture_output=True, text=True, timeout=timeout + 20, check=False, env=env)
             print(f'[DEBUG] subfinder returncode={result.returncode} output_file={temp_output} timeout={timeout + 20}')
