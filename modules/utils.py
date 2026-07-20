@@ -38,6 +38,7 @@ def load_config(path: str | Path) -> dict[str, Any]:
             },
             "timeouts": {"subfinder": 60, "httpx": 60, "naabu": 60, "nmap": 60, "whatweb": 60},
             "threads": 5,
+            "httpx_options": {"threads": 100, "timeout": 10, "retries": 1, "batch_size": 5000},
         }
 
     with config_path.open("r", encoding="utf-8") as handle:

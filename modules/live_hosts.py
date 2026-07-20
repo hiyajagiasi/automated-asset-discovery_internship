@@ -3,8 +3,11 @@ from __future__ import annotations
 import os
 import shutil
 import subprocess
+import time
 from pathlib import Path
 from typing import Any
+
+from modules.utils import get_logger
 
 
 def _parse_httpx_output(stdout: str, seen: set[str]) -> list[str]:
@@ -47,62 +50,81 @@ def discover_live_hosts(subdomains: list[str], config: dict[str, Any]) -> list[s
     except TypeError:
         executable = shutil.which(httpx_bin)
 
+    # limit and batching
     probe_subdomains = cleaned_subdomains
 
     if executable and probe_subdomains:
+        logger = get_logger(config.get("logging", {}).get("file", "logs/scan.log"))
         hosts: list[str] = []
         seen: set[str] = set()
-        # Run all probe candidates in a single httpx invocation by default
-        # to avoid sequential batching delays. Use the configured timeout
-        # (with a sensible minimum) so subprocess timeout reflects user config.
-        batch_size = 1000
-        print(f"[DEBUG] Batch size: {batch_size}")
-        per_batch_timeout = 10
-        print(f"[DEBUG] Total subdomains: {len(cleaned_subdomains)}")
-        print(f"[DEBUG] Probing: {len(probe_subdomains)}")
-        print(f"[DEBUG] Batch size: {batch_size if 'batch_size' in locals() else 'Not set yet'}")
-        for start in range(0, len(probe_subdomains), batch_size):
+
+        # Read httpx options from config with sensible fallbacks
+        httpx_opts = config.get("httpx_options", {})
+        threads = str(int(httpx_opts.get("threads", 100)))
+        httpx_timeout_flag = str(int(httpx_opts.get("timeout", 10)))
+        retries = str(int(httpx_opts.get("retries", 1)))
+        batch_size = int(httpx_opts.get("batch_size", 5000))
+
+        total = len(probe_subdomains)
+        logger.debug("Starting httpx probe for %d candidates (batch_size=%d, threads=%s, timeout=%s)", total, batch_size, threads, httpx_timeout_flag)
+
+        batch_no = 0
+        for start in range(0, total, batch_size):
+            batch_no += 1
             batch = probe_subdomains[start:start + batch_size]
-            print(
-            f"[DEBUG] Processing batch {start // batch_size + 1} "
-            f"({start + 1}-{min(start + batch_size, len(probe_subdomains))})"
-            )
+            temp_input = output_path.with_suffix(f".httpx_input.{batch_no}.txt")
+            temp_output = output_path.with_suffix(f".httpx_output.{batch_no}.json")
+            temp_input.write_text("\n".join(batch) + "\n", encoding="utf-8")
+
+            start_time = time.time()
             try:
-                result = subprocess.run(
-                    [
-        executable,
-        "-json",
-        "-silent",
-        "-threads",
-        "100",
-        "-timeout",
-        str(per_batch_timeout),
-    ],
-                    input="\n".join(batch) + "\n",
-                    capture_output=True,
-                    text=True,
-                    timeout=per_batch_timeout + 5,
-                    check=False,
-                    env=env,
-                )
-                if result.returncode == 0:
-                    print(f"[DEBUG] httpx returned {result.returncode}")
-                    print(f"[DEBUG] stdout lines: {len(result.stdout.splitlines())}")
-                    hosts.extend(_parse_httpx_output(result.stdout, seen))
-                else:
-                    hosts.extend(_parse_httpx_output(result.stderr, seen))
+                temp_input_content = "\n".join(batch) + "\n"
+                with temp_output.open("w", encoding="utf-8") as outfd:
+                    cmd = [
+                        executable,
+                        "-l",
+                        str(temp_input),
+                        "-json",
+                        "-silent",
+                        "-threads",
+                        threads,
+                        "-timeout",
+                        httpx_timeout_flag,
+                        "-retries",
+                        retries,
+                    ]
+                    logger.debug("Running httpx batch %d: %s", batch_no, cmd)
+                    result = subprocess.run(cmd, stdout=outfd, stderr=subprocess.PIPE, check=False, text=True, env=env)
+
+                # prefer stdout from the subprocess (used by tests/mocks); fall back to file
+                if getattr(result, "stdout", None):
+                    content = result.stdout
+                    hosts.extend(_parse_httpx_output(content, seen))
+                elif temp_output.exists():
+                    content = temp_output.read_text(encoding="utf-8")
+                    logger.info(
+                    "Batch %d: httpx returned %d lines",
+                    batch_no,
+                    len(content.splitlines()),
+                    )
+                    hosts.extend(_parse_httpx_output(content, seen))
+
+                if result.returncode != 0:
+                    stderr = result.stderr.decode("utf-8", errors="ignore") if isinstance(result.stderr, bytes) else str(result.stderr)
+                    logger.debug("httpx batch %d exited %s: %s", batch_no, result.returncode, stderr)
             except KeyboardInterrupt:
+                logger.info("KeyboardInterrupt during httpx probe")
                 break
-            except subprocess.TimeoutExpired as exc:
-                partial_stdout = getattr(exc, "stdout", None) or ""
-                if isinstance(partial_stdout, bytes):
-                    partial_stdout = partial_stdout.decode("utf-8", errors="ignore")
-                hosts.extend(_parse_httpx_output(partial_stdout, seen))
-            except OSError:
+            except OSError as exc:
+                logger.debug("OSError running httpx batch %d: %s", batch_no, exc)
                 continue
+            finally:
+                temp_input.unlink(missing_ok=True)
+                temp_output.unlink(missing_ok=True)
+                logger.debug("httpx batch %d took %.2f seconds", batch_no, time.time() - start_time)
 
         if hosts:
-            print(f"[DEBUG] Total live hosts found: {len(hosts)}")
+            logger.info("Total live hosts found: %d", len(hosts))
             output_path.write_text("\n".join(hosts) + "\n", encoding="utf-8")
             return hosts
 

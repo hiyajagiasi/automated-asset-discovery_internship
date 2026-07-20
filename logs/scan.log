@@ -210,3 +210,24 @@
 2026-07-20 16:08:59,233 - INFO - Completed reconnaissance for google.com
 2026-07-20 16:20:21,942 - INFO - Starting reconnaissance for google.com
 2026-07-20 16:40:56,919 - INFO - Completed reconnaissance for google.com
+2026-07-20 17:51:50,588 - INFO - Starting reconnaissance for google.com
+2026-07-20 18:23:32,693 - INFO - Completed reconnaissance for google.com
+2026-07-20 18:41:26,839 - INFO - Starting reconnaissance for google.com
+2026-07-20 18:50:29,793 - INFO - Completed reconnaissance for google.com
+2026-07-20 19:00:17,058 - INFO - Starting reconnaissance for google.com
+2026-07-20 19:02:16,660 - INFO - Total live hosts found: 61
+2026-07-20 19:02:16,765 - INFO - Completed reconnaissance for google.com
+2026-07-20 19:04:44,236 - INFO - Starting reconnaissance for google.com
+2026-07-20 19:12:17,439 - INFO - KeyboardInterrupt during httpx probe
+2026-07-20 19:12:17,604 - INFO - Completed reconnaissance for google.com
+2026-07-20 19:33:50,078 - INFO - Starting reconnaissance for google.com
+2026-07-20 19:44:45,413 - INFO - Batch 1: httpx returned 1465 lines
+2026-07-20 19:53:35,907 - INFO - Batch 2: httpx returned 1397 lines
+2026-07-20 20:02:05,745 - INFO - Batch 3: httpx returned 1399 lines
+2026-07-20 20:10:42,072 - INFO - Batch 4: httpx returned 1471 lines
+2026-07-20 20:19:25,859 - INFO - Batch 5: httpx returned 1365 lines
+2026-07-20 20:28:11,750 - INFO - Batch 6: httpx returned 1440 lines
+2026-07-20 20:36:53,679 - INFO - Batch 7: httpx returned 1407 lines
+2026-07-20 20:43:51,530 - INFO - KeyboardInterrupt during httpx probe
+2026-07-20 20:43:51,532 - INFO - Total live hosts found: 3033
+2026-07-20 20:43:51,643 - INFO - Completed reconnaissance for google.com
