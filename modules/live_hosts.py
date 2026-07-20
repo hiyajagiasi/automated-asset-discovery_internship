@@ -47,20 +47,37 @@ def discover_live_hosts(subdomains: list[str], config: dict[str, Any]) -> list[s
     except TypeError:
         executable = shutil.which(httpx_bin)
 
-    max_candidates = int(config.get("limits", {}).get("max_live_host_candidates", 500))
-    probe_subdomains = cleaned_subdomains[:max_candidates]
+    probe_subdomains = cleaned_subdomains
 
     if executable and probe_subdomains:
         hosts: list[str] = []
         seen: set[str] = set()
-        batch_size = min(20, max(5, max_candidates // 10))
-        per_batch_timeout = max(5, min(timeout, 10))
-
+        # Run all probe candidates in a single httpx invocation by default
+        # to avoid sequential batching delays. Use the configured timeout
+        # (with a sensible minimum) so subprocess timeout reflects user config.
+        batch_size = 1000
+        print(f"[DEBUG] Batch size: {batch_size}")
+        per_batch_timeout = 10
+        print(f"[DEBUG] Total subdomains: {len(cleaned_subdomains)}")
+        print(f"[DEBUG] Probing: {len(probe_subdomains)}")
+        print(f"[DEBUG] Batch size: {batch_size if 'batch_size' in locals() else 'Not set yet'}")
         for start in range(0, len(probe_subdomains), batch_size):
             batch = probe_subdomains[start:start + batch_size]
+            print(
+            f"[DEBUG] Processing batch {start // batch_size + 1} "
+            f"({start + 1}-{min(start + batch_size, len(probe_subdomains))})"
+            )
             try:
                 result = subprocess.run(
-                    [executable, "-json", "-silent", "-timeout", str(per_batch_timeout)],
+                    [
+        executable,
+        "-json",
+        "-silent",
+        "-threads",
+        "100",
+        "-timeout",
+        str(per_batch_timeout),
+    ],
                     input="\n".join(batch) + "\n",
                     capture_output=True,
                     text=True,
@@ -69,6 +86,8 @@ def discover_live_hosts(subdomains: list[str], config: dict[str, Any]) -> list[s
                     env=env,
                 )
                 if result.returncode == 0:
+                    print(f"[DEBUG] httpx returned {result.returncode}")
+                    print(f"[DEBUG] stdout lines: {len(result.stdout.splitlines())}")
                     hosts.extend(_parse_httpx_output(result.stdout, seen))
                 else:
                     hosts.extend(_parse_httpx_output(result.stderr, seen))
@@ -83,6 +102,7 @@ def discover_live_hosts(subdomains: list[str], config: dict[str, Any]) -> list[s
                 continue
 
         if hosts:
+            print(f"[DEBUG] Total live hosts found: {len(hosts)}")
             output_path.write_text("\n".join(hosts) + "\n", encoding="utf-8")
             return hosts
 
