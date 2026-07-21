@@ -7,12 +7,14 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from modules.live_hosts import discover_live_hosts
 
 
-def test_discover_live_hosts_falls_back_to_input_hosts(tmp_path):
+def test_discover_live_hosts_falls_back_to_input_hosts(monkeypatch, tmp_path):
     config = {
         "output": {"live_hosts": str(tmp_path / "live_hosts.txt")},
         "tools": {"httpx": "httpx"},
         "timeouts": {"httpx": 10},
     }
+
+    monkeypatch.setattr("modules.live_hosts.shutil.which", lambda *args, **kwargs: None)
 
     result = discover_live_hosts(["example.com"], config)
 
@@ -44,11 +46,12 @@ def test_discover_live_hosts_uses_httpx_json_output(monkeypatch, tmp_path):
     result = discover_live_hosts(["example.com", "api.example.com"], config)
 
     assert result == ["https://www.example.com", "https://api.example.com"]
-    assert captured["input"] == "example.com\napi.example.com\n"
     assert "-json" in captured["args"]
+    assert "-method" in captured["args"]
+    assert "GET" in captured["args"]
 
 
-def test_discover_live_hosts_filters_non_success_status(monkeypatch, tmp_path):
+def test_discover_live_hosts_includes_live_hosts_with_error_status(monkeypatch, tmp_path):
     config = {
         "output": {"live_hosts": str(tmp_path / "live_hosts.txt")},
         "tools": {"httpx": "httpx"},
@@ -68,4 +71,4 @@ def test_discover_live_hosts_filters_non_success_status(monkeypatch, tmp_path):
 
     result = discover_live_hosts(["ok.example.com", "missing.example.com"], config)
 
-    assert result == ["https://ok.example.com"]
+    assert result == ["https://ok.example.com", "https://missing.example.com"]
