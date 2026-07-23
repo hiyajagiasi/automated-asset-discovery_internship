@@ -11,6 +11,69 @@ from typing import Any
 from modules.utils import get_logger
 
 
+def _dnsx_resolve_candidates(
+    candidates: list[str],
+    config: dict[str, Any],
+    env: dict[str, str],
+    output_path: Path,
+    logger: Any,
+) -> list[str]:
+    dnsx_options = config.get("dnsx_options", {})
+    if not bool(dnsx_options.get("enabled", False)):
+        return candidates
+
+    dnsx_bin = config.get("tools", {}).get("dnsx", "dnsx")
+    executable = shutil.which(dnsx_bin, path=env.get("PATH", ""))
+    if not executable:
+        logger.warning("dnsx is enabled but was not found; probing all candidates with httpx")
+        return candidates
+
+    input_path = output_path.with_suffix(".dnsx_input.txt")
+    result_path = output_path.with_suffix(".dnsx_output.txt")
+    input_path.write_text("\n".join(candidates) + "\n", encoding="utf-8")
+    command = [
+        executable, "-l", str(input_path), "-silent", "-no-color", "-a",
+        "-threads", str(max(1, int(dnsx_options.get("threads", 500)))),
+        "-retry", str(max(1, int(dnsx_options.get("retries", 1)))),
+        "-timeout", str(max(1, int(dnsx_options.get("timeout", 2)))),
+        "-o", str(result_path),
+    ]
+    rate_limit = int(dnsx_options.get("rate_limit", 0))
+    if rate_limit > 0:
+        command.extend(["-rate-limit", str(rate_limit)])
+
+    try:
+        logger.info("Starting dnsx resolution for %d candidates", len(candidates))
+        result = subprocess.run(command, capture_output=True, text=True, check=False, env=env)
+        content = result.stdout or ""
+        if result_path.exists():
+            content = result_path.read_text(encoding="utf-8")
+        candidate_set = set(candidates)
+        resolved: list[str] = []
+        seen: set[str] = set()
+        for line in content.splitlines():
+            host = line.strip().split()[0] if line.strip() else ""
+            if host in candidate_set and host not in seen:
+                seen.add(host)
+                resolved.append(host)
+        if result.returncode != 0 or not resolved:
+            diagnostics = (result.stderr or "").strip()
+            logger.warning(
+                "dnsx did not return usable results (returncode=%s, stderr=%s); probing all candidates with httpx",
+                result.returncode,
+                diagnostics or "none",
+            )
+            return candidates
+        logger.info("dnsx resolution completed: %d/%d candidates resolved", len(resolved), len(candidates))
+        return resolved
+    except (OSError, subprocess.SubprocessError) as exc:
+        logger.warning("dnsx failed (%s); probing all candidates with httpx", exc)
+        return candidates
+    finally:
+        input_path.unlink(missing_ok=True)
+        result_path.unlink(missing_ok=True)
+
+
 def _parse_httpx_output(stdout: str, seen: set[str]) -> list[str]:
     hosts: list[str] = []
     for line in [entry.strip() for entry in stdout.splitlines() if entry.strip()]:
@@ -39,6 +102,11 @@ def _process_batch(
     threads: str,
     timeout: str,
     retries: str,
+    rate_limit: str | None,
+    stream: bool,
+    response_size_to_read: str | None,
+    no_decode: bool,
+    process_timeout: int | None,
     env: dict[str, str],
     logger: Any,
 ) -> tuple[int, list[str]]:
@@ -60,8 +128,6 @@ def _process_batch(
                 str(temp_input),
                 "-json",
                 "-silent",
-                "-method",
-                "GET",
                 "-threads",
                 threads,
                 "-timeout",
@@ -69,36 +135,54 @@ def _process_batch(
                 "-retries",
                 retries,
             ]
+            if rate_limit is not None:
+                cmd.extend(["-rate-limit", rate_limit])
+            if stream:
+                # Avoid input sorting so httpx begins probing immediately.
+                cmd.append("-stream")
+            if response_size_to_read is not None:
+                cmd.extend(["-response-size-to-read", response_size_to_read])
+            if no_decode:
+                cmd.append("-no-decode")
             logger.debug("Running httpx batch %d: %s", batch_no, cmd)
-            # Protect against the httpx process hanging by also enforcing a subprocess timeout
-            proc_timeout = None
             try:
-                proc_timeout = int(timeout) + 5
-            except Exception:
-                proc_timeout = None
-
-            try:
-                if proc_timeout:
-                    result = subprocess.run(cmd, stdout=outfd, stderr=subprocess.PIPE, check=False, text=True, env=env, timeout=proc_timeout)
+                if process_timeout is not None:
+                    result = subprocess.run(cmd, stdout=outfd, stderr=subprocess.PIPE, check=False, text=True, env=env, timeout=process_timeout)
                 else:
                     result = subprocess.run(cmd, stdout=outfd, stderr=subprocess.PIPE, check=False, text=True, env=env)
             except subprocess.TimeoutExpired as exc:
-                logger.debug("httpx batch %d timed out after %s seconds: %s", batch_no, proc_timeout, exc)
+                logger.warning(
+                    "httpx batch %d timed out after %s seconds; its results may be incomplete: %s",
+                    batch_no,
+                    process_timeout,
+                    exc,
+                )
                 # Represent a timed-out process as a non-zero CompletedProcess so downstream logic can handle it
                 result = subprocess.CompletedProcess(args=cmd, returncode=124, stdout="", stderr=str(exc))
 
+        output_line_count = 0
         if getattr(result, "stdout", None):
             content = result.stdout
-            logger.info("Batch %d: httpx returned %d lines", batch_no, len(content.splitlines()))
+            output_line_count = len(content.splitlines())
+            logger.info("Batch %d: httpx returned %d lines", batch_no, output_line_count)
             hosts.extend(_parse_httpx_output(content, seen))
         elif temp_output.exists():
             content = temp_output.read_text(encoding="utf-8")
-            logger.info("Batch %d: httpx returned %d lines", batch_no, len(content.splitlines()))
+            output_line_count = len(content.splitlines())
+            logger.info("Batch %d: httpx returned %d lines", batch_no, output_line_count)
             hosts.extend(_parse_httpx_output(content, seen))
 
         if result.returncode != 0:
             stderr = result.stderr.decode("utf-8", errors="ignore") if isinstance(result.stderr, bytes) else str(result.stderr)
-            logger.debug("httpx batch %d exited %s: %s", batch_no, result.returncode, stderr)
+            logger.warning("httpx batch %d exited %s: %s", batch_no, result.returncode, stderr.strip() or "no stderr")
+        elif output_line_count == 0:
+            stderr = result.stderr.decode("utf-8", errors="ignore") if isinstance(result.stderr, bytes) else str(result.stderr)
+            logger.info(
+                "Batch %d produced no HTTP responses from %d candidates%s",
+                batch_no,
+                len(batch),
+                f"; diagnostic: {stderr.strip()}" if stderr.strip() else "",
+            )
     except KeyboardInterrupt:
         logger.info("KeyboardInterrupt during httpx probe batch %d", batch_no)
     except OSError as exc:
@@ -143,11 +227,21 @@ def discover_live_hosts(subdomains: list[str], config: dict[str, Any]) -> list[s
         threads = str(threads_int)
         httpx_timeout_flag = str(int(httpx_opts.get("timeout", timeout)))
         retries = str(int(httpx_opts.get("retries", 1)))
+        configured_rate_limit = int(httpx_opts.get("rate_limit", 150))
+        rate_limit = str(configured_rate_limit) if configured_rate_limit > 0 else None
+        stream = bool(httpx_opts.get("stream", True))
+        configured_response_size = int(httpx_opts.get("response_size_to_read", 1024))
+        response_size_to_read = str(configured_response_size) if configured_response_size >= 0 else None
+        no_decode = bool(httpx_opts.get("no_decode", True))
+        configured_process_timeout = int(httpx_opts.get("process_timeout", 0))
+        process_timeout = configured_process_timeout if configured_process_timeout > 0 else None
         batch_size = int(httpx_opts.get("batch_size", 5000))
         max_rounds = int(httpx_opts.get("max_rounds", 25))
         effective_batch_size = min(batch_size, max(threads_int * max_rounds, 1000))
         parallel_workers = int(httpx_opts.get("parallel_workers", 3))
         max_total_threads = int(httpx_opts.get("max_total_threads", threads_int * parallel_workers))
+
+        probe_subdomains = _dnsx_resolve_candidates(probe_subdomains, config, env, output_path, logger)
 
         total = len(probe_subdomains)
         batches = []
@@ -170,13 +264,18 @@ def discover_live_hosts(subdomains: list[str], config: dict[str, Any]) -> list[s
                 max_total_threads,
             )
 
-        logger.debug(
-            "Starting httpx probe for %d candidates (requested_batch=%d, effective_batch=%d, threads=%s, timeout=%s, parallel_workers=%s, max_total_threads=%s)",
+        logger.info(
+            "Starting httpx probe for %d candidates (requested_batch=%d, effective_batch=%d, threads=%s, timeout=%s, retries=%s, rate_limit=%s per worker, stream=%s, body_read_limit=%s, process_timeout=%s, parallel_workers=%s, max_total_threads=%s)",
             total,
             batch_size,
             effective_batch_size,
             threads,
             httpx_timeout_flag,
+            retries,
+            rate_limit if rate_limit is not None else "httpx-default",
+            stream,
+            response_size_to_read if response_size_to_read is not None else "httpx-default",
+            process_timeout if process_timeout is not None else "disabled",
             parallel_workers,
             max_total_threads,
         )
@@ -185,7 +284,23 @@ def discover_live_hosts(subdomains: list[str], config: dict[str, Any]) -> list[s
         output_path.unlink(missing_ok=True)
         with ThreadPoolExecutor(max_workers=parallel_workers) as executor:
             futures = [
-                executor.submit(_process_batch, batch_no, batch, output_path, executable, threads, httpx_timeout_flag, retries, env, logger)
+                executor.submit(
+                    _process_batch,
+                    batch_no,
+                    batch,
+                    output_path,
+                    executable,
+                    threads,
+                    httpx_timeout_flag,
+                    retries,
+                    rate_limit,
+                    stream,
+                    response_size_to_read,
+                    no_decode,
+                    process_timeout,
+                    env,
+                    logger,
+                )
                 for batch_no, batch in batches
             ]
 

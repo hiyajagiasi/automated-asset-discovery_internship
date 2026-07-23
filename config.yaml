@@ -1,5 +1,6 @@
 tools:
   subfinder: subfinder
+  dnsx: dnsx
   httpx: httpx
   naabu: naabu
   nmap: nmap
@@ -20,7 +21,7 @@ reports:
 
 timeouts:
   subfinder: 600
-  httpx: 60
+  httpx: 10
   naabu: 60
   nmap: 60
   whatweb: 60
@@ -30,12 +31,30 @@ threads: 5
 limits:
   subdomains: 50
   max_live_host_candidates: 0
+  nmap_parallel_workers: 8
 
 httpx_options:
-  threads: 100
+  # Fast live-host profile: 3 workers × 200 threads, capped at 750 requests/s.
+  # This is best-effort; a 3-second timeout and no retry can miss slow hosts.
+  threads: 200
   timeout: 10
-  retries: 1
+  retries: 2
+  rate_limit: 250
+  stream: true
+  # Live-host detection only needs headers/status; avoid downloading full pages.
+  response_size_to_read: 1024
+  no_decode: true
+  # Optional whole-batch safety limit in seconds; 0 disables it (recommended).
+  process_timeout: 0
+  # Smaller batches release discovered live hosts to output quickly.
   batch_size: 1000
   max_rounds: 20
   parallel_workers: 3
-  max_total_threads: 300
+  max_total_threads: 600
+
+dnsx_options:
+  enabled: true
+  threads: 500
+  retries: 1
+  timeout: 5
+  rate_limit: 0

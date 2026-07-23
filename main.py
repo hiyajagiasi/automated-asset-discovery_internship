@@ -25,7 +25,7 @@ def build_project_structure(base_dir: Path | str) -> Dict[str, Path]:
 def run_scan(target: str, config_path: str | None = None) -> Dict[str, object]:
     base_dir = Path(__file__).resolve().parent
     build_project_structure(base_dir)
-    service = ReconnaissanceService(base_dir=base_dir, target=target)
+    service = ReconnaissanceService(base_dir=base_dir, target=target, config_path=config_path)
     return service.run()
 
 
