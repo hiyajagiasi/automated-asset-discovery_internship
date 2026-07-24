@@ -28,6 +28,8 @@ def test_scan_ports_uses_naabu_and_nmap_output(monkeypatch, tmp_path):
                 stderr="",
             )
         if "nmap" in cmd[0]:
+            assert "-sC" in cmd
+            assert "--version-all" in cmd
             return subprocess.CompletedProcess(
                 args=cmd,
                 returncode=0,
@@ -83,3 +85,46 @@ def test_scan_ports_chunks_large_host_lists_for_naabu(monkeypatch, tmp_path):
 
     assert len(seen_inputs) > 1
     assert all(len(seen_input.splitlines()) <= 100 for seen_input in seen_inputs)
+
+
+def test_scan_ports_includes_nmap_script_and_host_info(monkeypatch, tmp_path):
+    config = {
+        "output": {"ports": str(tmp_path / "ports.txt")},
+        "tools": {"naabu": "naabu", "nmap": "nmap"},
+        "timeouts": {"naabu": 10, "nmap": 10},
+    }
+
+    def fake_run(cmd, **kwargs):
+        if "naabu" in cmd[0]:
+            return subprocess.CompletedProcess(
+                args=cmd,
+                returncode=0,
+                stdout='[{"host":"example.com","port":443,"service":"https"}]\n',
+                stderr="",
+            )
+        if "nmap" in cmd[0]:
+            return subprocess.CompletedProcess(
+                args=cmd,
+                returncode=0,
+                stdout=(
+                    'Nmap scan report for example.com\n'
+                    '443/tcp open  https\n'
+                    '| ssl-cert: Subject: commonName=example.com\n'
+                    'Service Info: OS: Linux\n'
+                ),
+                stderr="",
+            )
+        raise AssertionError(f"unexpected command {cmd}")
+
+    monkeypatch.setattr("modules.port_scan.shutil.which", lambda *args, **kwargs: "/usr/bin/naabu")
+    monkeypatch.setattr("modules.port_scan.subprocess.run", fake_run)
+
+    result = scan_ports(["https://example.com"], config)
+
+    assert result == [
+        {
+            "host": "example.com",
+            "port": "443",
+            "service": "https; ssl-cert: Subject: commonName=example.com; OS: Linux",
+        }
+    ]

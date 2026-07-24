@@ -1479,3 +1479,46 @@
 2026-07-24 14:38:53,665 - INFO - Starting technology discovery
 2026-07-24 14:38:53,666 - INFO - Technology discovery completed in 0.0 seconds
 2026-07-24 14:38:53,730 - INFO - Completed reconnaissance for google.com
+2026-07-24 21:41:52,356 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-11/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-24 21:41:52,357 - WARNING - Nmap service scan failed for example.com: assert '-sC' in ['nmap', '-Pn', '-T4', '-sV', '--open', '-p', ...]
+2026-07-24 21:41:52,357 - INFO - Nmap service progress: 1/1 hosts
+2026-07-24 21:41:52,357 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-24 21:41:52,396 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-11/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-24 21:41:52,397 - INFO - Nmap service progress: 1/1 hosts
+2026-07-24 21:41:52,397 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-24 21:41:52,398 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-11/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-24 21:41:52,398 - INFO - Nmap service progress: 1/1 hosts
+2026-07-24 21:41:52,399 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-24 21:49:30,260 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-12/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-24 21:49:30,260 - WARNING - Nmap service scan failed for example.com: name '_display_host' is not defined
+2026-07-24 21:49:30,261 - INFO - Nmap service progress: 1/1 hosts
+2026-07-24 21:49:30,261 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-24 21:49:30,299 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-12/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-24 21:49:30,299 - WARNING - Nmap service scan failed for example.com: name '_display_host' is not defined
+2026-07-24 21:49:30,299 - INFO - Nmap service progress: 1/1 hosts
+2026-07-24 21:49:30,299 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-24 21:49:30,301 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-12/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-24 21:49:30,301 - WARNING - Nmap service scan failed for example.com: name '_display_host' is not defined
+2026-07-24 21:49:30,301 - INFO - Nmap service progress: 1/1 hosts
+2026-07-24 21:49:30,301 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-24 21:53:35,987 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-13/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-24 21:53:35,987 - WARNING - Nmap service scan failed for example.com: name '_display_host' is not defined
+2026-07-24 21:53:35,987 - INFO - Nmap service progress: 1/1 hosts
+2026-07-24 21:53:35,988 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-24 21:53:36,025 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-13/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-24 21:53:36,025 - WARNING - Nmap service scan failed for example.com: name '_display_host' is not defined
+2026-07-24 21:53:36,025 - INFO - Nmap service progress: 1/1 hosts
+2026-07-24 21:53:36,026 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-24 21:53:36,027 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-13/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-24 21:53:36,027 - WARNING - Nmap service scan failed for example.com: name '_display_host' is not defined
+2026-07-24 21:53:36,027 - INFO - Nmap service progress: 1/1 hosts
+2026-07-24 21:53:36,027 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-24 21:56:11,895 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-14/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-24 21:56:11,895 - INFO - Nmap service progress: 1/1 hosts
+2026-07-24 21:56:11,896 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-24 21:56:11,899 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-14/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-24 21:56:11,899 - INFO - Nmap service progress: 1/1 hosts
+2026-07-24 21:56:11,899 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-24 21:56:11,901 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-14/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-24 21:56:11,901 - INFO - Nmap service progress: 1/1 hosts
+2026-07-24 21:56:11,901 - INFO - Identified 1 open ports across 1 live hosts

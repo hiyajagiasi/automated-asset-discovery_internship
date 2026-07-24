@@ -21,6 +21,27 @@ def _host(value: str) -> str:
         return ""
     parsed = urlparse(candidate if "://" in candidate else f"//{candidate}")
     return (parsed.hostname or "").strip().lower()
+def _display_host(
+    host: str,
+    aliases: dict[str, str] | None = None,
+    aggregate_results: list[dict[str, str]] | None = None,
+    preserve_aliases: bool = False,
+) -> str:
+    """Return the host value used in port results, preserving original input when aggregating."""
+    normalized = _host(host)
+    if aggregate_results is not None:
+        if aliases:
+            alias = aliases.get(normalized)
+            if alias:
+                return alias
+        raw_host = (host or "").strip()
+        if not raw_host:
+            return normalized or host
+        if "://" in raw_host:
+            return raw_host
+        return f"https://{raw_host}"
+    return normalized or host
+
 
 
 def _parse_naabu(stdout: str) -> dict[str, set[str]]:
@@ -55,22 +76,75 @@ def _parse_naabu(stdout: str) -> dict[str, set[str]]:
     return discovered
 
 
-def _parse_nmap(stdout: str, default_host: str) -> list[dict[str, str]]:
+def _parse_nmap(
+    stdout: str,
+    default_host: str,
+    aliases: dict[str, str] | None = None,
+    aggregate_results: list[dict[str, str]] | None = None,
+    preserve_aliases: bool = False,
+) -> list[dict[str, str]]:
     results: list[dict[str, str]] = []
     current_host = default_host
+    last_result_index: int | None = None
+    host_metadata: dict[str, list[str]] = defaultdict(list)
     report_pattern = re.compile(r"Nmap scan report for (?:.+ \()?([^ )]+)\)?$")
-    port_pattern = re.compile(r"^(\d+)/(tcp|udp)\s+open\s+([^\s]+)")
+    port_pattern = re.compile(r"^(\d+)/(tcp|udp)\s+open\s+(\S+)(?:\s+(.+))?")
+    script_pattern = re.compile(r"^\|_?\s*(.*)$")
+    host_info_pattern = re.compile(
+        r"^(OS details|Aggressive OS guesses|Network Distance|Device type|Service detection performed):\s*(.+)$"
+    )
+
+    def _append_detail(base: str, detail: str) -> str:
+        if not base:
+            return detail
+        return f"{base}; {detail}"
+
     for line in stdout.splitlines():
-        report = report_pattern.match(line.strip())
+        stripped = line.strip()
+        report = report_pattern.match(stripped)
         if report:
             current_host = _host(report.group(1)) or default_host
+            last_result_index = None
             continue
-        match = port_pattern.match(line.strip())
+
+        match = port_pattern.match(stripped)
         if match:
-            results.append({"host": current_host, "port": match.group(1), "service": match.group(3)})
+            host_value = _display_host(current_host, aliases, aggregate_results, preserve_aliases)
+            service_name = match.group(3)
+            extra_info = (match.group(4) or "").strip()
+            service_value = service_name if not extra_info else f"{service_name} {extra_info}"
+            results.append({"host": host_value, "port": match.group(1), "service": service_value})
+            last_result_index = len(results) - 1
+            continue
+
+        if stripped.startswith("Service Info:") and last_result_index is not None:
+            info = stripped[len("Service Info:"):].strip()
+            if info:
+                existing_service = results[last_result_index].get("service", "")
+                results[last_result_index]["service"] = _append_detail(existing_service, info)
+            continue
+
+        script = script_pattern.match(stripped)
+        if script and last_result_index is not None:
+            script_info = script.group(1).strip()
+            if script_info:
+                existing_service = results[last_result_index].get("service", "")
+                results[last_result_index]["service"] = _append_detail(existing_service, script_info)
+            continue
+
+        host_info = host_info_pattern.match(stripped)
+        if host_info:
+            host_metadata[current_host].append(f"{host_info.group(1)}: {host_info.group(2)}")
+            continue
+
+    if host_metadata:
+        for item in results:
+            host_meta = host_metadata.get(_host(item["host"]), [])
+            if host_meta:
+                existing_service = item.get("service", "")
+                item["service"] = _append_detail(existing_service, "; ".join(host_meta))
+
     return results
-
-
 def _write_results(output_path: Path, ports: list[dict[str, str]]) -> None:
     lines = [
         f"{item['host']}:{item['port']} ({item['service']}) [subdomain={item['host']}]"
@@ -93,21 +167,40 @@ def _unknown_results(host: str, ports: list[str]) -> list[dict[str, str]]:
     ]
 
 
-def _scan_nmap_host(host: str, ports: list[str], nmap: str, timeout: int) -> list[dict[str, str]]:
+def _scan_nmap_host(
+    host: str,
+    ports: list[str],
+    nmap: str,
+    timeout: int,
+    aliases: dict[str, str] | None = None,
+    aggregate_results: list[dict[str, str]] | None = None,
+    preserve_aliases: bool = False,
+) -> list[dict[str, str]]:
     try:
         result = subprocess.run(
-            [nmap, "-Pn", "-T4", "-sV", "--open", "-p", ",".join(ports), host],
+            [
+                nmap,
+                "-Pn",
+                "-T4",
+                "-sV",
+                "-sC",
+                "--version-all",
+                "--open",
+                "-p",
+                ",".join(ports),
+                host,
+            ],
             capture_output=True,
             text=True,
             timeout=timeout,
             check=False,
         )
     except (OSError, subprocess.TimeoutExpired):
-        return _unknown_results(host, ports)
+        return _unknown_results(host, ports, aliases, aggregate_results, preserve_aliases)
     if result.returncode:
-        return _unknown_results(host, ports)
-    parsed = _parse_nmap(result.stdout, host)
-    return parsed or _unknown_results(host, ports)
+        return _unknown_results(host, ports, aliases, aggregate_results, preserve_aliases)
+    parsed = _parse_nmap(result.stdout, host, aliases, aggregate_results, preserve_aliases)
+    return parsed or _unknown_results(host, ports, aliases, aggregate_results, preserve_aliases)
 
 
 def scan_ports(hosts: list[str], config: dict[str, Any]) -> list[dict[str, str]]:
