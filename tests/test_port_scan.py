@@ -87,6 +87,33 @@ def test_scan_ports_chunks_large_host_lists_for_naabu(monkeypatch, tmp_path):
     assert all(len(seen_input.splitlines()) <= 100 for seen_input in seen_inputs)
 
 
+def test_scan_ports_falls_back_to_service_names_when_nmap_fails(monkeypatch, tmp_path):
+    config = {
+        "output": {"ports": str(tmp_path / "ports.txt")},
+        "tools": {"naabu": "naabu", "nmap": "nmap"},
+        "timeouts": {"naabu": 10, "nmap": 10},
+    }
+
+    def fake_run(cmd, **kwargs):
+        if "naabu" in cmd[0]:
+            return subprocess.CompletedProcess(
+                args=cmd,
+                returncode=0,
+                stdout='[{"host":"example.com","port":443,"service":"https"}]\n',
+                stderr="",
+            )
+        if "nmap" in cmd[0]:
+            return subprocess.CompletedProcess(args=cmd, returncode=1, stdout="", stderr="")
+        raise AssertionError(f"unexpected command {cmd}")
+
+    monkeypatch.setattr("modules.port_scan.shutil.which", lambda *args, **kwargs: "/usr/bin/naabu")
+    monkeypatch.setattr("modules.port_scan.subprocess.run", fake_run)
+
+    result = scan_ports(["https://example.com"], config)
+
+    assert result == [{"host": "example.com", "port": "443", "service": "https"}]
+
+
 def test_scan_ports_includes_nmap_script_and_host_info(monkeypatch, tmp_path):
     config = {
         "output": {"ports": str(tmp_path / "ports.txt")},

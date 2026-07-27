@@ -5,6 +5,7 @@ tools:
   naabu: naabu
   nmap: nmap
   whatweb: whatweb
+  webanalyze: /Users/sohampatil/go/bin/webanalyze
 
 output:
   subdomains: output/subdomains.txt
@@ -25,6 +26,7 @@ timeouts:
   naabu: 60
   nmap: 60
   whatweb: 60
+  webanalyze: 30
 
 threads: 5
 
@@ -34,23 +36,22 @@ limits:
   nmap_parallel_workers: 8
 
 httpx_options:
-  # Fast live-host profile: 3 workers × 200 threads, capped at 750 requests/s.
-  # This is best-effort; a 3-second timeout and no retry can miss slow hosts.
-  threads: 200
-  timeout: 10
-  retries: 2
-  rate_limit: 250
+  # More conservative live-host probing for reliability on large target sets.
+  threads: 100
+  timeout: 15
+  retries: 3
+  rate_limit: 150
   stream: true
-  # Live-host detection only needs headers/status; avoid downloading full pages.
-  response_size_to_read: 1024
+  # Technology detection benefits from more HTML/JS content, so allow a larger response body read.
+  response_size_to_read: 10000
   no_decode: true
   # Optional whole-batch safety limit in seconds; 0 disables it (recommended).
   process_timeout: 0
   # Smaller batches release discovered live hosts to output quickly.
   batch_size: 1000
   max_rounds: 20
-  parallel_workers: 3
-  max_total_threads: 600
+  parallel_workers: 2
+  max_total_threads: 200
 
 dnsx_options:
   enabled: true
@@ -58,3 +59,7 @@ dnsx_options:
   retries: 1
   timeout: 5
   rate_limit: 0
+
+batching:
+  batch_size: 50
+  workers: 4

@@ -5,6 +5,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from modules.live_hosts import _dnsx_resolve_candidates, discover_live_hosts
+from modules.utils import load_config
 
 
 def test_discover_live_hosts_falls_back_to_input_hosts(monkeypatch, tmp_path):
@@ -139,3 +140,18 @@ def test_dnsx_falls_back_when_unavailable(monkeypatch, tmp_path):
     )
 
     assert result == candidates
+
+
+def test_load_config_uses_conservative_httpx_defaults(tmp_path):
+    config_path = tmp_path / "config.yaml"
+    config_path.write_text("timeouts:\n  httpx: 15\n", encoding="utf-8")
+
+    config = load_config(config_path)
+
+    httpx_opts = config["httpx_options"]
+
+    assert httpx_opts["threads"] == 100
+    assert httpx_opts["timeout"] == 15
+    assert httpx_opts["retries"] == 3
+    assert httpx_opts["parallel_workers"] == 2
+    assert httpx_opts["max_total_threads"] == 200

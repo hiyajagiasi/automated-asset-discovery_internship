@@ -1522,3 +1522,729 @@
 2026-07-24 21:56:11,901 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-14/test_scan_ports_includes_nmap_0/ports.txt pending service verification
 2026-07-24 21:56:11,901 - INFO - Nmap service progress: 1/1 hosts
 2026-07-24 21:56:11,901 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-26 12:54:03,117 - INFO - Starting reconnaissance for google.com
+2026-07-26 12:54:03,117 - INFO - Starting subdomain discovery
+2026-07-26 12:56:22,049 - INFO - Subdomain discovery completed in 138.9 seconds (71317 candidates)
+2026-07-26 12:56:22,049 - INFO - Starting live-host probing
+2026-07-26 12:56:22,052 - INFO - Starting dnsx resolution for 71317 candidates
+2026-07-26 13:04:30,340 - INFO - dnsx resolution completed: 12352/71317 candidates resolved
+2026-07-26 13:04:30,343 - INFO - Starting httpx probe for 12352 candidates (requested_batch=1000, effective_batch=1000, threads=200, timeout=10, retries=2, rate_limit=250 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=3, max_total_threads=600)
+2026-07-26 13:06:05,981 - INFO - Batch 2: httpx returned 56 lines
+2026-07-26 13:06:06,023 - INFO - Batch 1: httpx returned 48 lines
+2026-07-26 13:06:06,030 - INFO - Batch 3: httpx returned 147 lines
+2026-07-26 13:20:06,388 - INFO - Batch 6: httpx returned 144 lines
+2026-07-26 13:20:08,546 - INFO - Batch 4: httpx returned 139 lines
+2026-07-26 13:20:11,224 - INFO - Batch 5: httpx returned 0 lines
+2026-07-26 13:20:11,224 - INFO - Batch 5 produced no HTTP responses from 1000 candidates
+2026-07-26 13:21:47,798 - INFO - Batch 7: httpx returned 48 lines
+2026-07-26 13:21:53,867 - INFO - Batch 9: httpx returned 1 lines
+2026-07-26 13:21:53,878 - INFO - Batch 8: httpx returned 0 lines
+2026-07-26 13:21:53,878 - INFO - Batch 8 produced no HTTP responses from 1000 candidates
+2026-07-26 13:23:15,558 - INFO - Batch 12: httpx returned 260 lines
+2026-07-26 13:23:31,080 - INFO - Batch 10: httpx returned 1 lines
+2026-07-26 13:23:35,256 - INFO - Batch 11: httpx returned 29 lines
+2026-07-26 13:23:51,594 - INFO - Batch 13: httpx returned 106 lines
+2026-07-26 13:23:51,596 - INFO - Total live hosts found: 979
+2026-07-26 13:23:51,597 - INFO - Live-host probing completed in 905.7 seconds (979 live hosts)
+2026-07-26 13:23:51,597 - INFO - Starting port discovery
+2026-07-26 13:28:18,004 - INFO - Naabu discovered 950 open ports across 658 live hosts; written to /Users/sohampatil/Documents/Automated-Asset-Discovery/Automated-Asset-Discovery/output/ports.txt pending service verification
+2026-07-26 13:28:28,032 - WARNING - Nmap service scan failed for 18s.spreadsheets.google.com: _unknown_results() takes 2 positional arguments but 5 were given
+2026-07-26 13:28:28,046 - WARNING - Nmap service scan failed for 2bh.spreadsheets.google.com: _unknown_results() takes 2 positional arguments but 5 were given
+2026-07-26 13:28:28,049 - WARNING - Nmap service scan failed for 0c2.spreadsheets.google.com: _unknown_results() takes 2 positional arguments but 5 were given
+2026-07-26 13:28:28,049 - WARNING - Nmap service scan failed for 1o9.spreadsheets.google.com: _unknown_results() takes 2 positional arguments but 5 were given
+2026-07-26 13:28:28,049 - WARNING - Nmap service scan failed for 6ws.spreadsheets.google.com: _unknown_results() takes 2 positional arguments but 5 were given
+2026-07-26 13:28:28,049 - WARNING - Nmap service scan failed for 379.docs.google.com: _unknown_results() takes 2 positional arguments but 5 were given
+2026-07-26 13:28:28,049 - WARNING - Nmap service scan failed for 6ps.spreadsheets.google.com: _unknown_results() takes 2 positional arguments but 5 were given
+2026-07-26 13:28:28,049 - WARNING - Nmap service scan failed for 19b.spreadsheets.google.com: _unknown_results() takes 2 positional arguments but 5 were given
+2026-07-26 13:28:38,066 - WARNING - Nmap service scan failed for 372.docs.google.com: _unknown_results() takes 2 positional arguments but 5 were given
+2026-07-26 13:28:38,077 - WARNING - Nmap service scan failed for 386.docs.google.com: _unknown_results() takes 2 positional arguments but 5 were given
+2026-07-26 13:28:38,077 - WARNING - Nmap service scan failed for 4.docs.google.com: _unknown_results() takes 2 positional arguments but 5 were given
+2026-07-26 13:28:38,080 - WARNING - Nmap service scan failed for 387.docs.google.com: _unknown_results() takes 2 positional arguments but 5 were given
+2026-07-26 13:28:38,080 - WARNING - Nmap service scan failed for 38.docs.google.com: _unknown_results() takes 2 positional arguments but 5 were given
+2026-07-26 13:28:38,080 - WARNING - Nmap service scan failed for 390.docs.google.com: _unknown_results() takes 2 positional arguments but 5 were given
+2026-07-26 13:28:38,080 - WARNING - Nmap service scan failed for 348.docs.google.com: _unknown_results() takes 2 positional arguments but 5 were given
+2026-07-26 13:28:38,080 - WARNING - Nmap service scan failed for 395.docs.google.com: _unknown_results() takes 2 positional arguments but 5 were given
+2026-07-26 13:33:22,510 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-8/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-26 13:33:22,510 - INFO - Nmap service progress: 1/1 hosts
+2026-07-26 13:33:22,510 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-26 13:33:22,512 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-8/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-26 13:33:22,512 - INFO - Nmap service progress: 1/1 hosts
+2026-07-26 13:33:22,512 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-26 13:33:22,512 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-8/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-26 13:33:22,513 - WARNING - Nmap service scan failed for example.com: _unknown_results() takes 2 positional arguments but 5 were given
+2026-07-26 13:33:22,513 - INFO - Nmap service progress: 1/1 hosts
+2026-07-26 13:33:22,513 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-26 13:33:22,532 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-8/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-26 13:33:22,532 - INFO - Nmap service progress: 1/1 hosts
+2026-07-26 13:33:22,532 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-26 13:34:04,585 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-9/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-26 13:34:04,585 - INFO - Nmap service progress: 1/1 hosts
+2026-07-26 13:34:04,585 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-26 13:34:04,587 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-9/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-26 13:34:04,587 - INFO - Nmap service progress: 1/1 hosts
+2026-07-26 13:34:04,587 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-26 13:34:04,588 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-9/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-26 13:34:04,588 - WARNING - Nmap service scan failed for example.com: _unknown_results() takes 2 positional arguments but 5 were given
+2026-07-26 13:34:04,588 - INFO - Nmap service progress: 1/1 hosts
+2026-07-26 13:34:04,588 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-26 13:34:04,606 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-9/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-26 13:34:04,607 - INFO - Nmap service progress: 1/1 hosts
+2026-07-26 13:34:04,607 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-26 13:37:03,981 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-10/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-26 13:37:03,982 - INFO - Nmap service progress: 1/1 hosts
+2026-07-26 13:37:03,982 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-26 13:37:03,984 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-10/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-26 13:37:03,984 - INFO - Nmap service progress: 1/1 hosts
+2026-07-26 13:37:03,984 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-26 13:37:03,985 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-10/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-26 13:37:03,987 - INFO - Nmap service progress: 1/1 hosts
+2026-07-26 13:37:03,987 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-26 13:37:03,988 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-10/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-26 13:37:03,988 - INFO - Nmap service progress: 1/1 hosts
+2026-07-26 13:37:03,988 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-26 13:37:27,068 - INFO - Starting reconnaissance for google.com
+2026-07-26 13:37:27,068 - INFO - Starting subdomain discovery
+2026-07-26 13:39:45,525 - INFO - Subdomain discovery completed in 138.5 seconds (71318 candidates)
+2026-07-26 13:39:45,525 - INFO - Starting live-host probing
+2026-07-26 13:39:45,528 - INFO - Starting dnsx resolution for 71318 candidates
+2026-07-26 13:47:48,280 - INFO - dnsx resolution completed: 13885/71318 candidates resolved
+2026-07-26 13:47:48,281 - INFO - Starting httpx probe for 13885 candidates (requested_batch=1000, effective_batch=1000, threads=200, timeout=10, retries=2, rate_limit=250 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=3, max_total_threads=600)
+2026-07-26 13:49:21,449 - INFO - Batch 3: httpx returned 190 lines
+2026-07-26 13:49:23,625 - INFO - Batch 2: httpx returned 110 lines
+2026-07-26 13:49:23,633 - INFO - Batch 1: httpx returned 56 lines
+2026-07-26 13:50:49,384 - INFO - Batch 4: httpx returned 190 lines
+2026-07-26 13:51:00,038 - INFO - Batch 5: httpx returned 105 lines
+2026-07-26 13:51:04,980 - INFO - Batch 6: httpx returned 0 lines
+2026-07-26 13:51:04,980 - INFO - Batch 6 produced no HTTP responses from 1000 candidates
+2026-07-26 13:52:28,503 - INFO - Batch 7: httpx returned 126 lines
+2026-07-26 13:52:30,560 - INFO - Batch 8: httpx returned 192 lines
+2026-07-26 13:52:31,882 - INFO - Batch 9: httpx returned 0 lines
+2026-07-26 13:52:31,882 - INFO - Batch 9 produced no HTTP responses from 1000 candidates
+2026-07-26 13:54:03,679 - INFO - Batch 10: httpx returned 19 lines
+2026-07-26 13:54:10,383 - INFO - Batch 11: httpx returned 9 lines
+2026-07-26 13:54:13,171 - INFO - Batch 12: httpx returned 0 lines
+2026-07-26 13:54:13,171 - INFO - Batch 12 produced no HTTP responses from 1000 candidates
+2026-07-26 13:55:23,136 - INFO - Batch 14: httpx returned 259 lines
+2026-07-26 13:55:44,989 - INFO - Batch 13: httpx returned 70 lines
+2026-07-26 13:55:44,991 - INFO - Total live hosts found: 1326
+2026-07-26 13:55:44,994 - INFO - Live-host probing completed in 959.5 seconds (1326 live hosts)
+2026-07-26 13:55:44,994 - INFO - Starting port discovery
+2026-07-26 14:00:34,977 - INFO - Naabu discovered 897 open ports across 702 live hosts; written to /Users/sohampatil/Documents/Automated-Asset-Discovery/Automated-Asset-Discovery/output/ports.txt pending service verification
+2026-07-26 14:01:15,039 - INFO - Nmap service progress: 25/702 hosts
+2026-07-26 14:01:45,079 - INFO - Nmap service progress: 50/702 hosts
+2026-07-26 14:02:15,119 - INFO - Nmap service progress: 75/702 hosts
+2026-07-26 14:02:45,191 - INFO - Nmap service progress: 100/702 hosts
+2026-07-26 14:03:15,267 - INFO - Nmap service progress: 125/702 hosts
+2026-07-26 14:03:45,345 - INFO - Nmap service progress: 150/702 hosts
+2026-07-26 14:04:15,417 - INFO - Nmap service progress: 175/702 hosts
+2026-07-26 14:04:45,465 - INFO - Nmap service progress: 200/702 hosts
+2026-07-26 14:05:21,675 - INFO - Nmap service progress: 225/702 hosts
+2026-07-26 14:05:55,536 - INFO - Nmap service progress: 250/702 hosts
+2026-07-26 14:06:25,583 - INFO - Nmap service progress: 275/702 hosts
+2026-07-26 14:06:55,623 - INFO - Nmap service progress: 300/702 hosts
+2026-07-26 14:07:25,665 - INFO - Nmap service progress: 325/702 hosts
+2026-07-26 14:07:55,730 - INFO - Nmap service progress: 350/702 hosts
+2026-07-26 14:08:25,770 - INFO - Nmap service progress: 375/702 hosts
+2026-07-26 14:08:55,805 - INFO - Nmap service progress: 400/702 hosts
+2026-07-26 14:09:32,001 - INFO - Nmap service progress: 425/702 hosts
+2026-07-26 14:10:05,892 - INFO - Nmap service progress: 450/702 hosts
+2026-07-26 14:10:35,966 - INFO - Nmap service progress: 475/702 hosts
+2026-07-26 14:11:06,034 - INFO - Nmap service progress: 500/702 hosts
+2026-07-26 14:11:36,108 - INFO - Nmap service progress: 525/702 hosts
+2026-07-26 14:12:06,153 - INFO - Nmap service progress: 550/702 hosts
+2026-07-26 14:12:36,193 - INFO - Nmap service progress: 575/702 hosts
+2026-07-26 14:13:06,230 - INFO - Nmap service progress: 600/702 hosts
+2026-07-26 14:13:42,360 - INFO - Nmap service progress: 625/702 hosts
+2026-07-26 14:14:16,340 - INFO - Nmap service progress: 650/702 hosts
+2026-07-26 14:14:46,411 - INFO - Nmap service progress: 675/702 hosts
+2026-07-26 14:15:16,467 - INFO - Nmap service progress: 700/702 hosts
+2026-07-26 14:15:16,469 - INFO - Nmap service progress: 702/702 hosts
+2026-07-26 14:15:16,471 - INFO - Identified 897 open ports across 702 live hosts
+2026-07-26 14:15:16,472 - INFO - Port discovery completed in 1171.4 seconds
+2026-07-26 14:15:16,473 - INFO - Starting technology discovery
+2026-07-26 15:31:13,793 - INFO - Starting reconnaissance for google.com
+2026-07-26 15:31:13,794 - INFO - Starting subdomain discovery
+2026-07-26 15:33:42,199 - INFO - Subdomain discovery completed in 148.4 seconds (71319 candidates)
+2026-07-26 15:33:42,199 - INFO - Starting live-host probing
+2026-07-26 15:33:42,205 - INFO - Starting dnsx resolution for 71319 candidates
+2026-07-26 15:41:44,804 - INFO - dnsx resolution completed: 13652/71319 candidates resolved
+2026-07-26 15:41:44,806 - INFO - Starting httpx probe for 13652 candidates (requested_batch=1000, effective_batch=1000, threads=200, timeout=10, retries=2, rate_limit=250 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=3, max_total_threads=600)
+2026-07-26 15:44:09,337 - INFO - Batch 3: httpx returned 317 lines
+2026-07-26 15:44:21,324 - INFO - Batch 2: httpx returned 134 lines
+2026-07-26 15:44:21,330 - INFO - Batch 1: httpx returned 101 lines
+2026-07-26 15:45:39,570 - INFO - Batch 4: httpx returned 160 lines
+2026-07-26 15:46:05,348 - INFO - Batch 5: httpx returned 0 lines
+2026-07-26 15:46:05,348 - INFO - Batch 5 produced no HTTP responses from 1000 candidates
+2026-07-26 15:46:07,942 - INFO - Batch 6: httpx returned 23 lines
+2026-07-26 15:47:14,560 - INFO - Batch 7: httpx returned 136 lines
+2026-07-26 15:47:52,438 - INFO - Batch 8: httpx returned 1 lines
+2026-07-26 15:47:53,274 - INFO - Batch 9: httpx returned 0 lines
+2026-07-26 15:47:53,274 - INFO - Batch 9 produced no HTTP responses from 1000 candidates
+2026-07-26 15:48:59,413 - INFO - Batch 10: httpx returned 6 lines
+2026-07-26 15:49:38,979 - INFO - Batch 11: httpx returned 0 lines
+2026-07-26 15:49:38,980 - INFO - Batch 11 produced no HTTP responses from 1000 candidates
+2026-07-26 15:49:39,798 - INFO - Batch 12: httpx returned 0 lines
+2026-07-26 15:49:39,798 - INFO - Batch 12 produced no HTTP responses from 1000 candidates
+2026-07-26 15:50:29,763 - INFO - Batch 14: httpx returned 222 lines
+2026-07-26 15:50:29,830 - INFO - Batch 13: httpx returned 186 lines
+2026-07-26 15:50:29,832 - INFO - Total live hosts found: 1286
+2026-07-26 15:50:29,833 - INFO - Live-host probing completed in 941.4 seconds (1286 live hosts)
+2026-07-26 15:50:29,833 - INFO - Starting port discovery
+2026-07-26 15:55:27,173 - INFO - Naabu discovered 1253 open ports across 755 live hosts; written to /Users/sohampatil/Documents/Automated-Asset-Discovery/Automated-Asset-Discovery/output/ports.txt pending service verification
+2026-07-26 15:56:07,294 - INFO - Nmap service progress: 25/755 hosts
+2026-07-26 15:56:37,391 - INFO - Nmap service progress: 50/755 hosts
+2026-07-26 15:57:07,497 - INFO - Nmap service progress: 75/755 hosts
+2026-07-26 15:57:37,594 - INFO - Nmap service progress: 100/755 hosts
+2026-07-26 15:58:07,661 - INFO - Nmap service progress: 125/755 hosts
+2026-07-26 15:58:37,754 - INFO - Nmap service progress: 150/755 hosts
+2026-07-26 15:59:07,848 - INFO - Nmap service progress: 175/755 hosts
+2026-07-26 15:59:37,953 - INFO - Nmap service progress: 200/755 hosts
+2026-07-26 16:00:18,047 - INFO - Nmap service progress: 225/755 hosts
+2026-07-26 16:00:48,116 - INFO - Nmap service progress: 250/755 hosts
+2026-07-26 16:01:18,187 - INFO - Nmap service progress: 275/755 hosts
+2026-07-26 16:01:48,286 - INFO - Nmap service progress: 300/755 hosts
+2026-07-26 16:02:18,393 - INFO - Nmap service progress: 325/755 hosts
+2026-07-26 16:02:48,451 - INFO - Nmap service progress: 350/755 hosts
+2026-07-26 16:03:18,506 - INFO - Nmap service progress: 375/755 hosts
+2026-07-26 16:03:48,570 - INFO - Nmap service progress: 400/755 hosts
+2026-07-26 16:04:28,672 - INFO - Nmap service progress: 425/755 hosts
+2026-07-26 16:04:58,771 - INFO - Nmap service progress: 450/755 hosts
+2026-07-26 16:05:28,876 - INFO - Nmap service progress: 475/755 hosts
+2026-07-26 16:05:58,933 - INFO - Nmap service progress: 500/755 hosts
+2026-07-26 16:06:28,997 - INFO - Nmap service progress: 525/755 hosts
+2026-07-26 16:06:59,096 - INFO - Nmap service progress: 550/755 hosts
+2026-07-26 16:07:29,196 - INFO - Nmap service progress: 575/755 hosts
+2026-07-26 16:07:59,289 - INFO - Nmap service progress: 600/755 hosts
+2026-07-26 16:14:39,520 - INFO - Nmap service progress: 625/755 hosts
+2026-07-26 16:15:09,625 - INFO - Nmap service progress: 650/755 hosts
+2026-07-26 16:15:39,727 - INFO - Nmap service progress: 675/755 hosts
+2026-07-26 16:16:09,783 - INFO - Nmap service progress: 700/755 hosts
+2026-07-26 16:26:10,450 - INFO - Nmap service progress: 725/755 hosts
+2026-07-26 16:27:08,736 - INFO - Nmap service progress: 750/755 hosts
+2026-07-26 16:27:18,741 - INFO - Nmap service progress: 755/755 hosts
+2026-07-26 16:27:18,743 - INFO - Identified 1253 open ports across 755 live hosts
+2026-07-26 16:27:18,744 - INFO - Port discovery completed in 1249.9 seconds
+2026-07-26 16:27:18,745 - INFO - Starting technology discovery
+2026-07-26 18:12:57,364 - INFO - Starting reconnaissance for google.com
+2026-07-26 18:12:57,364 - INFO - Starting subdomain discovery
+2026-07-26 18:33:10,141 - INFO - Subdomain discovery completed in 287.0 seconds (71349 candidates)
+2026-07-26 18:33:10,142 - INFO - Starting live-host probing
+2026-07-26 18:33:10,149 - INFO - Starting dnsx resolution for 71349 candidates
+2026-07-26 18:41:03,287 - INFO - dnsx resolution completed: 14148/71349 candidates resolved
+2026-07-26 18:41:03,289 - INFO - Starting httpx probe for 14148 candidates (requested_batch=1000, effective_batch=1000, threads=200, timeout=10, retries=2, rate_limit=250 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=3, max_total_threads=600)
+2026-07-26 18:42:37,094 - INFO - Batch 1: httpx returned 84 lines
+2026-07-26 18:42:38,962 - INFO - Batch 2: httpx returned 119 lines
+2026-07-26 18:42:47,217 - INFO - Batch 3: httpx returned 97 lines
+2026-07-26 18:44:10,077 - INFO - Batch 4: httpx returned 128 lines
+2026-07-26 18:44:20,813 - INFO - Batch 6: httpx returned 93 lines
+2026-07-26 18:44:25,551 - INFO - Batch 5: httpx returned 72 lines
+2026-07-26 18:45:51,668 - INFO - Batch 8: httpx returned 212 lines
+2026-07-26 18:45:53,065 - INFO - Batch 7: httpx returned 57 lines
+2026-07-26 18:46:05,703 - INFO - Batch 9: httpx returned 0 lines
+2026-07-26 18:46:05,703 - INFO - Batch 9 produced no HTTP responses from 1000 candidates
+2026-07-26 18:47:35,047 - INFO - Batch 11: httpx returned 12 lines
+2026-07-26 18:47:35,168 - INFO - Batch 10: httpx returned 32 lines
+2026-07-26 18:47:49,785 - INFO - Batch 12: httpx returned 0 lines
+2026-07-26 18:47:49,785 - INFO - Batch 12 produced no HTTP responses from 1000 candidates
+2026-07-26 18:48:21,124 - INFO - Batch 15: httpx returned 61 lines
+2026-07-26 18:49:03,264 - INFO - Batch 14: httpx returned 152 lines
+2026-07-26 18:49:20,072 - INFO - Batch 13: httpx returned 33 lines
+2026-07-26 18:49:20,074 - INFO - Total live hosts found: 1152
+2026-07-26 18:49:20,075 - INFO - Live-host probing completed in 969.9 seconds (1152 live hosts)
+2026-07-26 18:49:20,076 - INFO - Starting port discovery
+2026-07-26 18:54:06,646 - INFO - Naabu discovered 1309 open ports across 969 live hosts; written to /Users/sohampatil/Documents/Automated-Asset-Discovery/Automated-Asset-Discovery/output/ports.txt pending service verification
+2026-07-26 18:54:46,731 - INFO - Nmap service progress: 25/969 hosts
+2026-07-26 18:55:16,786 - INFO - Nmap service progress: 50/969 hosts
+2026-07-26 18:55:46,842 - INFO - Nmap service progress: 75/969 hosts
+2026-07-26 18:56:16,900 - INFO - Nmap service progress: 100/969 hosts
+2026-07-26 18:56:46,976 - INFO - Nmap service progress: 125/969 hosts
+2026-07-26 18:57:17,059 - INFO - Nmap service progress: 150/969 hosts
+2026-07-26 18:57:47,149 - INFO - Nmap service progress: 175/969 hosts
+2026-07-26 18:58:17,227 - INFO - Nmap service progress: 200/969 hosts
+2026-07-26 18:58:57,293 - INFO - Nmap service progress: 225/969 hosts
+2026-07-26 18:59:27,399 - INFO - Nmap service progress: 250/969 hosts
+2026-07-26 18:59:57,479 - INFO - Nmap service progress: 275/969 hosts
+2026-07-26 19:00:27,569 - INFO - Nmap service progress: 300/969 hosts
+2026-07-26 19:00:57,658 - INFO - Nmap service progress: 325/969 hosts
+2026-07-26 19:01:27,735 - INFO - Nmap service progress: 350/969 hosts
+2026-07-26 19:01:57,819 - INFO - Nmap service progress: 375/969 hosts
+2026-07-26 19:02:27,902 - INFO - Nmap service progress: 400/969 hosts
+2026-07-26 19:03:07,982 - INFO - Nmap service progress: 425/969 hosts
+2026-07-26 19:03:38,034 - INFO - Nmap service progress: 450/969 hosts
+2026-07-26 19:04:08,092 - INFO - Nmap service progress: 475/969 hosts
+2026-07-26 19:06:58,020 - INFO - Nmap service progress: 500/969 hosts
+2026-07-26 19:07:28,094 - INFO - Nmap service progress: 525/969 hosts
+2026-07-26 19:07:58,199 - INFO - Nmap service progress: 550/969 hosts
+2026-07-26 19:08:28,299 - INFO - Nmap service progress: 575/969 hosts
+2026-07-26 19:08:58,400 - INFO - Nmap service progress: 600/969 hosts
+2026-07-26 19:09:38,508 - INFO - Nmap service progress: 625/969 hosts
+2026-07-26 19:10:08,601 - INFO - Nmap service progress: 650/969 hosts
+2026-07-26 19:10:38,687 - INFO - Nmap service progress: 675/969 hosts
+2026-07-26 19:11:08,757 - INFO - Nmap service progress: 700/969 hosts
+2026-07-26 19:11:38,810 - INFO - Nmap service progress: 725/969 hosts
+2026-07-26 19:12:08,856 - INFO - Nmap service progress: 750/969 hosts
+2026-07-26 19:12:38,898 - INFO - Nmap service progress: 775/969 hosts
+2026-07-26 19:13:08,949 - INFO - Nmap service progress: 800/969 hosts
+2026-07-26 19:13:48,992 - INFO - Nmap service progress: 825/969 hosts
+2026-07-26 19:14:19,042 - INFO - Nmap service progress: 850/969 hosts
+2026-07-26 19:14:49,105 - INFO - Nmap service progress: 875/969 hosts
+2026-07-26 19:15:19,204 - INFO - Nmap service progress: 900/969 hosts
+2026-07-26 19:15:49,292 - INFO - Nmap service progress: 925/969 hosts
+2026-07-26 19:16:19,382 - INFO - Nmap service progress: 950/969 hosts
+2026-07-26 19:16:49,429 - INFO - Nmap service progress: 969/969 hosts
+2026-07-26 19:16:49,434 - INFO - Identified 1309 open ports across 969 live hosts
+2026-07-26 19:16:49,436 - INFO - Port discovery completed in 1509.5 seconds
+2026-07-26 19:16:49,436 - INFO - Starting technology discovery
+2026-07-27 10:26:48,982 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 10:26:48,982 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 10:26:48,983 - INFO - Total live hosts found: 2
+2026-07-27 10:26:48,984 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-07-27 10:26:48,985 - INFO - Batch 1: httpx returned 0 lines
+2026-07-27 10:26:48,985 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-07-27 10:26:48,986 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 10:26:48,987 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 10:26:48,987 - INFO - Total live hosts found: 2
+2026-07-27 10:26:48,990 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-3/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-27 10:26:48,991 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:26:48,991 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:26:48,994 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-3/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-27 10:26:48,994 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:26:48,994 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:26:48,996 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-3/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-27 10:26:48,999 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:26:48,999 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:26:49,000 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-3/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-27 10:26:49,001 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:26:49,001 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:26:52,855 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 10:26:52,856 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 10:26:52,857 - INFO - Total live hosts found: 2
+2026-07-27 10:26:52,858 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-07-27 10:26:52,859 - INFO - Batch 1: httpx returned 0 lines
+2026-07-27 10:26:52,859 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-07-27 10:26:52,860 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 10:26:52,860 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 10:26:52,861 - INFO - Total live hosts found: 2
+2026-07-27 10:26:52,864 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-4/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-27 10:26:52,865 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:26:52,865 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:26:52,868 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-4/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-27 10:26:52,868 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:26:52,868 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:26:52,869 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-4/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-27 10:26:52,872 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:26:52,872 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:26:52,873 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-4/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-27 10:26:52,874 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:26:52,874 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:29:37,195 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 10:29:37,196 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 10:29:37,196 - INFO - Total live hosts found: 2
+2026-07-27 10:29:37,198 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-07-27 10:29:37,198 - INFO - Batch 1: httpx returned 0 lines
+2026-07-27 10:29:37,198 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-07-27 10:29:37,199 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 10:29:37,200 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 10:29:37,200 - INFO - Total live hosts found: 2
+2026-07-27 10:29:37,203 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-6/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-27 10:29:37,203 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:29:37,204 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:29:37,207 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-6/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-27 10:29:37,207 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:29:37,207 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:29:37,208 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-6/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-27 10:29:37,209 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:29:37,210 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:29:37,211 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-6/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-27 10:29:37,211 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:29:37,211 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:30:18,994 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 10:30:18,994 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 10:30:18,995 - INFO - Total live hosts found: 2
+2026-07-27 10:30:18,996 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-07-27 10:30:18,996 - INFO - Batch 1: httpx returned 0 lines
+2026-07-27 10:30:18,996 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-07-27 10:30:18,998 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 10:30:18,998 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 10:30:18,998 - INFO - Total live hosts found: 2
+2026-07-27 10:30:19,001 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-7/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-27 10:30:19,002 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:30:19,002 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:30:19,005 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-7/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-27 10:30:19,005 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:30:19,005 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:30:19,007 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-7/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-27 10:30:19,008 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:30:19,008 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:30:19,009 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-7/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-27 10:30:19,009 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:30:19,009 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:32:24,475 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 10:32:24,476 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 10:32:24,476 - INFO - Total live hosts found: 2
+2026-07-27 10:32:24,478 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-07-27 10:32:24,478 - INFO - Batch 1: httpx returned 0 lines
+2026-07-27 10:32:24,478 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-07-27 10:32:24,479 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 10:32:24,480 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 10:32:24,480 - INFO - Total live hosts found: 2
+2026-07-27 10:32:24,483 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-15/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-27 10:32:24,484 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:32:24,484 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:32:24,486 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-15/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-27 10:32:24,487 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:32:24,487 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:32:24,488 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-15/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-27 10:32:24,491 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:32:24,491 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:32:24,493 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-15/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-27 10:32:24,493 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:32:24,493 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:32:40,541 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 10:32:40,542 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 10:32:40,542 - INFO - Total live hosts found: 2
+2026-07-27 10:32:40,543 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-07-27 10:32:40,544 - INFO - Batch 1: httpx returned 0 lines
+2026-07-27 10:32:40,544 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-07-27 10:32:40,545 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 10:32:40,545 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 10:32:40,546 - INFO - Total live hosts found: 2
+2026-07-27 10:32:40,549 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-17/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-27 10:32:40,549 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:32:40,549 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:32:40,553 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-17/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-27 10:32:40,553 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:32:40,553 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:32:40,554 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-17/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-27 10:32:40,555 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:32:40,556 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:32:40,557 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-17/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-27 10:32:40,557 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 10:32:40,557 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 10:33:47,040 - INFO - Starting reconnaissance for google.com
+2026-07-27 10:33:47,040 - INFO - Starting subdomain discovery
+2026-07-27 10:35:07,280 - INFO - Subdomain discovery completed in 80.2 seconds (54463 candidates)
+2026-07-27 10:35:07,280 - INFO - Starting live-host probing
+2026-07-27 10:35:07,285 - INFO - Starting dnsx resolution for 54463 candidates
+2026-07-27 10:42:57,893 - INFO - Starting reconnaissance for google.com
+2026-07-27 10:42:57,893 - INFO - Starting subdomain discovery
+2026-07-27 10:45:22,231 - INFO - Subdomain discovery completed in 144.3 seconds (43816 candidates)
+2026-07-27 10:45:22,231 - INFO - Starting live-host probing
+2026-07-27 10:45:22,235 - INFO - Starting dnsx resolution for 43816 candidates
+2026-07-27 10:50:04,500 - INFO - dnsx resolution completed: 13849/43816 candidates resolved
+2026-07-27 10:50:04,502 - INFO - Starting httpx probe for 13849 candidates (requested_batch=1000, effective_batch=1000, threads=200, timeout=10, retries=2, rate_limit=250 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=3, max_total_threads=600)
+2026-07-27 10:51:36,836 - INFO - Batch 1: httpx returned 70 lines
+2026-07-27 10:51:36,867 - INFO - Batch 2: httpx returned 102 lines
+2026-07-27 10:51:38,686 - INFO - Batch 3: httpx returned 183 lines
+2026-07-27 10:53:02,003 - INFO - Batch 4: httpx returned 203 lines
+2026-07-27 10:53:10,015 - INFO - Batch 6: httpx returned 175 lines
+2026-07-27 10:53:18,864 - INFO - Batch 5: httpx returned 14 lines
+2026-07-27 10:54:43,068 - INFO - Batch 7: httpx returned 14 lines
+2026-07-27 10:54:43,145 - INFO - Batch 9: httpx returned 0 lines
+2026-07-27 10:54:43,145 - INFO - Batch 9 produced no HTTP responses from 1000 candidates
+2026-07-27 10:54:45,469 - INFO - Batch 8: httpx returned 32 lines
+2026-07-27 10:56:24,262 - INFO - Batch 10: httpx returned 0 lines
+2026-07-27 10:56:24,263 - INFO - Batch 10 produced no HTTP responses from 1000 candidates
+2026-07-27 10:56:25,111 - INFO - Batch 11: httpx returned 4 lines
+2026-07-27 10:56:27,474 - INFO - Batch 12: httpx returned 0 lines
+2026-07-27 10:56:27,474 - INFO - Batch 12 produced no HTTP responses from 1000 candidates
+2026-07-27 10:57:36,200 - INFO - Batch 14: httpx returned 247 lines
+2026-07-27 10:58:06,494 - INFO - Batch 13: httpx returned 63 lines
+2026-07-27 10:58:06,495 - INFO - Total live hosts found: 1107
+2026-07-27 10:58:06,496 - INFO - Live-host probing completed in 764.3 seconds (1107 live hosts)
+2026-07-27 10:58:06,496 - INFO - Starting port discovery
+2026-07-27 11:02:31,674 - INFO - Naabu discovered 974 open ports across 655 live hosts; written to /Users/sohampatil/Documents/Automated-Asset-Discovery/Automated-Asset-Discovery/output/ports.txt pending service verification
+2026-07-27 11:03:09,132 - INFO - Nmap service progress: 25/655 hosts
+2026-07-27 11:03:39,211 - INFO - Nmap service progress: 50/655 hosts
+2026-07-27 11:04:09,293 - INFO - Nmap service progress: 75/655 hosts
+2026-07-27 11:04:39,356 - INFO - Nmap service progress: 100/655 hosts
+2026-07-27 11:05:09,405 - INFO - Nmap service progress: 125/655 hosts
+2026-07-27 11:05:39,468 - INFO - Nmap service progress: 150/655 hosts
+2026-07-27 11:06:09,506 - INFO - Nmap service progress: 175/655 hosts
+2026-07-27 11:06:42,093 - INFO - Nmap service progress: 200/655 hosts
+2026-07-27 11:07:19,604 - INFO - Nmap service progress: 225/655 hosts
+2026-07-27 11:07:49,673 - INFO - Nmap service progress: 250/655 hosts
+2026-07-27 11:08:19,726 - INFO - Nmap service progress: 275/655 hosts
+2026-07-27 11:08:49,807 - INFO - Nmap service progress: 300/655 hosts
+2026-07-27 11:09:19,893 - INFO - Nmap service progress: 325/655 hosts
+2026-07-27 11:09:49,958 - INFO - Nmap service progress: 350/655 hosts
+2026-07-27 11:10:19,998 - INFO - Nmap service progress: 375/655 hosts
+2026-07-27 11:10:52,469 - INFO - Nmap service progress: 400/655 hosts
+2026-07-27 11:11:30,081 - INFO - Nmap service progress: 425/655 hosts
+2026-07-27 11:12:00,122 - INFO - Nmap service progress: 450/655 hosts
+2026-07-27 11:12:30,171 - INFO - Nmap service progress: 475/655 hosts
+2026-07-27 11:13:00,232 - INFO - Nmap service progress: 500/655 hosts
+2026-07-27 11:13:30,277 - INFO - Nmap service progress: 525/655 hosts
+2026-07-27 11:14:00,313 - INFO - Nmap service progress: 550/655 hosts
+2026-07-27 11:14:30,354 - INFO - Nmap service progress: 575/655 hosts
+2026-07-27 11:15:02,810 - INFO - Nmap service progress: 600/655 hosts
+2026-07-27 11:15:40,494 - INFO - Nmap service progress: 625/655 hosts
+2026-07-27 11:16:10,577 - INFO - Nmap service progress: 650/655 hosts
+2026-07-27 11:16:10,581 - INFO - Nmap service progress: 655/655 hosts
+2026-07-27 11:16:10,583 - INFO - Identified 974 open ports across 655 live hosts
+2026-07-27 11:16:10,583 - INFO - Port discovery completed in 1084.1 seconds
+2026-07-27 11:16:10,583 - INFO - Starting technology discovery
+2026-07-27 11:33:24,891 - INFO - Technology discovery completed in 1034.3 seconds
+2026-07-27 11:33:24,989 - INFO - Completed reconnaissance for google.com
+2026-07-27 11:36:54,636 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 11:36:54,636 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 11:36:54,637 - INFO - Total live hosts found: 2
+2026-07-27 11:36:54,638 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-07-27 11:36:54,638 - INFO - Batch 1: httpx returned 0 lines
+2026-07-27 11:36:54,638 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-07-27 11:36:54,639 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 11:36:54,640 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 11:36:54,640 - INFO - Total live hosts found: 2
+2026-07-27 11:36:54,643 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-22/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-27 11:36:54,644 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 11:36:54,644 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 11:36:54,647 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-22/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-27 11:36:54,647 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 11:36:54,647 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 11:36:54,648 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-22/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-27 11:36:54,652 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 11:36:54,652 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 11:36:54,653 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-22/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-27 11:36:54,654 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 11:36:54,654 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 11:37:18,651 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 11:37:18,651 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 11:37:18,652 - INFO - Total live hosts found: 2
+2026-07-27 11:37:18,653 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-07-27 11:37:18,654 - INFO - Batch 1: httpx returned 0 lines
+2026-07-27 11:37:18,654 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-07-27 11:37:18,655 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 11:37:18,655 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 11:37:18,656 - INFO - Total live hosts found: 2
+2026-07-27 11:37:18,659 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-23/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-27 11:37:18,659 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 11:37:18,660 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 11:37:18,663 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-23/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-27 11:37:18,663 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 11:37:18,663 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 11:37:18,664 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-23/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-27 11:37:18,666 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 11:37:18,666 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 11:37:18,667 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-23/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-27 11:37:18,667 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 11:37:18,667 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 11:38:14,723 - INFO - Starting reconnaissance for google.com
+2026-07-27 11:38:14,723 - INFO - Starting subdomain discovery
+2026-07-27 11:39:43,523 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 11:39:43,524 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 11:39:43,524 - INFO - Total live hosts found: 2
+2026-07-27 11:39:43,525 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-07-27 11:39:43,526 - INFO - Batch 1: httpx returned 0 lines
+2026-07-27 11:39:43,526 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-07-27 11:39:43,527 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 11:39:43,527 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 11:39:43,528 - INFO - Total live hosts found: 2
+2026-07-27 11:39:43,531 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-25/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-27 11:39:43,532 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 11:39:43,532 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 11:39:43,535 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-25/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-27 11:39:43,535 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 11:39:43,535 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 11:39:43,536 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-25/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-27 11:39:43,538 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 11:39:43,538 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 11:39:43,539 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-25/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-27 11:39:43,539 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 11:39:43,539 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 11:40:30,676 - INFO - Starting reconnaissance for google.com
+2026-07-27 11:40:30,677 - INFO - Starting subdomain discovery
+2026-07-27 11:42:37,372 - INFO - Subdomain discovery completed in 126.7 seconds (64046 candidates)
+2026-07-27 11:42:37,373 - INFO - Starting live-host probing
+2026-07-27 11:42:37,379 - INFO - Starting dnsx resolution for 64046 candidates
+2026-07-27 11:49:35,214 - INFO - dnsx resolution completed: 11878/64046 candidates resolved
+2026-07-27 11:49:35,216 - INFO - Starting httpx probe for 11878 candidates (requested_batch=1000, effective_batch=1000, threads=200, timeout=10, retries=2, rate_limit=250 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=3, max_total_threads=600)
+2026-07-27 11:51:04,720 - INFO - Batch 2: httpx returned 133 lines
+2026-07-27 11:51:12,532 - INFO - Batch 1: httpx returned 75 lines
+2026-07-27 11:51:17,511 - INFO - Batch 3: httpx returned 5 lines
+2026-07-27 11:52:48,752 - INFO - Batch 4: httpx returned 0 lines
+2026-07-27 11:52:48,752 - INFO - Batch 4 produced no HTTP responses from 1000 candidates
+2026-07-27 11:52:50,754 - INFO - Batch 5: httpx returned 79 lines
+2026-07-27 11:52:52,703 - INFO - Batch 6: httpx returned 103 lines
+2026-07-27 11:54:27,049 - INFO - Batch 8: httpx returned 0 lines
+2026-07-27 11:54:27,049 - INFO - Batch 8 produced no HTTP responses from 1000 candidates
+2026-07-27 11:54:27,354 - INFO - Batch 7: httpx returned 2 lines
+2026-07-27 11:54:37,284 - INFO - Batch 9: httpx returned 1 lines
+2026-07-27 11:55:58,077 - INFO - Batch 12: httpx returned 113 lines
+2026-07-27 11:56:09,015 - INFO - Batch 10: httpx returned 0 lines
+2026-07-27 11:56:09,015 - INFO - Batch 10 produced no HTTP responses from 1000 candidates
+2026-07-27 11:56:09,335 - INFO - Batch 11: httpx returned 0 lines
+2026-07-27 11:56:09,335 - INFO - Batch 11 produced no HTTP responses from 1000 candidates
+2026-07-27 11:56:09,336 - INFO - Total live hosts found: 511
+2026-07-27 11:56:09,337 - INFO - Live-host probing completed in 812.0 seconds (511 live hosts)
+2026-07-27 11:56:09,337 - INFO - Starting port discovery
+2026-07-27 11:59:08,149 - INFO - Naabu discovered 414 open ports across 341 live hosts; written to /Users/sohampatil/Documents/Automated-Asset-Discovery/Automated-Asset-Discovery/output/ports.txt pending service verification
+2026-07-27 11:59:44,569 - INFO - Nmap service progress: 25/341 hosts
+2026-07-27 12:00:14,613 - INFO - Nmap service progress: 50/341 hosts
+2026-07-27 12:00:44,652 - INFO - Nmap service progress: 75/341 hosts
+2026-07-27 12:01:18,377 - INFO - Nmap service progress: 100/341 hosts
+2026-07-27 12:01:48,461 - INFO - Nmap service progress: 125/341 hosts
+2026-07-27 12:02:18,530 - INFO - Nmap service progress: 150/341 hosts
+2026-07-27 12:02:48,607 - INFO - Nmap service progress: 175/341 hosts
+2026-07-27 12:03:18,670 - INFO - Nmap service progress: 200/341 hosts
+2026-07-27 12:03:55,038 - INFO - Nmap service progress: 225/341 hosts
+2026-07-27 12:04:25,088 - INFO - Nmap service progress: 250/341 hosts
+2026-07-27 12:04:55,143 - INFO - Nmap service progress: 275/341 hosts
+2026-07-27 12:05:28,879 - INFO - Nmap service progress: 300/341 hosts
+2026-07-27 12:05:58,925 - INFO - Nmap service progress: 325/341 hosts
+2026-07-27 12:06:18,964 - INFO - Nmap service progress: 341/341 hosts
+2026-07-27 12:06:18,966 - INFO - Identified 414 open ports across 341 live hosts
+2026-07-27 12:06:18,967 - INFO - Port discovery completed in 609.6 seconds
+2026-07-27 12:06:18,967 - INFO - Starting technology discovery
+2026-07-27 12:08:57,617 - INFO - Technology discovery completed in 158.6 seconds
+2026-07-27 12:08:57,720 - INFO - Completed reconnaissance for google.com
+2026-07-27 12:14:33,921 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 12:14:33,921 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 12:14:33,922 - INFO - Total live hosts found: 2
+2026-07-27 12:14:33,923 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-07-27 12:14:33,924 - INFO - Batch 1: httpx returned 0 lines
+2026-07-27 12:14:33,924 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-07-27 12:14:33,925 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 12:14:33,926 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 12:14:33,926 - INFO - Total live hosts found: 2
+2026-07-27 12:14:33,929 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-29/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-27 12:14:33,929 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 12:14:33,930 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 12:14:33,933 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-29/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-27 12:14:33,933 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 12:14:33,933 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 12:14:33,935 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-29/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-27 12:14:33,937 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 12:14:33,937 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 12:14:33,938 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-29/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-27 12:14:33,939 - INFO - Nmap service progress: 1/1 hosts
+2026-07-27 12:14:33,939 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-27 12:15:31,342 - INFO - Starting reconnaissance for google.com
+2026-07-27 12:15:31,342 - INFO - Starting subdomain discovery
+2026-07-27 12:17:53,938 - INFO - Subdomain discovery completed in 142.6 seconds (64194 candidates)
+2026-07-27 12:17:53,938 - INFO - Starting live-host probing
+2026-07-27 12:17:53,944 - INFO - Starting dnsx resolution for 64194 candidates
+2026-07-27 12:25:10,649 - INFO - dnsx resolution completed: 12128/64194 candidates resolved
+2026-07-27 12:25:10,651 - INFO - Starting httpx probe for 12128 candidates (requested_batch=1000, effective_batch=1000, threads=200, timeout=10, retries=2, rate_limit=250 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=3, max_total_threads=600)
+2026-07-27 12:26:52,271 - INFO - Batch 2: httpx returned 60 lines
+2026-07-27 12:26:53,130 - INFO - Batch 3: httpx returned 32 lines
+2026-07-27 12:26:53,135 - INFO - Batch 1: httpx returned 35 lines
+2026-07-27 12:28:34,355 - INFO - Batch 5: httpx returned 73 lines
+2026-07-27 12:28:34,356 - INFO - Batch 4: httpx returned 0 lines
+2026-07-27 12:28:34,357 - INFO - Batch 4 produced no HTTP responses from 1000 candidates
+2026-07-27 12:28:35,227 - INFO - Batch 6: httpx returned 27 lines
+2026-07-27 12:30:08,606 - INFO - Batch 8: httpx returned 0 lines
+2026-07-27 12:30:08,606 - INFO - Batch 7: httpx returned 15 lines
+2026-07-27 12:30:08,606 - INFO - Batch 8 produced no HTTP responses from 1000 candidates
+2026-07-27 12:30:10,521 - INFO - Batch 9: httpx returned 3 lines
+2026-07-27 12:31:42,163 - INFO - Batch 12: httpx returned 85 lines
+2026-07-27 12:31:51,088 - INFO - Batch 10: httpx returned 0 lines
+2026-07-27 12:31:51,088 - INFO - Batch 10 produced no HTTP responses from 1000 candidates
+2026-07-27 12:31:51,089 - INFO - Batch 11: httpx returned 0 lines
+2026-07-27 12:31:51,089 - INFO - Batch 11 produced no HTTP responses from 1000 candidates
+2026-07-27 12:32:02,654 - INFO - Batch 13: httpx returned 27 lines
+2026-07-27 12:32:02,655 - INFO - Total live hosts found: 357
+2026-07-27 12:32:02,657 - INFO - Live-host probing completed in 834.8 seconds (357 live hosts)
+2026-07-27 12:32:02,657 - INFO - Starting port discovery
+2026-07-27 12:34:13,512 - INFO - Naabu discovered 243 open ports across 209 live hosts; written to /Users/sohampatil/Documents/Automated-Asset-Discovery/Automated-Asset-Discovery/output/ports.txt pending service verification
+2026-07-27 12:34:49,918 - INFO - Nmap service progress: 25/209 hosts
+2026-07-27 12:35:19,944 - INFO - Nmap service progress: 50/209 hosts
+2026-07-27 12:35:53,657 - INFO - Nmap service progress: 75/209 hosts
+2026-07-27 12:36:23,709 - INFO - Nmap service progress: 100/209 hosts
+2026-07-27 12:36:53,768 - INFO - Nmap service progress: 125/209 hosts
+2026-07-27 12:37:23,838 - INFO - Nmap service progress: 150/209 hosts
+2026-07-27 12:37:53,908 - INFO - Nmap service progress: 175/209 hosts
+2026-07-27 12:38:23,967 - INFO - Nmap service progress: 200/209 hosts
+2026-07-27 12:38:40,265 - INFO - Nmap service progress: 209/209 hosts
+2026-07-27 12:38:40,266 - INFO - Identified 243 open ports across 209 live hosts
+2026-07-27 12:38:40,267 - INFO - Port discovery completed in 397.6 seconds
+2026-07-27 12:38:40,267 - INFO - Starting technology discovery
+2026-07-27 12:41:02,757 - INFO - Technology discovery completed in 142.5 seconds
+2026-07-27 12:41:02,859 - INFO - Completed reconnaissance for google.com
+2026-07-27 12:45:38,166 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 12:45:38,167 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 12:45:38,167 - INFO - Total live hosts found: 2
+2026-07-27 12:45:38,168 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-07-27 12:45:38,169 - INFO - Batch 1: httpx returned 0 lines
+2026-07-27 12:45:38,169 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-07-27 12:45:38,170 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 12:45:38,171 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 12:45:38,171 - INFO - Total live hosts found: 2
+2026-07-27 12:46:06,277 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 12:46:06,277 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 12:46:06,278 - INFO - Total live hosts found: 2
+2026-07-27 12:46:06,280 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-07-27 12:46:06,280 - INFO - Batch 1: httpx returned 0 lines
+2026-07-27 12:46:06,280 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-07-27 12:46:06,282 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 12:46:06,282 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 12:46:06,282 - INFO - Total live hosts found: 2
+2026-07-27 12:46:17,093 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 12:46:17,094 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 12:46:17,094 - INFO - Total live hosts found: 2
+2026-07-27 12:46:17,096 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-07-27 12:46:17,097 - INFO - Batch 1: httpx returned 0 lines
+2026-07-27 12:46:17,097 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-07-27 12:46:17,098 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 12:46:17,099 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 12:46:17,099 - INFO - Total live hosts found: 2
+2026-07-27 12:46:50,457 - INFO - Starting reconnaissance for google.com
+2026-07-27 12:46:50,457 - INFO - Starting subdomain discovery
+2026-07-27 12:49:15,953 - INFO - Subdomain discovery completed in 145.5 seconds (64197 candidates)
+2026-07-27 12:49:15,953 - INFO - Starting live-host probing
+2026-07-27 12:49:15,959 - INFO - Starting dnsx resolution for 64197 candidates
+2026-07-27 12:56:28,570 - INFO - dnsx resolution completed: 11195/64197 candidates resolved
+2026-07-27 12:56:28,573 - INFO - Starting httpx probe for 11195 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=2, max_total_threads=200)
+2026-07-27 12:59:01,549 - INFO - Batch 2: httpx returned 272 lines
+2026-07-27 12:59:34,287 - INFO - Batch 1: httpx returned 166 lines
+2026-07-27 13:04:16,618 - INFO - Batch 3: httpx returned 118 lines
+2026-07-27 13:05:45,556 - INFO - Batch 4: httpx returned 0 lines
+2026-07-27 13:05:45,556 - INFO - Batch 4 produced no HTTP responses from 1000 candidates
+2026-07-27 13:09:19,030 - INFO - Batch 6: httpx returned 92 lines
+2026-07-27 13:09:53,769 - INFO - Batch 5: httpx returned 61 lines
+2026-07-27 13:12:11,580 - INFO - Batch 7: httpx returned 0 lines
+2026-07-27 13:12:11,580 - INFO - Batch 7 produced no HTTP responses from 1000 candidates
+2026-07-27 13:13:29,294 - INFO - Batch 8: httpx returned 7 lines
+2026-07-27 13:18:11,128 - INFO - Batch 9: httpx returned 1 lines
+2026-07-27 13:19:10,303 - INFO - Batch 10: httpx returned 0 lines
+2026-07-27 13:19:10,303 - INFO - Batch 10 produced no HTTP responses from 1000 candidates
+2026-07-27 13:19:54,457 - INFO - Batch 12: httpx returned 56 lines
+2026-07-27 13:22:31,706 - INFO - Batch 11: httpx returned 93 lines
+2026-07-27 13:22:31,708 - INFO - Total live hosts found: 866
+2026-07-27 13:22:31,709 - INFO - Live-host probing completed in 1952.6 seconds (866 live hosts)
+2026-07-27 13:22:31,709 - INFO - Starting port discovery
+2026-07-27 13:26:59,146 - INFO - Naabu discovered 594 open ports across 506 live hosts; written to /Users/sohampatil/Documents/Automated-Asset-Discovery/Automated-Asset-Discovery/output/ports.txt pending service verification
+2026-07-27 13:27:39,238 - INFO - Nmap service progress: 25/506 hosts
+2026-07-27 13:28:09,283 - INFO - Nmap service progress: 50/506 hosts
+2026-07-27 13:28:39,342 - INFO - Nmap service progress: 75/506 hosts
+2026-07-27 13:29:09,396 - INFO - Nmap service progress: 100/506 hosts
+2026-07-27 13:29:39,437 - INFO - Nmap service progress: 125/506 hosts
+2026-07-27 13:40:18,718 - INFO - Nmap service progress: 150/506 hosts
+2026-07-27 13:40:48,771 - INFO - Nmap service progress: 175/506 hosts
+2026-07-27 13:41:18,822 - INFO - Nmap service progress: 200/506 hosts
+2026-07-27 13:41:55,066 - INFO - Nmap service progress: 225/506 hosts
+2026-07-27 13:42:28,938 - INFO - Nmap service progress: 250/506 hosts
+2026-07-27 13:42:58,998 - INFO - Nmap service progress: 275/506 hosts
+2026-07-27 13:43:29,041 - INFO - Nmap service progress: 300/506 hosts
+2026-07-27 13:43:59,118 - INFO - Nmap service progress: 325/506 hosts
+2026-07-27 13:44:29,178 - INFO - Nmap service progress: 350/506 hosts
+2026-07-27 13:44:59,243 - INFO - Nmap service progress: 375/506 hosts
+2026-07-27 13:45:29,283 - INFO - Nmap service progress: 400/506 hosts
+2026-07-27 13:46:05,452 - INFO - Nmap service progress: 425/506 hosts
+2026-07-27 13:46:39,380 - INFO - Nmap service progress: 450/506 hosts
+2026-07-27 13:47:09,445 - INFO - Nmap service progress: 475/506 hosts
+2026-07-27 13:47:39,507 - INFO - Nmap service progress: 500/506 hosts
+2026-07-27 13:47:49,516 - INFO - Nmap service progress: 506/506 hosts
+2026-07-27 13:47:49,518 - INFO - Identified 594 open ports across 506 live hosts
+2026-07-27 13:47:49,519 - INFO - Port discovery completed in 908.6 seconds
+2026-07-27 13:47:49,519 - INFO - Starting technology discovery
+2026-07-27 13:53:18,685 - INFO - Technology discovery completed in 222.4 seconds
+2026-07-27 13:53:18,786 - INFO - Completed reconnaissance for google.com
+2026-07-27 13:56:14,973 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 13:56:14,973 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 13:56:14,974 - INFO - Total live hosts found: 2
+2026-07-27 13:56:14,975 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-07-27 13:56:14,976 - INFO - Batch 1: httpx returned 0 lines
+2026-07-27 13:56:14,976 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-07-27 13:56:14,977 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-27 13:56:14,977 - INFO - Batch 1: httpx returned 2 lines
+2026-07-27 13:56:14,978 - INFO - Total live hosts found: 2

@@ -5,6 +5,7 @@ import re
 import shutil
 import socket
 import subprocess
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Any
 
@@ -48,24 +49,38 @@ def _looks_like_real_subdomain(candidate: str, target: str) -> bool:
             return False
         if re.fullmatch(r"[a-z0-9-]+", label) is None:
             return False
+        
+        # Reject purely numeric labels (they're usually junk from fuzzing)
+        # Exception: allow short numeric suffixes like "v2", "api2", etc
+        if label.isdigit():
+            # Only allow purely numeric if it's >= 10000 (like IP octets in special cases)
+            if len(label) <= 3:
+                return False
+        
+        # Reject hex-like strings (common in fuzzing artifacts)
         if re.fullmatch(r"[0-9a-f]{16,}", label):
             return False
-        if label.isdigit() and len(label) >= 8:
-            return False
+        
+        # Reject very long alphanumeric without hyphens (usually garbage)
         if len(label) >= 20 and all(ch.isalnum() for ch in label):
+            return False
+        
+        # Reject labels that start with numbers followed by letters with no separator
+        # (e.g., "13drive", "0ik" - these are fuzzing artifacts)
+        if re.match(r"^\d{1,3}[a-z]+", label):
             return False
 
     return True
 
 
-def discover_subdomains(target: str, config: dict[str, Any]) -> list[str]:
-    output_path = Path(config.get("output", {}).get("subdomains", "output/subdomains.txt"))
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-
-    subfinder_bin = config.get("tools", {}).get("subfinder", "subfinder")
-    timeout = int(config.get("timeouts", {}).get("subfinder", 60))
-    timeout = max(5, timeout)
-
+def _discover_subdomains_single(
+    target: str,
+    subfinder_bin: str,
+    timeout: int,
+    env: dict[str, str],
+    output_path: Path,
+) -> list[str]:
+    """Discover subdomains for a single target using subfinder."""
     discovered: list[str] = []
     subfinder_results: list[str] = []
     temp_output: Path | None = None
@@ -77,8 +92,6 @@ def discover_subdomains(target: str, config: dict[str, Any]) -> list[str]:
             if temp_output.exists():
                 temp_output.unlink()
 
-            env = os.environ.copy()
-            env["PATH"] = "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:" + env.get("PATH", "")
             command = [
                 subfinder_bin,
                 "-d",
@@ -128,7 +141,7 @@ def discover_subdomains(target: str, config: dict[str, Any]) -> list[str]:
         print(f'[DEBUG] using subfinder_results count={len(subfinder_results)}')
         discovered = subfinder_results
     else:
-        print('[DEBUG] falling back to static candidates')
+        print('[DEBUG] falling back to static candidates (no subfinder results)')
         discovered = _stable_fallback_candidates(target)
         dns_result = _dns_probe(target)
         if dns_result:
@@ -147,6 +160,90 @@ def discover_subdomains(target: str, config: dict[str, Any]) -> list[str]:
             unique_subdomains.append(cleaned)
             seen.add(cleaned)
 
+    # If subfinder returned results but all were filtered out, try fallback
+    if subfinder_results and not unique_subdomains:
+        print('[DEBUG] subfinder results were filtered out, falling back to static candidates')
+        discovered = _stable_fallback_candidates(target)
+        dns_result = _dns_probe(target)
+        if dns_result:
+            discovered.extend(dns_result)
+        
+        raw_count = len(discovered)
+        unique_subdomains = []
+        seen = set()
+        for item in discovered:
+            cleaned = item.strip().lower()
+            if not cleaned or cleaned in seen:
+                continue
+
+            if _looks_like_real_subdomain(cleaned, target):
+                unique_subdomains.append(cleaned)
+                seen.add(cleaned)
+
     print(f'[DEBUG] subdomain filtering raw_count={raw_count} filtered_count={len(unique_subdomains)}')
+    return unique_subdomains
+
+
+def discover_subdomains(target: str | list[str], config: dict[str, Any]) -> list[str]:
+    """Discover subdomains for one or more targets with parallel batch processing.
+    
+    Args:
+        target: Single domain string or list of domains to discover subdomains for.
+        config: Configuration dictionary with tools, timeouts, batching settings.
+    
+    Returns:
+        List of unique discovered subdomains (combined from all targets if multiple).
+    """
+    # Handle both single target and list of targets
+    targets = [target] if isinstance(target, str) else target
+    
+    output_path = Path(config.get("output", {}).get("subdomains", "output/subdomains.txt"))
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    subfinder_bin = config.get("tools", {}).get("subfinder", "subfinder")
+    timeout = int(config.get("timeouts", {}).get("subfinder", 60))
+    timeout = max(5, timeout)
+
+    # Setup environment with PATH
+    env = os.environ.copy()
+    env["PATH"] = "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:" + env.get("PATH", "")
+
+    # Get batching configuration
+    batching = config.get("batching", {})
+    batch_size = max(1, int(batching.get("batch_size", 50)))
+    workers = max(1, int(batching.get("workers", 4)))
+
+    all_subdomains: list[str] = []
+    
+    # Process targets in batches with parallel workers
+    for start in range(0, len(targets), batch_size):
+        batch = targets[start : start + batch_size]
+        
+        if len(batch) == 1:
+            # Single target in batch - process directly
+            subdomains = _discover_subdomains_single(batch[0], subfinder_bin, timeout, env, output_path)
+            all_subdomains.extend(subdomains)
+            continue
+
+        # Multiple targets in batch - process in parallel
+        with ThreadPoolExecutor(max_workers=min(workers, len(batch))) as executor:
+            futures = [
+                executor.submit(_discover_subdomains_single, target_item, subfinder_bin, timeout, env, output_path)
+                for target_item in batch
+            ]
+            for future in futures:
+                subdomains = future.result()
+                all_subdomains.extend(subdomains)
+
+    # Deduplicate results
+    unique_subdomains = []
+    seen = set()
+    for subdomain in all_subdomains:
+        if subdomain not in seen:
+            seen.add(subdomain)
+            unique_subdomains.append(subdomain)
+
+    print(f'[DEBUG] total discovered subdomains count={len(unique_subdomains)}')
     output_path.write_text("\n".join(unique_subdomains) + "\n", encoding="utf-8")
     return unique_subdomains
+

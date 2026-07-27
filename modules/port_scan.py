@@ -160,9 +160,19 @@ def _fallback_service(port: str) -> str:
         return "unknown"
 
 
-def _unknown_results(host: str, ports: list[str]) -> list[dict[str, str]]:
+def _unknown_results(
+    host: str,
+    ports: list[str],
+    aliases: dict[str, str] | None = None,
+    aggregate_results: list[dict[str, str]] | None = None,
+    preserve_aliases: bool = False,
+) -> list[dict[str, str]]:
     return [
-        {"host": host, "port": port, "service": _fallback_service(port)}
+        {
+            "host": _display_host(host, aliases, aggregate_results, preserve_aliases),
+            "port": port,
+            "service": _fallback_service(port),
+        }
         for port in ports
     ]
 
