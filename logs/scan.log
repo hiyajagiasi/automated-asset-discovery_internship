@@ -2190,22 +2190,6 @@
 2026-07-27 12:46:50,457 - INFO - Starting reconnaissance for google.com
 2026-07-27 12:46:50,457 - INFO - Starting subdomain discovery
 2026-07-27 12:49:15,953 - INFO - Subdomain discovery completed in 145.5 seconds (64197 candidates)
-2026-07-27 12:49:15,953 - INFO - Starting live-host probing
-2026-07-27 12:49:15,959 - INFO - Starting dnsx resolution for 64197 candidates
-2026-07-27 12:56:28,570 - INFO - dnsx resolution completed: 11195/64197 candidates resolved
-2026-07-27 12:56:28,573 - INFO - Starting httpx probe for 11195 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=2, max_total_threads=200)
-2026-07-27 12:59:01,549 - INFO - Batch 2: httpx returned 272 lines
-2026-07-27 12:59:34,287 - INFO - Batch 1: httpx returned 166 lines
-2026-07-27 13:04:16,618 - INFO - Batch 3: httpx returned 118 lines
-2026-07-27 13:05:45,556 - INFO - Batch 4: httpx returned 0 lines
-2026-07-27 13:05:45,556 - INFO - Batch 4 produced no HTTP responses from 1000 candidates
-2026-07-27 13:09:19,030 - INFO - Batch 6: httpx returned 92 lines
-2026-07-27 13:09:53,769 - INFO - Batch 5: httpx returned 61 lines
-2026-07-27 13:12:11,580 - INFO - Batch 7: httpx returned 0 lines
-2026-07-27 13:12:11,580 - INFO - Batch 7 produced no HTTP responses from 1000 candidates
-2026-07-27 13:13:29,294 - INFO - Batch 8: httpx returned 7 lines
-2026-07-27 13:18:11,128 - INFO - Batch 9: httpx returned 1 lines
-2026-07-27 13:19:10,303 - INFO - Batch 10: httpx returned 0 lines
 2026-07-27 13:19:10,303 - INFO - Batch 10 produced no HTTP responses from 1000 candidates
 2026-07-27 13:19:54,457 - INFO - Batch 12: httpx returned 56 lines
 2026-07-27 13:22:31,706 - INFO - Batch 11: httpx returned 93 lines
