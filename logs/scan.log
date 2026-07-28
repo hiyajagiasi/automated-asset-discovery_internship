@@ -2338,3 +2338,122 @@
 2026-07-27 21:13:50,112 - WARNING - Nuclei batch 850 exited with code 1: [[31mERR[0m] failed to write config file at /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json got: cause="failed to write nuclei config file at /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json: open /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json: operation not permitted"
 [[31mERR[0m] failed to load provider keys got cause="couldn't write provider config file(%s): %s\n" /Users/sohampatil/Library/Application Support/uncover/provider-config.yaml=open /Users/sohampatil/Library/Application Support/uncover/provider-config.yaml: operation not permitted
 [[1;31mFTL[0m] Could not create runner: cause="operation not permitted" chain="could not create config file"
+2026-07-28 12:48:47,654 - INFO - Starting reconnaissance for google.com
+2026-07-28 12:48:47,654 - INFO - Starting subdomain discovery
+2026-07-28 12:50:55,077 - INFO - Subdomain discovery completed in 127.4 seconds (64137 candidates)
+2026-07-28 12:50:55,079 - INFO - Starting live-host probing
+2026-07-28 12:50:55,082 - INFO - Starting dnsx resolution for 64137 candidates
+2026-07-28 12:57:56,972 - INFO - dnsx resolution completed: 12465/64137 candidates resolved
+2026-07-28 12:57:56,974 - INFO - Starting httpx probe for 12465 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=2, max_total_threads=200)
+2026-07-28 13:00:09,318 - INFO - Batch 2: httpx returned 876 lines
+2026-07-28 13:00:45,581 - INFO - Batch 1: httpx returned 734 lines
+2026-07-28 13:06:35,704 - INFO - Batch 3: httpx returned 64 lines
+2026-07-28 13:07:00,959 - INFO - Batch 4: httpx returned 0 lines
+2026-07-28 13:07:00,960 - INFO - Batch 4 produced no HTTP responses from 1000 candidates
+2026-07-28 13:11:37,925 - INFO - Batch 5: httpx returned 273 lines
+2026-07-28 13:12:58,619 - INFO - Batch 6: httpx returned 81 lines
+2026-07-28 13:14:04,107 - INFO - Batch 7: httpx returned 969 lines
+2026-07-28 13:16:14,459 - INFO - Batch 8: httpx returned 882 lines
+2026-07-28 13:17:14,239 - INFO - Batch 9: httpx returned 927 lines
+2026-07-28 13:21:44,423 - INFO - Batch 10: httpx returned 279 lines
+2026-07-28 13:23:15,615 - INFO - Batch 11: httpx returned 0 lines
+2026-07-28 13:23:15,615 - INFO - Batch 11 produced no HTTP responses from 1000 candidates
+2026-07-28 13:24:01,581 - INFO - Batch 13: httpx returned 458 lines
+2026-07-28 13:26:27,992 - INFO - Batch 12: httpx returned 299 lines
+2026-07-28 13:26:27,996 - INFO - Total live hosts found: 5842
+2026-07-28 13:26:27,998 - INFO - Live-host probing completed in 2132.9 seconds (5842 live hosts)
+2026-07-28 13:26:27,998 - INFO - Starting port discovery
+2026-07-28 14:03:31,710 - INFO - Naabu discovered 3353 open ports across 2834 live hosts; written to /Users/sohampatil/Documents/Automated-Asset-Discovery/Automated-Asset-Discovery/output/ports.txt pending service verification
+2026-07-28 14:04:08,032 - INFO - Nmap service progress: 25/2834 hosts
+2026-07-28 14:04:38,057 - INFO - Nmap service progress: 50/2834 hosts
+2026-07-28 14:05:08,111 - INFO - Nmap service progress: 75/2834 hosts
+2026-07-28 14:05:38,197 - INFO - Nmap service progress: 100/2834 hosts
+2026-07-28 14:06:08,247 - INFO - Nmap service progress: 125/2834 hosts
+2026-07-28 14:06:38,300 - INFO - Nmap service progress: 150/2834 hosts
+2026-07-28 14:07:08,349 - INFO - Nmap service progress: 175/2834 hosts
+2026-07-28 14:07:42,106 - INFO - Nmap service progress: 200/2834 hosts
+2026-07-28 14:08:14,650 - INFO - Nmap service progress: 225/2834 hosts
+2026-07-28 14:08:48,476 - INFO - Nmap service progress: 250/2834 hosts
+2026-07-28 14:09:18,519 - INFO - Nmap service progress: 275/2834 hosts
+2026-07-28 14:09:48,561 - INFO - Nmap service progress: 300/2834 hosts
+2026-07-28 14:10:18,600 - INFO - Nmap service progress: 325/2834 hosts
+2026-07-28 14:10:48,646 - INFO - Nmap service progress: 350/2834 hosts
+2026-07-28 14:11:18,695 - INFO - Nmap service progress: 375/2834 hosts
+2026-07-28 14:11:52,475 - INFO - Nmap service progress: 400/2834 hosts
+2026-07-28 14:12:24,995 - INFO - Nmap service progress: 425/2834 hosts
+2026-07-28 14:12:58,841 - INFO - Nmap service progress: 450/2834 hosts
+2026-07-28 14:13:28,895 - INFO - Nmap service progress: 475/2834 hosts
+2026-07-28 14:13:58,941 - INFO - Nmap service progress: 500/2834 hosts
+2026-07-28 14:14:28,974 - INFO - Nmap service progress: 525/2834 hosts
+2026-07-28 14:14:59,029 - INFO - Nmap service progress: 550/2834 hosts
+2026-07-28 14:15:29,076 - INFO - Nmap service progress: 575/2834 hosts
+2026-07-28 14:16:02,831 - INFO - Nmap service progress: 600/2834 hosts
+2026-07-28 14:16:35,328 - INFO - Nmap service progress: 625/2834 hosts
+2026-07-28 14:17:09,211 - INFO - Nmap service progress: 650/2834 hosts
+2026-07-28 14:17:39,273 - INFO - Nmap service progress: 675/2834 hosts
+2026-07-28 14:18:09,335 - INFO - Nmap service progress: 700/2834 hosts
+2026-07-28 14:18:35,589 - INFO - Nmap service progress: 725/2834 hosts
+2026-07-28 14:19:05,613 - INFO - Nmap service progress: 750/2834 hosts
+2026-07-28 14:19:39,464 - INFO - Nmap service progress: 775/2834 hosts
+2026-07-28 14:20:13,210 - INFO - Nmap service progress: 800/2834 hosts
+2026-07-28 14:20:45,685 - INFO - Nmap service progress: 825/2834 hosts
+2026-07-28 14:21:15,731 - INFO - Nmap service progress: 850/2834 hosts
+2026-07-28 14:21:45,782 - INFO - Nmap service progress: 875/2834 hosts
+2026-07-28 14:22:15,872 - INFO - Nmap service progress: 900/2834 hosts
+2026-07-28 14:22:45,929 - INFO - Nmap service progress: 925/2834 hosts
+2026-07-28 14:23:15,985 - INFO - Nmap service progress: 950/2834 hosts
+2026-07-28 14:23:49,823 - INFO - Nmap service progress: 975/2834 hosts
+2026-07-28 14:24:23,587 - INFO - Nmap service progress: 1000/2834 hosts
+2026-07-28 14:24:56,114 - INFO - Nmap service progress: 1025/2834 hosts
+2026-07-28 14:25:26,170 - INFO - Nmap service progress: 1050/2834 hosts
+2026-07-28 14:25:56,224 - INFO - Nmap service progress: 1075/2834 hosts
+2026-07-28 14:26:26,260 - INFO - Nmap service progress: 1100/2834 hosts
+2026-07-28 14:26:56,311 - INFO - Nmap service progress: 1125/2834 hosts
+2026-07-28 14:27:26,364 - INFO - Nmap service progress: 1150/2834 hosts
+2026-07-28 14:27:57,399 - INFO - Nmap service progress: 1175/2834 hosts
+2026-07-28 14:28:26,449 - INFO - Nmap service progress: 1200/2834 hosts
+2026-07-28 14:28:57,425 - INFO - Nmap service progress: 1225/2834 hosts
+2026-07-28 14:29:32,779 - INFO - Nmap service progress: 1250/2834 hosts
+2026-07-28 14:30:02,837 - INFO - Nmap service progress: 1275/2834 hosts
+2026-07-28 14:30:32,868 - INFO - Nmap service progress: 1300/2834 hosts
+2026-07-28 14:31:02,906 - INFO - Nmap service progress: 1325/2834 hosts
+2026-07-28 14:31:36,367 - INFO - Nmap service progress: 1350/2834 hosts
+2026-07-28 14:32:02,627 - INFO - Nmap service progress: 1375/2834 hosts
+2026-07-28 14:32:31,687 - INFO - Nmap service progress: 1400/2834 hosts
+2026-07-28 14:32:57,954 - INFO - Nmap service progress: 1425/2834 hosts
+2026-07-28 14:33:28,003 - INFO - Nmap service progress: 1450/2834 hosts
+2026-07-28 14:33:58,043 - INFO - Nmap service progress: 1475/2834 hosts
+2026-07-28 14:34:24,271 - INFO - Nmap service progress: 1500/2834 hosts
+2026-07-28 14:34:54,291 - INFO - Nmap service progress: 1525/2834 hosts
+2026-07-28 14:35:25,357 - INFO - Nmap service progress: 1550/2834 hosts
+2026-07-28 14:35:55,399 - INFO - Nmap service progress: 1575/2834 hosts
+2026-07-28 14:36:26,372 - INFO - Nmap service progress: 1600/2834 hosts
+2026-07-28 14:36:55,482 - INFO - Nmap service progress: 1625/2834 hosts
+2026-07-28 14:37:27,997 - INFO - Nmap service progress: 1650/2834 hosts
+2026-07-28 14:37:56,865 - INFO - Nmap service progress: 1675/2834 hosts
+2026-07-28 14:38:26,898 - INFO - Nmap service progress: 1700/2834 hosts
+2026-07-28 14:38:56,949 - INFO - Nmap service progress: 1725/2834 hosts
+2026-07-28 14:39:29,080 - INFO - Nmap service progress: 1750/2834 hosts
+2026-07-28 14:39:59,476 - INFO - Nmap service progress: 1775/2834 hosts
+2026-07-28 14:40:29,574 - INFO - Nmap service progress: 1800/2834 hosts
+2026-07-28 14:41:00,944 - INFO - Nmap service progress: 1825/2834 hosts
+2026-07-28 14:41:31,694 - INFO - Nmap service progress: 1850/2834 hosts
+2026-07-28 14:41:59,282 - INFO - Nmap service progress: 1875/2834 hosts
+2026-07-28 14:42:25,527 - INFO - Nmap service progress: 1900/2834 hosts
+2026-07-28 14:42:57,316 - INFO - Nmap service progress: 1925/2834 hosts
+2026-07-28 14:43:25,966 - INFO - Nmap service progress: 1950/2834 hosts
+2026-07-28 14:43:53,379 - INFO - Nmap service progress: 1975/2834 hosts
+2026-07-28 14:44:18,449 - INFO - Nmap service progress: 2000/2834 hosts
+2026-07-28 14:44:44,677 - INFO - Nmap service progress: 2025/2834 hosts
+2026-07-28 14:45:14,575 - INFO - Nmap service progress: 2050/2834 hosts
+2026-07-28 14:45:44,721 - INFO - Nmap service progress: 2075/2834 hosts
+2026-07-28 14:46:15,593 - INFO - Nmap service progress: 2100/2834 hosts
+2026-07-28 14:46:46,978 - INFO - Nmap service progress: 2125/2834 hosts
+2026-07-28 14:47:13,464 - INFO - Nmap service progress: 2150/2834 hosts
+2026-07-28 14:47:43,497 - INFO - Nmap service progress: 2175/2834 hosts
+2026-07-28 14:48:14,888 - INFO - Nmap service progress: 2200/2834 hosts
+2026-07-28 14:48:41,153 - INFO - Nmap service progress: 2225/2834 hosts
+2026-07-28 14:49:11,805 - INFO - Nmap service progress: 2250/2834 hosts
+2026-07-28 14:49:41,985 - INFO - Nmap service progress: 2275/2834 hosts
+2026-07-28 14:50:11,240 - INFO - Nmap service progress: 2300/2834 hosts
+2026-07-28 14:50:40,741 - INFO - Nmap service progress: 2325/2834 hosts

@@ -1,263 +1,144 @@
 # Automated Asset Discovery and Reconnaissance Framework
 
-## Chapter 1
+## Overview
 
-### Abstract
+`Automated-Asset-Discovery` is a Python-based reconnaissance automation framework designed to centralize asset discovery, live host validation, port scanning, technology fingerprinting, and reporting. It integrates open-source tools into a modular workflow, producing structured outputs in `output/`, `reports/`, and `logs/` directories.
 
-The Automated Asset Discovery and Reconnaissance Framework is a Python-based cybersecurity automation application developed to simplify the reconnaissance phase of authorized web application security assessments. The framework integrates several open-source reconnaissance utilities into a modular workflow that automates asset discovery, host validation, service identification, and technology fingerprinting.
+## Workflow
 
-The framework generates structured HTML and Excel reports for analysis while maintaining organized logs and raw output files. Its modular design enables future expansion with additional capabilities such as vulnerability assessment and historical comparison.
+The current workflow is live-host-driven and consists of:
 
----
+1. Subdomain discovery
+2. Live host probing and validation
+3. Port scanning and service identification
+4. Technology detection from validated live hosts
+5. Report generation in HTML and Excel
 
-## Chapter 2
+This workflow ensures that later analysis stages use only confirmed live HTTP/S hosts, not raw unresolved candidates.
 
-### Introduction
+## Key Files
 
-Reconnaissance is the initial phase of penetration testing and security assessment. During this phase, security professionals collect publicly available information about authorized target systems before performing detailed analysis.
+- `main.py` — entry point for the automation workflow
+- `config.yaml` — tool paths, timeouts, batch settings, and output file paths
+- `requirements.txt` — Python dependency list
+- `README.md` — project overview and documentation
+- `modules/` — core reconnaissance and report generation logic
+- `output/` — raw scan outputs such as `live_hosts.txt`, `ports.txt`, and `technologies.txt`
+- `reports/` — generated HTML report files
+- `logs/` — execution logs and error tracing
 
-Traditional reconnaissance involves executing multiple tools independently and manually consolidating their results. This approach is repetitive, time-consuming, and susceptible to human error.
+## Core Modules
 
-The Automated Asset Discovery and Reconnaissance Framework addresses these challenges by providing a centralized automation platform for asset discovery and reporting.
+### `modules/recon_service.py`
 
----
+- Orchestrates the full workflow
+- Loads configuration and logging
+- Executes discovery stages in order
+- Uses live host output as the source for technology and security stages
+- Generates HTML and Excel reports from collected results
 
-## Chapter 3
+### `modules/subdomain.py`
 
-### Problem Statement
+- Discovers candidate hostnames for a target domain
+- Writes raw subdomain candidates to `output/subdomains.txt`
 
-Security analysts often rely on multiple independent reconnaissance utilities.
+### `modules/live_hosts.py`
 
-Challenges include:
+- Probes candidate hosts with `httpx`
+- Optionally resolves candidates with `dnsx` first
+- Writes validated live HTTP/S hosts to `output/live_hosts.txt`
+- Supports batching and rate-limited concurrency for reliability
 
-- Manual execution of multiple commands
-- Repetitive tasks
-- Difficult report preparation
-- Lack of standardized output
-- Time-consuming workflow
-- Increased probability of missing information
+### `modules/port_scan.py`
 
----
+- Scans validated live hosts for open ports using `naabu` and `nmap`
+- Writes results to `output/ports.txt`
 
-## Chapter 4
+### `modules/technology.py`
 
-### Objectives
+- Identifies technologies from validated live hosts
+- Uses HTTP responses, headers, and fingerprinting tools such as `webanalyze`
+- Produces normalized technology output in `output/technologies.txt`
 
-- Automate asset discovery
-- Simplify reconnaissance workflow
-- Organize scan results
-- Generate HTML reports
-- Generate Excel reports
-- Improve productivity
-- Reduce manual work
-- Maintain scan history
-- Support modular development
+### `modules/report_html.py`
 
----
+- Builds a consumable HTML report from scan results
 
-## Chapter 5
+### `modules/report_excel.py`
 
-### Existing System
+- Builds an Excel workbook from scan results
 
-Current reconnaissance generally requires analysts to execute tools separately:
+### `modules/utils.py`
 
-- Subfinder
-- HTTPX
-- Naabu
-- Nmap
-- WhatWeb
+- Loads YAML configuration
+- Creates directories
+- Provides logging and validation helpers
 
-The outputs are manually merged into spreadsheets or reports.
+## Configuration
 
-#### Disadvantages
+The workflow is configured through `config.yaml`.
 
-- Time-consuming
-- Manual report generation
-- Difficult data correlation
-- Lack of automation
-- No centralized workflow
+### Example settings
 
----
+- Tool binaries: `subfinder`, `dnsx`, `httpx`, `naabu`, `nmap`, `whatweb`, `webanalyze`
+- Output files:
+  - `output/subdomains.txt`
+  - `output/live_hosts.txt`
+  - `output/ports.txt`
+  - `output/technologies.txt`
+- Timeouts for tool execution
+- HTTPX tuning for thread count, timeout, retries, and streaming
+- DNSX options for resolution validation
+- Batch size and worker settings for stable concurrent processing
 
-## Chapter 6
+## Tool Roles
 
-### Proposed System
+- `subfinder` — subdomain enumeration
+- `dnsx` — DNS resolution and candidate filtering
+- `httpx` — live HTTP/S host validation and response collection
+- `naabu` — fast TCP port scanning
+- `nmap` — service and port fingerprinting
+- `whatweb` — web technology fingerprinting
+- `webanalyze` — app/framework fingerprinting from headers and content
 
-The proposed system integrates reconnaissance utilities into a Python application.
+## Technology Detection
 
-Features include:
+Technology discovery is intentionally driven by confirmed live hosts. This means:
 
-- Centralized execution
-- Modular architecture
-- Automated report generation
-- Logging
-- Error handling
-- Configuration management
-- Parallel execution
-- Structured outputs
+- Only validated `output/live_hosts.txt` entries are used for fingerprinting
+- Technology analysis is performed on hosts that responded over HTTP/S
+- This improves accuracy and avoids wasted scans on dead or unresolved hosts
 
----
-
-## Chapter 7
-
-### Scope
-
-Applicable to:
-
-- Authorized asset inventory
-- Internal security assessments
-- Bug bounty programs (within program scope)
-- Academic research
-- Security learning
-- Cybersecurity internships
-
----
-
-## Chapter 8
-
-### Technology Stack
-
-| Component | Technology |
-| --- | --- |
-| Operating System | macOS |
-| Programming Language | Python 3.11 |
-| IDE | Visual Studio Code |
-| Version Control | Git |
-| Configuration | YAML |
-| Reports | HTML |
-| Spreadsheet | Excel |
-| Styling | CSS Templates / Jinja2 |
-
----
-
-## Chapter 9
-
-### Software Requirements
-
-- Python 3.11+
-- Git
-- Homebrew
-- Visual Studio Code
-
-#### Python Packages
-
-- rich
-- pandas
-- openpyxl
-- jinja2
-- pyyaml
-- validators
-
----
-
-## Chapter 10
-
-### Hardware Requirements
-
-#### Minimum
-
-- Dual-core CPU
-- 4 GB RAM
-- 10 GB Storage
-
-#### Recommended
-
-- Quad-core CPU
-- 8 GB RAM
-- SSD
-- Internet Connection
-
----
-
-## Chapter 11
-
-### System Architecture
-
-```text
-User
- │
- ▼
-Python CLI
- │
- ▼
-Configuration Loader
- │
- ▼
-Reconnaissance Modules
- │
- ├── Subdomain Discovery
- ├── Live Host Detection
- ├── Port Identification
- ├── Service Detection
- ├── Technology Fingerprinting
- │
- ▼
-Data Processing
- │
- ▼
-Reports
- ├── HTML
- ├── Excel
- └── Logs
-```
-
----
-
-## Chapter 12
-
-### Workflow
-
-```text
-Input Domain
-      │
-      ▼
-Subdomain Discovery
-      │
-      ▼
-Host Validation
-      │
-      ▼
-Port Information
-      │
-      ▼
-Service Detection
-      │
-      ▼
-Technology Identification
-      │
-      ▼
-Result Processing
-      │
-      ▼
-HTML + Excel Reports
-```
-
----
-
-## Chapter 13
-
-### Project Structure
+## Project Structure
 
 ```text
 Automated-Asset-Discovery/
+  main.py
+  config.yaml
+  requirements.txt
+  README.md
+  modules/
+    __init__.py
+    live_hosts.py
+    port_scan.py
+    recon_service.py
+    report_excel.py
+    report_html.py
+    subdomain.py
+    technology.py
+    utils.py
+  templates/
+  reports/
+  output/
+  logs/
+```
 
-main.py
+## Notes
 
-config.yaml
+- The current implementation emphasizes live-host-driven analysis.
+- Technology and downstream stages consume `output/live_hosts.txt` rather than raw subdomain candidates.
+- The repository is designed for extension, including additional security scanning and vulnerability assessment phases.
 
-requirements.txt
-
-README.md
-
-modules/
-
-templates/
-
-reports/
-
-output/
-
-logs/
 ```
 
 ---

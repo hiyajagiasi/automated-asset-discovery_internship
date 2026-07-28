@@ -66,6 +66,14 @@ def ensure_directories(paths: Iterable[Path | str]) -> None:
         Path(path).mkdir(parents=True, exist_ok=True)
 
 
+def load_hosts_from_output(config: dict[str, Any], output_key: str, default: str) -> list[str]:
+    path = Path(config.get("output", {}).get(output_key, default))
+    if not path.exists():
+        return []
+    text = path.read_text(encoding="utf-8")
+    return [line.strip() for line in text.splitlines() if line.strip()]
+
+
 def load_config(path: str | Path) -> dict[str, Any]:
     config_path = Path(path).resolve()
     if not config_path.exists():

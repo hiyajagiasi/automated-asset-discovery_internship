@@ -368,6 +368,9 @@ def _discover_single_technology(
     return {"host": host, "technology": technology}
 
 
+from modules.utils import load_hosts_from_output
+
+
 def discover_technologies(hosts: list[str], config: dict[str, Any]) -> list[dict[str, str]]:
     """Discover technologies for hosts with true parallel batch processing.
     
@@ -381,6 +384,14 @@ def discover_technologies(hosts: list[str], config: dict[str, Any]) -> list[dict
     output_path = Path(config.get("output", {}).get("technologies", "output/technologies.txt"))
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
+    target_hosts = [host.strip() for host in hosts if host and host.strip()]
+    if not target_hosts:
+        target_hosts = load_hosts_from_output(config, "live_hosts", "output/live_hosts.txt")
+
+    if not target_hosts:
+        output_path.write_text("", encoding="utf-8")
+        return []
+
     tools = config.get("tools", {})
     httpx_bin = tools.get("httpx", "httpx")
     webanalyze_bin = tools.get("webanalyze", "webanalyze")
@@ -393,8 +404,8 @@ def discover_technologies(hosts: list[str], config: dict[str, Any]) -> list[dict
     workers = max(1, int(batching.get("workers", 4)))
 
     # Calculate effective worker count: scale workers by batch groups
-    num_batches = max(1, (len(hosts) + batch_size - 1) // batch_size)
-    effective_workers = min(workers * num_batches, len(hosts))
+    num_batches = max(1, (len(target_hosts) + batch_size - 1) // batch_size)
+    effective_workers = min(workers * num_batches, len(target_hosts))
     effective_workers = max(1, effective_workers)
 
     technologies_by_host = {}
@@ -412,7 +423,7 @@ def discover_technologies(hosts: list[str], config: dict[str, Any]) -> list[dict
                 timeout,
                 webanalyze_timeout,
             ): host
-            for host in hosts
+            for host in target_hosts
         }
 
         # Collect results as they complete
@@ -421,7 +432,7 @@ def discover_technologies(hosts: list[str], config: dict[str, Any]) -> list[dict
             technologies_by_host[result["host"]] = result
 
     # Rebuild results in original host order
-    technologies = [technologies_by_host[host] for host in hosts if host in technologies_by_host]
+    technologies = [technologies_by_host[host] for host in target_hosts if host in technologies_by_host]
 
     output_path.write_text(
         "\n".join(f"{item['host']}:{item['technology']}" for item in technologies) + "\n",

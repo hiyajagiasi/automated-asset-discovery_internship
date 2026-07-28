@@ -7,7 +7,7 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
-from modules.utils import get_logger
+from modules.utils import get_logger, load_hosts_from_output
 
 
 def _parse_nuclei_output(stdout: str) -> list[dict[str, Any]]:
@@ -64,15 +64,15 @@ def discover_security_findings(hosts: list[str], config: dict[str, Any]) -> list
     except TypeError:
         executable = shutil.which(nuclei_bin)
 
-    if not executable or not hosts:
+    target_hosts = [host.strip() for host in hosts if host and host.strip()]
+    if not target_hosts:
+        target_hosts = load_hosts_from_output(config, "live_hosts", "output/live_hosts.txt")
+
+    if not executable or not target_hosts:
         output_path.write_text("", encoding="utf-8")
         return []
 
     logger = get_logger(config.get("logging", {}).get("file", "logs/scan.log"))
-    target_hosts = [host.strip() for host in hosts if host and host.strip()]
-    if not target_hosts:
-        output_path.write_text("", encoding="utf-8")
-        return []
 
     batch_size = max(1, int(config.get("batching", {}).get("batch_size", 10)))
     findings: list[dict[str, Any]] = []
