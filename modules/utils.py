@@ -25,6 +25,7 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "live_hosts": "output/live_hosts.txt",
         "ports": "output/ports.txt",
         "technologies": "output/technologies.txt",
+        "security": "output/security.txt",
     },
     "logging": {"file": "logs/scan.log"},
     "reports": {"html": "reports/report.html", "excel": "reports/report.xlsx"},
