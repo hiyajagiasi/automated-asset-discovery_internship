@@ -10,6 +10,7 @@ tools:
 output:
   subdomains: output/subdomains.txt
   live_hosts: output/live_hosts.txt
+  dead_hosts: output/dead_host.txt
   ports: output/ports.txt
   technologies: output/technologies.txt
 

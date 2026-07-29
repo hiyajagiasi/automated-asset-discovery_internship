@@ -1,0 +1,6 @@
+STDOUT:
+Nmap scan report for example.com
+443/tcp open  https
+
+
+STDERR:

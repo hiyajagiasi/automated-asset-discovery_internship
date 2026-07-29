@@ -98,6 +98,31 @@ def test_discover_live_hosts_includes_live_hosts_with_error_status(monkeypatch, 
     assert result == ["https://ok.example.com", "https://missing.example.com"]
 
 
+def test_discover_live_hosts_writes_dead_hosts_to_output_file(monkeypatch, tmp_path):
+    config = {
+        "output": {"live_hosts": str(tmp_path / "live_hosts.txt")},
+        "tools": {"httpx": "httpx"},
+        "timeouts": {"httpx": 10},
+    }
+
+    def fake_run(*args, **kwargs):
+        return subprocess.CompletedProcess(
+            args=args[0],
+            returncode=0,
+            stdout='{"url": "https://alive.example.com", "status_code": 200, "failed": false}\n',
+            stderr="",
+        )
+
+    monkeypatch.setattr("modules.live_hosts.shutil.which", lambda *args, **kwargs: "/usr/bin/httpx")
+    monkeypatch.setattr("modules.live_hosts.subprocess.run", fake_run)
+
+    result = discover_live_hosts(["alive.example.com", "dead.example.com"], config)
+
+    assert result == ["https://alive.example.com"]
+    assert (tmp_path / "dead_host.txt").exists()
+    assert (tmp_path / "dead_host.txt").read_text(encoding="utf-8").splitlines() == ["https://dead.example.com"]
+
+
 def test_dnsx_filters_http_probe_candidates(monkeypatch, tmp_path):
     config = {
         "tools": {"dnsx": "dnsx"},
@@ -114,7 +139,7 @@ def test_dnsx_filters_http_probe_candidates(monkeypatch, tmp_path):
     monkeypatch.setattr("modules.live_hosts.shutil.which", lambda *args, **kwargs: "/usr/bin/dnsx")
     monkeypatch.setattr("modules.live_hosts.subprocess.run", fake_run)
 
-    result = _dnsx_resolve_candidates(
+    resolved, unresolved = _dnsx_resolve_candidates(
         ["alive.example.com", "unresolved.example.com"],
         config,
         {},
@@ -122,7 +147,8 @@ def test_dnsx_filters_http_probe_candidates(monkeypatch, tmp_path):
         type("Logger", (), {"info": lambda *args: None, "warning": lambda *args: None})(),
     )
 
-    assert result == ["alive.example.com"]
+    assert resolved == ["alive.example.com"]
+    assert unresolved == ["unresolved.example.com"]
     assert "-stream" not in captured["args"]
 
 
@@ -131,7 +157,7 @@ def test_dnsx_falls_back_when_unavailable(monkeypatch, tmp_path):
     candidates = ["one.example.com"]
     monkeypatch.setattr("modules.live_hosts.shutil.which", lambda *args, **kwargs: None)
 
-    result = _dnsx_resolve_candidates(
+    resolved, unresolved = _dnsx_resolve_candidates(
         candidates,
         config,
         {},
@@ -139,7 +165,38 @@ def test_dnsx_falls_back_when_unavailable(monkeypatch, tmp_path):
         type("Logger", (), {"info": lambda *args: None, "warning": lambda *args: None})(),
     )
 
-    assert result == candidates
+    assert resolved == candidates
+    assert unresolved == []
+
+
+def test_discover_live_hosts_writes_dnsx_dead_hosts(monkeypatch, tmp_path):
+    config = {
+        "output": {"live_hosts": str(tmp_path / "live_hosts.txt")},
+        "tools": {"httpx": "httpx", "dnsx": "dnsx"},
+        "timeouts": {"httpx": 10},
+        "dnsx_options": {"enabled": True},
+    }
+
+    def fake_run(*args, **kwargs):
+        if args[0][0] == "/usr/bin/dnsx":
+            output_path = Path(args[0][args[0].index("-o") + 1])
+            output_path.write_text("resolved.example.com\n", encoding="utf-8")
+            return subprocess.CompletedProcess(args=args[0], returncode=0, stdout="", stderr="")
+        return subprocess.CompletedProcess(
+            args=args[0],
+            returncode=0,
+            stdout='{"url": "https://resolved.example.com", "status_code": 200, "failed": false}\n',
+            stderr="",
+        )
+
+    monkeypatch.setattr("modules.live_hosts.shutil.which", lambda *args, **kwargs: "/usr/bin/dnsx" if args[0] == "dnsx" else "/usr/bin/httpx")
+    monkeypatch.setattr("modules.live_hosts.subprocess.run", fake_run)
+
+    result = discover_live_hosts(["resolved.example.com", "dead.example.com"], config)
+
+    assert result == ["https://resolved.example.com"]
+    dead_hosts = (tmp_path / "dead_host.txt").read_text(encoding="utf-8").splitlines()
+    assert dead_hosts == ["https://dead.example.com"]
 
 
 def test_load_config_uses_conservative_httpx_defaults(tmp_path):

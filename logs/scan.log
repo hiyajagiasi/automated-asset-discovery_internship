@@ -2441,3 +2441,1028 @@
 2026-07-28 14:49:41,985 - INFO - Nmap service progress: 2275/2834 hosts
 2026-07-28 14:50:11,240 - INFO - Nmap service progress: 2300/2834 hosts
 2026-07-28 14:50:40,741 - INFO - Nmap service progress: 2325/2834 hosts
+2026-07-29 14:48:56,046 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 14:48:56,047 - INFO - Batch 1: httpx returned 2 lines
+2026-07-29 14:48:56,047 - INFO - Total live hosts found: 2
+2026-07-29 14:48:56,049 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-07-29 14:48:56,050 - INFO - Batch 1: httpx returned 0 lines
+2026-07-29 14:48:56,050 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-07-29 14:48:56,051 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 14:48:56,051 - INFO - Batch 1: httpx returned 2 lines
+2026-07-29 14:48:56,052 - INFO - Total live hosts found: 2
+2026-07-29 14:48:56,053 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 14:48:56,054 - INFO - Batch 1: httpx returned 1 lines
+2026-07-29 14:48:56,054 - INFO - Total live hosts found: 1
+2026-07-29 14:49:49,520 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 14:49:49,521 - INFO - Batch 1: httpx returned 2 lines
+2026-07-29 14:49:49,521 - INFO - Total live hosts found: 2
+2026-07-29 14:49:49,522 - INFO - Total dead hosts found: 1
+2026-07-29 14:49:49,523 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-07-29 14:49:49,523 - INFO - Batch 1: httpx returned 0 lines
+2026-07-29 14:49:49,523 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-07-29 14:49:49,525 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 14:49:49,525 - INFO - Batch 1: httpx returned 2 lines
+2026-07-29 14:49:49,526 - INFO - Total live hosts found: 2
+2026-07-29 14:49:49,526 - INFO - Total dead hosts found: 0
+2026-07-29 14:49:49,527 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 14:49:49,527 - INFO - Batch 1: httpx returned 1 lines
+2026-07-29 14:49:49,528 - INFO - Total live hosts found: 1
+2026-07-29 14:49:49,528 - INFO - Total dead hosts found: 1
+2026-07-29 14:50:22,816 - INFO - Starting reconnaissance for github.com
+2026-07-29 14:50:22,816 - INFO - Starting subdomain discovery
+2026-07-29 14:51:23,566 - INFO - Subdomain discovery completed in 60.7 seconds (41145 candidates)
+2026-07-29 14:51:23,566 - INFO - Starting live-host probing
+2026-07-29 14:51:23,569 - INFO - Starting dnsx resolution for 41145 candidates
+2026-07-29 14:55:45,595 - INFO - dnsx resolution completed: 139/41145 candidates resolved
+2026-07-29 14:55:45,597 - INFO - Starting httpx probe for 139 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-29 14:56:30,352 - INFO - Batch 1: httpx returned 115 lines
+2026-07-29 14:56:30,355 - INFO - Total live hosts found: 115
+2026-07-29 14:56:30,356 - INFO - Total dead hosts found: 34
+2026-07-29 14:56:30,356 - INFO - Live-host probing completed in 306.8 seconds (115 live hosts)
+2026-07-29 14:56:30,356 - INFO - Starting port discovery
+2026-07-29 14:57:07,731 - INFO - Naabu discovered 82 open ports across 67 live hosts; written to /Users/sohampatil/Documents/Automated-Asset-Discovery/Automated-Asset-Discovery/output/ports.txt pending service verification
+2026-07-29 14:57:47,815 - INFO - Nmap service progress: 25/67 hosts
+2026-07-29 14:58:17,886 - INFO - Nmap service progress: 50/67 hosts
+2026-07-29 14:58:37,916 - INFO - Nmap service progress: 67/67 hosts
+2026-07-29 14:58:37,918 - INFO - Identified 82 open ports across 67 live hosts
+2026-07-29 14:58:37,918 - INFO - Port discovery completed in 127.6 seconds
+2026-07-29 14:58:37,918 - INFO - Starting technology discovery
+2026-07-29 14:59:32,212 - INFO - Technology discovery completed in 54.3 seconds
+2026-07-29 14:59:32,214 - INFO - Starting security detection
+2026-07-29 15:01:20,617 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 15:01:20,618 - INFO - Batch 1: httpx returned 2 lines
+2026-07-29 15:01:20,618 - INFO - Total live hosts found: 2
+2026-07-29 15:01:20,618 - INFO - Total dead hosts found: 1
+2026-07-29 15:01:20,620 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-07-29 15:01:20,620 - INFO - Batch 1: httpx returned 0 lines
+2026-07-29 15:01:20,620 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-07-29 15:01:20,621 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 15:01:20,622 - INFO - Batch 1: httpx returned 2 lines
+2026-07-29 15:01:20,622 - INFO - Total live hosts found: 2
+2026-07-29 15:01:20,622 - INFO - Total dead hosts found: 0
+2026-07-29 15:01:20,624 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 15:01:20,624 - INFO - Batch 1: httpx returned 1 lines
+2026-07-29 15:01:20,625 - INFO - Total live hosts found: 1
+2026-07-29 15:01:20,625 - INFO - Total dead hosts found: 1
+2026-07-29 15:01:20,628 - INFO - Starting dnsx resolution for 2 candidates
+2026-07-29 15:01:20,628 - INFO - dnsx resolution completed: 1/2 candidates resolved
+2026-07-29 15:01:20,628 - INFO - Starting httpx probe for 1 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 15:01:20,628 - INFO - Batch 1: httpx returned 1 lines
+2026-07-29 15:01:20,629 - INFO - Total live hosts found: 1
+2026-07-29 15:01:20,629 - INFO - Total dead hosts found: 0
+2026-07-29 15:01:40,835 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 15:01:40,836 - INFO - Batch 1: httpx returned 2 lines
+2026-07-29 15:01:40,837 - INFO - Total live hosts found: 2
+2026-07-29 15:01:40,837 - INFO - Total dead hosts found: 1
+2026-07-29 15:01:40,838 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-07-29 15:01:40,838 - INFO - Batch 1: httpx returned 0 lines
+2026-07-29 15:01:40,838 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-07-29 15:01:40,840 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 15:01:40,840 - INFO - Batch 1: httpx returned 2 lines
+2026-07-29 15:01:40,841 - INFO - Total live hosts found: 2
+2026-07-29 15:01:40,841 - INFO - Total dead hosts found: 0
+2026-07-29 15:01:40,842 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 15:01:40,842 - INFO - Batch 1: httpx returned 1 lines
+2026-07-29 15:01:40,843 - INFO - Total live hosts found: 1
+2026-07-29 15:01:40,843 - INFO - Total dead hosts found: 1
+2026-07-29 15:01:40,882 - INFO - Starting dnsx resolution for 2 candidates
+2026-07-29 15:01:40,882 - INFO - dnsx resolution completed: 1/2 candidates resolved
+2026-07-29 15:01:40,882 - INFO - Starting httpx probe for 1 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 15:01:40,883 - INFO - Batch 1: httpx returned 1 lines
+2026-07-29 15:01:40,883 - INFO - Total live hosts found: 1
+2026-07-29 15:01:40,883 - INFO - Total dead hosts found: 1
+2026-07-29 15:01:58,359 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 15:01:58,359 - INFO - Batch 1: httpx returned 2 lines
+2026-07-29 15:01:58,360 - INFO - Total live hosts found: 2
+2026-07-29 15:01:58,360 - INFO - Total dead hosts found: 1
+2026-07-29 15:01:58,361 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-07-29 15:01:58,362 - INFO - Batch 1: httpx returned 0 lines
+2026-07-29 15:01:58,362 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-07-29 15:01:58,363 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 15:01:58,364 - INFO - Batch 1: httpx returned 2 lines
+2026-07-29 15:01:58,364 - INFO - Total live hosts found: 2
+2026-07-29 15:01:58,364 - INFO - Total dead hosts found: 0
+2026-07-29 15:01:58,365 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 15:01:58,366 - INFO - Batch 1: httpx returned 1 lines
+2026-07-29 15:01:58,366 - INFO - Total live hosts found: 1
+2026-07-29 15:01:58,366 - INFO - Total dead hosts found: 1
+2026-07-29 15:01:58,369 - INFO - Starting dnsx resolution for 2 candidates
+2026-07-29 15:01:58,369 - INFO - dnsx resolution completed: 1/2 candidates resolved
+2026-07-29 15:01:58,370 - INFO - Starting httpx probe for 1 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 15:01:58,370 - INFO - Batch 1: httpx returned 1 lines
+2026-07-29 15:01:58,370 - INFO - Total live hosts found: 1
+2026-07-29 15:01:58,370 - INFO - Total dead hosts found: 1
+2026-07-29 15:02:12,130 - INFO - Starting reconnaissance for github.com
+2026-07-29 15:02:12,130 - INFO - Starting subdomain discovery
+2026-07-29 15:07:11,404 - INFO - Starting reconnaissance for github.com
+2026-07-29 15:07:11,404 - INFO - Starting subdomain discovery
+2026-07-29 15:08:12,092 - INFO - Subdomain discovery completed in 60.7 seconds (41113 candidates)
+2026-07-29 15:08:12,092 - INFO - Starting live-host probing
+2026-07-29 15:08:12,095 - INFO - Starting dnsx resolution for 41113 candidates
+2026-07-29 15:12:29,211 - INFO - dnsx resolution completed: 125/41113 candidates resolved
+2026-07-29 15:12:29,247 - INFO - Starting httpx probe for 125 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-29 15:13:14,309 - INFO - Batch 1: httpx returned 107 lines
+2026-07-29 15:13:14,348 - INFO - Total live hosts found: 107
+2026-07-29 15:13:14,349 - INFO - Total dead hosts found: 41025
+2026-07-29 15:13:14,349 - INFO - Live-host probing completed in 302.3 seconds (107 live hosts)
+2026-07-29 15:13:14,349 - INFO - Starting port discovery
+2026-07-29 15:13:53,757 - INFO - Naabu discovered 60 open ports across 44 live hosts; written to /Users/sohampatil/Documents/Automated-Asset-Discovery/Automated-Asset-Discovery/output/ports.txt pending service verification
+2026-07-29 15:14:33,839 - INFO - Nmap service progress: 25/44 hosts
+2026-07-29 15:14:53,875 - INFO - Nmap service progress: 44/44 hosts
+2026-07-29 15:14:53,876 - INFO - Identified 60 open ports across 44 live hosts
+2026-07-29 15:14:53,877 - INFO - Port discovery completed in 99.5 seconds
+2026-07-29 15:14:53,877 - INFO - Starting technology discovery
+2026-07-29 15:15:57,283 - INFO - Technology discovery completed in 63.4 seconds
+2026-07-29 15:15:57,285 - INFO - Starting security detection
+2026-07-29 15:17:55,113 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-5/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 15:17:55,113 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:17:55,114 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:17:55,117 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-5/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 15:17:55,117 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:17:55,117 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:17:55,118 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-5/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 15:17:55,120 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:17:55,121 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:17:55,122 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-5/test_scan_ports_uses_aggressiv0/ports.txt pending service verification
+2026-07-29 15:17:55,122 - WARNING - Nmap service scan failed for example.com: assert '-A' in ['nmap', '-Pn', '-T4', '-sV', '-sC', '--version-all', ...]
+2026-07-29 15:17:55,122 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:17:55,123 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:17:55,140 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-5/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 15:17:55,140 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:17:55,141 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:18:09,677 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-6/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 15:18:09,677 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:18:09,677 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:18:09,680 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-6/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 15:18:09,681 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:18:09,681 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:18:09,682 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-6/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 15:18:09,684 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:18:09,685 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:18:09,686 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-6/test_scan_ports_uses_aggressiv0/ports.txt pending service verification
+2026-07-29 15:18:09,686 - WARNING - Nmap service scan failed for example.com: assert '-A' in ['nmap', '-Pn', '-T4', '-sV', '-sC', '--version-all', ...]
+2026-07-29 15:18:09,686 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:18:09,687 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:18:09,705 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-6/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 15:18:09,705 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:18:09,705 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:18:48,706 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-7/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 15:18:48,707 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:18:48,707 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:18:48,710 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-7/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 15:18:48,710 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:18:48,711 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:18:48,712 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-7/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 15:18:48,714 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:18:48,714 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:18:48,716 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-7/test_scan_ports_uses_aggressiv0/ports.txt pending service verification
+2026-07-29 15:18:48,716 - WARNING - Nmap service scan failed for example.com: assert '-A' in ['nmap', '-Pn', '-T4', '-sV', '-sC', '--version-all', ...]
+2026-07-29 15:18:48,716 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:18:48,716 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:18:48,734 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-7/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 15:18:48,734 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:18:48,734 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:19:59,555 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-8/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 15:19:59,556 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:19:59,556 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:19:59,559 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-8/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 15:19:59,560 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:19:59,560 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:19:59,561 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-8/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 15:19:59,563 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:19:59,563 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:19:59,565 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-8/test_scan_ports_uses_aggressiv0/ports.txt pending service verification
+2026-07-29 15:19:59,565 - WARNING - Nmap service scan failed for example.com: assert '-A' in ['nmap', '-Pn', '-T4', '-sV', '-sC', '--version-all', ...]
+2026-07-29 15:19:59,565 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:19:59,565 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:19:59,583 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-8/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 15:19:59,583 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:19:59,583 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:22:37,095 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-9/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 15:22:37,096 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:22:37,096 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:22:37,099 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-9/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 15:22:37,099 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:22:37,099 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:22:37,101 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-9/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 15:22:37,103 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:22:37,103 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:22:37,104 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-9/test_scan_ports_uses_aggressiv0/ports.txt pending service verification
+2026-07-29 15:22:37,105 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:22:37,105 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:22:37,124 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-9/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 15:22:37,124 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:22:37,124 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:22:45,665 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-10/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 15:22:45,665 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:22:45,666 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:22:45,668 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-10/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 15:22:45,669 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:22:45,669 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:22:45,671 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-10/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 15:22:45,673 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:22:45,673 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:22:45,675 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-10/test_scan_ports_uses_aggressiv0/ports.txt pending service verification
+2026-07-29 15:22:45,675 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:22:45,675 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:22:45,676 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-10/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 15:22:45,677 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:22:45,677 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:23:41,597 - INFO - Starting reconnaissance for github.com
+2026-07-29 15:23:41,597 - INFO - Starting subdomain discovery
+2026-07-29 15:24:55,304 - INFO - Subdomain discovery completed in 73.7 seconds (41130 candidates)
+2026-07-29 15:24:55,304 - INFO - Starting live-host probing
+2026-07-29 15:24:55,308 - INFO - Starting dnsx resolution for 41130 candidates
+2026-07-29 15:29:13,324 - INFO - dnsx resolution completed: 130/41130 candidates resolved
+2026-07-29 15:29:13,363 - INFO - Starting httpx probe for 130 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-29 15:30:00,648 - INFO - Batch 1: httpx returned 106 lines
+2026-07-29 15:30:00,688 - INFO - Total live hosts found: 106
+2026-07-29 15:30:00,688 - INFO - Total dead hosts found: 41031
+2026-07-29 15:30:00,689 - INFO - Live-host probing completed in 305.4 seconds (106 live hosts)
+2026-07-29 15:30:00,689 - INFO - Starting port discovery
+2026-07-29 15:30:42,618 - INFO - Naabu discovered 69 open ports across 62 live hosts; written to /Users/sohampatil/Documents/Automated-Asset-Discovery/Automated-Asset-Discovery/output/ports.txt pending service verification
+2026-07-29 15:31:22,687 - INFO - Nmap service progress: 25/62 hosts
+2026-07-29 15:31:52,747 - INFO - Nmap service progress: 50/62 hosts
+2026-07-29 15:32:02,760 - INFO - Nmap service progress: 62/62 hosts
+2026-07-29 15:32:02,761 - INFO - Identified 69 open ports across 62 live hosts
+2026-07-29 15:32:02,761 - INFO - Port discovery completed in 122.1 seconds
+2026-07-29 15:32:02,762 - INFO - Starting technology discovery
+2026-07-29 15:33:03,865 - INFO - Technology discovery completed in 61.1 seconds
+2026-07-29 15:33:03,867 - INFO - Starting security detection
+2026-07-29 15:36:18,887 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-11/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 15:36:18,887 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:36:18,887 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:36:18,890 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-11/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 15:36:18,890 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:36:18,891 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:36:18,892 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-11/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 15:36:18,894 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:36:18,894 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:36:18,896 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-11/test_scan_ports_uses_aggressiv0/ports.txt pending service verification
+2026-07-29 15:36:18,896 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:36:18,896 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:36:18,897 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-11/test_scan_ports_uses_full_nmap0/ports.txt pending service verification
+2026-07-29 15:36:18,897 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:36:18,897 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:36:18,917 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-11/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 15:36:18,917 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:36:18,917 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:36:30,270 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-12/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 15:36:30,270 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:36:30,271 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:36:30,274 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-12/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 15:36:30,274 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:36:30,274 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:36:30,275 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-12/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 15:36:30,278 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:36:30,278 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:36:30,279 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-12/test_scan_ports_uses_aggressiv0/ports.txt pending service verification
+2026-07-29 15:36:30,279 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:36:30,280 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:36:30,281 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-12/test_scan_ports_uses_full_nmap0/ports.txt pending service verification
+2026-07-29 15:36:30,281 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:36:30,281 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:36:30,300 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-12/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 15:36:30,301 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:36:30,301 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:38:05,107 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-13/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 15:38:05,107 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:38:05,108 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:38:05,111 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-13/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 15:38:05,111 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:38:05,111 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:38:05,113 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-13/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 15:38:05,115 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:38:05,115 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:38:05,117 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-13/test_scan_ports_uses_aggressiv0/ports.txt pending service verification
+2026-07-29 15:38:05,117 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:38:05,117 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:38:05,118 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-13/test_scan_ports_uses_full_nmap0/ports.txt pending service verification
+2026-07-29 15:38:05,118 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:38:05,119 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:38:05,120 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-13/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 15:38:05,120 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:38:05,120 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:38:34,494 - INFO - Starting reconnaissance for github.com
+2026-07-29 15:38:34,494 - INFO - Starting subdomain discovery
+2026-07-29 15:39:36,189 - INFO - Subdomain discovery completed in 61.7 seconds (41125 candidates)
+2026-07-29 15:39:36,189 - INFO - Starting live-host probing
+2026-07-29 15:39:36,193 - INFO - Starting dnsx resolution for 41125 candidates
+2026-07-29 15:44:08,029 - INFO - dnsx resolution completed: 120/41125 candidates resolved
+2026-07-29 15:44:08,066 - INFO - Starting httpx probe for 120 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-29 15:44:52,958 - INFO - Batch 1: httpx returned 111 lines
+2026-07-29 15:44:52,996 - INFO - Total live hosts found: 111
+2026-07-29 15:44:52,996 - INFO - Total dead hosts found: 41035
+2026-07-29 15:44:52,996 - INFO - Live-host probing completed in 316.8 seconds (111 live hosts)
+2026-07-29 15:44:52,996 - INFO - Starting port discovery
+2026-07-29 15:45:43,397 - INFO - Naabu discovered 62 open ports across 53 live hosts; written to /Users/sohampatil/Documents/Automated-Asset-Discovery/Automated-Asset-Discovery/output/ports.txt pending service verification
+2026-07-29 15:46:23,452 - INFO - Nmap service progress: 25/53 hosts
+2026-07-29 15:46:53,486 - INFO - Nmap service progress: 50/53 hosts
+2026-07-29 15:46:53,497 - INFO - Nmap service progress: 53/53 hosts
+2026-07-29 15:46:53,498 - INFO - Identified 62 open ports across 53 live hosts
+2026-07-29 15:46:53,499 - INFO - Port discovery completed in 120.5 seconds
+2026-07-29 15:46:53,499 - INFO - Starting technology discovery
+2026-07-29 15:47:46,351 - INFO - Technology discovery completed in 52.9 seconds
+2026-07-29 15:47:46,353 - INFO - Starting security detection
+2026-07-29 15:55:34,186 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-14/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 15:55:34,187 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:55:34,187 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:55:34,190 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-14/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 15:55:34,190 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:55:34,190 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:55:34,192 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-14/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 15:55:34,195 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:55:34,195 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:55:34,197 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-14/test_scan_ports_uses_aggressiv0/ports.txt pending service verification
+2026-07-29 15:55:34,197 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:55:34,197 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:55:34,198 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-14/test_scan_ports_uses_full_nmap0/ports.txt pending service verification
+2026-07-29 15:55:34,198 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:55:34,199 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:55:34,200 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-14/test_scan_ports_parses_nmap_ou0/ports.txt pending service verification
+2026-07-29 15:55:34,200 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:55:34,200 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:55:34,239 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-14/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 15:55:34,239 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:55:34,239 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:55:55,815 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-15/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 15:55:55,816 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:55:55,816 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:55:55,819 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-15/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 15:55:55,820 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:55:55,820 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:55:55,821 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-15/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 15:55:55,823 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:55:55,823 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:55:55,825 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-15/test_scan_ports_uses_aggressiv0/ports.txt pending service verification
+2026-07-29 15:55:55,825 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:55:55,825 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:55:55,827 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-15/test_scan_ports_uses_full_nmap0/ports.txt pending service verification
+2026-07-29 15:55:55,827 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:55:55,827 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:55:55,828 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-15/test_scan_ports_parses_nmap_ou0/ports.txt pending service verification
+2026-07-29 15:55:55,829 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:55:55,829 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:55:55,877 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-15/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 15:55:55,877 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:55:55,877 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:56:40,010 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-16/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 15:56:40,011 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:56:40,011 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:56:40,014 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-16/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 15:56:40,014 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:56:40,014 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:56:40,016 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-16/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 15:56:40,018 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:56:40,018 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:56:40,020 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-16/test_scan_ports_uses_aggressiv0/ports.txt pending service verification
+2026-07-29 15:56:40,020 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:56:40,020 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:56:40,021 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-16/test_scan_ports_uses_full_nmap0/ports.txt pending service verification
+2026-07-29 15:56:40,021 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:56:40,021 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:56:40,023 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-16/test_scan_ports_parses_nmap_ou0/ports.txt pending service verification
+2026-07-29 15:56:40,023 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:56:40,023 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:56:40,062 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-16/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 15:56:40,062 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:56:40,062 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:57:01,210 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /tmp/ports_test.txt pending service verification
+2026-07-29 15:57:01,214 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:57:01,221 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:58:02,383 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /tmp/ports_test.txt pending service verification
+2026-07-29 15:58:02,386 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:58:02,386 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:58:41,850 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /tmp/ports_test.txt pending service verification
+2026-07-29 15:58:41,852 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:58:41,853 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:59:55,991 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-17/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 15:59:55,992 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:59:55,992 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:59:55,995 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-17/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 15:59:55,995 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:59:55,996 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:59:55,997 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-17/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 15:59:55,999 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:59:55,999 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:59:56,001 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-17/test_scan_ports_uses_aggressiv0/ports.txt pending service verification
+2026-07-29 15:59:56,001 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:59:56,001 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:59:56,002 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-17/test_scan_ports_uses_full_nmap0/ports.txt pending service verification
+2026-07-29 15:59:56,002 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:59:56,003 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:59:56,004 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-17/test_scan_ports_parses_nmap_ou0/ports.txt pending service verification
+2026-07-29 15:59:56,004 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:59:56,004 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 15:59:56,042 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-17/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 15:59:56,042 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 15:59:56,042 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:00:16,864 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-18/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 16:00:16,865 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:00:16,865 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:00:16,868 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-18/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 16:00:16,868 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:00:16,869 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:00:16,870 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-18/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 16:00:16,872 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:00:16,872 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:00:16,873 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-18/test_scan_ports_uses_aggressiv0/ports.txt pending service verification
+2026-07-29 16:00:16,874 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:00:16,874 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:00:16,875 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-18/test_scan_ports_uses_full_nmap0/ports.txt pending service verification
+2026-07-29 16:00:16,875 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:00:16,876 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:00:16,877 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-18/test_scan_ports_parses_nmap_ou0/ports.txt pending service verification
+2026-07-29 16:00:16,877 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:00:16,877 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:00:16,916 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-18/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 16:00:16,916 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:00:16,917 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:01:54,764 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-19/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 16:01:54,764 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:01:54,765 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:01:54,768 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-19/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 16:01:54,768 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:01:54,768 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:01:54,769 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-19/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 16:01:54,772 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:01:54,772 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:01:54,773 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-19/test_scan_ports_uses_aggressiv0/ports.txt pending service verification
+2026-07-29 16:01:54,774 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:01:54,774 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:01:54,775 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-19/test_scan_ports_uses_full_nmap0/ports.txt pending service verification
+2026-07-29 16:01:54,775 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:01:54,775 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:01:54,776 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-19/test_scan_ports_parses_nmap_ou0/ports.txt pending service verification
+2026-07-29 16:01:54,777 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:01:54,777 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:01:54,814 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-19/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 16:01:54,815 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:01:54,815 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:13:30,551 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /tmp/ports_test.txt pending service verification
+2026-07-29 16:13:30,553 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:13:30,553 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:14:11,574 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /tmp/ports_test.txt pending service verification
+2026-07-29 16:14:11,576 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:14:11,577 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:15:11,294 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-20/test_scan_ports_parses_nmap_ou0/ports.txt pending service verification
+2026-07-29 16:15:11,296 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:15:11,296 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:15:11,333 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-20/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 16:15:11,334 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:15:11,334 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:15:41,403 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-21/test_scan_ports_parses_nmap_ou0/ports.txt pending service verification
+2026-07-29 16:15:41,405 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:15:41,405 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:15:41,444 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-21/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 16:15:41,444 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:15:41,444 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:19:52,335 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-22/test_scan_ports_uses_full_nmap0/ports.txt pending service verification
+2026-07-29 16:19:52,335 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:19:52,336 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:19:52,337 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-22/test_scan_ports_parses_nmap_ou0/ports.txt pending service verification
+2026-07-29 16:19:52,340 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:19:52,340 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:19:52,378 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-22/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 16:19:52,378 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:19:52,379 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:20:55,020 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /tmp/ports_test.txt pending service verification
+2026-07-29 16:20:55,024 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:20:55,024 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:23:06,018 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-23/test_scan_ports_uses_full_nmap0/ports.txt pending service verification
+2026-07-29 16:23:06,019 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:23:06,019 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:23:06,021 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-23/test_scan_ports_parses_nmap_ou0/ports.txt pending service verification
+2026-07-29 16:23:06,021 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:23:06,021 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:23:06,022 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-23/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 16:23:06,023 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:23:06,023 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:23:47,169 - INFO - Starting reconnaissance for github.com
+2026-07-29 16:23:47,169 - INFO - Starting subdomain discovery
+2026-07-29 16:24:47,924 - INFO - Subdomain discovery completed in 60.8 seconds (41145 candidates)
+2026-07-29 16:24:47,924 - INFO - Starting live-host probing
+2026-07-29 16:24:47,927 - INFO - Starting dnsx resolution for 41145 candidates
+2026-07-29 16:29:19,560 - INFO - dnsx resolution completed: 128/41145 candidates resolved
+2026-07-29 16:29:19,598 - INFO - Starting httpx probe for 128 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-29 16:30:04,226 - INFO - Batch 1: httpx returned 107 lines
+2026-07-29 16:30:04,266 - INFO - Total live hosts found: 107
+2026-07-29 16:30:04,266 - INFO - Total dead hosts found: 41045
+2026-07-29 16:30:04,266 - INFO - Live-host probing completed in 316.3 seconds (107 live hosts)
+2026-07-29 16:30:04,266 - INFO - Starting port discovery
+2026-07-29 16:30:49,403 - INFO - Naabu discovered 71 open ports across 60 live hosts; written to /Users/sohampatil/Documents/Automated-Asset-Discovery/Automated-Asset-Discovery/output/ports.txt pending service verification
+2026-07-29 16:31:29,468 - INFO - Nmap service progress: 25/60 hosts
+2026-07-29 16:31:59,511 - INFO - Nmap service progress: 50/60 hosts
+2026-07-29 16:32:09,526 - INFO - Nmap service progress: 60/60 hosts
+2026-07-29 16:32:09,528 - INFO - Identified 71 open ports across 60 live hosts
+2026-07-29 16:32:09,528 - INFO - Port discovery completed in 125.3 seconds
+2026-07-29 16:32:09,528 - INFO - Starting technology discovery
+2026-07-29 16:33:16,252 - INFO - Technology discovery completed in 66.7 seconds
+2026-07-29 16:33:16,252 - INFO - Starting security detection
+2026-07-29 16:41:50,217 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-24/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 16:41:50,217 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:41:50,218 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:41:50,221 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-24/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 16:41:50,221 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:41:50,221 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:41:50,222 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-24/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 16:41:50,225 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:41:50,225 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:41:50,226 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-24/test_scan_ports_uses_aggressiv0/ports.txt pending service verification
+2026-07-29 16:41:50,227 - WARNING - Nmap service scan failed for example.com: assert '-A' not in ['nmap', '-Pn', '-T4', '-A', '-sV', '-sC', ...]
+2026-07-29 16:41:50,227 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:41:50,227 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:41:50,228 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-24/test_scan_ports_uses_full_nmap0/ports.txt pending service verification
+2026-07-29 16:41:50,228 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:41:50,228 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:41:50,247 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-24/test_scan_ports_parses_nmap_ou0/ports.txt pending service verification
+2026-07-29 16:41:50,247 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:41:50,247 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:41:50,249 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-24/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 16:41:50,249 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:41:50,249 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:42:57,120 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-25/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 16:42:57,121 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:42:57,121 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:42:57,124 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-25/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 16:42:57,124 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:42:57,124 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:42:57,125 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-25/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 16:42:57,127 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:42:57,128 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:42:57,129 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-25/test_scan_ports_uses_targeted_0/ports.txt pending service verification
+2026-07-29 16:42:57,129 - WARNING - Nmap service scan failed for example.com: assert '-A' not in ['nmap', '-Pn', '-T4', '-A', '-sV', '-sC', ...]
+2026-07-29 16:42:57,129 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:42:57,130 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:42:57,149 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-25/test_scan_ports_uses_full_nmap0/ports.txt pending service verification
+2026-07-29 16:42:57,150 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:42:57,151 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:42:57,157 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-25/test_scan_ports_parses_nmap_ou0/ports.txt pending service verification
+2026-07-29 16:42:57,158 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:42:57,158 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:42:57,159 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-25/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 16:42:57,160 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:42:57,160 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:43:36,714 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-26/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 16:43:36,715 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:43:36,715 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:43:36,718 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-26/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 16:43:36,718 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:43:36,718 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:43:36,720 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-26/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 16:43:36,723 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:43:36,723 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:43:36,724 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-26/test_scan_ports_uses_targeted_0/ports.txt pending service verification
+2026-07-29 16:43:36,724 - WARNING - Nmap service scan failed for example.com: assert '-A' not in ['nmap', '-Pn', '-T4', '-A', '-sV', '-sC', ...]
+2026-07-29 16:43:36,725 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:43:36,725 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:43:36,745 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-26/test_scan_ports_uses_full_nmap0/ports.txt pending service verification
+2026-07-29 16:43:36,745 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:43:36,745 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:43:36,749 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-26/test_scan_ports_parses_nmap_ou0/ports.txt pending service verification
+2026-07-29 16:43:36,749 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:43:36,750 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:43:36,751 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-26/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 16:43:36,751 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:43:36,751 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:45:27,446 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-27/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 16:45:27,447 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:45:27,447 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:45:27,450 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-27/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 16:45:27,450 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:45:27,451 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:45:27,452 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-27/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 16:45:27,454 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:45:27,454 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:45:27,456 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-27/test_scan_ports_uses_targeted_0/ports.txt pending service verification
+2026-07-29 16:45:27,456 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:45:27,456 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:45:27,457 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-27/test_scan_ports_uses_full_nmap0/ports.txt pending service verification
+2026-07-29 16:45:27,457 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:45:27,458 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:45:27,459 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-27/test_scan_ports_parses_nmap_ou0/ports.txt pending service verification
+2026-07-29 16:45:27,459 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:45:27,459 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:45:27,461 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-27/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 16:45:27,461 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 16:45:27,461 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 16:46:37,086 - INFO - Starting reconnaissance for github.com
+2026-07-29 16:46:37,086 - INFO - Starting subdomain discovery
+2026-07-29 16:51:19,782 - INFO - Starting reconnaissance for github.com
+2026-07-29 16:51:19,782 - INFO - Starting subdomain discovery
+2026-07-29 16:58:41,861 - INFO - Starting reconnaissance for github.com
+2026-07-29 16:58:41,861 - INFO - Starting subdomain discovery
+2026-07-29 17:04:46,966 - INFO - Starting reconnaissance for github.com
+2026-07-29 17:04:46,967 - INFO - Starting subdomain discovery
+2026-07-29 17:11:13,832 - INFO - Subdomain discovery completed in 386.9 seconds (41143 candidates)
+2026-07-29 17:11:13,832 - INFO - Starting live-host probing
+2026-07-29 17:11:13,836 - INFO - Starting dnsx resolution for 41143 candidates
+2026-07-29 17:19:49,452 - INFO - dnsx resolution completed: 132/41143 candidates resolved
+2026-07-29 17:19:49,492 - INFO - Starting httpx probe for 132 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-29 17:20:33,771 - INFO - Batch 1: httpx returned 116 lines
+2026-07-29 17:20:33,814 - INFO - Total live hosts found: 116
+2026-07-29 17:20:33,814 - INFO - Total dead hosts found: 41037
+2026-07-29 17:20:33,814 - INFO - Live-host probing completed in 286.5 seconds (116 live hosts)
+2026-07-29 17:20:33,814 - INFO - Starting port discovery
+2026-07-29 17:21:30,552 - INFO - Naabu discovered 6 open ports across 5 live hosts; written to /Users/sohampatil/Documents/Automated-Asset-Discovery/Automated-Asset-Discovery/output/ports.txt pending service verification
+2026-07-29 17:21:40,573 - INFO - Nmap service progress: 5/5 hosts
+2026-07-29 17:21:40,574 - INFO - Identified 6 open ports across 5 live hosts
+2026-07-29 17:21:40,574 - INFO - Port discovery completed in 66.8 seconds
+2026-07-29 17:21:40,574 - INFO - Starting technology discovery
+2026-07-29 17:22:39,196 - INFO - Technology discovery completed in 58.6 seconds
+2026-07-29 17:22:39,197 - INFO - Starting security detection
+2026-07-29 17:28:11,413 - INFO - Naabu discovered 2 open ports across 1 live hosts; written to output/ports.txt pending service verification
+2026-07-29 17:28:21,430 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:28:21,431 - INFO - Identified 2 open ports across 1 live hosts
+2026-07-29 17:32:50,577 - INFO - Naabu discovered 2 open ports across 1 live hosts; written to output/ports.txt pending service verification
+2026-07-29 17:33:00,596 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:33:00,597 - INFO - Identified 2 open ports across 1 live hosts
+2026-07-29 17:36:06,072 - INFO - Naabu discovered 2 open ports across 1 live hosts; written to output/ports.txt pending service verification
+2026-07-29 17:36:16,089 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:36:16,090 - INFO - Identified 2 open ports across 1 live hosts
+2026-07-29 17:36:55,939 - INFO - Naabu discovered 2 open ports across 1 live hosts; written to output/ports.txt pending service verification
+2026-07-29 17:37:05,957 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:37:05,958 - INFO - Identified 2 open ports across 1 live hosts
+2026-07-29 17:37:42,775 - INFO - Naabu discovered 2 open ports across 1 live hosts; written to output/ports.txt pending service verification
+2026-07-29 17:37:52,793 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:37:52,793 - INFO - Identified 2 open ports across 1 live hosts
+2026-07-29 17:38:31,143 - INFO - Naabu discovered 2 open ports across 1 live hosts; written to output/ports.txt pending service verification
+2026-07-29 17:38:41,162 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:38:41,163 - INFO - Identified 2 open ports across 1 live hosts
+2026-07-29 17:40:32,211 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-28/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 17:40:32,212 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:40:32,212 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:40:32,215 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-28/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 17:40:32,215 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:40:32,216 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:40:32,217 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-28/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 17:40:32,219 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:40:32,219 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:40:32,221 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-28/test_scan_ports_uses_targeted_0/ports.txt pending service verification
+2026-07-29 17:40:32,221 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:40:32,221 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:40:32,222 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-28/test_scan_ports_uses_full_nmap0/ports.txt pending service verification
+2026-07-29 17:40:32,223 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:40:32,223 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:40:32,224 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-28/test_scan_ports_parses_nmap_ou0/ports.txt pending service verification
+2026-07-29 17:40:32,224 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:40:32,224 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:40:32,225 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-28/test_scan_ports_enriches_web_p0/ports.txt pending service verification
+2026-07-29 17:40:32,226 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:40:32,226 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:40:32,264 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-28/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 17:40:32,264 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:40:32,265 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:41:36,136 - INFO - Naabu discovered 2 open ports across 1 live hosts; written to output/ports.txt pending service verification
+2026-07-29 17:41:46,153 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:41:46,153 - INFO - Identified 2 open ports across 1 live hosts
+2026-07-29 17:42:16,105 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-29/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 17:42:16,105 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:42:16,105 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:42:16,109 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-29/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 17:42:16,109 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:42:16,109 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:42:16,110 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-29/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 17:42:16,112 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:42:16,113 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:42:16,114 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-29/test_scan_ports_uses_targeted_0/ports.txt pending service verification
+2026-07-29 17:42:16,114 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:42:16,114 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:42:16,116 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-29/test_scan_ports_uses_full_nmap0/ports.txt pending service verification
+2026-07-29 17:42:16,116 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:42:16,116 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:42:16,117 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-29/test_scan_ports_parses_nmap_ou0/ports.txt pending service verification
+2026-07-29 17:42:16,117 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:42:16,117 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:42:16,119 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-29/test_scan_ports_enriches_web_p0/ports.txt pending service verification
+2026-07-29 17:42:16,119 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:42:16,119 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:42:16,157 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-29/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 17:42:16,157 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:42:16,157 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:43:16,925 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-30/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 17:43:16,926 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:43:16,926 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:43:16,929 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-30/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 17:43:16,929 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:43:16,930 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:43:16,931 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-30/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 17:43:16,933 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:43:16,933 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:43:16,935 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-30/test_scan_ports_uses_targeted_0/ports.txt pending service verification
+2026-07-29 17:43:16,935 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:43:16,935 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:43:16,937 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-30/test_scan_ports_uses_full_nmap0/ports.txt pending service verification
+2026-07-29 17:43:16,937 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:43:16,937 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:43:16,938 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-30/test_scan_ports_parses_nmap_ou0/ports.txt pending service verification
+2026-07-29 17:43:16,939 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:43:16,939 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:43:16,940 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-30/test_scan_ports_enriches_web_p0/ports.txt pending service verification
+2026-07-29 17:43:16,940 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:43:16,940 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:43:16,979 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-30/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 17:43:16,979 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:43:16,979 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:44:01,513 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-31/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 17:44:01,514 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:44:01,514 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:44:01,518 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-31/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 17:44:01,518 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:44:01,518 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:44:01,519 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-31/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 17:44:01,521 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:44:01,522 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:44:01,523 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-31/test_scan_ports_uses_targeted_0/ports.txt pending service verification
+2026-07-29 17:44:01,523 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:44:01,524 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:44:01,525 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-31/test_scan_ports_uses_full_nmap0/ports.txt pending service verification
+2026-07-29 17:44:01,525 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:44:01,525 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:44:01,526 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-31/test_scan_ports_parses_nmap_ou0/ports.txt pending service verification
+2026-07-29 17:44:01,527 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:44:01,527 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:44:01,528 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-31/test_scan_ports_enriches_web_p0/ports.txt pending service verification
+2026-07-29 17:44:01,528 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:44:01,528 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:44:01,568 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-31/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 17:44:01,568 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:44:01,568 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:44:15,469 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to out.txt pending service verification
+2026-07-29 17:44:15,470 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:44:15,470 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:51:51,465 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-32/test_scan_ports_uses_naabu_and0/ports.txt pending service verification
+2026-07-29 17:51:51,466 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:51:51,466 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:51:51,495 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-32/test_scan_ports_chunks_large_h0/ports.txt pending service verification
+2026-07-29 17:51:51,495 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:51:51,496 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:51:51,497 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-32/test_scan_ports_falls_back_to_0/ports.txt pending service verification
+2026-07-29 17:51:51,500 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:51:51,500 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:51:51,501 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-32/test_scan_ports_uses_targeted_0/ports.txt pending service verification
+2026-07-29 17:51:51,501 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:51:51,502 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:51:51,503 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-32/test_scan_ports_uses_full_nmap0/ports.txt pending service verification
+2026-07-29 17:51:51,503 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:51:51,503 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:51:51,505 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-32/test_scan_ports_parses_nmap_ou0/ports.txt pending service verification
+2026-07-29 17:51:51,505 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:51:51,505 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:51:51,506 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-32/test_scan_ports_enriches_web_p0/ports.txt pending service verification
+2026-07-29 17:51:51,507 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:51:51,507 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:51:51,531 - INFO - Naabu discovered 1 open ports across 1 live hosts; written to /Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-32/test_scan_ports_includes_nmap_0/ports.txt pending service verification
+2026-07-29 17:51:51,531 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:51:51,531 - INFO - Identified 1 open ports across 1 live hosts
+2026-07-29 17:59:08,729 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:59:08,729 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 17:59:08,730 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-33/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-07-29 17:59:08,731 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:59:08,731 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 17:59:08,745 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 17:59:08,750 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:59:08,750 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 17:59:08,752 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:59:08,752 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 17:59:08,754 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:59:08,754 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 17:59:08,773 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:59:08,773 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 17:59:08,774 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:59:08,775 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 17:59:08,776 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:59:08,776 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 17:59:48,930 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:59:48,930 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 17:59:48,931 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-34/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-07-29 17:59:48,932 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:59:48,932 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 17:59:48,947 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 17:59:48,951 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:59:48,951 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 17:59:48,953 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:59:48,953 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 17:59:48,955 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:59:48,955 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 17:59:48,975 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:59:48,975 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 17:59:48,977 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:59:48,977 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 17:59:48,979 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 17:59:48,979 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:00:06,808 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 18:00:06,808 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:03:31,637 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 18:03:31,637 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:04:15,418 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 18:04:15,419 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:05:33,044 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 18:05:33,044 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:06:18,046 - INFO - Starting reconnaissance for github.com
+2026-07-29 18:06:18,046 - INFO - Starting subdomain discovery
+2026-07-29 18:16:18,265 - INFO - Subdomain discovery completed in 600.2 seconds (41180 candidates)
+2026-07-29 18:16:18,265 - INFO - Starting live-host probing
+2026-07-29 18:16:18,269 - INFO - Starting dnsx resolution for 41180 candidates
+2026-07-29 18:41:26,370 - INFO - dnsx resolution completed: 278/41180 candidates resolved
+2026-07-29 18:41:26,444 - INFO - Starting httpx probe for 278 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-29 18:42:14,277 - INFO - Batch 1: httpx returned 252 lines
+2026-07-29 18:42:14,318 - INFO - Total live hosts found: 252
+2026-07-29 18:42:14,318 - INFO - Total dead hosts found: 40952
+2026-07-29 18:42:14,319 - INFO - Live-host probing completed in 240.7 seconds (252 live hosts)
+2026-07-29 18:42:14,319 - INFO - Starting port discovery
+2026-07-29 18:46:21,292 - INFO - Nmap service progress: 25/31 hosts
+2026-07-29 18:46:50,446 - INFO - Nmap service progress: 31/31 hosts
+2026-07-29 18:48:56,160 - INFO - Identified 41 open host-port combinations across 31 hosts
+2026-07-29 18:48:56,161 - INFO - Port discovery completed in 401.8 seconds
+2026-07-29 18:48:56,161 - INFO - Starting technology discovery
+2026-07-29 18:54:24,269 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 18:54:24,269 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:54:24,271 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-37/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-07-29 18:54:24,271 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 18:54:24,272 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:54:24,286 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:54:24,290 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 18:54:24,291 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:54:24,293 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 18:54:24,293 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:54:24,295 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 18:54:24,295 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:54:24,296 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 18:54:24,297 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:54:24,298 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 18:54:24,298 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:54:24,300 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 18:54:24,300 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:54:46,529 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 18:54:46,530 - INFO - Batch 1: httpx returned 2 lines
+2026-07-29 18:54:46,531 - INFO - Total live hosts found: 2
+2026-07-29 18:54:46,531 - INFO - Total dead hosts found: 1
+2026-07-29 18:54:46,532 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-07-29 18:54:46,532 - INFO - Batch 1: httpx returned 0 lines
+2026-07-29 18:54:46,532 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-07-29 18:54:46,534 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 18:54:46,534 - INFO - Batch 1: httpx returned 2 lines
+2026-07-29 18:54:46,535 - INFO - Total live hosts found: 2
+2026-07-29 18:54:46,535 - INFO - Total dead hosts found: 0
+2026-07-29 18:54:46,536 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 18:54:46,537 - INFO - Batch 1: httpx returned 1 lines
+2026-07-29 18:54:46,537 - INFO - Total live hosts found: 1
+2026-07-29 18:54:46,537 - INFO - Total dead hosts found: 1
+2026-07-29 18:54:46,540 - INFO - Starting dnsx resolution for 2 candidates
+2026-07-29 18:54:46,541 - INFO - dnsx resolution completed: 1/2 candidates resolved
+2026-07-29 18:54:46,541 - INFO - Starting httpx probe for 1 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-07-29 18:54:46,541 - INFO - Batch 1: httpx returned 1 lines
+2026-07-29 18:54:46,542 - INFO - Total live hosts found: 1
+2026-07-29 18:54:46,542 - INFO - Total dead hosts found: 1
+2026-07-29 18:54:46,547 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 18:54:46,547 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:54:46,548 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-38/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-07-29 18:54:46,549 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 18:54:46,549 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:54:46,563 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:54:46,567 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 18:54:46,568 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:54:46,569 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 18:54:46,570 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:54:46,571 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 18:54:46,572 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:54:46,573 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 18:54:46,574 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:54:46,575 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 18:54:46,575 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 18:54:46,577 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 18:54:46,577 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:05:46,134 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:05:46,135 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:05:46,136 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-39/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-07-29 19:05:46,137 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:05:46,138 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:05:46,152 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:05:46,155 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:05:46,156 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:05:46,158 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:05:46,158 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:05:46,160 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:05:46,160 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:05:46,162 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:05:46,162 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:05:46,164 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:05:46,164 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:05:46,165 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:05:46,166 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:10:10,570 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:10:10,570 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:10:10,572 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-40/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-07-29 19:10:10,572 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:10:10,572 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:10:10,587 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:10:10,591 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:10:10,591 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:10:10,593 - WARNING - Nmap service scan failed for example.com: assert '-O' in ['nmap', '-Pn', '-T4', '-sV', '-sC', '--version-all', ...]
+2026-07-29 19:10:10,593 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:10:10,593 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:10:10,595 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:10:10,596 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:10:10,597 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:10:10,597 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:10:10,599 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:10:10,599 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:10:10,601 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:10:10,601 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:10:51,524 - INFO - Starting reconnaissance for github.com
+2026-07-29 19:10:51,524 - INFO - Starting subdomain discovery
+2026-07-29 19:11:52,267 - INFO - Subdomain discovery completed in 60.7 seconds (41145 candidates)
+2026-07-29 19:11:52,268 - INFO - Starting live-host probing
+2026-07-29 19:11:52,271 - INFO - Starting dnsx resolution for 41145 candidates
+2026-07-29 19:16:14,259 - INFO - dnsx resolution completed: 147/41145 candidates resolved
+2026-07-29 19:16:14,300 - INFO - Starting httpx probe for 147 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-29 19:16:59,247 - INFO - Batch 1: httpx returned 118 lines
+2026-07-29 19:16:59,287 - INFO - Total live hosts found: 118
+2026-07-29 19:16:59,287 - INFO - Total dead hosts found: 41037
+2026-07-29 19:16:59,288 - INFO - Live-host probing completed in 307.0 seconds (118 live hosts)
+2026-07-29 19:16:59,288 - INFO - Starting port discovery
+2026-07-29 19:20:29,992 - INFO - Nmap service progress: 25/39 hosts
+2026-07-29 19:21:58,766 - INFO - Nmap service progress: 39/39 hosts
+2026-07-29 19:24:17,699 - INFO - Identified 61 open host-port combinations across 39 hosts
+2026-07-29 19:24:17,700 - INFO - Port discovery completed in 438.4 seconds
+2026-07-29 19:24:17,700 - INFO - Starting technology discovery
+2026-07-29 19:25:12,555 - INFO - Technology discovery completed in 54.9 seconds
+2026-07-29 19:25:12,555 - INFO - Starting security detection
+2026-07-29 19:31:22,819 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:31:22,820 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:31:22,821 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-41/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-07-29 19:31:22,822 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:31:22,822 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:31:22,836 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:31:22,840 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:31:22,841 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:31:22,842 - WARNING - Nmap service scan failed for example.com: assert '-O' in ['nmap', '-Pn', '-T4', '-sV', '-sC', '--version-all', ...]
+2026-07-29 19:31:22,842 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:31:22,842 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:31:22,844 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:31:22,844 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:31:22,846 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:31:22,846 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:31:22,848 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:31:22,848 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:31:22,850 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:31:22,850 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:35:32,644 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:35:32,645 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:35:32,647 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-42/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-07-29 19:35:32,648 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:35:32,648 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:35:32,667 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:35:32,672 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:35:32,673 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:35:32,675 - WARNING - Nmap service scan failed for example.com: assert '-O' in ['nmap', '-Pn', '-T4', '-sV', '-sC', '--version-all', ...]
+2026-07-29 19:35:32,675 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:35:32,676 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:35:32,678 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:35:32,678 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:35:32,680 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:35:32,680 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:35:32,683 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:35:32,684 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:35:32,686 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:35:32,686 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:36:37,628 - INFO - Starting reconnaissance for github.com
+2026-07-29 19:36:37,628 - INFO - Starting subdomain discovery
+2026-07-29 19:41:33,039 - INFO - Subdomain discovery completed in 295.4 seconds (41136 candidates)
+2026-07-29 19:41:33,039 - INFO - Starting live-host probing
+2026-07-29 19:41:33,043 - INFO - Starting dnsx resolution for 41136 candidates
+2026-07-29 19:46:05,764 - INFO - dnsx resolution completed: 123/41136 candidates resolved
+2026-07-29 19:46:05,802 - INFO - Starting httpx probe for 123 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-29 19:46:50,210 - INFO - Batch 1: httpx returned 100 lines
+2026-07-29 19:46:50,250 - INFO - Total live hosts found: 100
+2026-07-29 19:46:50,250 - INFO - Total dead hosts found: 41039
+2026-07-29 19:46:50,251 - INFO - Live-host probing completed in 317.2 seconds (100 live hosts)
+2026-07-29 19:46:50,251 - INFO - Starting port discovery
+2026-07-29 19:50:23,558 - INFO - Nmap service progress: 25/56 hosts
+2026-07-29 19:53:06,120 - INFO - Nmap service progress: 50/56 hosts
+2026-07-29 19:53:51,875 - INFO - Nmap service progress: 56/56 hosts
+2026-07-29 19:56:27,474 - INFO - Identified 83 open host-port combinations across 56 hosts
+2026-07-29 19:56:27,474 - INFO - Port discovery completed in 577.2 seconds
+2026-07-29 19:56:27,474 - INFO - Starting technology discovery
+2026-07-29 19:57:23,801 - INFO - Technology discovery completed in 56.3 seconds
+2026-07-29 19:57:23,802 - INFO - Starting security detection
+2026-07-29 19:58:24,918 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:58:24,918 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:58:24,919 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-43/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-07-29 19:58:24,920 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:58:24,920 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:58:24,934 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:58:24,939 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:58:24,939 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:58:24,941 - WARNING - Nmap service scan failed for example.com: assert '-O' in ['nmap', '-Pn', '-T4', '-sV', '-sC', '--version-all', ...]
+2026-07-29 19:58:24,941 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:58:24,942 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:58:24,944 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:58:24,944 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:58:24,946 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:58:24,946 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:58:24,948 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:58:24,948 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-29 19:58:24,950 - INFO - Nmap service progress: 1/1 hosts
+2026-07-29 19:58:24,950 - INFO - Identified 1 open host-port combinations across 1 hosts

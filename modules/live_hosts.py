@@ -17,16 +17,16 @@ def _dnsx_resolve_candidates(
     env: dict[str, str],
     output_path: Path,
     logger: Any,
-) -> list[str]:
+) -> tuple[list[str], list[str]]:
     dnsx_options = config.get("dnsx_options", {})
     if not bool(dnsx_options.get("enabled", False)):
-        return candidates
+        return candidates, []
 
     dnsx_bin = config.get("tools", {}).get("dnsx", "dnsx")
     executable = shutil.which(dnsx_bin, path=env.get("PATH", ""))
     if not executable:
         logger.warning("dnsx is enabled but was not found; probing all candidates with httpx")
-        return candidates
+        return candidates, []
 
     input_path = output_path.with_suffix(".dnsx_input.txt")
     result_path = output_path.with_suffix(".dnsx_output.txt")
@@ -63,12 +63,13 @@ def _dnsx_resolve_candidates(
                 result.returncode,
                 diagnostics or "none",
             )
-            return candidates
+            return candidates, []
         logger.info("dnsx resolution completed: %d/%d candidates resolved", len(resolved), len(candidates))
-        return resolved
+        unresolved = [candidate for candidate in candidates if candidate not in resolved]
+        return resolved, unresolved
     except (OSError, subprocess.SubprocessError) as exc:
         logger.warning("dnsx failed (%s); probing all candidates with httpx", exc)
-        return candidates
+        return candidates, []
     finally:
         input_path.unlink(missing_ok=True)
         result_path.unlink(missing_ok=True)
@@ -92,6 +93,31 @@ def _parse_httpx_output(stdout: str, seen: set[str]) -> list[str]:
                 seen.add(line)
                 hosts.append(line)
     return hosts
+
+
+def _normalize_host(host: str) -> str:
+    cleaned = host.strip()
+    if not cleaned:
+        return ""
+    if not (cleaned.startswith("http://") or cleaned.startswith("https://")):
+        cleaned = f"https://{cleaned}"
+    return cleaned
+
+
+def _write_hosts_file(path: Path, hosts: list[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    seen: set[str] = set()
+    unique_hosts: list[str] = []
+    for host in hosts:
+        normalized = _normalize_host(host)
+        if not normalized or normalized in seen:
+            continue
+        seen.add(normalized)
+        unique_hosts.append(normalized)
+    if unique_hosts:
+        path.write_text("\n".join(unique_hosts) + "\n", encoding="utf-8")
+    else:
+        path.write_text("", encoding="utf-8")
 
 
 def _process_batch(
@@ -197,7 +223,9 @@ def _process_batch(
 
 def discover_live_hosts(subdomains: list[str], config: dict[str, Any]) -> list[str]:
     output_path = Path(config.get("output", {}).get("live_hosts", "output/live_hosts.txt"))
+    dead_output_path = Path(config.get("output", {}).get("dead_hosts", output_path.with_name("dead_host.txt")))
     output_path.parent.mkdir(parents=True, exist_ok=True)
+    dead_output_path.parent.mkdir(parents=True, exist_ok=True)
 
     httpx_bin = config.get("tools", {}).get("httpx", "httpx")
     timeout = int(config.get("timeouts", {}).get("httpx", 60))
@@ -241,7 +269,8 @@ def discover_live_hosts(subdomains: list[str], config: dict[str, Any]) -> list[s
         parallel_workers = int(httpx_opts.get("parallel_workers", 3))
         max_total_threads = int(httpx_opts.get("max_total_threads", threads_int * parallel_workers))
 
-        probe_subdomains = _dnsx_resolve_candidates(probe_subdomains, config, env, output_path, logger)
+        resolved_candidates, dnsx_dead_candidates = _dnsx_resolve_candidates(probe_subdomains, config, env, output_path, logger)
+        probe_subdomains = resolved_candidates
 
         total = len(probe_subdomains)
         batches = []
@@ -282,6 +311,7 @@ def discover_live_hosts(subdomains: list[str], config: dict[str, Any]) -> list[s
 
         all_hosts: list[str] = []
         output_path.unlink(missing_ok=True)
+        dead_output_path.unlink(missing_ok=True)
         with ThreadPoolExecutor(max_workers=parallel_workers) as executor:
             futures = [
                 executor.submit(
@@ -349,8 +379,22 @@ def discover_live_hosts(subdomains: list[str], config: dict[str, Any]) -> list[s
                     logger.error("Error processing batch: %s", exc)
 
         if all_hosts:
-            logger.info("Total live hosts found: %d", len(all_hosts))
-            return all_hosts
+            normalized_live_hosts = [_normalize_host(host) for host in all_hosts if _normalize_host(host)]
+            normalized_live_hosts = list(dict.fromkeys(normalized_live_hosts))
+            normalized_probe_hosts = [_normalize_host(host) for host in probe_subdomains if _normalize_host(host)]
+            normalized_probe_hosts = list(dict.fromkeys(normalized_probe_hosts))
+            normalized_dnsx_dead_hosts = [_normalize_host(host) for host in dnsx_dead_candidates if _normalize_host(host)]
+            normalized_dnsx_dead_hosts = list(dict.fromkeys(normalized_dnsx_dead_hosts))
+            dead_hosts = [
+                host for host in normalized_dnsx_dead_hosts + [host for host in normalized_probe_hosts if host not in set(normalized_live_hosts)]
+                if host
+            ]
+            dead_hosts = list(dict.fromkeys(dead_hosts))
+            _write_hosts_file(output_path, normalized_live_hosts)
+            _write_hosts_file(dead_output_path, dead_hosts)
+            logger.info("Total live hosts found: %d", len(normalized_live_hosts))
+            logger.info("Total dead hosts found: %d", len(dead_hosts))
+            return normalized_live_hosts
 
     hosts = []
     seen_fallback: set[str] = set()
@@ -365,5 +409,6 @@ def discover_live_hosts(subdomains: list[str], config: dict[str, Any]) -> list[s
         seen_fallback.add(h)
         hosts.append(h)
 
-    output_path.write_text("\n".join(hosts) + "\n", encoding="utf-8")
+    _write_hosts_file(output_path, hosts)
+    _write_hosts_file(dead_output_path, [])
     return hosts
