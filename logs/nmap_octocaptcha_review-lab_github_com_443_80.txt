@@ -1,0 +1,8 @@
+STDOUT:
+Starting Nmap 7.99 ( https://nmap.org ) at 2026-07-30 14:57 +0530
+Nmap done: 0 IP addresses (0 hosts up) scanned in 0.63 seconds
+
+
+STDERR:
+Failed to resolve "octocaptcha.review-lab.github.com".
+WARNING: No targets were specified, so 0 hosts scanned.

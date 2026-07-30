@@ -6,6 +6,9 @@ tools:
   nmap: nmap
   whatweb: whatweb
   webanalyze: /Users/sohampatil/go/bin/webanalyze
+  nuclei: nuclei
+  nuclei_templates: output/.nuclei-home/nuclei-templates
+  nikto: nikto
 
 output:
   subdomains: output/subdomains.txt
@@ -13,6 +16,7 @@ output:
   dead_hosts: output/dead_host.txt
   ports: output/ports.txt
   technologies: output/technologies.txt
+  security: output/security.txt
 
 logging:
   file: logs/scan.log
@@ -28,6 +32,7 @@ timeouts:
   nmap: 60
   whatweb: 60
   webanalyze: 30
+  nikto: 60
 
 threads: 5
 

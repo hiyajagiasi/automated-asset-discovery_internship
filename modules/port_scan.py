@@ -184,7 +184,7 @@ def _parse_nmap(
 
 def _write_results(output_path: Path, ports: list[dict[str, str]]) -> None:
     lines = [
-        f"{item['host']}:{item['port']} ({item['service']}) [subdomain={item['host']}]"
+        f"{item['host']}:{item['port']} ({item['service']})"
         for item in ports
     ]
     output_path.write_text("\n".join(lines) + ("\n" if lines else ""), encoding="utf-8")

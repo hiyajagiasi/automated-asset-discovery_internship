@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import shutil
 import subprocess
 from pathlib import Path
@@ -10,33 +11,121 @@ from typing import Any
 from modules.utils import get_logger, load_hosts_from_output
 
 
-def _parse_nuclei_output(stdout: str) -> list[dict[str, Any]]:
+def _normalize_nikto_finding(payload: Any, host: str) -> dict[str, Any]:
+    if isinstance(payload, dict):
+        description = (
+            payload.get("message")
+            or payload.get("description")
+            or payload.get("msg")
+            or payload.get("name")
+            or payload.get("id")
+            or "Nikto finding"
+        )
+        code = payload.get("id") or payload.get("code") or payload.get("template_id") or "unknown"
+        return {
+            "template_id": f"nikto-{code}",
+            "name": str(description),
+            "severity": "medium",
+            "description": str(description),
+            "tags": ["nikto", "web"],
+            "matched_at": host,
+            "host": host,
+        }
+
+    return {
+        "template_id": "nikto-unknown",
+        "name": str(payload),
+        "severity": "medium",
+        "description": str(payload),
+        "tags": ["nikto", "web"],
+        "matched_at": host,
+        "host": host,
+    }
+
+
+def _parse_nikto_output(stdout: str, host: str = "") -> list[dict[str, Any]]:
     findings: list[dict[str, Any]] = []
+    if not stdout.strip():
+        return findings
+
+    try:
+        payload = json.loads(stdout)
+    except (TypeError, json.JSONDecodeError):
+        payload = None
+
+    if isinstance(payload, list):
+        return [_normalize_nikto_finding(item, host) for item in payload if item is not None]
+    if isinstance(payload, dict):
+        return [_normalize_nikto_finding(payload, host)]
+
     for line in stdout.splitlines():
         line = line.strip()
         if not line:
             continue
-        try:
-            payload = json.loads(line)
-        except json.JSONDecodeError:
+
+        if line.startswith("+ Target") or line.startswith("+ Server") or line.startswith("+ SSL Info") or line.startswith("+ Platform"):
             continue
 
-        info = payload.get("info") or {}
-        matched_at = payload.get("matched-at") or payload.get("matched_at") or ""
-        host = payload.get("host") or matched_at or ""
-        if host.startswith("http://") or host.startswith("https://"):
-            host = host.replace("https://", "", 1).replace("http://", "", 1)
-        match = {
-            "template_id": payload.get("template-id") or payload.get("template_id") or "",
-            "name": info.get("name") or "Unnamed finding",
-            "severity": (info.get("severity") or "info").lower(),
-            "description": info.get("description") or "",
-            "tags": info.get("tags") or [],
-            "matched_at": matched_at,
-            "host": host,
-        }
-        findings.append(match)
+        if line.startswith("ERROR:") or line.startswith("- STATUS:") or line.startswith("- Scan terminated") or line.startswith("- End Time"):
+            continue
+
+        if line.startswith("+ "):
+            content = line[2:].strip()
+            if not content:
+                continue
+            if re.search(r"\b(host\(s\) tested|requests:|errors and|items reported|remote host)\b", content, re.IGNORECASE):
+                continue
+
+        match = re.match(r"^\+\s+\[(\d+)\]\s+(.+)$", line)
+        if match:
+            code, description = match.groups()
+            findings.append(
+                {
+                    "template_id": f"nikto-{code}",
+                    "name": description.strip(),
+                    "severity": "medium",
+                    "description": description.strip(),
+                    "tags": ["nikto", "web"],
+                    "matched_at": host,
+                    "host": host,
+                }
+            )
+            continue
+
+        match = re.match(r"^\+\s+(\d+)\s+(.+)$", line)
+        if match:
+            code, description = match.groups()
+            findings.append(
+                {
+                    "template_id": f"nikto-{code}",
+                    "name": description.strip(),
+                    "severity": "medium",
+                    "description": description.strip(),
+                    "tags": ["nikto", "web"],
+                    "matched_at": host,
+                    "host": host,
+                }
+            )
+            continue
+
     return findings
+
+
+def _run_nikto_command(cmd: list[str], env: dict[str, str], timeout: int) -> tuple[str, str, int, bool]:
+    try:
+        completed = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=timeout,
+            env=env,
+        )
+        return completed.stdout or "", completed.stderr or "", completed.returncode or 0, False
+    except subprocess.TimeoutExpired as exc:
+        stdout = exc.stdout or ""
+        stderr = exc.stderr or ""
+        return stdout, stderr, 124, True
 
 
 def discover_security_findings(hosts: list[str], config: dict[str, Any]) -> list[dict[str, Any]]:
@@ -44,25 +133,16 @@ def discover_security_findings(hosts: list[str], config: dict[str, Any]) -> list
     output_path = output_path.resolve()
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    nuclei_bin = config.get("tools", {}).get("nuclei", "nuclei")
-    timeout = int(config.get("timeouts", {}).get("nuclei", 60))
+    nikto_bin = config.get("tools", {}).get("nikto", "nikto")
 
     env = os.environ.copy()
     local_bin = Path(__file__).resolve().parents[1] / ".bin"
     env["PATH"] = str(local_bin) + os.pathsep + env.get("PATH", "")
 
-    writable_home = output_path.parent / ".nuclei-home"
-    writable_home.mkdir(parents=True, exist_ok=True)
-    env.setdefault("HOME", str(writable_home))
-    env["HOME"] = str(writable_home)
-    env.setdefault("XDG_CONFIG_HOME", str(writable_home / ".config"))
-    env["XDG_CONFIG_HOME"] = str(writable_home / ".config")
-    (Path(env["XDG_CONFIG_HOME"])).mkdir(parents=True, exist_ok=True)
-
     try:
-        executable = shutil.which(nuclei_bin, path=env.get("PATH", ""))
+        executable = shutil.which(nikto_bin, path=env.get("PATH", ""))
     except TypeError:
-        executable = shutil.which(nuclei_bin)
+        executable = shutil.which(nikto_bin)
 
     target_hosts = [host.strip() for host in hosts if host and host.strip()]
     if not target_hosts:
@@ -79,80 +159,88 @@ def discover_security_findings(hosts: list[str], config: dict[str, Any]) -> list
 
     for start in range(0, len(target_hosts), batch_size):
         batch_hosts = target_hosts[start : start + batch_size]
-        normalized_batch = []
-        for host in batch_hosts:
-            if host.startswith(("http://", "https://")):
-                normalized_batch.append(host)
+        for host_index, host in enumerate(batch_hosts):
+            normalized_host = host if host.startswith(("http://", "https://")) else f"https://{host}"
+            output_file = output_path.with_suffix(f".nikto_{start}_{host_index}.txt")
+            if output_file.exists():
+                output_file.unlink()
+
+            cmd = [
+                executable,
+                "-nointeractive",
+                "-nocheck",
+                "-maxtime",
+                "8s",
+                "-Tuning",
+                "3,4,5",
+                "-Plugins",
+                "httpmethods,headers,serverinfo",
+                "-Format",
+                "txt",
+                "-output",
+                str(output_file),
+                "-host",
+                normalized_host,
+            ]
+
+            timeout_seconds = int(config.get("timeouts", {}).get("nikto", 60))
+            try:
+                stdout, stderr, returncode, timed_out = _run_nikto_command(cmd, env, timeout_seconds)
+            except OSError as exc:
+                logger.warning("Nikto batch %d failed to start: %s", start, exc)
+                continue
+
+            if timed_out:
+                logger.warning("Nikto batch %d timed out after %s seconds", start, timeout_seconds)
+
+            if returncode != 0 and not stdout.strip() and not output_file.exists():
+                logger.warning(
+                    "Nikto batch %d exited with code %s: %s",
+                    start,
+                    returncode,
+                    (stderr or "").strip() or "no stderr",
+                )
+
+            report_text = ""
+            if output_file.exists():
+                report_text = output_file.read_text(encoding="utf-8", errors="ignore")
+                output_file.unlink(missing_ok=True)
             else:
-                normalized_batch.append(f"https://{host}")
+                report_text = stdout or ""
 
-        input_path = output_path.with_suffix(f".nuclei_input_{start}.txt")
-        input_path.write_text("\n".join(normalized_batch) + "\n", encoding="utf-8")
+            if report_text.strip():
+                findings.extend(_parse_nikto_output(report_text, host))
+            elif stderr and stderr.strip():
+                findings.extend(
+                    [
+                        {
+                            "template_id": "nikto-warning",
+                            "name": stderr.strip().splitlines()[0],
+                            "severity": "info",
+                            "description": stderr.strip(),
+                            "tags": ["nikto", "warning"],
+                            "matched_at": host,
+                            "host": host,
+                        }
+                    ]
+                )
 
-        output_file = input_path.with_suffix(".jsonl")
-        if output_file.exists():
-            output_file.unlink()
-
-        cmd = [
-            executable,
-            "-list",
-            str(input_path),
-            "-jsonl",
-            "-silent",
-            "-tags",
-            "ssl,dns,http,misconfig,exposure",
-            "-severity",
-            "info,low,medium",
-            "-timeout",
-            "10",
-            "-c",
-            "25",
-            "-bulk-size",
-            "10",
-            "-rate-limit",
-            "100",
-            "-o",
-            str(output_file),
-        ]
-
-        try:
-            completed = subprocess.run(
-                cmd,
-                capture_output=True,
-                text=True,
-                check=False,
-                timeout=900,
-                env=env,
-            )
-        except subprocess.TimeoutExpired as exc:
-            logger.warning("Nuclei batch %d timed out after %s seconds", start, exc.timeout)
-            input_path.unlink(missing_ok=True)
+    seen: set[tuple[str, str, str]] = set()
+    unique_findings: list[dict[str, Any]] = []
+    for finding in findings:
+        key = (
+            str(finding.get("host", "")),
+            str(finding.get("template_id", "")),
+            str(finding.get("matched_at", "")),
+        )
+        if key in seen:
             continue
-        except OSError as exc:
-            logger.warning("Nuclei batch %d failed to start: %s", start, exc)
-            input_path.unlink(missing_ok=True)
-            continue
-        finally:
-            if input_path.exists():
-                input_path.unlink(missing_ok=True)
-
-        if completed.returncode != 0 and not completed.stdout.strip() and not output_file.exists():
-            logger.warning(
-                "Nuclei batch %d exited with code %s: %s",
-                start,
-                completed.returncode,
-                (completed.stderr or "").strip() or "no stderr",
-            )
-
-        if output_file.exists():
-            findings.extend(_parse_nuclei_output(output_file.read_text(encoding="utf-8")))
-            output_file.unlink(missing_ok=True)
-        else:
-            findings.extend(_parse_nuclei_output(completed.stdout or ""))
+        seen.add(key)
+        unique_findings.append(finding)
 
     output_lines = []
-    for finding in findings:
+    for finding in unique_findings:
         output_lines.append(json.dumps(finding, sort_keys=True))
     output_path.write_text("\n".join(output_lines) + ("\n" if output_lines else ""), encoding="utf-8")
 
-    return findings
+    return unique_findings

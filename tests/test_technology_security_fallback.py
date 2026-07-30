@@ -53,16 +53,17 @@ def test_discover_security_findings_falls_back_to_live_hosts_output(tmp_path, mo
             "security": str(output_dir / "security.txt"),
             "live_hosts": str(live_hosts_file),
         },
-        "tools": {"nuclei": "nuclei"},
-        "timeouts": {"nuclei": 10},
+        "tools": {"nikto": "nikto"},
+        "timeouts": {"nikto": 10},
     }
 
     def fake_which(*args, **kwargs):
-        return "/usr/bin/nuclei"
+        return "/usr/bin/nikto"
 
     def fake_run(cmd, capture_output, text, timeout, env=None, **kwargs):
-        assert "https://example.com" in Path(cmd[cmd.index("-list") + 1]).read_text(encoding="utf-8")
-        return SimpleNamespace(stdout='{"template-id":"cve-test","info":{"name":"Test finding","severity":"high","description":"desc","tags":["cve"]},"matched-at":"https://example.com"}\n', returncode=0, stderr="")
+        assert cmd[13] == "-host"
+        assert cmd[14] == "https://example.com"
+        return SimpleNamespace(stdout="+ 1234 Test finding\n", returncode=0, stderr="")
 
     monkeypatch.setattr("modules.security.shutil.which", fake_which)
     monkeypatch.setattr("modules.security.subprocess.run", fake_run)

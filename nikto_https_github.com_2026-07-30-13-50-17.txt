@@ -1,0 +1,10 @@
+- Nikto v2.6.0/
++ Target Host: github.com
++ Target Port: 443
++ GET /: Uncommon header(s) 'x-github-request-id' found, with contents: 817F:3A2ED5:B5619:C1640:6A6B0945.
++ GET /: Cookie _octo created without the httponly flag. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies: 
++ SSL Info:           Subject:  /CN=github.com
+                      CN:       github.com
+                      SAN:      github.com, www.github.com
+                      Ciphers:  AEAD-CHACHA20-POLY1305-SHA256
+                      Issuer:   /C=GB/O=Sectigo Limited/CN=Sectigo Public Server Authentication CA DV E36
