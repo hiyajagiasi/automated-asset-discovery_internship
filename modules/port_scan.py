@@ -640,8 +640,18 @@ def _parse_nmap_xml(
 
 
 def _write_results(output_path: Path, ports: list[dict[str, str]]) -> None:
-    lines = [f"{item['host']}:{item['port']} ({item['service']})" for item in ports]
-    output_path.write_text("\n".join(lines) + ("\n" if lines else ""), encoding="utf-8")
+    if not ports:
+        output_path.write_text("No open ports discovered.\n", encoding="utf-8")
+        return
+
+    sections: list[str] = ["Open Ports", "==========", ""]
+    for item in ports:
+        host = item.get("host", "unknown")
+        port = item.get("port", "unknown")
+        service = item.get("service", "unknown")
+        sections.append(f"- {host}:{port} -> {service}")
+    sections.append("")
+    output_path.write_text("\n".join(sections), encoding="utf-8")
 
 
 def _fallback_service(port: str) -> str:

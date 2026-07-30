@@ -3977,3 +3977,71 @@
 2026-07-30 16:58:10,786 - INFO - Starting security detection
 2026-07-30 17:11:50,488 - INFO - Security detection completed in 819.7 seconds
 2026-07-30 17:11:50,581 - INFO - Completed reconnaissance for github.com
+2026-07-30 18:02:59,796 - INFO - Nmap service progress: 1/1 hosts
+2026-07-30 18:02:59,796 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-30 18:02:59,808 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-28/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-07-30 18:02:59,808 - INFO - Nmap service progress: 1/1 hosts
+2026-07-30 18:02:59,808 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-30 18:02:59,816 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-30 18:02:59,819 - INFO - Nmap service progress: 1/1 hosts
+2026-07-30 18:02:59,819 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-30 18:02:59,821 - WARNING - Nmap service scan failed for example.com: assert 'default,safe...-cookie-flags' == 'default,safe...der,http-enum'
+  
+  Skipping 98 identical leading characters in diff, use -v to show
+  [0m[91m- r,http-enum[39;49;00m[90m[39;49;00m
+  [92m+ r,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags[39;49;00m[90m[39;49;00m
+2026-07-30 18:02:59,821 - INFO - Nmap service progress: 1/1 hosts
+2026-07-30 18:02:59,821 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-30 18:02:59,822 - INFO - Nmap service progress: 1/1 hosts
+2026-07-30 18:02:59,822 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-30 18:02:59,823 - INFO - Nmap service progress: 1/1 hosts
+2026-07-30 18:02:59,823 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-30 18:02:59,824 - INFO - Nmap service progress: 1/1 hosts
+2026-07-30 18:02:59,824 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-30 18:02:59,825 - WARNING - Nmap is unavailable; returning Naabu discoveries without service verification
+2026-07-30 18:02:59,826 - INFO - Nmap service progress: 1/1 hosts
+2026-07-30 18:02:59,826 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-30 18:03:09,771 - INFO - Nmap service progress: 1/1 hosts
+2026-07-30 18:03:09,772 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-30 18:03:09,772 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-29/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-07-30 18:03:09,773 - INFO - Nmap service progress: 1/1 hosts
+2026-07-30 18:03:09,773 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-30 18:03:09,780 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-30 18:03:09,782 - INFO - Nmap service progress: 1/1 hosts
+2026-07-30 18:03:09,782 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-30 18:03:09,784 - WARNING - Nmap service scan failed for example.com: assert 'default,safe...-cookie-flags' == 'default,safe...der,http-enum'
+  
+  Skipping 98 identical leading characters in diff, use -v to show
+  [0m[91m- r,http-enum[39;49;00m[90m[39;49;00m
+  [92m+ r,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags[39;49;00m[90m[39;49;00m
+2026-07-30 18:03:09,784 - INFO - Nmap service progress: 1/1 hosts
+2026-07-30 18:03:09,784 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-30 18:03:09,785 - INFO - Nmap service progress: 1/1 hosts
+2026-07-30 18:03:09,785 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-30 18:03:09,786 - INFO - Nmap service progress: 1/1 hosts
+2026-07-30 18:03:09,786 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-30 18:03:09,787 - INFO - Nmap service progress: 1/1 hosts
+2026-07-30 18:03:09,787 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-30 18:03:09,788 - WARNING - Nmap is unavailable; returning Naabu discoveries without service verification
+2026-07-30 18:03:09,789 - INFO - Nmap service progress: 1/1 hosts
+2026-07-30 18:03:09,789 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-07-30 18:14:33,695 - INFO - Starting reconnaissance for github.com
+2026-07-30 18:14:33,695 - INFO - Starting subdomain discovery
+2026-07-30 18:14:33,967 - INFO - Subdomain discovery completed in 0.3 seconds (4 candidates)
+2026-07-30 18:14:33,967 - INFO - Starting live-host probing
+2026-07-30 18:14:33,967 - INFO - Starting dnsx resolution for 4 candidates
+2026-07-30 18:14:34,722 - INFO - dnsx resolution completed: 2/4 candidates resolved
+2026-07-30 18:14:34,722 - INFO - Starting httpx probe for 2 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-30 18:14:35,953 - INFO - Batch 1: httpx returned 2 lines
+2026-07-30 18:14:35,954 - INFO - Total live hosts found: 2
+2026-07-30 18:14:35,954 - INFO - Total dead hosts found: 2
+2026-07-30 18:14:35,954 - INFO - Live-host probing completed in 2.0 seconds (2 live hosts)
+2026-07-30 18:14:35,954 - INFO - Starting port discovery
+2026-07-30 18:15:41,738 - INFO - Nmap service progress: 2/2 hosts
+2026-07-30 18:15:55,437 - INFO - Identified 6 open host-port combinations across 2 hosts
+2026-07-30 18:15:55,437 - INFO - Port discovery completed in 79.5 seconds
+2026-07-30 18:15:55,437 - INFO - Starting technology discovery
+2026-07-30 18:15:57,624 - INFO - Technology discovery completed in 2.2 seconds
+2026-07-30 18:15:57,624 - INFO - Starting security detection
+2026-07-30 18:15:59,812 - INFO - Security detection completed in 2.2 seconds
+2026-07-30 18:15:59,881 - INFO - Completed reconnaissance for github.com

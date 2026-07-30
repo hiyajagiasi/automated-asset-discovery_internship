@@ -432,8 +432,12 @@ def discover_technologies(hosts: list[str], config: dict[str, Any]) -> list[dict
     # Rebuild results in original host order
     technologies = [technologies_by_host[host] for host in target_hosts if host in technologies_by_host]
 
-    output_path.write_text(
-        "\n".join(f"{item['host']}:{item['technology']}" for item in technologies) + "\n",
-        encoding="utf-8",
-    )
+    sections: list[str] = ["Technology Findings", "===================", ""]
+    for item in technologies:
+        host = item.get("host", "unknown")
+        technology = item.get("technology", "unknown")
+        sections.append(f"- {host}")
+        sections.append(f"  {technology}")
+    sections.append("")
+    output_path.write_text("\n".join(sections), encoding="utf-8")
     return technologies

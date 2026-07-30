@@ -52,7 +52,9 @@ def test_scan_ports_uses_naabu_and_nmap_output(monkeypatch, tmp_path):
 
     assert_port_result(result, "example.com", "443", "https")
     assert (tmp_path / "ports.txt").exists()
-    assert (tmp_path / "ports.txt").read_text(encoding="utf-8").strip() == "example.com:443 (https)"
+    content = (tmp_path / "ports.txt").read_text(encoding="utf-8").strip()
+    assert "Open Ports" in content
+    assert "- example.com:443 -> https" in content
 
 
 def test_scan_ports_retries_transient_naabu_failures(monkeypatch, tmp_path):
