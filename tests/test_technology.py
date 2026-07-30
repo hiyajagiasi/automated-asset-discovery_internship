@@ -117,6 +117,30 @@ def test_discover_technologies_uses_hostname_fallback_for_google_hosts(tmp_path,
     assert "Webanalyze:" in results[0]["technology"]
 
 
+def test_discover_technologies_uses_clear_fallback_labels_when_nothing_matches(tmp_path, monkeypatch):
+    output_dir = tmp_path / "output"
+    output_dir.mkdir()
+    config = {
+        "output": {"technologies": str(output_dir / "technologies.txt")},
+        "tools": {"httpx": "httpx", "webanalyze": "webanalyze"},
+        "timeouts": {"httpx": 10, "webanalyze": 10},
+    }
+
+    def fake_run(cmd, capture_output, text, timeout, **kwargs):
+        if cmd[0] == "httpx":
+            return SimpleNamespace(stdout='{"headers": {}}', returncode=0)
+        if cmd[0] == "webanalyze":
+            return SimpleNamespace(stdout='{}', returncode=0)
+        return SimpleNamespace(stdout='{}', returncode=0)
+
+    monkeypatch.setattr("modules.technology.subprocess.run", fake_run)
+
+    results = discover_technologies(["example.com"], config)
+
+    assert "HTTPX: unreachable" in results[0]["technology"]
+    assert "Webanalyze: no fingerprint matched" in results[0]["technology"]
+
+
 def test_discover_technologies_parses_webanalyze_matches_payload(tmp_path, monkeypatch):
     output_dir = tmp_path / "output"
     output_dir.mkdir()

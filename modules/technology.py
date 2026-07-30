@@ -347,16 +347,14 @@ def _discover_single_technology(
         if host_fallback:
             httpx_technology = host_fallback
 
-    # Only show "unknown" if we actually tried and failed, not just as a default
-    # For unreachable hosts, provide a minimal but honest report
+    # Use clearer fallback labels that distinguish between a truly unreachable host
+    # and a reachable host that simply did not match any known fingerprint.
     if httpx_technology == "unknown" and webanalyze_technology == "unknown":
-        # Host likely doesn't exist or is unreachable
         httpx_technology = "unreachable"
+        webanalyze_technology = "no fingerprint matched"
     elif httpx_technology == "unknown":
-        # Webanalyze found something but httpx didn't
         httpx_technology = "no fingerprint matched"
     elif webanalyze_technology == "unknown":
-        # HTTPX found something but webanalyze didn't - this is normal for many sites
         webanalyze_technology = "no fingerprint matched"
 
     # Combine results - always show HTTPX and Webanalyze

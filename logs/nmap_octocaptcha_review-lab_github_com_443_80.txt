@@ -1,6 +1,11 @@
 STDOUT:
-Starting Nmap 7.99 ( https://nmap.org ) at 2026-07-30 14:57 +0530
-Nmap done: 0 IP addresses (0 hosts up) scanned in 0.63 seconds
+Starting Nmap 7.99 ( https://nmap.org ) at 2026-07-30 16:50 +0530
+Pre-scan script results:
+| targets-asn: 
+|_  targets-asn.asn is a mandatory parameter
+|_http-robtex-shared-ns: *TEMPORARILY DISABLED* due to changes in Robtex's API. See https://www.robtex.com/api/
+|_hostmap-robtex: *TEMPORARILY DISABLED* due to changes in Robtex's API. See https://www.robtex.com/api/
+Nmap done: 0 IP addresses (0 hosts up) scanned in 40.96 seconds
 
 
 STDERR:

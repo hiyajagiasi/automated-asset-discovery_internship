@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///opt/homebrew/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.99 scan initiated Thu Jul 30 16:12:43 2026 as: nmap -Pn -T4 -sV -sC -&#45;version-all -&#45;open -&#45;script default,safe,version,discovery,ssl-cert,ssl-enum-ciphers,http-title,http-headers,http-server-header,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags -p 443,80 -oX logs/nmap_action_github_com_443_80.xml action.github.com -->
+<nmaprun scanner="nmap" args="nmap -Pn -T4 -sV -sC -&#45;version-all -&#45;open -&#45;script default,safe,version,discovery,ssl-cert,ssl-enum-ciphers,http-title,http-headers,http-server-header,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags -p 443,80 -oX logs/nmap_action_github_com_443_80.xml action.github.com" start="1785408163" startstr="Thu Jul 30 16:12:43 2026" version="7.99" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="2" services="80,443"/>

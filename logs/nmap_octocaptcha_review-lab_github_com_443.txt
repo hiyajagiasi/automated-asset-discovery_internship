@@ -1,0 +1,19 @@
+STDOUT:
+Starting Nmap 7.99 ( https://nmap.org ) at 2026-07-30 16:15 +0530
+Pre-scan script results:
+|_hostmap-robtex: *TEMPORARILY DISABLED* due to changes in Robtex's API. See https://www.robtex.com/api/
+|_http-robtex-shared-ns: *TEMPORARILY DISABLED* due to changes in Robtex's API. See https://www.robtex.com/api/
+| targets-asn: 
+|_  targets-asn.asn is a mandatory parameter
+| broadcast-upnp-info: 
+|   192.168.0.1: 
+|     usn: uuid:9f0865b3-f5da-4ad5-85b7-7404637fdf37
+|     location: http://192.168.0.1:1900/gatedesc.xml
+|_    server: Linux/2.6.36, UPnP/1.0, Portable SDK for UPnP devices/1.6.19
+Nmap done: 0 IP addresses (0 hosts up) scanned in 40.80 seconds
+
+
+STDERR:
+NSOCK ERROR [0.2780s] mksock_bind_addr(): Bind to 0.0.0.0:17500 failed (IOD #3): Address already in use (48)
+Failed to resolve "octocaptcha.review-lab.github.com".
+WARNING: No targets were specified, so 0 hosts scanned.

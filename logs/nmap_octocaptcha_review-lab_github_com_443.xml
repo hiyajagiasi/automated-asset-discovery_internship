@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///opt/homebrew/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.99 scan initiated Thu Jul 30 16:15:44 2026 as: nmap -Pn -T4 -sV -sC -&#45;version-all -&#45;open -&#45;script default,safe,version,discovery,ssl-cert,ssl-enum-ciphers,http-title,http-headers,http-server-header,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags -p 443 -oX logs/nmap_octocaptcha_review-lab_github_com_443.xml octocaptcha.review-lab.github.com -->
+<nmaprun scanner="nmap" args="nmap -Pn -T4 -sV -sC -&#45;version-all -&#45;open -&#45;script default,safe,version,discovery,ssl-cert,ssl-enum-ciphers,http-title,http-headers,http-server-header,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags -p 443 -oX logs/nmap_octocaptcha_review-lab_github_com_443.xml octocaptcha.review-lab.github.com" start="1785408344" startstr="Thu Jul 30 16:15:44 2026" version="7.99" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="1" services="443"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<prescript><script id="hostmap-robtex" output="*TEMPORARILY DISABLED* due to changes in Robtex&apos;s API. See https://www.robtex.com/api/"/><script id="http-robtex-shared-ns" output="*TEMPORARILY DISABLED* due to changes in Robtex&apos;s API. See https://www.robtex.com/api/"/><script id="targets-asn" output="&#xa;  targets-asn.asn is a mandatory parameter&#xa;"/><script id="broadcast-upnp-info" output="&#xa;  192.168.0.1: &#xa;    usn: uuid:9f0865b3-f5da-4ad5-85b7-7404637fdf37&#xa;    location: http://192.168.0.1:1900/gatedesc.xml&#xa;    server: Linux/2.6.36, UPnP/1.0, Portable SDK for UPnP devices/1.6.19"><table key="192.168.0.1">
+<elem key="usn">uuid:9f0865b3-f5da-4ad5-85b7-7404637fdf37</elem>
+<elem key="location">http://192.168.0.1:1900/gatedesc.xml</elem>
+<elem key="server">Linux/2.6.36, UPnP/1.0, Portable SDK for UPnP devices/1.6.19</elem>
+</table>
+</script></prescript><runstats><finished time="1785408384" timestr="Thu Jul 30 16:16:24 2026" summary="Nmap done at Thu Jul 30 16:16:24 2026; 0 IP addresses (0 hosts up) scanned in 40.80 seconds" elapsed="40.80" exit="success"/><hosts up="0" down="0" total="0"/>
+</runstats>
+</nmaprun>
