@@ -309,15 +309,117 @@ DEFAULT_TEMPLATE = """
         </div>
     </div>
     <script>
+        function buildExecutiveSummaryExport() {
+            const subdomains = {{ subdomains|tojson }};
+            const liveHosts = {{ live_hosts|tojson }};
+            const deadHosts = {{ dead_hosts|tojson }};
+            const ports = {{ ports|tojson }};
+            const technologies = {{ technologies|tojson }};
+
+            const renderList = (items, title) => {
+                if (!items || !items.length) {
+                    return '<div style="padding:14px;border:1px dashed #334155;border-radius:10px;color:#a9b9d1;">No ' + title.toLowerCase() + ' recorded.</div>';
+                }
+                return '<ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;">'
+                    + items.slice(0, 30).map((item) => '<li style="background:rgba(15,23,42,0.9);border:1px solid rgba(148,163,184,0.28);border-radius:10px;padding:10px 12px;color:#e5eefc;word-break:break-word;">' + item + '</li>').join('')
+                    + '</ul>';
+            };
+
+            const renderPortTable = () => {
+                if (!ports || !ports.length) {
+                    return '<div style="padding:14px;border:1px dashed #334155;border-radius:10px;color:#a9b9d1;">No open ports found.</div>';
+                }
+                return '<table style="width:100%;border-collapse:collapse;background:rgba(15,23,42,0.75);border:1px solid rgba(148,163,184,0.28);">'
+                    + '<thead><tr><th style="text-align:left;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#a9b9d1;text-transform:uppercase;letter-spacing:0.08em;">Host</th><th style="text-align:left;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#a9b9d1;text-transform:uppercase;letter-spacing:0.08em;">Port</th><th style="text-align:left;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#a9b9d1;text-transform:uppercase;letter-spacing:0.08em;">Service</th></tr></thead>'
+                    + '<tbody>'
+                    + ports.slice(0, 30).map((item) => '<tr><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.host || 'unknown') + '</td><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.port || 'unknown') + '</td><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.service || 'unknown') + '</td></tr>').join('')
+                    + '</tbody></table>';
+            };
+
+            const renderTechnologyTable = () => {
+                if (!technologies || !technologies.length) {
+                    return '<div style="padding:14px;border:1px dashed #334155;border-radius:10px;color:#a9b9d1;">No technology fingerprints detected.</div>';
+                }
+                return '<table style="width:100%;border-collapse:collapse;background:rgba(15,23,42,0.75);border:1px solid rgba(148,163,184,0.28);">'
+                    + '<thead><tr><th style="text-align:left;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#a9b9d1;text-transform:uppercase;letter-spacing:0.08em;">Host</th><th style="text-align:left;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#a9b9d1;text-transform:uppercase;letter-spacing:0.08em;">Technology</th></tr></thead>'
+                    + '<tbody>'
+                    + technologies.slice(0, 30).map((item) => '<tr><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.host || 'unknown') + '</td><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.technology || 'unknown') + '</td></tr>').join('')
+                    + '</tbody></table>';
+            };
+
+            return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ target }} Executive Summary</title>
+  <style>
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: linear-gradient(180deg, #07111f 0%, #0f172a 100%); color: #e5eefc; }
+    .container { max-width: 1200px; margin: 32px auto; padding: 0 20px 40px; }
+    .header { background: linear-gradient(135deg, rgba(15,23,42,0.96), rgba(30,41,59,0.9)); border:1px solid rgba(148,163,184,0.28); border-radius:20px; padding:24px 28px; box-shadow: 0 18px 40px rgba(2,6,23,0.45); }
+    .title { margin: 0; font-size: clamp(2rem, 3vw, 2.5rem); letter-spacing: -0.04em; }
+    .badge { display:inline-block; margin-top:16px; background: rgba(94,234,212,0.14); border:1px solid rgba(94,234,212,0.4); color:#5eead4; padding:8px 12px; border-radius:999px; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.06em; font-weight:700; }
+    .stats { display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-top: 24px; }
+    .stat { background: rgba(15,23,42,0.8); border:1px solid rgba(148,163,184,0.28); border-radius:16px; padding:18px; }
+    .label { display:block; font-size:0.7rem; color:#a9b9d1; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px; }
+    .value { font-size: clamp(1.7rem, 2vw, 2.4rem); font-weight:800; }
+    .section { background: rgba(15,23,42,0.8); border:1px solid rgba(148,163,184,0.28); border-radius:18px; padding:20px; margin-top:24px; box-shadow: 0 18px 40px rgba(2,6,23,0.45); }
+    h2 { margin:0 0 12px; font-size:1.35rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">{{ target }} Executive Summary</h1>
+      <div class="badge">Asset Discovery Overview</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><span class="label">Subdomains</span><span class="value">` + subdomains.length + `</span></div>
+      <div class="stat"><span class="label">Live Hosts</span><span class="value">` + liveHosts.length + `</span></div>
+      <div class="stat"><span class="label">Dead Hosts</span><span class="value">` + deadHosts.length + `</span></div>
+      <div class="stat"><span class="label">Open Ports</span><span class="value">` + ports.length + `</span></div>
+      <div class="stat"><span class="label">Technologies</span><span class="value">` + technologies.length + `</span></div>
+    </div>
+
+    <div class="section">
+      <h2>Subdomains</h2>
+      ` + renderList(subdomains, 'Subdomains') + `
+    </div>
+
+    <div class="section">
+      <h2>Live Hosts</h2>
+      ` + renderList(liveHosts, 'Live Hosts') + `
+    </div>
+
+    <div class="section">
+      <h2>Dead Hosts</h2>
+      ` + renderList(deadHosts, 'Dead Hosts') + `
+    </div>
+
+    <div class="section">
+      <h2>Open Ports</h2>
+      ` + renderPortTable() + `
+    </div>
+
+    <div class="section">
+      <h2>Technologies</h2>
+      ` + renderTechnologyTable() + `
+    </div>
+  </div>
+</body>
+</html>`;
+        }
+
         const downloadBtn = document.getElementById('downloadReportBtn');
         if (downloadBtn) {
             downloadBtn.addEventListener('click', function () {
-                const html = document.documentElement.outerHTML;
+                const html = buildExecutiveSummaryExport();
                 const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
                 const url = URL.createObjectURL(blob);
                 const anchor = document.createElement('a');
                 anchor.href = url;
-                anchor.download = '{{ target }}-recon-report.html';
+                anchor.download = '{{ target }}-executive-summary.html';
                 document.body.appendChild(anchor);
                 anchor.click();
                 anchor.remove();

@@ -84,6 +84,7 @@ def test_generate_html_report_contains_full_recon_summary(tmp_path):
     assert "Technologies" in html
     assert "api.example.com" in html
     assert "dead.example.com" in html
+    assert "buildExecutiveSummaryExport" in html
 
 
 def test_generate_html_report_rebuilds_empty_template(tmp_path):
