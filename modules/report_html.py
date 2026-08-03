@@ -56,6 +56,29 @@ DEFAULT_TEMPLATE = """
             align-items: center;
             flex-wrap: wrap;
         }
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: #06131e;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 16px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(94, 234, 212, 0.22);
+        }
+        .download-btn:hover {
+            filter: brightness(1.06);
+        }
         .header h1 {
             margin: 0;
             font-size: clamp(2rem, 3vw, 3rem);
@@ -174,6 +197,7 @@ DEFAULT_TEMPLATE = """
 <body>
     {% set sub_preview = subdomains[:50] %}
     {% set live_preview = live_hosts[:50] %}
+    {% set dead_preview = dead_hosts[:50] %}
     {% set port_preview = ports[:50] %}
     {% set tech_preview = technologies[:50] %}
 
@@ -181,7 +205,10 @@ DEFAULT_TEMPLATE = """
         <div class="header">
             <div class="header-top">
                 <h1>Reconnaissance Report for {{ target }}</h1>
-                <span class="badge">Executive Summary</span>
+                <div class="header-actions">
+                    <span class="badge">Executive Summary</span>
+                    <button class="download-btn" id="downloadReportBtn" type="button">Download HTML</button>
+                </div>
             </div>
             <div class="subtitle">Asset discovery summary and findings</div>
         </div>
@@ -189,6 +216,7 @@ DEFAULT_TEMPLATE = """
         <div class="stats">
             <div class="stat"><span class="label">Subdomains</span><span class="value">{{ subdomains|length }}</span></div>
             <div class="stat"><span class="label">Live Hosts</span><span class="value">{{ live_hosts|length }}</span></div>
+            <div class="stat"><span class="label">Dead Hosts</span><span class="value">{{ dead_hosts|length }}</span></div>
             <div class="stat"><span class="label">Open Ports</span><span class="value">{{ ports|length }}</span></div>
             <div class="stat"><span class="label">Technologies</span><span class="value">{{ technologies|length }}</span></div>
         </div>
@@ -218,6 +246,20 @@ DEFAULT_TEMPLATE = """
                 </ul>
             {% else %}
                 <div class="empty">No live hosts detected.</div>
+            {% endif %}
+        </div>
+
+        <div class="section">
+            <h2>Dead Hosts</h2>
+            {% if dead_hosts %}
+                <p class="section-meta">Showing {{ dead_preview|length }} of {{ dead_hosts|length }} dead targets.</p>
+                <ul>
+                    {% for item in dead_preview %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="empty">No dead hosts recorded.</div>
             {% endif %}
         </div>
 
@@ -266,12 +308,59 @@ DEFAULT_TEMPLATE = """
             {% endif %}
         </div>
     </div>
+    <script>
+        const downloadBtn = document.getElementById('downloadReportBtn');
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', function () {
+                const html = document.documentElement.outerHTML;
+                const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const anchor = document.createElement('a');
+                anchor.href = url;
+                anchor.download = '{{ target }}-recon-report.html';
+                document.body.appendChild(anchor);
+                anchor.click();
+                anchor.remove();
+                URL.revokeObjectURL(url);
+            });
+        }
+    </script>
 </body>
 </html>
 """
 
 
-def generate_html_report(base_dir: Path, target: str, subdomains: list[str], live_hosts: list[str], ports: list[dict[str, str]], technologies: list[dict[str, str]], config: dict[str, Any]) -> Path:
+def generate_html_report(
+    base_dir: Path,
+    target: str,
+    subdomains: list[str],
+    live_hosts: list[str],
+    *args,
+    config: dict[str, Any] | None = None,
+) -> Path:
+    dead_hosts: list[str] = []
+    ports: list[dict[str, str]] = []
+    technologies: list[dict[str, str]] = []
+
+    if args:
+        if len(args) >= 1 and isinstance(args[-1], dict):
+            config = args[-1]
+            args = args[:-1]
+
+        if len(args) == 3:
+            dead_hosts, ports, technologies = args
+        elif len(args) == 2:
+            ports, technologies = args
+        elif len(args) == 1:
+            first = args[0]
+            if isinstance(first, list) and first and isinstance(first[0], dict):
+                ports = first
+            else:
+                dead_hosts = first
+
+    if config is None:
+        config = {}
+
     template_path = base_dir / "templates" / "report.html"
     output_path = Path(config.get("reports", {}).get("html", "reports/report.html"))
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -287,6 +376,7 @@ def generate_html_report(base_dir: Path, target: str, subdomains: list[str], liv
         target=target,
         subdomains=subdomains,
         live_hosts=live_hosts,
+        dead_hosts=dead_hosts,
         ports=ports,
         technologies=technologies,
     )

@@ -10,7 +10,7 @@ from modules.report_excel import generate_excel_report
 from modules.report_html import generate_html_report
 from modules.subdomain import discover_subdomains
 from modules.technology import discover_technologies
-from modules.utils import ensure_directories, get_logger, load_config, validate_domain
+from modules.utils import ensure_directories, get_logger, load_config, load_hosts_from_output, validate_domain
 
 
 class ReconnaissanceService:
@@ -41,10 +41,12 @@ class ReconnaissanceService:
         phase_started = time.monotonic()
         self.logger.info("Starting live-host probing")
         live_hosts = discover_live_hosts(subdomains, self.config)
+        dead_hosts = load_hosts_from_output(self.config, "dead_hosts", "output/dead_host.txt")
         self.logger.info(
-            "Live-host probing completed in %.1f seconds (%d live hosts)",
+            "Live-host probing completed in %.1f seconds (%d live hosts, %d dead hosts)",
             time.monotonic() - phase_started,
             len(live_hosts),
+            len(dead_hosts),
         )
 
         phase_started = time.monotonic()
@@ -62,6 +64,7 @@ class ReconnaissanceService:
             self.target,
             subdomains,
             live_hosts,
+            dead_hosts,
             ports,
             technologies,
             self.config,
@@ -71,6 +74,7 @@ class ReconnaissanceService:
             self.target,
             subdomains,
             live_hosts,
+            dead_hosts,
             ports,
             technologies,
             self.config,
@@ -81,6 +85,7 @@ class ReconnaissanceService:
             "target": self.target,
             "subdomains": subdomains,
             "live_hosts": live_hosts,
+            "dead_hosts": dead_hosts,
             "ports": ports,
             "technologies": technologies,
             "html_report": html_report,

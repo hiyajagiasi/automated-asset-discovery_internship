@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>github.com Reconnaissance Report</title>
+    <title>example.com Reconnaissance Report</title>
     <style>
         :root {
             --bg: #07111f;
@@ -46,6 +46,29 @@
             gap: 16px;
             align-items: center;
             flex-wrap: wrap;
+        }
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: #06131e;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 16px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(94, 234, 212, 0.22);
+        }
+        .download-btn:hover {
+            filter: brightness(1.06);
         }
         .header h1 {
             margin: 0;
@@ -167,128 +190,35 @@
     
     
     
+    
 
     <div class="container">
         <div class="header">
             <div class="header-top">
-                <h1>Reconnaissance Report for github.com</h1>
-                <span class="badge">Executive Summary</span>
+                <h1>Reconnaissance Report for example.com</h1>
+                <div class="header-actions">
+                    <span class="badge">Executive Summary</span>
+                    <button class="download-btn" id="downloadReportBtn" type="button">Download HTML</button>
+                </div>
             </div>
             <div class="subtitle">Asset discovery summary and findings</div>
         </div>
 
         <div class="stats">
-            <div class="stat"><span class="label">Subdomains</span><span class="value">41135</span></div>
-            <div class="stat"><span class="label">Live Hosts</span><span class="value">125</span></div>
-            <div class="stat"><span class="label">Open Ports</span><span class="value">37</span></div>
-            <div class="stat"><span class="label">Technologies</span><span class="value">125</span></div>
+            <div class="stat"><span class="label">Subdomains</span><span class="value">1</span></div>
+            <div class="stat"><span class="label">Live Hosts</span><span class="value">1</span></div>
+            <div class="stat"><span class="label">Dead Hosts</span><span class="value">1</span></div>
+            <div class="stat"><span class="label">Open Ports</span><span class="value">1</span></div>
+            <div class="stat"><span class="label">Technologies</span><span class="value">1</span></div>
         </div>
 
         <div class="section">
             <h2>Subdomains</h2>
             
-                <p class="section-meta">Showing 50 of 41135 discovered.</p>
+                <p class="section-meta">Showing 1 of 1 discovered.</p>
                 <ul>
                     
-                        <li>nelly.github.com</li>
-                    
-                        <li>voipa026.github.com</li>
-                    
-                        <li>autodiscover.wp.github.com</li>
-                    
-                        <li>emap.github.com</li>
-                    
-                        <li>rlbisbe.github.com</li>
-                    
-                        <li>solomonope.github.com</li>
-                    
-                        <li>web3687.github.com</li>
-                    
-                        <li>www.es.github.com</li>
-                    
-                        <li>sudo-d4s3.github.com</li>
-                    
-                        <li>mes.github.com</li>
-                    
-                        <li>alexchicn.github.com</li>
-                    
-                        <li>arosien.github.com</li>
-                    
-                        <li>cleverskincare.github.com</li>
-                    
-                        <li>dhrubajyoti-das.github.com</li>
-                    
-                        <li>internews.github.com</li>
-                    
-                        <li>jondot.github.com</li>
-                    
-                        <li>searchmediacodecs.github.com</li>
-                    
-                        <li>securitycovid19.github.com</li>
-                    
-                        <li>anvaka.github.com</li>
-                    
-                        <li>vicenteforever.github.com</li>
-                    
-                        <li>helper.github.com</li>
-                    
-                        <li>lattice.github.com</li>
-                    
-                        <li>matthewruddy.github.com</li>
-                    
-                        <li>web17513.github.com</li>
-                    
-                        <li>web5013.github.com</li>
-                    
-                        <li>webdisk.tickets.github.com</li>
-                    
-                        <li>cpanel.help.github.com</li>
-                    
-                        <li>evanoxfeld.github.com</li>
-                    
-                        <li>junjiemao.github.com</li>
-                    
-                        <li>markdotto.github.com</li>
-                    
-                        <li>nicolast.github.com</li>
-                    
-                        <li>superman.github.com</li>
-                    
-                        <li>sylvinus.github.com</li>
-                    
-                        <li>web6434.github.com</li>
-                    
-                        <li>andsve.github.com</li>
-                    
-                        <li>delphi.github.com</li>
-                    
-                        <li>nabovarme.github.com</li>
-                    
-                        <li>sigmavirus24.nautilus.github.com</li>
-                    
-                        <li>web3618.github.com</li>
-                    
-                        <li>westeurope.covid19.github.com</li>
-                    
-                        <li>www.mike.github.com</li>
-                    
-                        <li>rogerberkley.github.com</li>
-                    
-                        <li>antivirus.uat.github.com</li>
-                    
-                        <li>everest.github.com</li>
-                    
-                        <li>nvpgk.github.com</li>
-                    
-                        <li>policy.github.com</li>
-                    
-                        <li>denismarkelov.github.com</li>
-                    
-                        <li>happytime.github.com</li>
-                    
-                        <li>lts.github.com</li>
-                    
-                        <li>maxtaco.github.com</li>
+                        <li>api.example.com</li>
                     
                 </ul>
             
@@ -297,108 +227,22 @@
         <div class="section">
             <h2>Live Hosts</h2>
             
-                <p class="section-meta">Showing 50 of 125 detected.</p>
+                <p class="section-meta">Showing 1 of 1 detected.</p>
                 <ul>
                     
-                        <li>https://atom-installer.github.com</li>
+                        <li>https://example.com</li>
                     
-                        <li>https://mailing.github.com</li>
+                </ul>
+            
+        </div>
+
+        <div class="section">
+            <h2>Dead Hosts</h2>
+            
+                <p class="section-meta">Showing 1 of 1 dead targets.</p>
+                <ul>
                     
-                        <li>https://api.github.com</li>
-                    
-                        <li>https://blog.github.com</li>
-                    
-                        <li>https://gameoff.github.com</li>
-                    
-                        <li>https://embed.github.com</li>
-                    
-                        <li>https://collector-cdn.github.com</li>
-                    
-                        <li>https://launch.github.com</li>
-                    
-                        <li>https://boxen.github.com</li>
-                    
-                        <li>https://archiveprogram.github.com</li>
-                    
-                        <li>https://hub.github.com</li>
-                    
-                        <li>https://awesome-copilot.github.com</li>
-                    
-                        <li>https://octicons.github.com</li>
-                    
-                        <li>https://forgoodfirstissue.github.com</li>
-                    
-                        <li>https://octodex.github.com</li>
-                    
-                        <li>https://octoverse.github.com</li>
-                    
-                        <li>https://cdn-185-199-111-133.github.com</li>
-                    
-                        <li>https://docker.pkg.github.com</li>
-                    
-                        <li>https://my.docker.pkg.github.com</li>
-                    
-                        <li>https://og.github.com</li>
-                    
-                        <li>https://cdn-185-199-109-153.github.com</li>
-                    
-                        <li>https://government.github.com</li>
-                    
-                        <li>https://accessibility.github.com</li>
-                    
-                        <li>https://atom-installer-eaph0av7.github.com</li>
-                    
-                        <li>https://developers.github.com</li>
-                    
-                        <li>https://gandalf.github.com</li>
-                    
-                        <li>https://ghicons.github.com</li>
-                    
-                        <li>https://bounty.github.com</li>
-                    
-                        <li>https://pages.github.com</li>
-                    
-                        <li>https://accelerator.github.com</li>
-                    
-                        <li>https://brand.github.com</li>
-                    
-                        <li>https://blog-freeze.github.com</li>
-                    
-                        <li>https://lb-140-82-121-9-fra.github.com</li>
-                    
-                        <li>https://npm.pkg.github.com</li>
-                    
-                        <li>https://nuget.pkg.github.com</li>
-                    
-                        <li>https://asset-generator.github.com</li>
-                    
-                        <li>https://accessibility-playbook.github.com</li>
-                    
-                        <li>https://action.github.com</li>
-                    
-                        <li>https://pkg.github.com</li>
-                    
-                        <li>https://rubygems.pkg.github.com</li>
-                    
-                        <li>https://resources.github.com</li>
-                    
-                        <li>https://gsnlink.github.com</li>
-                    
-                        <li>https://alive.github.com</li>
-                    
-                        <li>https://glb-db52c2cf8be544.github.com</li>
-                    
-                        <li>https://live.github.com</li>
-                    
-                        <li>https://lb-140-82-113-9-iad.github.com</li>
-                    
-                        <li>https://autoconfig.wiki.github.com</li>
-                    
-                        <li>https://api.security.github.com</li>
-                    
-                        <li>https://messages.github.com</li>
-                    
-                        <li>https://lb-140-82-113-18-iad.github.com</li>
+                        <li>https://dead.example.com</li>
                     
                 </ul>
             
@@ -407,7 +251,7 @@
         <div class="section">
             <h2>Open Ports</h2>
             
-                <p class="section-meta">Showing 37 of 37 port entries.</p>
+                <p class="section-meta">Showing 1 of 1 port entries.</p>
                 <table>
                     <thead>
                         <tr><th>Host</th><th>Port</th><th>Service</th></tr>
@@ -415,225 +259,9 @@
                     <tbody>
                         
                             <tr>
-                                <td>alive.github.com</td>
-                                <td>443</td>
-                                <td>https; server=github.com; status=404</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>cafe.github.com</td>
-                                <td>80</td>
-                                <td>http; status=301; redirect=https://cafe.github.com/</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>cdn-185-199-110-154.github.com</td>
-                                <td>443</td>
-                                <td>https; title=Page not found &middot; GitHub Pages; server=GitHub.com; status=404</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>enterprise.github.com</td>
-                                <td>80</td>
-                                <td>http; status=301; redirect=https://enterprise.github.com/</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>glb-db52c2cf8be544.github.com</td>
-                                <td>443</td>
-                                <td>https; status=200</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>lb-140-82-112-2-iad.github.com</td>
-                                <td>443</td>
-                                <td>https; title=GitHub Debug; server=GitHub.com; status=200</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>lb-140-82-112-22-iad.github.com</td>
-                                <td>80</td>
-                                <td>http; status=301; redirect=https://lb-140-82-112-22-iad.github.com/</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>lb-140-82-112-24-iad.github.com</td>
-                                <td>443</td>
-                                <td>https; title=Bad request &middot; GitHub; status=400</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>lb-140-82-112-37-iad.github.com</td>
-                                <td>443</td>
-                                <td>https; title=404 Not Found; server=Splunkd; status=404</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>lb-140-82-113-9-iad.github.com</td>
-                                <td>443</td>
-                                <td>https; title=Bad request &middot; GitHub; status=400</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>lb-140-82-114-14-iad.github.com</td>
-                                <td>443</td>
-                                <td>https; title=Bad request &middot; GitHub; status=400</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>lb-140-82-114-19-iad.github.com</td>
-                                <td>443</td>
-                                <td>https; status=301; redirect=https://github.com/</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>live.github.com</td>
-                                <td>443</td>
-                                <td>https; server=github.com; status=404</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>mailing.github.com</td>
-                                <td>80</td>
-                                <td>http; title=404 Not Found; server=nginx; status=404</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>policy.github.com</td>
-                                <td>80</td>
-                                <td>http; status=301; redirect=https://github.com/about/developer-policy/</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>resources.github.com</td>
-                                <td>443</td>
-                                <td>https; status=308; redirect=https://github.com/resources</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>rubygems.pkg.github.com</td>
-                                <td>80</td>
-                                <td>http; status=301; redirect=https://rubygems.pkg.github.com/</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>rubygems.pkg.github.com</td>
-                                <td>443</td>
-                                <td>https; status=405</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>securitylab.github.com</td>
-                                <td>80</td>
-                                <td>http; title=GitHub Security Lab | Securing open source software, together.; server=GitHub.com; status=301; redirect=https://securitylab.github.com/</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>securitylab.github.com</td>
-                                <td>443</td>
-                                <td>https; title=GitHub Security Lab | Securing open source software, together.; server=GitHub.com; status=200</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>ssh.github.com</td>
-                                <td>80</td>
-                                <td>http; status=301; redirect=https://github.com/</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>ssh.github.com</td>
+                                <td>https://example.com</td>
                                 <td>443</td>
                                 <td>https</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>support.enterprise.github.com</td>
-                                <td>443</td>
-                                <td>https; title=GitHub, Inc. - Prod - Sign In; status=301; redirect=https://enterprise.githubsupport.com/</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>thehub.github.com</td>
-                                <td>80</td>
-                                <td>http; title=GitHub, Inc. - Prod - Sign In; status=301; redirect=https://thehub.github.com/</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>unity.github.com</td>
-                                <td>443</td>
-                                <td>https; title=Site not found &middot; GitHub Pages; server=GitHub.com; status=404</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>universe.github.com</td>
-                                <td>443</td>
-                                <td>https; title=GitHub Universe 2026; server=GitHub.com; status=301; redirect=https://githubuniverse.com</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>vpn-ca.iad.github.com</td>
-                                <td>443</td>
-                                <td>https; title=Page not found &middot; GitHub Pages; server=GitHub.com; status=404</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>warehouse.github.com</td>
-                                <td>443</td>
-                                <td>https; server=GitHub.com; status=302; redirect=https://github.com/pages/auth?nonce=16a94072-1d6e-4b9c-9021-5da8952763ca&page_id=33961994&path=Lw</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>wiki.github.com</td>
-                                <td>443</td>
-                                <td>https; title=Bad request &middot; GitHub; status=400</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>wildcard.octocaptcha.review-lab.github.com</td>
-                                <td>80</td>
-                                <td>http; status=302; redirect=https://wildcard.octocaptcha.review-lab.github.com/</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>wildcard.octocaptcha.review-lab.github.com</td>
-                                <td>443</td>
-                                <td>https; status=404</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>wildcard.pkg.github.com</td>
-                                <td>80</td>
-                                <td>http; status=301; redirect=https://wildcard.pkg.github.com/</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>wildcard.pkg.github.com</td>
-                                <td>443</td>
-                                <td>https; status=405</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>wildcard.review-lab.github.com</td>
-                                <td>80</td>
-                                <td>http; status=302; redirect=https://wildcard.review-lab.github.com/</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>wildcard.workspaces-dev.github.com</td>
-                                <td>80</td>
-                                <td>http; status=404</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>wildcard.workspaces-dev.github.com</td>
-                                <td>443</td>
-                                <td>https; status=404</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>wildcard.workspaces.github.com</td>
-                                <td>443</td>
-                                <td>https; status=404</td>
                             </tr>
                         
                     </tbody>
@@ -644,7 +272,7 @@
         <div class="section">
             <h2>Technologies</h2>
             
-                <p class="section-meta">Showing 50 of 125 technology fingerprints.</p>
+                <p class="section-meta">Showing 1 of 1 technology fingerprints.</p>
                 <table>
                     <thead>
                         <tr><th>Host</th><th>Technology</th></tr>
@@ -652,253 +280,8 @@
                     <tbody>
                         
                             <tr>
-                                <td>https://atom-installer.github.com</td>
-                                <td>HTTPX: no fingerprint matched | Webanalyze: Varnish</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://mailing.github.com</td>
-                                <td>HTTPX: no fingerprint matched | Webanalyze: Nginx | Varnish</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://api.github.com</td>
-                                <td>HTTPX: Web Server: github.com | JSON | Webanalyze: GitHub Pages | HSTS</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://blog.github.com</td>
-                                <td>HTTPX: Web Server: nginx | HTML5 | Programming Language: WordPress VIP <https://wpvip.com> | Webanalyze: Fastly | GitHub Pages | Varnish</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://gameoff.github.com</td>
-                                <td>HTTPX: HTML5 | CDN: Cloudflare | Webanalyze: Fastly | Varnish | GitHub Pages</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://embed.github.com</td>
-                                <td>HTTPX: no fingerprint matched | Webanalyze: HSTS</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://collector-cdn.github.com</td>
-                                <td>HTTPX: no fingerprint matched | Webanalyze: Varnish</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://launch.github.com</td>
-                                <td>HTTPX: HTML5 | Web Server: github.com | Webanalyze: HSTS</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://boxen.github.com</td>
-                                <td>HTTPX: HTML5 | Web Server: github.com | Webanalyze: Varnish | GitHub Pages | Fastly</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://archiveprogram.github.com</td>
-                                <td>HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Varnish | Jekyll (3.10.0) | Ruby | Fastly | Typekit | GitHub Pages | Adobe Fonts</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://hub.github.com</td>
-                                <td>HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Varnish | GitHub Pages | Fastly</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://awesome-copilot.github.com</td>
-                                <td>HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Varnish | Astro (7.1.3) | GitHub Pages | Starlight (0.41.1) | Fastly</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://octicons.github.com</td>
-                                <td>HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Varnish | Fastly | GitHub Pages</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://forgoodfirstissue.github.com</td>
-                                <td>HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: GitHub Pages | Fastly | Varnish</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://octodex.github.com</td>
-                                <td>HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Fastly | Varnish | GitHub Pages</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://octoverse.github.com</td>
-                                <td>HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Fastly | Varnish | GitHub Pages | Jekyll (4.1.1) | Ruby</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://cdn-185-199-111-133.github.com</td>
-                                <td>HTTPX: no fingerprint matched | Webanalyze: Fastly | GitHub Pages | Varnish</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://docker.pkg.github.com</td>
-                                <td>HTTPX: no fingerprint matched | Webanalyze: GitHub Pages</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://my.docker.pkg.github.com</td>
-                                <td>HTTPX: no fingerprint matched | Webanalyze: HSTS | GitHub Pages</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://og.github.com</td>
-                                <td>HTTPX: no fingerprint matched | Webanalyze: GitHub Pages | Varnish | Fastly</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://cdn-185-199-109-153.github.com</td>
-                                <td>HTTPX: no fingerprint matched | Webanalyze: Varnish | Fastly | GitHub Pages</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://government.github.com</td>
-                                <td>HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: GitHub Pages | Fastly | Varnish</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://accessibility.github.com</td>
-                                <td>HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Fastly | Varnish | GitHub Pages</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://atom-installer-eaph0av7.github.com</td>
-                                <td>HTTPX: no fingerprint matched | Webanalyze: GitHub Pages | Varnish | Fastly</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://developers.github.com</td>
-                                <td>HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Fastly | Varnish | GitHub Pages</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://gandalf.github.com</td>
-                                <td>HTTPX: no fingerprint matched | Webanalyze: GitHub Pages | Fastly | Varnish</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://ghicons.github.com</td>
-                                <td>HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: GitHub Pages | Varnish | Fastly</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://bounty.github.com</td>
-                                <td>HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Varnish | Fastly | Jekyll (4.3.1) | Ruby | GitHub Pages</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://pages.github.com</td>
-                                <td>HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Jekyll (3.10.0) | Ruby | Varnish | GitHub Pages | Fastly</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://accelerator.github.com</td>
-                                <td>HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: GitHub Pages | YouTube | Fastly | Varnish</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://brand.github.com</td>
-                                <td>HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Fastly | Varnish | GitHub Pages</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://blog-freeze.github.com</td>
-                                <td>HTTPX: no fingerprint matched | Webanalyze: Fastly | Varnish | GitHub Pages</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://lb-140-82-121-9-fra.github.com</td>
-                                <td>HTTPX: no fingerprint matched | Webanalyze: HSTS</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://npm.pkg.github.com</td>
-                                <td>HTTPX: HTML5 | Web Server: github.com | Webanalyze: HSTS | GitHub Pages</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://nuget.pkg.github.com</td>
-                                <td>HTTPX: HTML5 | Web Server: github.com | Webanalyze: GitHub Pages | HSTS</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://asset-generator.github.com</td>
-                                <td>HTTPX: HTML5 | Web Server: github.com | Webanalyze: Fastly | GitHub Pages | Varnish</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://accessibility-playbook.github.com</td>
-                                <td>HTTPX: HTML5 | Web Server: github.com | Webanalyze: Fastly | Varnish | GitHub Pages</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://action.github.com</td>
-                                <td>HTTPX: HTML5 | Web Server: github.com | Webanalyze: GitHub Pages | Varnish | Fastly</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://pkg.github.com</td>
-                                <td>HTTPX: HTML5 | Web Server: github.com | Webanalyze: GitHub Pages</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://rubygems.pkg.github.com</td>
-                                <td>HTTPX: HTML5 | Web Server: github.com | Webanalyze: GitHub Pages | HSTS</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://resources.github.com</td>
-                                <td>HTTPX: HTML5 | Web Server: github.com | Webanalyze: GitHub Pages | Fastly | HSTS | Varnish</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://gsnlink.github.com</td>
-                                <td>HTTPX: no fingerprint matched | Webanalyze: Amazon CloudFront | Amazon Web Services | Nginx | HSTS</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://alive.github.com</td>
-                                <td>HTTPX: no fingerprint matched | Webanalyze: HSTS | GitHub Pages</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://glb-db52c2cf8be544.github.com</td>
-                                <td>HTTPX: unreachable | Webanalyze: no fingerprint matched</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://live.github.com</td>
-                                <td>HTTPX: no fingerprint matched | Webanalyze: GitHub Pages | HSTS</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://lb-140-82-113-9-iad.github.com</td>
-                                <td>HTTPX: no fingerprint matched | Webanalyze: HSTS</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://autoconfig.wiki.github.com</td>
-                                <td>HTTPX: no fingerprint matched | Webanalyze: HSTS</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://api.security.github.com</td>
-                                <td>HTTPX: HTML5 | Webanalyze: GitHub Pages</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://messages.github.com</td>
-                                <td>HTTPX: unreachable | Webanalyze: no fingerprint matched</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>https://lb-140-82-113-18-iad.github.com</td>
-                                <td>HTTPX: no fingerprint matched | Webanalyze: HSTS</td>
+                                <td>https://example.com</td>
+                                <td>HTTPX: HTML5</td>
                             </tr>
                         
                     </tbody>
@@ -906,5 +289,22 @@
             
         </div>
     </div>
+    <script>
+        const downloadBtn = document.getElementById('downloadReportBtn');
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', function () {
+                const html = document.documentElement.outerHTML;
+                const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const anchor = document.createElement('a');
+                anchor.href = url;
+                anchor.download = 'example.com-recon-report.html';
+                document.body.appendChild(anchor);
+                anchor.click();
+                anchor.remove();
+                URL.revokeObjectURL(url);
+            });
+        }
+    </script>
 </body>
 </html>

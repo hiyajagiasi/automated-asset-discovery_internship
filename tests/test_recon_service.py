@@ -69,6 +69,7 @@ def test_generate_html_report_contains_full_recon_summary(tmp_path):
         "example.com",
         ["api.example.com", "www.example.com"],
         ["https://example.com", "https://api.example.com"],
+        ["https://dead.example.com"],
         [{"host": "https://example.com", "port": "443", "service": "https"}],
         [{"host": "https://example.com", "technology": "HTTPX: HTML5 | Webanalyze: nginx"}],
         {"reports": {"html": str(tmp_path / "reports" / "report.html")}},
@@ -78,9 +79,11 @@ def test_generate_html_report_contains_full_recon_summary(tmp_path):
     assert "example.com" in html
     assert "Subdomains" in html
     assert "Live Hosts" in html
+    assert "Dead Hosts" in html
     assert "Open Ports" in html
     assert "Technologies" in html
     assert "api.example.com" in html
+    assert "dead.example.com" in html
 
 
 def test_generate_html_report_rebuilds_empty_template(tmp_path):
@@ -110,15 +113,17 @@ def test_generate_excel_report_creates_multiple_sheets(tmp_path):
         "example.com",
         ["api.example.com", "www.example.com"],
         ["https://example.com", "https://api.example.com"],
+        ["https://dead.example.com"],
         [{"host": "https://example.com", "port": "443", "service": "https"}],
         [{"host": "https://example.com", "technology": "HTTPX: HTML5 | Webanalyze: nginx"}],
         {"reports": {"excel": str(tmp_path / "reports" / "report.xlsx")}},
     )
 
     with pd.ExcelFile(report_path) as workbook:
-        assert workbook.sheet_names == ["Summary", "Subdomains", "Live Hosts", "Ports", "Technologies"]
+        assert workbook.sheet_names == ["Summary", "Subdomains", "Live Hosts", "Dead Hosts", "Ports", "Technologies"]
 
         summary = pd.read_excel(report_path, sheet_name="Summary")
         assert summary.loc[0, "target"] == "example.com"
         assert summary.loc[0, "subdomains"] == 2
         assert summary.loc[0, "live_hosts"] == 2
+        assert summary.loc[0, "dead_hosts"] == 1
