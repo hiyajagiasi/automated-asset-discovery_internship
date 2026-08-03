@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asset Discovery</title>
+    <style>
+        :root {
+            --bg: #07111f;
+            --panel: rgba(15, 23, 42, 0.82);
+            --panel-strong: #111827;
+            --border: rgba(148, 163, 184, 0.28);
+            --text: #e5eefc;
+            --muted: #a9b9d1;
+            --accent: #5eead4;
+            --accent-2: #7dd3fc;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: linear-gradient(180deg, #07111f 0%, #0f172a 100%);
+            color: var(--text);
+        }
+        .card {
+            width: min(760px, calc(100% - 32px));
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 18px 40px rgba(2, 6, 23, 0.45);
+        }
+        h1 {
+            margin: 0 0 10px;
+            font-size: clamp(2rem, 3vw, 2.8rem);
+            letter-spacing: -0.04em;
+        }
+        p {
+            margin: 0 0 22px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+        form {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        input {
+            flex: 1 1 420px;
+            min-height: 52px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            padding: 0 16px;
+            font-size: 1rem;
+        }
+        button {
+            min-height: 52px;
+            padding: 0 22px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: #06131e;
+            font-weight: 800;
+            cursor: pointer;
+        }
+        .error {
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            background: rgba(248, 113, 113, 0.08);
+            border: 1px solid rgba(248, 113, 113, 0.35);
+            color: #fecaca;
+        }
+        .status {
+            margin-top: 18px;
+            padding: 16px;
+            border-radius: 12px;
+            background: rgba(15, 23, 42, 0.72);
+            border: 1px solid var(--border);
+        }
+        .status-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .status-list {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--muted);
+        }
+        .status-list li {
+            margin-bottom: 6px;
+        }
+        .link-row {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .link-btn {
+            display: inline-block;
+            padding: 10px 14px;
+            border-radius: 999px;
+            color: var(--text);
+            background: rgba(94, 234, 212, 0.14);
+            border: 1px solid rgba(94, 234, 212, 0.35);
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Asset Discovery</h1>
+        <p>Paste the target URL or domain to run the backend reconnaissance pipeline and generate the full executive report with all subdomains, live hosts, dead hosts, ports, and technologies.</p>
+
+        <form id="scan-form" method="post" action="/scan">
+            <input id="target-input" type="text" name="target" placeholder="Enter a URL or domain" autocomplete="off" spellcheck="false" required />
+            <button type="submit">Generate Report</button>
+        </form>
+
+        {% if error %}
+            <div class="error" id="form-error">{{ error }}</div>
+        {% endif %}
+
+        {% if scan_started %}
+            <div class="status" id="status-panel" data-scan-id="{{ scan_id }}">
+                <div class="status-title">Scan in progress for {{ target }}</div>
+                <ul class="status-list" id="status-list">
+                    <li>Starting reconnaissance…</li>
+                </ul>
+                <div class="link-row hidden" id="report-links">
+                    <a class="link-btn" id="html-link" href="/download/report.html">Open HTML report</a>
+                    <a class="link-btn" id="excel-link" href="/download/report.xlsx">Open Excel report</a>
+                </div>
+            </div>
+        {% endif %}
+
+        <script>
+            const form = document.getElementById('scan-form');
+            const targetInput = document.getElementById('target-input');
+            const formError = document.getElementById('form-error');
+
+            if (form && targetInput) {
+                form.addEventListener('submit', (event) => {
+                    const value = (targetInput.value || '').trim();
+                    const placeholder = (targetInput.getAttribute('placeholder') || '').trim();
+                    if (!value || value.toLowerCase() === placeholder.toLowerCase()) {
+                        event.preventDefault();
+                        if (formError) {
+                            formError.textContent = 'Please paste a real target URL or domain.';
+                        }
+                        targetInput.focus();
+                    }
+                });
+            }
+
+            const panel = document.getElementById('status-panel');
+            if (panel) {
+                const scanId = panel.getAttribute('data-scan-id');
+                const list = document.getElementById('status-list');
+                const reportLinks = document.getElementById('report-links');
+                const htmlLink = document.getElementById('html-link');
+                const excelLink = document.getElementById('excel-link');
+
+                let displayedEventCount = 0;
+
+                const pollStatus = () => {
+                    fetch(`/scan-status/${scanId}`)
+                        .then((response) => response.json())
+                        .then((data) => {
+                            const events = Array.isArray(data.events) ? data.events : [];
+                            const newEvents = events.slice(displayedEventCount);
+                            newEvents.forEach((event) => {
+                                const item = document.createElement('li');
+                                item.textContent = event.message || event.phase;
+                                list.appendChild(item);
+                            });
+                            displayedEventCount = events.length;
+
+                            if (data.complete) {
+                                reportLinks.classList.remove('hidden');
+                                if (data.html_report) {
+                                    htmlLink.href = data.html_report;
+                                }
+                                if (data.excel_report) {
+                                    excelLink.href = data.excel_report;
+                                }
+                                return;
+                            }
+
+                            setTimeout(pollStatus, 1000);
+                        })
+                        .catch(() => {
+                            setTimeout(pollStatus, 1000);
+                        });
+                };
+
+                pollStatus();
+            }
+        </script>
+    </div>
+</body>
+</html>

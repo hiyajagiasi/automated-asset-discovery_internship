@@ -195,11 +195,11 @@ DEFAULT_TEMPLATE = """
     </style>
 </head>
 <body>
-    {% set sub_preview = subdomains[:50] %}
-    {% set live_preview = live_hosts[:50] %}
-    {% set dead_preview = dead_hosts[:50] %}
-    {% set port_preview = ports[:50] %}
-    {% set tech_preview = technologies[:50] %}
+    {% set sub_preview = subdomains %}
+    {% set live_preview = live_hosts %}
+    {% set dead_preview = dead_hosts %}
+    {% set port_preview = ports %}
+    {% set tech_preview = technologies %}
 
     <div class="container">
         <div class="header">
@@ -224,7 +224,7 @@ DEFAULT_TEMPLATE = """
         <div class="section">
             <h2>Subdomains</h2>
             {% if subdomains %}
-                <p class="section-meta">Showing {{ sub_preview|length }} of {{ subdomains|length }} discovered.</p>
+                <p class="section-meta">Showing all {{ sub_preview|length }} discovered entries.</p>
                 <ul>
                     {% for item in sub_preview %}
                         <li>{{ item }}</li>
@@ -238,7 +238,7 @@ DEFAULT_TEMPLATE = """
         <div class="section">
             <h2>Live Hosts</h2>
             {% if live_hosts %}
-                <p class="section-meta">Showing {{ live_preview|length }} of {{ live_hosts|length }} detected.</p>
+                <p class="section-meta">Showing all {{ live_preview|length }} detected entries.</p>
                 <ul>
                     {% for item in live_preview %}
                         <li>{{ item }}</li>
@@ -252,7 +252,7 @@ DEFAULT_TEMPLATE = """
         <div class="section">
             <h2>Dead Hosts</h2>
             {% if dead_hosts %}
-                <p class="section-meta">Showing {{ dead_preview|length }} of {{ dead_hosts|length }} dead targets.</p>
+                <p class="section-meta">Showing all {{ dead_preview|length }} dead targets.</p>
                 <ul>
                     {% for item in dead_preview %}
                         <li>{{ item }}</li>
@@ -266,7 +266,7 @@ DEFAULT_TEMPLATE = """
         <div class="section">
             <h2>Open Ports</h2>
             {% if ports %}
-                <p class="section-meta">Showing {{ port_preview|length }} of {{ ports|length }} port entries.</p>
+                <p class="section-meta">Showing all {{ port_preview|length }} port entries.</p>
                 <table>
                     <thead>
                         <tr><th>Host</th><th>Port</th><th>Service</th></tr>
@@ -289,7 +289,7 @@ DEFAULT_TEMPLATE = """
         <div class="section">
             <h2>Technologies</h2>
             {% if technologies %}
-                <p class="section-meta">Showing {{ tech_preview|length }} of {{ technologies|length }} technology fingerprints.</p>
+                <p class="section-meta">Showing all {{ tech_preview|length }} technology fingerprints.</p>
                 <table>
                     <thead>
                         <tr><th>Host</th><th>Technology</th></tr>

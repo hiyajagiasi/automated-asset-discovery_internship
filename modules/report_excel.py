@@ -51,19 +51,24 @@ def generate_excel_report(
             {
                 "target": target,
                 "generated_at": generated_at,
+                "subdomains": len(subdomains),
+                "live_hosts": len(live_hosts),
+                "dead_hosts": len(dead_hosts),
+                "ports": len(ports),
+                "technologies": len(technologies),
                 "subdomains_count": len(subdomains),
                 "live_hosts_count": len(live_hosts),
                 "dead_hosts_count": len(dead_hosts),
                 "ports_count": len(ports),
                 "technologies_count": len(technologies),
-                "subdomains": _join_values(subdomains),
-                "live_hosts": _join_values(live_hosts),
-                "dead_hosts": _join_values(dead_hosts),
-                "ports": _join_values([
+                "subdomains_details": _join_values(subdomains),
+                "live_hosts_details": _join_values(live_hosts),
+                "dead_hosts_details": _join_values(dead_hosts),
+                "ports_details": _join_values([
                     f"{item.get('host', 'unknown')}:{item.get('port', 'unknown')} ({item.get('service', 'unknown')})"
                     for item in ports if isinstance(item, dict)
                 ]),
-                "technologies": _join_values([
+                "technologies_details": _join_values([
                     f"{item.get('host', 'unknown')}: {item.get('technology', 'unknown')}"
                     for item in technologies if isinstance(item, dict)
                 ]),
