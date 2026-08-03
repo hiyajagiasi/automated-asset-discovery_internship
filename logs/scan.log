@@ -5525,3 +5525,81 @@
 2026-08-03 19:28:46,262 - INFO - Starting technology discovery
 2026-08-03 19:29:47,361 - INFO - Technology discovery completed in 61.1 seconds
 2026-08-03 19:29:47,451 - INFO - Completed reconnaissance for github.com
+2026-08-03 19:38:32,244 - INFO - Starting reconnaissance for github.com
+2026-08-03 19:38:32,245 - INFO - Starting subdomain discovery
+2026-08-03 19:44:35,098 - INFO - Starting reconnaissance for github.com
+2026-08-03 19:44:35,098 - INFO - Starting subdomain discovery
+2026-08-03 19:44:44,944 - INFO - Starting reconnaissance for github.com
+2026-08-03 19:44:44,944 - INFO - Starting subdomain discovery
+2026-08-03 19:46:26,978 - INFO - Subdomain discovery completed in 102.0 seconds (41120 candidates)
+2026-08-03 19:46:26,978 - INFO - Starting live-host probing
+2026-08-03 19:46:26,981 - INFO - Starting dnsx resolution for 41120 candidates
+2026-08-03 19:50:48,781 - INFO - dnsx resolution completed: 172/41120 candidates resolved
+2026-08-03 19:50:48,830 - INFO - Starting httpx probe for 172 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-03 19:51:35,458 - INFO - Batch 1: httpx returned 128 lines
+2026-08-03 19:51:35,497 - INFO - Total live hosts found: 128
+2026-08-03 19:51:35,497 - INFO - Total dead hosts found: 41000
+2026-08-03 19:51:35,497 - INFO - Live-host probing completed in 308.5 seconds (128 live hosts)
+2026-08-03 19:51:35,497 - INFO - Starting port discovery
+2026-08-03 19:56:17,331 - INFO - Nmap service progress: 25/48 hosts
+2026-08-03 19:58:17,391 - INFO - Nmap service progress: 48/48 hosts
+2026-08-03 20:01:46,979 - INFO - Identified 67 open host-port combinations across 48 hosts
+2026-08-03 20:01:46,980 - INFO - Port discovery completed in 611.5 seconds
+2026-08-03 20:01:46,980 - INFO - Starting technology discovery
+2026-08-03 20:02:44,727 - INFO - Technology discovery completed in 57.7 seconds
+2026-08-03 20:02:45,468 - INFO - Completed reconnaissance for github.com
+2026-08-03 20:07:08,676 - INFO - Starting reconnaissance for github.com
+2026-08-03 20:07:08,676 - INFO - Starting subdomain discovery
+2026-08-03 20:07:08,798 - INFO - Subdomain discovery completed in 0.1 seconds (4 candidates)
+2026-08-03 20:07:08,799 - INFO - Starting live-host probing
+2026-08-03 20:07:08,799 - INFO - Starting dnsx resolution for 4 candidates
+2026-08-03 20:07:09,413 - INFO - dnsx resolution completed: 2/4 candidates resolved
+2026-08-03 20:07:09,414 - INFO - Starting httpx probe for 2 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-03 20:07:10,627 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 20:07:10,628 - INFO - Total live hosts found: 2
+2026-08-03 20:07:10,628 - INFO - Total dead hosts found: 2
+2026-08-03 20:07:10,628 - INFO - Live-host probing completed in 1.8 seconds (2 live hosts)
+2026-08-03 20:07:10,628 - INFO - Starting port discovery
+2026-08-03 20:08:16,365 - INFO - Nmap service progress: 2/2 hosts
+2026-08-03 20:08:20,343 - INFO - Identified 6 open host-port combinations across 2 hosts
+2026-08-03 20:08:20,343 - INFO - Port discovery completed in 69.7 seconds
+2026-08-03 20:08:20,343 - INFO - Starting technology discovery
+2026-08-03 20:08:23,634 - INFO - Technology discovery completed in 3.3 seconds
+2026-08-03 20:08:23,696 - INFO - Completed reconnaissance for github.com
+2026-08-03 20:09:28,071 - INFO - Starting reconnaissance for github.com
+2026-08-03 20:09:28,071 - INFO - Starting subdomain discovery
+2026-08-03 20:09:28,148 - INFO - Subdomain discovery completed in 0.1 seconds (4 candidates)
+2026-08-03 20:09:28,148 - INFO - Starting live-host probing
+2026-08-03 20:09:28,149 - INFO - Starting dnsx resolution for 4 candidates
+2026-08-03 20:09:28,814 - INFO - dnsx resolution completed: 2/4 candidates resolved
+2026-08-03 20:09:28,815 - INFO - Starting httpx probe for 2 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-03 20:09:29,795 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 20:09:29,796 - INFO - Total live hosts found: 2
+2026-08-03 20:09:29,796 - INFO - Total dead hosts found: 2
+2026-08-03 20:09:29,796 - INFO - Live-host probing completed in 1.6 seconds (2 live hosts)
+2026-08-03 20:09:29,796 - INFO - Starting port discovery
+2026-08-03 20:10:35,357 - INFO - Nmap service progress: 2/2 hosts
+2026-08-03 20:10:39,232 - INFO - Identified 6 open host-port combinations across 2 hosts
+2026-08-03 20:10:39,233 - INFO - Port discovery completed in 69.4 seconds
+2026-08-03 20:10:39,233 - INFO - Starting technology discovery
+2026-08-03 20:10:42,597 - INFO - Technology discovery completed in 3.4 seconds
+2026-08-03 20:10:42,659 - INFO - Completed reconnaissance for github.com
+2026-08-03 20:14:08,702 - INFO - Starting reconnaissance for github.com
+2026-08-03 20:14:08,702 - INFO - Starting subdomain discovery
+2026-08-03 20:24:08,864 - INFO - Subdomain discovery completed in 600.2 seconds (41135 candidates)
+2026-08-03 20:24:08,864 - INFO - Starting live-host probing
+2026-08-03 20:24:08,867 - INFO - Starting dnsx resolution for 41135 candidates
+2026-08-03 20:28:35,908 - INFO - dnsx resolution completed: 151/41135 candidates resolved
+2026-08-03 20:28:35,953 - INFO - Starting httpx probe for 151 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-03 20:29:20,341 - INFO - Batch 1: httpx returned 125 lines
+2026-08-03 20:29:20,381 - INFO - Total live hosts found: 125
+2026-08-03 20:29:20,382 - INFO - Total dead hosts found: 41013
+2026-08-03 20:29:20,382 - INFO - Live-host probing completed in 311.5 seconds (125 live hosts)
+2026-08-03 20:29:20,382 - INFO - Starting port discovery
+2026-08-03 20:33:53,564 - INFO - Nmap service progress: 25/31 hosts
+2026-08-03 20:33:53,565 - INFO - Nmap service progress: 31/31 hosts
+2026-08-03 20:36:09,514 - INFO - Identified 37 open host-port combinations across 31 hosts
+2026-08-03 20:36:09,515 - INFO - Port discovery completed in 409.1 seconds
+2026-08-03 20:36:09,515 - INFO - Starting technology discovery
+2026-08-03 20:37:19,032 - INFO - Technology discovery completed in 69.5 seconds
+2026-08-03 20:37:19,688 - INFO - Completed reconnaissance for github.com

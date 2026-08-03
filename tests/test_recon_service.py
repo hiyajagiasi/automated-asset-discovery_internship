@@ -2,9 +2,13 @@ from pathlib import Path
 import sys
 from unittest.mock import patch
 
+import pandas as pd
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from modules.recon_service import ReconnaissanceService
+from modules.report_excel import generate_excel_report
+from modules.report_html import generate_html_report
 
 
 def test_recon_service_normalizes_url_target(tmp_path):
@@ -57,3 +61,64 @@ def test_recon_service_runs_reports_after_technology_detection(tmp_path):
     assert order == ["subdomains", "live_hosts", "ports", "technologies"]
     assert result["html_report"] == tmp_path / "report.html"
     assert result["excel_report"] == tmp_path / "report.xlsx"
+
+
+def test_generate_html_report_contains_full_recon_summary(tmp_path):
+    report_path = generate_html_report(
+        tmp_path,
+        "example.com",
+        ["api.example.com", "www.example.com"],
+        ["https://example.com", "https://api.example.com"],
+        [{"host": "https://example.com", "port": "443", "service": "https"}],
+        [{"host": "https://example.com", "technology": "HTTPX: HTML5 | Webanalyze: nginx"}],
+        {"reports": {"html": str(tmp_path / "reports" / "report.html")}},
+    )
+
+    html = report_path.read_text(encoding="utf-8")
+    assert "example.com" in html
+    assert "Subdomains" in html
+    assert "Live Hosts" in html
+    assert "Open Ports" in html
+    assert "Technologies" in html
+    assert "api.example.com" in html
+
+
+def test_generate_html_report_rebuilds_empty_template(tmp_path):
+    template_path = tmp_path / "templates" / "report.html"
+    template_path.parent.mkdir(parents=True, exist_ok=True)
+    template_path.write_text("", encoding="utf-8")
+
+    report_path = generate_html_report(
+        tmp_path,
+        "example.com",
+        ["www.example.com"],
+        ["https://example.com"],
+        [{"host": "https://example.com", "port": "443", "service": "https"}],
+        [{"host": "https://example.com", "technology": "HTTPX: HTML5"}],
+        {"reports": {"html": str(tmp_path / "reports" / "report.html")}},
+    )
+
+    html = report_path.read_text(encoding="utf-8")
+    assert "Reconnaissance Report for example.com" in html
+    assert "{{" not in html
+    assert "}}" not in html
+
+
+def test_generate_excel_report_creates_multiple_sheets(tmp_path):
+    report_path = generate_excel_report(
+        tmp_path,
+        "example.com",
+        ["api.example.com", "www.example.com"],
+        ["https://example.com", "https://api.example.com"],
+        [{"host": "https://example.com", "port": "443", "service": "https"}],
+        [{"host": "https://example.com", "technology": "HTTPX: HTML5 | Webanalyze: nginx"}],
+        {"reports": {"excel": str(tmp_path / "reports" / "report.xlsx")}},
+    )
+
+    with pd.ExcelFile(report_path) as workbook:
+        assert workbook.sheet_names == ["Summary", "Subdomains", "Live Hosts", "Ports", "Technologies"]
+
+        summary = pd.read_excel(report_path, sheet_name="Summary")
+        assert summary.loc[0, "target"] == "example.com"
+        assert summary.loc[0, "subdomains"] == 2
+        assert summary.loc[0, "live_hosts"] == 2

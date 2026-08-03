@@ -1,69 +1,40 @@
 Open Ports
 ==========
 
-- 928-sigmavirus.wiki.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
-- accessibility.github.com:443 -> https; title=GitHub Accessibility; server=GitHub.com; status=200
-- antivirus.wiki.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
-- api.mcp.github.com:443 -> https; server=github.com; status=200
-- api.security.github.com:443 -> https; status=200
-- bounty.github.com:443 -> https; title=GitHub Security | GitHub Bug Bounty; server=GitHub.com; status=200
-- ca-antivirus.tbfeed.wiki.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
-- classroom.github.com:443 -> https; title=GitHub Classroom; server=GitHub.com; status=200
-- design-camp.github.com:443 -> https; server=GitHub.com; status=302; redirect=https://github.com/pages/auth?nonce=e05aa0b1-ce70-461b-96d1-5943be53d2b1&page_id=77952115&path=Lw
-- experiments.github.com:443 -> https; title=Exploring early access releases with feature preview - GitHub Docs; status=301; redirect=https://docs.github.com/en/get-started/using-github/exploring-early-access-releases-with-feature-preview/
-- gists.github.com:443 -> https; status=301; redirect=https://gist.github.com/
-- glb-c0e95bd587389a.github.com:443 -> https; status=200
-- home.docker.pkg.github.com:443 -> https; status=405
-- internships.github.com:443 -> https; title=Early in Profession | GitHub Careers; status=301; redirect=https://www.github.careers/early-in-career/
-- lb-140-82-112-12-iad.github.com:443 -> https; title=Site not found &middot; GitHub Pages; server=GitHub.com; status=404
-- lb-140-82-112-15-iad.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
-- lb-140-82-112-18-iad.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
-- lb-140-82-112-3-iad.github.com:443 -> https; status=301; redirect=https://github.com/
-- lb-140-82-112-30-iad.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
-- lb-140-82-114-15-iad.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
-- lb-140-82-114-30-iad.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
-- lb-140-82-116-9-sea.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
-- lb-140-82-121-34-fra.github.com:443 -> https; title=Not Found; status=404
-- login.docker.pkg.github.com:443 -> https; status=405
-- maintainers.github.com:443 -> https; title=Microsoft Forms; status=301; redirect=https://gh.io/maintainers-signup/
-- nodeload.github.com:80 -> http; status=301; redirect=https://nodeload.github.com/
-- nodeload.github.com:443 -> https; status=301; redirect=https://github.com/
-- nonprofits.github.com:80 -> http; status=301; redirect=https://nonprofits.github.com/
-- nonprofits.github.com:443 -> https; status=301; redirect=https://github.com/solutions/industry/nonprofits
-- octicons.github.com:80 -> http; title=Octicons; server=GitHub.com; status=301; redirect=https://octicons.github.com/
-- octicons.github.com:443 -> https; title=Octicons; server=GitHub.com; status=200
-- octo.github.com:80 -> http; title=GitHub Next; status=301; redirect=https://githubnext.com/
-- octo.github.com:443 -> https; title=GitHub Next; status=301; redirect=https://githubnext.com/
-- octodex.github.com:80 -> http; title=GitHub Octodex; server=GitHub.com; status=301; redirect=https://octodex.github.com/
-- octodex.github.com:443 -> https; title=GitHub Octodex; server=GitHub.com; status=200
-- octoverse.github.com:80 -> http; title=Octoverse 2025: The state of open source | The State of the Octoverse; server=GitHub.com; status=301; redirect=https://octoverse.github.com/
-- octoverse.github.com:443 -> https; title=Octoverse 2025: The state of open source | The State of the Octoverse; server=GitHub.com; status=200
-- pages.github.com:80 -> http; title=GitHub Pages | Websites for you and your projects, hosted directly from your GitHub repository. Just edit, push, and your changes are live.; server=GitHub.com; status=301; redirect=https://pages.github.com/
-- pages.github.com:443 -> https; title=GitHub Pages | Websites for you and your projects, hosted directly from your GitHub repository. Just edit, push, and your changes are live.; server=GitHub.com; status=200
-- partner.github.com:80 -> http; status=301; redirect=https://github.com/partners/
-- partner.github.com:443 -> https; status=301; redirect=https://github.com/partners/
-- policy.github.com:443 -> https; status=301; redirect=https://github.com/about/developer-policy/
-- product.wiki.github.com:80 -> http; title=Bad request &middot; GitHub; status=301; redirect=https://product.wiki.github.com/
-- product.wiki.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
-- raw.github.com:443 -> https; status=301; redirect=https://raw.githubusercontent.com/
-- shop.github.com:22 -> ssh
-- shop.github.com:80 -> http; title=GitHub Shop; status=301; redirect=https://shop.github.com/
-- sigmavirus-mission.wiki.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
-- ssh.github.com:22 -> ssh
+- alive.github.com:443 -> https; server=github.com; status=404
+- cafe.github.com:80 -> http; status=301; redirect=https://cafe.github.com/
+- cdn-185-199-110-154.github.com:443 -> https; title=Page not found &middot; GitHub Pages; server=GitHub.com; status=404
+- enterprise.github.com:80 -> http; status=301; redirect=https://enterprise.github.com/
+- glb-db52c2cf8be544.github.com:443 -> https; status=200
+- lb-140-82-112-2-iad.github.com:443 -> https; title=GitHub Debug; server=GitHub.com; status=200
+- lb-140-82-112-22-iad.github.com:80 -> http; status=301; redirect=https://lb-140-82-112-22-iad.github.com/
+- lb-140-82-112-24-iad.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
+- lb-140-82-112-37-iad.github.com:443 -> https; title=404 Not Found; server=Splunkd; status=404
+- lb-140-82-113-9-iad.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
+- lb-140-82-114-14-iad.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
+- lb-140-82-114-19-iad.github.com:443 -> https; status=301; redirect=https://github.com/
+- live.github.com:443 -> https; server=github.com; status=404
+- mailing.github.com:80 -> http; title=404 Not Found; server=nginx; status=404
+- policy.github.com:80 -> http; status=301; redirect=https://github.com/about/developer-policy/
+- resources.github.com:443 -> https; status=308; redirect=https://github.com/resources
+- rubygems.pkg.github.com:80 -> http; status=301; redirect=https://rubygems.pkg.github.com/
+- rubygems.pkg.github.com:443 -> https; status=405
+- securitylab.github.com:80 -> http; title=GitHub Security Lab | Securing open source software, together.; server=GitHub.com; status=301; redirect=https://securitylab.github.com/
+- securitylab.github.com:443 -> https; title=GitHub Security Lab | Securing open source software, together.; server=GitHub.com; status=200
 - ssh.github.com:80 -> http; status=301; redirect=https://github.com/
-- stars.github.com:443 -> https; title=Nominate amazing open source contributors for the GitHub Stars program | GitHub Stars; server=github.com; status=200
-- static.education.github.com:80 -> http; status=301; redirect=https://education.github.com/
-- static.education.github.com:443 -> https; status=301; redirect=https://education.github.com/
-- support.enterprise.github.com:80 -> http; title=GitHub, Inc. - Prod - Sign In; status=301; redirect=https://enterprise.githubsupport.com/
+- ssh.github.com:443 -> https
 - support.enterprise.github.com:443 -> https; title=GitHub, Inc. - Prod - Sign In; status=301; redirect=https://enterprise.githubsupport.com/
-- tbfeed.wiki.github.com:80 -> http; title=Bad request &middot; GitHub; status=301; redirect=https://tbfeed.wiki.github.com/
-- training.github.com:80 -> http; title=GitHub Training Kit - GitHub Cheatsheets; server=GitHub.com; status=301; redirect=https://training.github.com/
-- training.github.com:443 -> https; title=GitHub Training Kit - GitHub Cheatsheets; server=GitHub.com; status=200
-- universe.github.com:80 -> http; title=GitHub Universe 2026; server=GitHub.com; status=301; redirect=https://githubuniverse.com
+- thehub.github.com:80 -> http; title=GitHub, Inc. - Prod - Sign In; status=301; redirect=https://thehub.github.com/
+- unity.github.com:443 -> https; title=Site not found &middot; GitHub Pages; server=GitHub.com; status=404
 - universe.github.com:443 -> https; title=GitHub Universe 2026; server=GitHub.com; status=301; redirect=https://githubuniverse.com
-- visualstudio.github.com:80 -> http; title=Visual Studio and GitHub; status=301; redirect=https://visualstudio.microsoft.com/vs/github/
-- vscode.github.com:80 -> http; title=GitHub and VS Code | Bring your favorite tools to all the places you code; server=GitHub.com; status=301; redirect=https://vscode.github.com/
-- vscode.github.com:443 -> https; title=GitHub and VS Code | Bring your favorite tools to all the places you code; server=GitHub.com; status=200
-- webapp.wiki.github.com:80 -> http; title=Bad request &middot; GitHub; status=301; redirect=https://webapp.wiki.github.com/
-- webapp.wiki.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
-- ws.support.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
+- vpn-ca.iad.github.com:443 -> https; title=Page not found &middot; GitHub Pages; server=GitHub.com; status=404
+- warehouse.github.com:443 -> https; server=GitHub.com; status=302; redirect=https://github.com/pages/auth?nonce=16a94072-1d6e-4b9c-9021-5da8952763ca&page_id=33961994&path=Lw
+- wiki.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
+- wildcard.octocaptcha.review-lab.github.com:80 -> http; status=302; redirect=https://wildcard.octocaptcha.review-lab.github.com/
+- wildcard.octocaptcha.review-lab.github.com:443 -> https; status=404
+- wildcard.pkg.github.com:80 -> http; status=301; redirect=https://wildcard.pkg.github.com/
+- wildcard.pkg.github.com:443 -> https; status=405
+- wildcard.review-lab.github.com:80 -> http; status=302; redirect=https://wildcard.review-lab.github.com/
+- wildcard.workspaces-dev.github.com:80 -> http; status=404
+- wildcard.workspaces-dev.github.com:443 -> https; status=404
+- wildcard.workspaces.github.com:443 -> https; status=404

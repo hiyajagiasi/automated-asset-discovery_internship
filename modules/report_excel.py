@@ -12,9 +12,25 @@ def generate_excel_report(base_dir: Path, target: str, subdomains: list[str], li
 
     summary = pd.DataFrame(
         [
-            {"target": target, "subdomains": len(subdomains), "live_hosts": len(live_hosts), "ports": len(ports), "technologies": len(technologies)}
+            {
+                "target": target,
+                "subdomains": len(subdomains),
+                "live_hosts": len(live_hosts),
+                "ports": len(ports),
+                "technologies": len(technologies),
+            }
         ]
     )
+
+    subdomain_df = pd.DataFrame({"subdomain": subdomains}) if subdomains else pd.DataFrame(columns=["subdomain"])
+    live_host_df = pd.DataFrame({"live_host": live_hosts}) if live_hosts else pd.DataFrame(columns=["live_host"])
+    port_df = pd.DataFrame(ports) if ports else pd.DataFrame(columns=["host", "port", "service"])
+    technology_df = pd.DataFrame(technologies) if technologies else pd.DataFrame(columns=["host", "technology"])
+
     with pd.ExcelWriter(output_path) as writer:
         summary.to_excel(writer, sheet_name="Summary", index=False)
+        subdomain_df.to_excel(writer, sheet_name="Subdomains", index=False)
+        live_host_df.to_excel(writer, sheet_name="Live Hosts", index=False)
+        port_df.to_excel(writer, sheet_name="Ports", index=False)
+        technology_df.to_excel(writer, sheet_name="Technologies", index=False)
     return output_path

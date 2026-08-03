@@ -6,16 +6,289 @@ from typing import Any
 from jinja2 import Template
 
 
+DEFAULT_TEMPLATE = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ target }} Reconnaissance Report</title>
+    <style>
+        :root {
+            --bg: #07111f;
+            --bg-2: #0f172a;
+            --panel: rgba(15, 23, 42, 0.78);
+            --panel-strong: #111827;
+            --panel-soft: #0b1220;
+            --border: rgba(148, 163, 184, 0.28);
+            --text: #e5eefc;
+            --muted: #a9b9d1;
+            --accent: #5eead4;
+            --accent-2: #7dd3fc;
+            --warn: #fbbf24;
+            --danger: #f87171;
+            --shadow: 0 18px 40px rgba(2, 6, 23, 0.45);
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+            color: var(--text);
+        }
+        .container {
+            max-width: 1500px;
+            margin: 24px auto;
+            padding: 0 20px 40px;
+        }
+        .header {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.9));
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 26px 28px;
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+        }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: clamp(2rem, 3vw, 3rem);
+            line-height: 1.2;
+            letter-spacing: -0.04em;
+        }
+        .badge {
+            background: rgba(94, 234, 212, 0.14);
+            border: 1px solid rgba(94, 234, 212, 0.4);
+            color: var(--accent);
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .subtitle {
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: 0.98rem;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin: 24px 0 28px;
+        }
+        .stat {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75));
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 18px 18px;
+            box-shadow: var(--shadow);
+        }
+        .stat .label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--muted);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 10px;
+        }
+        .stat .value {
+            font-size: clamp(1.7rem, 2vw, 2.4rem);
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            color: white;
+        }
+        .section {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 22px 20px 12px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+        }
+        .section h2 {
+            margin: 0 0 8px;
+            font-size: 1.5rem;
+            color: white;
+        }
+        .section-meta {
+            color: var(--muted);
+            margin: 0 0 14px;
+            font-size: 0.92rem;
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 8px;
+        }
+        li {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 12px;
+            color: var(--text);
+            word-break: break-word;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        th, td {
+            text-align: left;
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+        th {
+            background: rgba(30, 41, 59, 0.9);
+            color: var(--muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        tr:last-child td { border-bottom: none; }
+        .empty {
+            color: var(--muted);
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px dashed var(--border);
+            border-radius: 10px;
+            padding: 18px;
+        }
+    </style>
+</head>
+<body>
+    {% set sub_preview = subdomains[:50] %}
+    {% set live_preview = live_hosts[:50] %}
+    {% set port_preview = ports[:50] %}
+    {% set tech_preview = technologies[:50] %}
+
+    <div class="container">
+        <div class="header">
+            <div class="header-top">
+                <h1>Reconnaissance Report for {{ target }}</h1>
+                <span class="badge">Executive Summary</span>
+            </div>
+            <div class="subtitle">Asset discovery summary and findings</div>
+        </div>
+
+        <div class="stats">
+            <div class="stat"><span class="label">Subdomains</span><span class="value">{{ subdomains|length }}</span></div>
+            <div class="stat"><span class="label">Live Hosts</span><span class="value">{{ live_hosts|length }}</span></div>
+            <div class="stat"><span class="label">Open Ports</span><span class="value">{{ ports|length }}</span></div>
+            <div class="stat"><span class="label">Technologies</span><span class="value">{{ technologies|length }}</span></div>
+        </div>
+
+        <div class="section">
+            <h2>Subdomains</h2>
+            {% if subdomains %}
+                <p class="section-meta">Showing {{ sub_preview|length }} of {{ subdomains|length }} discovered.</p>
+                <ul>
+                    {% for item in sub_preview %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="empty">No subdomains discovered.</div>
+            {% endif %}
+        </div>
+
+        <div class="section">
+            <h2>Live Hosts</h2>
+            {% if live_hosts %}
+                <p class="section-meta">Showing {{ live_preview|length }} of {{ live_hosts|length }} detected.</p>
+                <ul>
+                    {% for item in live_preview %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="empty">No live hosts detected.</div>
+            {% endif %}
+        </div>
+
+        <div class="section">
+            <h2>Open Ports</h2>
+            {% if ports %}
+                <p class="section-meta">Showing {{ port_preview|length }} of {{ ports|length }} port entries.</p>
+                <table>
+                    <thead>
+                        <tr><th>Host</th><th>Port</th><th>Service</th></tr>
+                    </thead>
+                    <tbody>
+                        {% for item in port_preview %}
+                            <tr>
+                                <td>{{ item.get('host', 'unknown') }}</td>
+                                <td>{{ item.get('port', 'unknown') }}</td>
+                                <td>{{ item.get('service', 'unknown') }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="empty">No open ports found.</div>
+            {% endif %}
+        </div>
+
+        <div class="section">
+            <h2>Technologies</h2>
+            {% if technologies %}
+                <p class="section-meta">Showing {{ tech_preview|length }} of {{ technologies|length }} technology fingerprints.</p>
+                <table>
+                    <thead>
+                        <tr><th>Host</th><th>Technology</th></tr>
+                    </thead>
+                    <tbody>
+                        {% for item in tech_preview %}
+                            <tr>
+                                <td>{{ item.get('host', 'unknown') }}</td>
+                                <td>{{ item.get('technology', 'unknown') }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="empty">No technology fingerprints detected.</div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+"""
+
+
 def generate_html_report(base_dir: Path, target: str, subdomains: list[str], live_hosts: list[str], ports: list[dict[str, str]], technologies: list[dict[str, str]], config: dict[str, Any]) -> Path:
     template_path = base_dir / "templates" / "report.html"
     output_path = Path(config.get("reports", {}).get("html", "reports/report.html"))
     output_path.parent.mkdir(parents=True, exist_ok=True)
     template_path.parent.mkdir(parents=True, exist_ok=True)
 
-    if not template_path.exists():
-        template_path.write_text("<h1>{{ target }}</h1><ul>{% for item in subdomains %}<li>{{ item }}</li>{% endfor %}</ul>", encoding="utf-8")
+    template_text = template_path.read_text(encoding="utf-8") if template_path.exists() else ""
+    if not template_text.strip():
+        template_path.write_text(DEFAULT_TEMPLATE, encoding="utf-8")
+        template_text = DEFAULT_TEMPLATE
 
-    template = Template(template_path.read_text(encoding="utf-8"))
-    rendered = template.render(target=target, subdomains=subdomains, live_hosts=live_hosts, ports=ports, technologies=technologies)
+    template = Template(template_text)
+    rendered = template.render(
+        target=target,
+        subdomains=subdomains,
+        live_hosts=live_hosts,
+        ports=ports,
+        technologies=technologies,
+    )
     output_path.write_text(rendered, encoding="utf-8")
     return output_path
