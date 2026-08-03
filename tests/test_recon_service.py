@@ -125,6 +125,14 @@ def test_generate_excel_report_creates_multiple_sheets(tmp_path):
 
         summary = pd.read_excel(report_path, sheet_name="Summary")
         assert summary.loc[0, "target"] == "example.com"
+        assert "generated_at" in summary.columns
+        assert "subdomains" in summary.columns
+        assert "live_hosts" in summary.columns
+        assert "dead_hosts" in summary.columns
         assert summary.loc[0, "subdomains"] == 2
         assert summary.loc[0, "live_hosts"] == 2
         assert summary.loc[0, "dead_hosts"] == 1
+        summary_text = summary.to_string(index=False)
+        assert "api.example.com" in summary_text
+        assert "https://example.com" in summary_text
+        assert "https://dead.example.com" in summary_text
