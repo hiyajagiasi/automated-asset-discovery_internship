@@ -8,7 +8,6 @@ from modules.live_hosts import discover_live_hosts
 from modules.port_scan import scan_ports
 from modules.report_excel import generate_excel_report
 from modules.report_html import generate_html_report
-from modules.security import discover_security_findings
 from modules.subdomain import discover_subdomains
 from modules.technology import discover_technologies
 from modules.utils import ensure_directories, get_logger, load_config, validate_domain
@@ -58,11 +57,6 @@ class ReconnaissanceService:
         technologies = discover_technologies(live_hosts, self.config)
         self.logger.info("Technology discovery completed in %.1f seconds", time.monotonic() - phase_started)
 
-        phase_started = time.monotonic()
-        self.logger.info("Starting security detection")
-        security_findings = discover_security_findings(live_hosts, self.config)
-        self.logger.info("Security detection completed in %.1f seconds", time.monotonic() - phase_started)
-
         html_report = generate_html_report(
             self.base_dir,
             self.target,
@@ -89,7 +83,6 @@ class ReconnaissanceService:
             "live_hosts": live_hosts,
             "ports": ports,
             "technologies": technologies,
-            "security_findings": security_findings,
             "html_report": html_report,
             "excel_report": excel_report,
         }

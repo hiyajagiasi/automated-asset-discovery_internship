@@ -68,6 +68,8 @@ def ensure_directories(paths: Iterable[Path | str]) -> None:
 
 def load_hosts_from_output(config: dict[str, Any], output_key: str, default: str) -> list[str]:
     path = Path(config.get("output", {}).get(output_key, default))
+    if not path.is_absolute():
+        path = (Path(__file__).resolve().parents[1] / path).resolve()
     if not path.exists():
         return []
     text = path.read_text(encoding="utf-8")
@@ -107,6 +109,8 @@ def validate_domain(domain: str) -> str:
 
 def get_logger(log_file: str | Path) -> logging.Logger:
     log_path = Path(log_file)
+    if not log_path.is_absolute():
+        log_path = (Path(__file__).resolve().parents[1] / log_path).resolve()
     log_path.parent.mkdir(parents=True, exist_ok=True)
     logger = logging.getLogger("asset_discovery")
     logger.setLevel(logging.INFO)

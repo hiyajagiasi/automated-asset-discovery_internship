@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///opt/homebrew/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.99 scan initiated Mon Aug  3 11:41:09 2026 as: nmap -Pn -T4 -sV -sC -&#45;version-all -&#45;open -&#45;script default,safe,version,discovery,ssl-cert,ssl-enum-ciphers,http-title,http-headers,http-server-header,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags -p 80 -oX logs/nmap_login_docker_pkg_github_com_80.xml login.docker.pkg.github.com -->
+<nmaprun scanner="nmap" args="nmap -Pn -T4 -sV -sC -&#45;version-all -&#45;open -&#45;script default,safe,version,discovery,ssl-cert,ssl-enum-ciphers,http-title,http-headers,http-server-header,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags -p 80 -oX logs/nmap_login_docker_pkg_github_com_80.xml login.docker.pkg.github.com" start="1785737469" startstr="Mon Aug  3 11:41:09 2026" version="7.99" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="1" services="80"/>

@@ -1,7 +1,285 @@
 Technology Findings
 ===================
 
-- https://www.github.com
+- https://desktop.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: Fastly | Varnish | GitHub Pages
+- https://mailing.github.com
+  HTTPX: no fingerprint matched | Webanalyze: Nginx | Varnish
+- https://blog.github.com
+  HTTPX: Web Server: nginx | HTML5 | Programming Language: WordPress VIP <https://wpvip.com> | Webanalyze: GitHub Pages | Varnish | Fastly
+- https://guides.github.com
+  HTTPX: Programming Language: Next.js | HTML5 | Webanalyze: Varnish | GitHub Pages | Fastly
+- https://boxen.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: Varnish | GitHub Pages | Fastly
+- https://api.github.com
+  HTTPX: Web Server: github.com | JSON | Webanalyze: HSTS | GitHub Pages
+- https://mac.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: Varnish | GitHub Pages | Fastly
+- https://atom-installer.github.com
+  HTTPX: no fingerprint matched | Webanalyze: Varnish
+- https://hubspot.github.com
+  HTTPX: no fingerprint matched | Webanalyze: Varnish | GitHub Pages | Fastly
+- https://awesome-copilot.github.com
+  HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Fastly | Astro (7.1.3) | GitHub Pages | Varnish | Starlight (0.41.1)
+- https://archiveprogram.github.com
+  HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Varnish | Jekyll (3.10.0) | Ruby | GitHub Pages | Fastly | Adobe Fonts | Typekit
+- https://mona-arcade.github.com
+  HTTPX: no fingerprint matched | Webanalyze: Varnish | Fastly | GitHub Pages
+- https://gist3.github.com
   HTTPX: HTML5 | Web Server: github.com | Webanalyze: HSTS
-- https://github.com
-  HTTPX: HTML5 | Web Server: github.com | Webanalyze: GitHub Pages | Amazon S3 | Amazon Web Services | Contentful | HSTS | React
+- https://bounty.github.com
+  HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Varnish | GitHub Pages | Fastly | Jekyll (4.3.1) | Ruby
+- https://data-science.github.com
+  HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Varnish | GitHub Pages | Fastly
+- https://cdn-185-199-111-153.github.com
+  HTTPX: unreachable | Webanalyze: no fingerprint matched
+- https://cdn-185-199-109-153.github.com
+  HTTPX: no fingerprint matched | Webanalyze: Fastly | GitHub Pages | Varnish
+- https://login.docker.pkg.github.com
+  HTTPX: no fingerprint matched | Webanalyze: GitHub Pages | HSTS
+- https://blog-freeze.github.com
+  HTTPX: no fingerprint matched | Webanalyze: Varnish | Fastly | GitHub Pages
+- https://event-sponsorship.github.com
+  HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Fastly | GitHub Pages | Varnish
+- https://codeload.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: GitHub Pages | HSTS
+- https://accessibility.github.com
+  HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Varnish | Fastly | GitHub Pages
+- https://maintainermonth.github.com
+  HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Varnish | Fastly | GitHub Pages
+- https://npm.pkg.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: GitHub Pages | HSTS
+- https://man.github.com
+  HTTPX: no fingerprint matched | Webanalyze: GitHub Pages | Fastly | Varnish
+- https://my.docker.pkg.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS | GitHub Pages
+- https://nuget.pkg.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: HSTS | GitHub Pages
+- https://accelerator.github.com
+  HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: YouTube | Fastly | GitHub Pages | Varnish
+- https://notfound.pkg.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS | GitHub Pages
+- https://customer-stories-feed.github.com
+  HTTPX: no fingerprint matched | Webanalyze: GitHub Pages | Fastly | Varnish
+- https://brand.github.com
+  HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Fastly | Varnish | GitHub Pages
+- https://lb-140-82-121-5-fra.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://octodex.github.com
+  HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Fastly | Varnish | GitHub Pages
+- https://cdn-185-199-111-154.github.com
+  HTTPX: no fingerprint matched | Webanalyze: Varnish | GitHub Pages | Fastly
+- https://atom-installer-eaph0av7.github.com
+  HTTPX: no fingerprint matched | Webanalyze: Varnish | Fastly | GitHub Pages
+- https://og.github.com
+  HTTPX: no fingerprint matched | Webanalyze: Fastly | Varnish | GitHub Pages
+- https://octoverse.github.com
+  HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Fastly | GitHub Pages | Jekyll (4.1.1) | Ruby | Varnish
+- https://lb-140-82-121-9-fra.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://lb-140-82-121-2-fra.github.com
+  HTTPX: no fingerprint matched | Webanalyze: GitHub Pages | Amazon S3 | Amazon Web Services | HSTS
+- https://asset-generator.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: Fastly | GitHub Pages | Varnish
+- https://brasil.github.com
+  HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Varnish | Jekyll (3.10.0) | Ruby | Fastly | GitHub Pages
+- https://lb-140-82-121-34-fra.github.com
+  HTTPX: no fingerprint matched | Webanalyze: GitHub Pages | HSTS
+- https://action.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: Varnish | GitHub Pages | Fastly
+- https://model-launchkit.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: GitHub Pages | Varnish | Fastly
+- https://lb-140-82-121-11-fra.github.com
+  HTTPX: no fingerprint matched | Webanalyze: GitHub Pages
+- https://nodeload.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: HSTS | GitHub Pages
+- https://design-camp.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: Fastly | Varnish | GitHub Pages
+- https://api.mcp.github.com
+  HTTPX: JSON | Web Server: github.com | Webanalyze: GitHub Pages
+- https://autoconfig.wiki.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://lb-140-82-113-19-iad.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: HSTS
+- https://copilot.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: no fingerprint matched
+- https://lb-140-82-113-10-iad.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://lb-140-82-113-6-iad.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://lb-140-82-114-22-iad.github.com
+  HTTPX: unreachable | Webanalyze: no fingerprint matched
+- https://community.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: no fingerprint matched
+- https://lb-140-82-114-28-iad.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://accessibility-playbook.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: Varnish | Fastly | GitHub Pages
+- https://gists.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: no fingerprint matched
+- https://octicons.github.com
+  HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Varnish | Fastly | GitHub Pages
+- https://lb-140-82-114-21-iad.github.com
+  HTTPX: unreachable | Webanalyze: no fingerprint matched
+- https://maintainers.github.com
+  HTTPX: HTML5 | Webanalyze: no fingerprint matched
+- https://ja.wiki.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://glb-c0e95bd587389a.github.com
+  HTTPX: unreachable | Webanalyze: no fingerprint matched
+- https://ca.sigmavirus.cs102.wiki.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://alive.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS | GitHub Pages
+- https://lb-140-82-112-15-iad.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://api.security.github.com
+  HTTPX: HTML5 | Webanalyze: GitHub Pages
+- https://lb-140-82-112-3-iad.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: HSTS
+- https://lb-140-82-112-18-iad.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://lb-140-82-112-12-iad.github.com
+  HTTPX: no fingerprint matched | Webanalyze: GitHub Pages
+- https://lb-140-82-114-34-iad.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://autodiscover.wiki.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://lb-140-82-113-30-iad.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://gb.wiki.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://lb-140-82-112-23-iad.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://nonprofits.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: GitHub Pages | HSTS
+- https://learn.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: GitHub Pages | React
+- https://lb-140-82-114-25-iad.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://lb-140-82-114-26-iad.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://launch.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: HSTS
+- https://lb-140-82-116-9-sea.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://ca.928-sigmavirus.wiki.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://928-sigmavirus.wiki.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://lb-140-82-114-15-iad.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://internships.github.com
+  HTTPX: HTML5 | Web Server: nginx | Webanalyze: no fingerprint matched
+- https://lb-140-82-112-30-iad.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://lb-140-82-114-16-iad.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://experiments.github.com
+  HTTPX: Programming Language: Next.js | HTML5 | Webanalyze: no fingerprint matched
+- https://lb-140-82-114-30-iad.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://antivirus.wiki.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://lb-192-30-252-154-iad.github.com
+  HTTPX: no fingerprint matched | Webanalyze: GitHub Pages
+- https://lb-140-82-114-12-iad.github.com
+  HTTPX: no fingerprint matched | Webanalyze: GitHub Pages
+- https://alive-staging.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS | GitHub Pages
+- https://lb-140-82-116-20-sea.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: HSTS
+- https://lb-140-82-112-4-iad.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: HSTS
+- https://storage.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://shop.github.com
+  HTTPX: HTML5 | HTTP/3 | CDN: Cloudflare | Webanalyze: HSTS
+- https://cs102.wiki.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://octo.github.com
+  HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: no fingerprint matched
+- https://pages.github.com
+  HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: GitHub Pages | Fastly | Jekyll (3.10.0) | Ruby | Varnish
+- https://securitylab.github.com
+  HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: GitHub Pages | Fastly | Varnish | Jekyll (4.3.4) | Ruby
+- https://lb-140-82-116-5-sea.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://training.github.com
+  HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Varnish | GitHub Pages | Fastly
+- https://lb-140-82-116-33-sea.github.com
+  HTTPX: no fingerprint matched | Webanalyze: GitHub Pages | HSTS
+- https://ca.db1.antivirus.wiki.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://examregistration-api.github.com
+  HTTPX: Web Server: Kestrel | Webanalyze: HSTS | Kestrel | Microsoft ASP.NET
+- https://f.cloud.github.com
+  HTTPX: no fingerprint matched | Webanalyze: Varnish | Fastly
+- https://admin.github.com
+  HTTPX: HTML5 | Web Server: nginx | Webanalyze: GitHub Pages | HSTS
+- https://pages-auth.github.com
+  HTTPX: no fingerprint matched | Webanalyze: Fastly | GitHub Pages | Varnish
+- https://ca-antivirus.tbfeed.wiki.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://universe.github.com
+  HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Varnish | GitHub Pages | Fastly
+- https://rubygems.pkg.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: GitHub Pages | HSTS
+- https://wildcard.workspaces-ppe.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://vscode.github.com
+  HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Fastly | YouTube | GitHub Pages | Varnish
+- https://static.education.github.com
+  HTTPX: no fingerprint matched | Webanalyze: Amazon CloudFront | Amazon Web Services
+- http://classroom.github.com
+  HTTPX: Web Server: GitHub.com | HTML5 | Webanalyze: Ruby on Rails | Ruby | HSTS | GitHub Pages
+- https://home.docker.pkg.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS | GitHub Pages
+- https://support.enterprise.github.com
+  HTTPX: HTML5 | Web Server: nginx | Webanalyze: no fingerprint matched
+- https://raw-origin.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: no fingerprint matched
+- https://ws.support.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://www.wiki.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://wiki.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://wildcard.octocaptcha.review-lab.github.com
+  HTTPX: no fingerprint matched | Webanalyze: GitHub Pages
+- https://teams.github.com
+  HTTPX: Programming Language: Express | HTML5 | Web Server: github.com | Webanalyze: HSTS | GitHub Pages | Express | Node.js
+- https://webapp.wiki.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://tbfeed.wiki.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://stars.github.com
+  HTTPX: Programming Language: Next.js | HTML5 | Web Server: github.com | Webanalyze: GitHub Pages | Next.js | React | Webpack
+- https://teach.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: no fingerprint matched
+- https://policy.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: no fingerprint matched
+- https://partner.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: no fingerprint matched
+- https://res.communication.github.com
+  HTTPX: HTML5 | CDN: Cloudflare | HTTP/3 | Webanalyze: HSTS | Apache HTTP Server
+- https://product.wiki.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://sigmavirus-mission.wiki.github.com
+  HTTPX: no fingerprint matched | Webanalyze: HSTS
+- https://raw.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: Fastly | Varnish
+- https://lb-140-82-114-2-iad.github.com
+  HTTPX: no fingerprint matched | Webanalyze: Amazon S3 | Amazon Web Services | GitHub Pages | HSTS
+- https://visualstudio.github.com
+  HTTPX: Web Server: nginx | HTML5 | Programming Language: WP Engine | Webanalyze: no fingerprint matched
+- http://lb-140-82-113-35-iad.github.com
+  HTTPX: unreachable | Webanalyze: no fingerprint matched
+- http://lb-140-82-114-36-iad.github.com
+  HTTPX: unreachable | Webanalyze: no fingerprint matched
+- http://ssh.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: no fingerprint matched
+- http://lb-140-82-116-35-sea.github.com
+  HTTPX: unreachable | Webanalyze: no fingerprint matched
+- http://autodiscover.github.com
+  HTTPX: unreachable | Webanalyze: no fingerprint matched

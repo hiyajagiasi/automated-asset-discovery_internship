@@ -4045,3 +4045,1483 @@
 2026-07-30 18:15:57,624 - INFO - Starting security detection
 2026-07-30 18:15:59,812 - INFO - Security detection completed in 2.2 seconds
 2026-07-30 18:15:59,881 - INFO - Completed reconnaissance for github.com
+2026-07-30 18:20:51,151 - INFO - Starting reconnaissance for github.com
+2026-07-30 18:20:51,151 - INFO - Starting subdomain discovery
+2026-07-30 18:23:24,939 - INFO - Starting reconnaissance for github.com
+2026-07-30 18:23:24,939 - INFO - Starting subdomain discovery
+2026-07-30 18:28:50,208 - INFO - Starting reconnaissance for github.com
+2026-07-30 18:28:50,208 - INFO - Starting subdomain discovery
+2026-07-30 18:31:38,908 - INFO - Subdomain discovery completed in 168.7 seconds (41137 candidates)
+2026-07-30 18:31:38,909 - INFO - Starting live-host probing
+2026-07-30 18:31:38,912 - INFO - Starting dnsx resolution for 41137 candidates
+2026-07-30 18:36:00,441 - INFO - dnsx resolution completed: 172/41137 candidates resolved
+2026-07-30 18:36:00,483 - INFO - Starting httpx probe for 172 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-30 18:36:49,828 - INFO - Batch 1: httpx returned 133 lines
+2026-07-30 18:36:49,858 - INFO - Total live hosts found: 133
+2026-07-30 18:36:49,858 - INFO - Total dead hosts found: 41021
+2026-07-30 18:36:49,858 - INFO - Live-host probing completed in 310.9 seconds (133 live hosts)
+2026-07-30 18:36:49,858 - INFO - Starting port discovery
+2026-07-30 18:41:25,940 - INFO - Nmap service progress: 25/56 hosts
+2026-07-30 18:44:26,025 - INFO - Nmap service progress: 50/56 hosts
+2026-07-30 18:44:26,031 - INFO - Nmap service progress: 56/56 hosts
+2026-07-30 18:48:40,580 - INFO - Identified 78 open host-port combinations across 56 hosts
+2026-07-30 18:48:40,582 - INFO - Port discovery completed in 710.7 seconds
+2026-07-30 18:48:40,582 - INFO - Starting technology discovery
+2026-07-30 18:49:25,231 - INFO - Technology discovery completed in 44.6 seconds
+2026-07-30 18:49:25,231 - INFO - Starting security detection
+2026-07-30 19:05:21,458 - INFO - Security detection completed in 956.2 seconds
+2026-07-30 19:05:21,540 - INFO - Completed reconnaissance for github.com
+2026-07-30 19:07:29,226 - INFO - Starting reconnaissance for github.com
+2026-07-30 19:07:29,226 - INFO - Starting subdomain discovery
+2026-07-30 19:07:29,314 - INFO - Subdomain discovery completed in 0.1 seconds (4 candidates)
+2026-07-30 19:07:29,315 - INFO - Starting live-host probing
+2026-07-30 19:07:29,315 - INFO - Starting dnsx resolution for 4 candidates
+2026-07-30 19:07:30,018 - INFO - dnsx resolution completed: 2/4 candidates resolved
+2026-07-30 19:07:30,019 - INFO - Starting httpx probe for 2 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-30 19:07:31,007 - INFO - Batch 1: httpx returned 2 lines
+2026-07-30 19:07:31,008 - INFO - Total live hosts found: 2
+2026-07-30 19:07:31,008 - INFO - Total dead hosts found: 2
+2026-07-30 19:07:31,008 - INFO - Live-host probing completed in 1.7 seconds (2 live hosts)
+2026-07-30 19:07:31,008 - INFO - Starting port discovery
+2026-07-30 19:08:36,643 - INFO - Nmap service progress: 2/2 hosts
+2026-07-30 19:08:40,007 - INFO - Identified 6 open host-port combinations across 2 hosts
+2026-07-30 19:08:40,007 - INFO - Port discovery completed in 69.0 seconds
+2026-07-30 19:08:40,007 - INFO - Starting technology discovery
+2026-07-30 19:08:42,081 - INFO - Technology discovery completed in 2.1 seconds
+2026-07-30 19:08:42,081 - INFO - Starting security detection
+2026-07-30 19:08:44,185 - INFO - Security detection completed in 2.1 seconds
+2026-07-30 19:08:44,232 - INFO - Completed reconnaissance for github.com
+2026-07-30 19:10:22,366 - INFO - Starting reconnaissance for github.com
+2026-07-30 19:10:22,367 - INFO - Starting subdomain discovery
+2026-07-30 19:10:22,424 - INFO - Subdomain discovery completed in 0.1 seconds (4 candidates)
+2026-07-30 19:10:22,424 - INFO - Starting live-host probing
+2026-07-30 19:10:22,425 - INFO - Starting dnsx resolution for 4 candidates
+2026-07-30 19:10:23,098 - INFO - dnsx resolution completed: 2/4 candidates resolved
+2026-07-30 19:10:23,099 - INFO - Starting httpx probe for 2 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-30 19:10:24,551 - INFO - Batch 1: httpx returned 2 lines
+2026-07-30 19:10:24,553 - INFO - Total live hosts found: 2
+2026-07-30 19:10:24,553 - INFO - Total dead hosts found: 2
+2026-07-30 19:10:24,553 - INFO - Live-host probing completed in 2.1 seconds (2 live hosts)
+2026-07-30 19:10:24,553 - INFO - Starting port discovery
+2026-07-30 19:11:30,166 - INFO - Nmap service progress: 2/2 hosts
+2026-07-30 19:11:33,573 - INFO - Identified 6 open host-port combinations across 2 hosts
+2026-07-30 19:11:33,573 - INFO - Port discovery completed in 69.0 seconds
+2026-07-30 19:11:33,573 - INFO - Starting technology discovery
+2026-07-30 19:11:35,668 - INFO - Technology discovery completed in 2.1 seconds
+2026-07-30 19:11:35,669 - INFO - Starting security detection
+2026-07-30 19:11:37,787 - INFO - Security detection completed in 2.1 seconds
+2026-07-30 19:11:37,838 - INFO - Completed reconnaissance for github.com
+2026-07-30 19:23:08,016 - INFO - Starting reconnaissance for github.com
+2026-07-30 19:23:08,016 - INFO - Starting subdomain discovery
+2026-07-30 19:24:08,688 - INFO - Subdomain discovery completed in 60.7 seconds (41154 candidates)
+2026-07-30 19:24:08,688 - INFO - Starting live-host probing
+2026-07-30 19:24:08,691 - INFO - Starting dnsx resolution for 41154 candidates
+2026-07-30 19:28:30,512 - INFO - dnsx resolution completed: 162/41154 candidates resolved
+2026-07-30 19:28:30,556 - INFO - Starting httpx probe for 162 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-30 19:29:16,259 - INFO - Batch 1: httpx returned 117 lines
+2026-07-30 19:29:16,298 - INFO - Total live hosts found: 117
+2026-07-30 19:29:16,298 - INFO - Total dead hosts found: 41044
+2026-07-30 19:29:16,298 - INFO - Live-host probing completed in 307.6 seconds (117 live hosts)
+2026-07-30 19:29:16,298 - INFO - Starting port discovery
+2026-07-30 19:33:46,256 - INFO - Nmap service progress: 25/41 hosts
+2026-07-30 19:35:46,300 - INFO - Nmap service progress: 41/41 hosts
+2026-07-30 19:38:14,270 - INFO - Identified 49 open host-port combinations across 41 hosts
+2026-07-30 19:38:14,270 - INFO - Port discovery completed in 538.0 seconds
+2026-07-30 19:38:14,270 - INFO - Starting technology discovery
+2026-07-30 19:39:22,886 - INFO - Technology discovery completed in 68.6 seconds
+2026-07-30 19:39:22,889 - INFO - Starting security detection
+2026-07-30 19:53:42,007 - INFO - Security detection completed in 859.1 seconds
+2026-07-30 19:53:42,094 - INFO - Completed reconnaissance for github.com
+2026-07-31 15:12:22,588 - INFO - Starting reconnaissance for github.com
+2026-07-31 15:12:22,588 - INFO - Starting subdomain discovery
+2026-07-31 15:13:23,389 - INFO - Subdomain discovery completed in 60.8 seconds (41146 candidates)
+2026-07-31 15:13:23,389 - INFO - Starting live-host probing
+2026-07-31 15:13:23,393 - INFO - Starting dnsx resolution for 41146 candidates
+2026-07-31 15:17:45,340 - INFO - dnsx resolution completed: 155/41146 candidates resolved
+2026-07-31 15:17:45,384 - INFO - Starting httpx probe for 155 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-31 15:18:31,184 - INFO - Batch 1: httpx returned 127 lines
+2026-07-31 15:18:31,222 - INFO - Total live hosts found: 127
+2026-07-31 15:18:31,222 - INFO - Total dead hosts found: 41023
+2026-07-31 15:18:31,222 - INFO - Live-host probing completed in 307.8 seconds (127 live hosts)
+2026-07-31 15:18:31,222 - INFO - Starting port discovery
+2026-07-31 15:23:10,504 - INFO - Nmap service progress: 25/47 hosts
+2026-07-31 15:25:10,551 - INFO - Nmap service progress: 47/47 hosts
+2026-07-31 15:28:20,910 - INFO - Identified 60 open host-port combinations across 47 hosts
+2026-07-31 15:28:20,911 - INFO - Port discovery completed in 589.7 seconds
+2026-07-31 15:28:20,911 - INFO - Starting technology discovery
+2026-07-31 15:29:35,900 - INFO - Technology discovery completed in 75.0 seconds
+2026-07-31 15:29:35,902 - INFO - Starting security detection
+2026-07-31 15:48:21,687 - INFO - Security detection completed in 1125.8 seconds
+2026-07-31 15:48:21,778 - INFO - Completed reconnaissance for github.com
+2026-07-31 16:34:06,859 - INFO - Starting reconnaissance for github.com
+2026-07-31 16:34:06,859 - INFO - Starting subdomain discovery
+2026-07-31 16:43:59,173 - INFO - Starting reconnaissance for github.com
+2026-07-31 16:43:59,173 - INFO - Starting subdomain discovery
+2026-07-31 16:45:14,627 - INFO - Subdomain discovery completed in 75.5 seconds (41130 candidates)
+2026-07-31 16:45:14,627 - INFO - Starting live-host probing
+2026-07-31 16:45:14,630 - INFO - Starting dnsx resolution for 41130 candidates
+2026-07-31 16:49:32,002 - INFO - dnsx resolution completed: 167/41130 candidates resolved
+2026-07-31 16:49:32,050 - INFO - Starting httpx probe for 167 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-31 16:50:21,324 - INFO - Batch 1: httpx returned 120 lines
+2026-07-31 16:50:21,363 - INFO - Total live hosts found: 120
+2026-07-31 16:50:21,363 - INFO - Total dead hosts found: 41019
+2026-07-31 16:50:21,364 - INFO - Live-host probing completed in 306.7 seconds (120 live hosts)
+2026-07-31 16:50:21,364 - INFO - Starting port discovery
+2026-07-31 16:54:51,224 - INFO - Nmap service progress: 25/46 hosts
+2026-07-31 16:56:51,275 - INFO - Nmap service progress: 46/46 hosts
+2026-07-31 17:00:26,207 - INFO - Identified 59 open host-port combinations across 46 hosts
+2026-07-31 17:00:26,207 - INFO - Port discovery completed in 604.8 seconds
+2026-07-31 17:00:26,208 - INFO - Starting technology discovery
+2026-07-31 17:01:19,765 - INFO - Technology discovery completed in 53.6 seconds
+2026-07-31 17:01:19,768 - INFO - Starting security detection
+2026-07-31 17:19:55,093 - INFO - Security detection completed in 1115.3 seconds
+2026-07-31 17:19:55,174 - INFO - Completed reconnaissance for github.com
+2026-07-31 18:55:09,866 - WARNING - Nikto batch 0 failed to start: [Errno 2] No such file or directory: 'https:/example.com'
+2026-07-31 18:55:21,132 - WARNING - Nikto batch 0 failed to start: [Errno 2] No such file or directory: 'https:/example.com'
+2026-07-31 18:59:05,678 - INFO - Skipping Nikto scan for api.github.com
+2026-07-31 19:00:15,593 - INFO - Skipping Nikto scan for api.github.com
+2026-07-31 19:00:54,906 - INFO - Skipping Nikto scan for api.github.com
+2026-07-31 19:01:14,753 - INFO - Skipping Nikto scan for api.github.com
+2026-07-31 19:02:13,375 - INFO - Starting reconnaissance for github.com
+2026-07-31 19:02:13,376 - INFO - Starting subdomain discovery
+2026-07-31 19:03:14,229 - INFO - Subdomain discovery completed in 60.9 seconds (41155 candidates)
+2026-07-31 19:03:14,229 - INFO - Starting live-host probing
+2026-07-31 19:03:14,233 - INFO - Starting dnsx resolution for 41155 candidates
+2026-07-31 19:07:36,426 - INFO - dnsx resolution completed: 150/41155 candidates resolved
+2026-07-31 19:07:36,470 - INFO - Starting httpx probe for 150 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-31 19:08:21,259 - INFO - Batch 1: httpx returned 125 lines
+2026-07-31 19:08:21,298 - INFO - Total live hosts found: 125
+2026-07-31 19:08:21,298 - INFO - Total dead hosts found: 41042
+2026-07-31 19:08:21,298 - INFO - Live-host probing completed in 307.1 seconds (125 live hosts)
+2026-07-31 19:08:21,298 - INFO - Starting port discovery
+2026-07-31 19:12:48,409 - INFO - Nmap service progress: 25/39 hosts
+2026-07-31 19:13:48,447 - INFO - Nmap service progress: 39/39 hosts
+2026-07-31 19:19:55,776 - INFO - Identified 53 open host-port combinations across 39 hosts
+2026-07-31 19:19:55,777 - INFO - Port discovery completed in 694.5 seconds
+2026-07-31 19:19:55,777 - INFO - Starting technology discovery
+2026-07-31 19:21:21,109 - INFO - Technology discovery completed in 85.3 seconds
+2026-07-31 19:21:21,110 - INFO - Starting security detection
+2026-07-31 19:21:21,112 - INFO - Security detection completed in 0.0 seconds
+2026-07-31 19:21:21,202 - INFO - Completed reconnaissance for github.com
+2026-07-31 19:23:54,826 - INFO - Skipping Nikto scan for api.github.com
+2026-07-31 19:24:07,866 - INFO - Starting reconnaissance for github.com
+2026-07-31 19:24:07,866 - INFO - Starting subdomain discovery
+2026-07-31 19:25:08,630 - INFO - Subdomain discovery completed in 60.8 seconds (41126 candidates)
+2026-07-31 19:25:08,630 - INFO - Starting live-host probing
+2026-07-31 19:25:08,634 - INFO - Starting dnsx resolution for 41126 candidates
+2026-07-31 19:29:32,029 - INFO - dnsx resolution completed: 166/41126 candidates resolved
+2026-07-31 19:29:32,077 - INFO - Starting httpx probe for 166 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-31 19:30:17,033 - INFO - Batch 1: httpx returned 116 lines
+2026-07-31 19:30:17,070 - INFO - Total live hosts found: 116
+2026-07-31 19:30:17,070 - INFO - Total dead hosts found: 41016
+2026-07-31 19:30:17,071 - INFO - Live-host probing completed in 308.4 seconds (116 live hosts)
+2026-07-31 19:30:17,071 - INFO - Starting port discovery
+2026-07-31 20:24:09,746 - INFO - Nmap service progress: 25/97 hosts
+2026-07-31 20:27:09,811 - INFO - Nmap service progress: 50/97 hosts
+2026-07-31 20:30:09,873 - INFO - Nmap service progress: 75/97 hosts
+2026-07-31 20:33:09,909 - INFO - Nmap service progress: 97/97 hosts
+2026-07-31 20:45:10,885 - INFO - Starting reconnaissance for github.com
+2026-07-31 20:45:10,885 - INFO - Starting subdomain discovery
+2026-07-31 20:46:11,598 - INFO - Subdomain discovery completed in 60.7 seconds (41155 candidates)
+2026-07-31 20:46:11,599 - INFO - Starting live-host probing
+2026-07-31 20:46:11,602 - INFO - Starting dnsx resolution for 41155 candidates
+2026-07-31 20:50:38,488 - INFO - dnsx resolution completed: 165/41155 candidates resolved
+2026-07-31 20:50:38,535 - INFO - Starting httpx probe for 165 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-31 20:51:23,285 - INFO - Batch 1: httpx returned 126 lines
+2026-07-31 20:51:23,323 - INFO - Total live hosts found: 126
+2026-07-31 20:51:23,323 - INFO - Total dead hosts found: 41037
+2026-07-31 20:51:23,324 - INFO - Live-host probing completed in 311.7 seconds (126 live hosts)
+2026-07-31 20:51:23,324 - INFO - Starting port discovery
+2026-07-31 20:55:44,641 - INFO - Nmap service progress: 25/41 hosts
+2026-07-31 20:57:44,679 - INFO - Nmap service progress: 41/41 hosts
+2026-07-31 21:02:06,879 - INFO - Identified 43 open host-port combinations across 41 hosts
+2026-07-31 21:02:06,880 - INFO - Port discovery completed in 643.1 seconds
+2026-07-31 21:02:06,881 - INFO - Starting technology discovery
+2026-07-31 21:03:32,483 - INFO - Technology discovery completed in 85.6 seconds
+2026-07-31 21:03:32,485 - INFO - Starting security detection
+2026-07-31 21:03:32,486 - INFO - Security detection completed in 0.0 seconds
+2026-07-31 21:03:32,575 - INFO - Completed reconnaissance for github.com
+2026-07-31 21:49:15,506 - INFO - Starting reconnaissance for github.com
+2026-07-31 21:49:15,506 - INFO - Starting subdomain discovery
+2026-07-31 21:49:15,639 - INFO - Subdomain discovery completed in 0.1 seconds (4 candidates)
+2026-07-31 21:49:15,639 - INFO - Starting live-host probing
+2026-07-31 21:49:15,640 - INFO - Starting dnsx resolution for 4 candidates
+2026-07-31 21:49:16,439 - INFO - dnsx resolution completed: 2/4 candidates resolved
+2026-07-31 21:49:16,440 - INFO - Starting httpx probe for 2 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-31 21:49:17,556 - INFO - Batch 1: httpx returned 2 lines
+2026-07-31 21:49:17,557 - INFO - Total live hosts found: 2
+2026-07-31 21:49:17,557 - INFO - Total dead hosts found: 2
+2026-07-31 21:49:17,557 - INFO - Live-host probing completed in 1.9 seconds (2 live hosts)
+2026-07-31 21:49:17,557 - INFO - Starting port discovery
+2026-07-31 21:50:23,299 - INFO - Nmap service progress: 2/2 hosts
+2026-07-31 21:50:27,269 - INFO - Identified 6 open host-port combinations across 2 hosts
+2026-07-31 21:50:27,269 - INFO - Port discovery completed in 69.7 seconds
+2026-07-31 21:50:27,269 - INFO - Starting technology discovery
+2026-07-31 21:50:30,614 - INFO - Technology discovery completed in 3.3 seconds
+2026-07-31 21:50:30,614 - INFO - Starting security detection
+2026-07-31 21:50:30,615 - INFO - Security detection completed in 0.0 seconds
+2026-07-31 21:50:30,675 - INFO - Completed reconnaissance for github.com
+2026-07-31 21:51:32,534 - INFO - Skipping Nikto scan for api.github.com
+2026-07-31 21:51:41,058 - INFO - Starting reconnaissance for github.com
+2026-07-31 21:51:41,058 - INFO - Starting subdomain discovery
+2026-07-31 21:51:41,130 - INFO - Subdomain discovery completed in 0.1 seconds (4 candidates)
+2026-07-31 21:51:41,131 - INFO - Starting live-host probing
+2026-07-31 21:51:41,131 - INFO - Starting dnsx resolution for 4 candidates
+2026-07-31 21:51:41,689 - INFO - dnsx resolution completed: 2/4 candidates resolved
+2026-07-31 21:51:41,689 - INFO - Starting httpx probe for 2 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-31 21:51:42,661 - INFO - Batch 1: httpx returned 2 lines
+2026-07-31 21:51:42,662 - INFO - Total live hosts found: 2
+2026-07-31 21:51:42,662 - INFO - Total dead hosts found: 2
+2026-07-31 21:51:42,662 - INFO - Live-host probing completed in 1.5 seconds (2 live hosts)
+2026-07-31 21:51:42,662 - INFO - Starting port discovery
+2026-07-31 21:52:48,296 - INFO - Nmap service progress: 2/2 hosts
+2026-07-31 21:53:02,169 - INFO - Identified 6 open host-port combinations across 2 hosts
+2026-07-31 21:53:02,169 - INFO - Port discovery completed in 79.5 seconds
+2026-07-31 21:53:02,170 - INFO - Starting technology discovery
+2026-07-31 21:53:05,630 - INFO - Technology discovery completed in 3.5 seconds
+2026-07-31 21:53:05,630 - INFO - Starting security detection
+2026-07-31 21:53:05,631 - INFO - Security detection completed in 0.0 seconds
+2026-07-31 21:53:05,684 - INFO - Completed reconnaissance for github.com
+2026-07-31 21:53:43,115 - INFO - Skipping Nikto scan for api.github.com
+2026-07-31 21:53:54,358 - INFO - Starting reconnaissance for github.com
+2026-07-31 21:53:54,358 - INFO - Starting subdomain discovery
+2026-07-31 21:54:55,060 - INFO - Subdomain discovery completed in 60.7 seconds (41146 candidates)
+2026-07-31 21:54:55,060 - INFO - Starting live-host probing
+2026-07-31 21:54:55,064 - INFO - Starting dnsx resolution for 41146 candidates
+2026-07-31 21:59:23,960 - INFO - dnsx resolution completed: 116/41146 candidates resolved
+2026-07-31 21:59:23,996 - INFO - Starting httpx probe for 116 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-07-31 22:00:08,353 - INFO - Batch 1: httpx returned 105 lines
+2026-07-31 22:00:08,393 - INFO - Total live hosts found: 105
+2026-07-31 22:00:08,393 - INFO - Total dead hosts found: 41055
+2026-07-31 22:00:08,393 - INFO - Live-host probing completed in 313.3 seconds (105 live hosts)
+2026-07-31 22:00:08,393 - INFO - Starting port discovery
+2026-07-31 22:11:30,939 - INFO - Nmap service progress: 17/17 hosts
+2026-07-31 22:12:35,480 - INFO - Identified 22 open host-port combinations across 17 hosts
+2026-07-31 22:12:35,481 - INFO - Port discovery completed in 268.7 seconds
+2026-07-31 22:12:35,481 - INFO - Starting technology discovery
+2026-07-31 22:13:38,850 - INFO - Technology discovery completed in 63.4 seconds
+2026-07-31 22:13:38,851 - INFO - Starting security detection
+2026-07-31 22:13:38,883 - INFO - Security detection completed in 0.0 seconds
+2026-07-31 22:13:38,968 - INFO - Completed reconnaissance for github.com
+2026-08-01 10:46:24,714 - INFO - Skipping Nikto scan for api.github.com
+2026-08-01 10:47:01,478 - INFO - Skipping Nikto scan for api.github.com
+2026-08-01 10:47:21,554 - INFO - Skipping Nikto scan for api.github.com
+2026-08-01 10:50:33,619 - INFO - Skipping Nikto scan for api.github.com
+2026-08-01 10:51:24,725 - INFO - Starting reconnaissance for github.com
+2026-08-01 10:51:24,725 - INFO - Starting subdomain discovery
+2026-08-01 10:52:25,591 - INFO - Subdomain discovery completed in 60.9 seconds (41146 candidates)
+2026-08-01 10:52:25,591 - INFO - Starting live-host probing
+2026-08-01 10:52:25,594 - INFO - Starting dnsx resolution for 41146 candidates
+2026-08-01 10:56:52,522 - INFO - dnsx resolution completed: 154/41146 candidates resolved
+2026-08-01 10:56:52,566 - INFO - Starting httpx probe for 154 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-01 10:57:37,150 - INFO - Batch 1: httpx returned 118 lines
+2026-08-01 10:57:37,187 - INFO - Total live hosts found: 118
+2026-08-01 10:57:37,187 - INFO - Total dead hosts found: 41032
+2026-08-01 10:57:37,188 - INFO - Live-host probing completed in 311.6 seconds (118 live hosts)
+2026-08-01 10:57:37,188 - INFO - Starting port discovery
+2026-08-01 11:02:10,247 - INFO - Nmap service progress: 25/50 hosts
+2026-08-01 11:03:18,247 - INFO - Skipping Nikto scan for api.github.com
+2026-08-01 11:03:39,556 - INFO - Skipping Nikto scan for api.github.com
+2026-08-01 11:05:10,300 - INFO - Nmap service progress: 50/50 hosts
+2026-08-01 11:07:54,241 - INFO - Identified 54 open host-port combinations across 50 hosts
+2026-08-01 11:07:54,241 - INFO - Port discovery completed in 617.1 seconds
+2026-08-01 11:07:54,241 - INFO - Starting technology discovery
+2026-08-01 11:08:45,659 - INFO - Technology discovery completed in 51.4 seconds
+2026-08-01 11:08:45,661 - INFO - Starting security detection
+2026-08-01 11:08:45,663 - INFO - Security detection completed in 0.0 seconds
+2026-08-01 11:08:45,749 - INFO - Completed reconnaissance for github.com
+2026-08-01 11:10:31,868 - INFO - Starting reconnaissance for github.com
+2026-08-01 11:10:31,868 - INFO - Starting subdomain discovery
+2026-08-01 11:10:31,992 - INFO - Subdomain discovery completed in 0.1 seconds (4 candidates)
+2026-08-01 11:10:31,992 - INFO - Starting live-host probing
+2026-08-01 11:10:31,993 - INFO - Starting dnsx resolution for 4 candidates
+2026-08-01 11:10:32,694 - INFO - dnsx resolution completed: 2/4 candidates resolved
+2026-08-01 11:10:32,694 - INFO - Starting httpx probe for 2 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-01 11:10:33,749 - INFO - Batch 1: httpx returned 2 lines
+2026-08-01 11:10:33,750 - INFO - Total live hosts found: 2
+2026-08-01 11:10:33,750 - INFO - Total dead hosts found: 2
+2026-08-01 11:10:33,750 - INFO - Live-host probing completed in 1.8 seconds (2 live hosts)
+2026-08-01 11:10:33,750 - INFO - Starting port discovery
+2026-08-01 11:11:39,407 - INFO - Nmap service progress: 2/2 hosts
+2026-08-01 11:11:45,584 - INFO - Identified 6 open host-port combinations across 2 hosts
+2026-08-01 11:11:45,584 - INFO - Port discovery completed in 71.8 seconds
+2026-08-01 11:11:45,585 - INFO - Starting technology discovery
+2026-08-01 11:11:49,012 - INFO - Technology discovery completed in 3.4 seconds
+2026-08-01 11:11:49,012 - INFO - Starting security detection
+2026-08-01 11:11:49,013 - INFO - Skipping Nikto scan for https://www.github.com
+2026-08-01 11:11:50,294 - INFO - Security detection completed in 1.3 seconds
+2026-08-01 11:11:50,350 - INFO - Completed reconnaissance for github.com
+2026-08-01 11:12:25,499 - INFO - Starting reconnaissance for github.com
+2026-08-01 11:12:25,499 - INFO - Starting subdomain discovery
+2026-08-01 11:17:43,477 - INFO - Subdomain discovery completed in 314.2 seconds (41137 candidates)
+2026-08-01 11:17:43,477 - INFO - Starting live-host probing
+2026-08-01 11:17:43,480 - INFO - Starting dnsx resolution for 41137 candidates
+2026-08-01 11:22:01,556 - INFO - dnsx resolution completed: 147/41137 candidates resolved
+2026-08-01 11:22:01,594 - INFO - Starting httpx probe for 147 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-01 11:22:47,774 - INFO - Batch 1: httpx returned 109 lines
+2026-08-01 11:22:47,813 - INFO - Total live hosts found: 109
+2026-08-01 11:22:47,813 - INFO - Total dead hosts found: 41048
+2026-08-01 11:22:47,814 - INFO - Live-host probing completed in 304.3 seconds (109 live hosts)
+2026-08-01 11:22:47,814 - INFO - Starting port discovery
+2026-08-01 11:27:11,927 - INFO - Nmap service progress: 25/28 hosts
+2026-08-01 11:27:11,936 - INFO - Nmap service progress: 28/28 hosts
+2026-08-01 11:29:25,132 - INFO - Identified 37 open host-port combinations across 28 hosts
+2026-08-01 11:29:25,133 - INFO - Port discovery completed in 397.3 seconds
+2026-08-01 11:29:25,133 - INFO - Starting technology discovery
+2026-08-01 11:30:26,869 - INFO - Technology discovery completed in 61.7 seconds
+2026-08-01 11:30:26,871 - INFO - Starting security detection
+2026-08-01 11:30:26,873 - INFO - Skipping Nikto scan for https://atom-installer.github.com
+2026-08-01 11:30:26,873 - INFO - Skipping Nikto scan for https://blog.github.com
+2026-08-01 11:30:26,873 - INFO - Skipping Nikto scan for https://hubot.github.com
+2026-08-01 11:30:26,873 - INFO - Skipping Nikto scan for https://lb-140-82-121-5-fra.github.com
+2026-08-01 11:30:26,873 - INFO - Skipping Nikto scan for https://lb-140-82-113-25-iad.github.com
+2026-08-01 11:30:26,873 - INFO - Skipping Nikto scan for https://copilot.github.com
+2026-08-01 11:30:26,873 - INFO - Skipping Nikto scan for https://api.mcp.github.com
+2026-08-01 11:30:26,873 - INFO - Skipping Nikto scan for https://lb-140-82-113-38-iad.github.com
+2026-08-01 11:30:26,873 - INFO - Skipping Nikto scan for https://lb-140-82-112-17-iad.github.com
+2026-08-01 11:30:26,873 - INFO - Skipping Nikto scan for https://lb-140-82-112-14-iad.github.com
+2026-08-01 11:30:26,873 - INFO - Skipping Nikto scan for https://examadmin.github.com
+2026-08-01 11:30:26,873 - INFO - Skipping Nikto scan for https://next.github.com
+2026-08-01 11:30:26,873 - INFO - Skipping Nikto scan for https://autodiscover.wiki.github.com
+2026-08-01 11:30:26,873 - INFO - Skipping Nikto scan for https://lb-140-82-116-3-sea.github.com
+2026-08-01 11:30:26,873 - INFO - Skipping Nikto scan for https://experiments.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://lb-140-82-112-13-iad.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://boxen.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://api.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://copilot-billing-preview.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://atom-installer-eaph0av7.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://m.docker.pkg.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://cxr.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://hubspot.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://accelerator.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://asset-generator.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://model-launchkit.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://928-sigmavirus.wiki.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://lb-140-82-112-42-iad.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://help.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://lb-140-82-116-20-sea.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://ca.db1.antivirus.wiki.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://mailing.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://gameoff.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://developer.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://archiveprogram.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://news.docker.pkg.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://cdn-185-199-108-153.github.com
+2026-08-01 11:30:26,874 - INFO - Skipping Nikto scan for https://accessibility-playbook.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://lb-140-82-112-10-iad.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://lb-140-82-113-21-iad.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://central.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://lb-140-82-112-21-iad.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://alive.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://api.security.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://copilot-reports.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://bounty.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://partner.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://lb-140-82-121-2-fra.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://live.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://wellarchitected.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://lb-140-82-112-20-iad.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://enterprise-bundles.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for http://autodiscover.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://og.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://edu.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://lb-140-82-114-12-iad.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://vscode-auth.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://t.communication.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://pkg.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://blog-freeze.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://tbfeed.wiki.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://pages-auth.github.com
+2026-08-01 11:30:26,875 - INFO - Skipping Nikto scan for https://livesend.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://awesome-copilot.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://shop.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://resources.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://docs.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for http://nodeload.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://gsnlink.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://slack.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for http://accessibility.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://visualstudio.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://warehouse.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://action.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://lb-140-82-121-14-fra.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://lb-140-82-121-13-fra.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://v1.docker.pkg.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://lb-140-82-112-37-iad.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://antivirus.wiki.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://lb-140-82-113-4-iad.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://socialimpact.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://teach.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://lb-140-82-116-6-sea.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://lb-140-82-112-15-iad.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://lb-140-82-116-4-sea.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://autoconfig.wiki.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://ws.support.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for https://services.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for http://lb-140-82-113-29-iad.github.com
+2026-08-01 11:30:26,876 - INFO - Skipping Nikto scan for http://lb-140-82-113-35-iad.github.com
+2026-08-01 11:30:26,877 - INFO - Skipping Nikto scan for https://lb-140-82-113-22-iad.github.com
+2026-08-01 11:30:26,877 - INFO - Skipping Nikto scan for https://docs-internal.github.com
+2026-08-01 11:30:26,877 - INFO - Skipping Nikto scan for http://vpn-ca.iad.github.com
+2026-08-01 11:30:26,877 - INFO - Skipping Nikto scan for http://cli.github.com
+2026-08-01 11:30:26,877 - INFO - Skipping Nikto scan for http://cdn-185-199-110-133.github.com
+2026-08-01 11:30:26,877 - INFO - Skipping Nikto scan for http://lb-140-82-121-12-fra.github.com
+2026-08-01 11:30:26,877 - INFO - Skipping Nikto scan for http://pages.github.com
+2026-08-01 11:30:26,877 - INFO - Skipping Nikto scan for http://maintainermonth.github.com
+2026-08-01 11:30:26,877 - INFO - Skipping Nikto scan for http://cdn-185-199-108-133.github.com
+2026-08-01 11:30:26,877 - INFO - Skipping Nikto scan for http://lb-140-82-121-20-fra.github.com
+2026-08-01 11:30:26,877 - INFO - Skipping Nikto scan for http://lb-140-82-112-30-iad.github.com
+2026-08-01 11:30:26,877 - INFO - Skipping Nikto scan for http://lb-140-82-116-10-sea.github.com
+2026-08-01 11:30:26,877 - INFO - Skipping Nikto scan for http://lb-140-82-114-23-iad.github.com
+2026-08-01 11:30:26,877 - INFO - Skipping Nikto scan for http://admin.github.com
+2026-08-01 11:30:26,877 - INFO - Skipping Nikto scan for http://policy.github.com
+2026-08-01 11:30:26,877 - INFO - Skipping Nikto scan for https://teams.github.com
+2026-08-01 11:30:26,877 - INFO - Skipping Nikto scan for https://wildcard.octocaptcha.review-lab.github.com
+2026-08-01 11:30:26,877 - INFO - Skipping Nikto scan for http://lb-140-82-112-36-iad.github.com
+2026-08-01 11:30:26,877 - INFO - Skipping Nikto scan for http://info.github.com
+2026-08-01 11:30:26,878 - INFO - Security detection completed in 0.0 seconds
+2026-08-01 11:30:26,961 - INFO - Completed reconnaissance for github.com
+2026-08-01 11:35:01,498 - INFO - Starting reconnaissance for github.com
+2026-08-01 11:35:01,498 - INFO - Starting subdomain discovery
+2026-08-01 11:38:35,549 - INFO - Subdomain discovery completed in 214.0 seconds (41126 candidates)
+2026-08-01 11:38:35,549 - INFO - Starting live-host probing
+2026-08-01 11:38:35,552 - INFO - Starting dnsx resolution for 41126 candidates
+2026-08-01 11:41:08,794 - INFO - Starting reconnaissance for github.com
+2026-08-01 11:41:08,794 - INFO - Starting subdomain discovery
+2026-08-01 11:42:09,559 - INFO - Subdomain discovery completed in 60.8 seconds (41117 candidates)
+2026-08-01 11:42:09,559 - INFO - Starting live-host probing
+2026-08-01 11:42:09,562 - INFO - Starting dnsx resolution for 41117 candidates
+2026-08-01 11:43:21,935 - INFO - Starting reconnaissance for github.com
+2026-08-01 11:43:21,935 - INFO - Starting subdomain discovery
+2026-08-01 11:43:22,011 - INFO - Subdomain discovery completed in 0.1 seconds (4 candidates)
+2026-08-01 11:43:22,011 - INFO - Starting live-host probing
+2026-08-01 11:43:22,012 - INFO - Starting dnsx resolution for 4 candidates
+2026-08-01 11:43:22,651 - INFO - dnsx resolution completed: 2/4 candidates resolved
+2026-08-01 11:43:22,652 - INFO - Starting httpx probe for 2 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-01 11:43:23,798 - INFO - Batch 1: httpx returned 2 lines
+2026-08-01 11:43:23,799 - INFO - Total live hosts found: 2
+2026-08-01 11:43:23,799 - INFO - Total dead hosts found: 2
+2026-08-01 11:43:23,799 - INFO - Live-host probing completed in 1.8 seconds (2 live hosts)
+2026-08-01 11:43:23,799 - INFO - Starting port discovery
+2026-08-01 11:44:29,474 - INFO - Nmap service progress: 2/2 hosts
+2026-08-01 11:44:33,516 - INFO - Identified 6 open host-port combinations across 2 hosts
+2026-08-01 11:44:33,517 - INFO - Port discovery completed in 69.7 seconds
+2026-08-01 11:44:33,517 - INFO - Starting technology discovery
+2026-08-01 11:44:36,920 - INFO - Technology discovery completed in 3.4 seconds
+2026-08-01 11:44:36,920 - INFO - Starting security detection
+2026-08-01 11:44:39,330 - INFO - Security detection completed in 2.4 seconds
+2026-08-01 11:44:39,384 - INFO - Completed reconnaissance for github.com
+2026-08-01 11:45:11,081 - INFO - Starting reconnaissance for github.com
+2026-08-01 11:45:11,081 - INFO - Starting subdomain discovery
+2026-08-01 11:46:11,839 - INFO - Subdomain discovery completed in 60.8 seconds (41117 candidates)
+2026-08-01 11:46:11,839 - INFO - Starting live-host probing
+2026-08-01 11:46:11,842 - INFO - Starting dnsx resolution for 41117 candidates
+2026-08-01 11:50:38,514 - INFO - dnsx resolution completed: 148/41117 candidates resolved
+2026-08-01 11:50:38,557 - INFO - Starting httpx probe for 148 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-01 11:51:23,175 - INFO - Batch 1: httpx returned 127 lines
+2026-08-01 11:51:23,215 - INFO - Total live hosts found: 127
+2026-08-01 11:51:23,215 - INFO - Total dead hosts found: 40996
+2026-08-01 11:51:23,216 - INFO - Live-host probing completed in 311.4 seconds (127 live hosts)
+2026-08-01 11:51:23,216 - INFO - Starting port discovery
+2026-08-01 11:55:53,158 - INFO - Nmap service progress: 25/59 hosts
+2026-08-01 11:58:53,218 - INFO - Nmap service progress: 50/59 hosts
+2026-08-01 11:59:53,230 - INFO - Nmap service progress: 59/59 hosts
+2026-08-01 12:03:53,130 - INFO - Identified 74 open host-port combinations across 59 hosts
+2026-08-01 12:03:53,131 - INFO - Port discovery completed in 749.9 seconds
+2026-08-01 12:03:53,131 - INFO - Starting technology discovery
+2026-08-01 12:04:47,399 - INFO - Technology discovery completed in 54.3 seconds
+2026-08-01 12:04:47,401 - INFO - Starting security detection
+2026-08-01 12:28:20,450 - INFO - Starting reconnaissance for github.com
+2026-08-01 12:28:20,450 - INFO - Starting subdomain discovery
+2026-08-01 12:28:20,578 - INFO - Subdomain discovery completed in 0.1 seconds (4 candidates)
+2026-08-01 12:28:20,578 - INFO - Starting live-host probing
+2026-08-01 12:28:20,579 - INFO - Starting dnsx resolution for 4 candidates
+2026-08-01 12:28:21,337 - INFO - dnsx resolution completed: 2/4 candidates resolved
+2026-08-01 12:28:21,338 - INFO - Starting httpx probe for 2 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-01 12:28:22,469 - INFO - Batch 1: httpx returned 2 lines
+2026-08-01 12:28:22,470 - INFO - Total live hosts found: 2
+2026-08-01 12:28:22,470 - INFO - Total dead hosts found: 2
+2026-08-01 12:28:22,471 - INFO - Live-host probing completed in 1.9 seconds (2 live hosts)
+2026-08-01 12:28:22,471 - INFO - Starting port discovery
+2026-08-01 12:29:28,136 - INFO - Nmap service progress: 2/2 hosts
+2026-08-01 12:29:42,011 - INFO - Identified 6 open host-port combinations across 2 hosts
+2026-08-01 12:29:42,011 - INFO - Port discovery completed in 79.5 seconds
+2026-08-01 12:29:42,012 - INFO - Starting technology discovery
+2026-08-01 12:29:45,459 - INFO - Technology discovery completed in 3.4 seconds
+2026-08-01 12:29:45,459 - INFO - Starting security detection
+2026-08-01 12:29:46,688 - WARNING - Nuclei batch 0 exited with code 1: [[31mERR[0m] failed to write config file at /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json got: cause="failed to write nuclei config file at /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json: open /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json: operation not permitted"
+[[31mERR[0m] failed to load provider keys got cause="couldn't write provider config file(%s): %s\n" /Users/sohampatil/Library/Application Support/uncover/provider-config.yaml=open /Users/sohampatil/Library/Application Support/uncover/provider-config.yaml: operation not permitted
+[[1;31mFTL[0m] Could not create runner: cause="operation not permitted" chain="could not create config file"
+2026-08-01 12:29:47,912 - WARNING - Nuclei batch 0 exited with code 1: [[31mERR[0m] failed to write config file at /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json got: cause="failed to write nuclei config file at /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json: open /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json: operation not permitted"
+[[31mERR[0m] failed to load provider keys got cause="couldn't write provider config file(%s): %s\n" /Users/sohampatil/Library/Application Support/uncover/provider-config.yaml=open /Users/sohampatil/Library/Application Support/uncover/provider-config.yaml: operation not permitted
+[[1;31mFTL[0m] Could not create runner: cause="operation not permitted" chain="could not create config file"
+2026-08-01 12:29:47,914 - INFO - Security detection completed in 2.5 seconds
+2026-08-01 12:29:47,996 - INFO - Completed reconnaissance for github.com
+2026-08-01 12:29:55,428 - INFO - Starting reconnaissance for github.com
+2026-08-01 12:29:55,428 - INFO - Starting subdomain discovery
+2026-08-01 12:36:01,431 - INFO - Subdomain discovery completed in 366.0 seconds (41166 candidates)
+2026-08-01 12:36:01,431 - INFO - Starting live-host probing
+2026-08-01 12:36:01,435 - INFO - Starting dnsx resolution for 41166 candidates
+2026-08-01 12:37:13,085 - INFO - Starting reconnaissance for github.com
+2026-08-01 12:37:13,085 - INFO - Starting subdomain discovery
+2026-08-01 12:37:13,154 - INFO - Subdomain discovery completed in 0.1 seconds (4 candidates)
+2026-08-01 12:37:13,154 - INFO - Starting live-host probing
+2026-08-01 12:37:13,155 - INFO - Starting dnsx resolution for 4 candidates
+2026-08-01 12:37:23,253 - WARNING - dnsx did not return usable results (returncode=0, stderr=[WRN] 3 domains failed to resolve (consider increasing -retry or reducing -threads)); probing all candidates with httpx
+2026-08-01 12:37:23,253 - INFO - Starting httpx probe for 4 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-01 12:37:36,214 - INFO - Batch 1: httpx returned 2 lines
+2026-08-01 12:37:36,216 - INFO - Total live hosts found: 2
+2026-08-01 12:37:36,216 - INFO - Total dead hosts found: 2
+2026-08-01 12:37:36,216 - INFO - Live-host probing completed in 23.1 seconds (2 live hosts)
+2026-08-01 12:37:36,216 - INFO - Starting port discovery
+2026-08-01 12:37:45,758 - WARNING - Naabu exited with 1 for batch 0: [[1;31mFTL[0m] Could not run enumeration: no valid ipv4 or ipv6 targets were found
+2026-08-01 12:37:45,759 - INFO - Port discovery completed in 9.5 seconds
+2026-08-01 12:37:45,760 - INFO - Starting technology discovery
+2026-08-01 12:38:12,297 - INFO - Technology discovery completed in 26.5 seconds
+2026-08-01 12:38:12,297 - INFO - Starting security detection
+2026-08-01 12:38:14,162 - INFO - Security detection completed in 1.9 seconds
+2026-08-01 12:38:14,218 - INFO - Completed reconnaissance for github.com
+2026-08-01 12:47:44,353 - INFO - Starting reconnaissance for github.com
+2026-08-01 12:47:44,353 - INFO - Starting subdomain discovery
+2026-08-01 12:47:44,421 - INFO - Subdomain discovery completed in 0.1 seconds (4 candidates)
+2026-08-01 12:47:44,421 - INFO - Starting live-host probing
+2026-08-01 12:47:44,422 - INFO - Starting dnsx resolution for 4 candidates
+2026-08-01 12:47:45,134 - INFO - dnsx resolution completed: 2/4 candidates resolved
+2026-08-01 12:47:45,134 - INFO - Starting httpx probe for 2 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-01 12:47:46,081 - INFO - Batch 1: httpx returned 2 lines
+2026-08-01 12:47:46,082 - INFO - Total live hosts found: 2
+2026-08-01 12:47:46,082 - INFO - Total dead hosts found: 2
+2026-08-01 12:47:46,082 - INFO - Live-host probing completed in 1.7 seconds (2 live hosts)
+2026-08-01 12:47:46,082 - INFO - Starting port discovery
+2026-08-01 12:48:51,673 - INFO - Nmap service progress: 2/2 hosts
+2026-08-01 12:48:55,691 - INFO - Identified 6 open host-port combinations across 2 hosts
+2026-08-01 12:48:55,691 - INFO - Port discovery completed in 69.6 seconds
+2026-08-01 12:48:55,691 - INFO - Starting technology discovery
+2026-08-01 12:48:58,995 - INFO - Technology discovery completed in 3.3 seconds
+2026-08-01 12:48:58,995 - INFO - Starting security detection
+2026-08-01 12:49:00,406 - INFO - Security detection completed in 1.4 seconds
+2026-08-01 12:49:00,460 - INFO - Completed reconnaissance for github.com
+2026-08-01 12:58:27,310 - INFO - Starting reconnaissance for github.com
+2026-08-01 12:58:27,310 - INFO - Starting subdomain discovery
+2026-08-01 12:58:27,383 - INFO - Subdomain discovery completed in 0.1 seconds (4 candidates)
+2026-08-01 12:58:27,383 - INFO - Starting live-host probing
+2026-08-01 12:58:27,384 - INFO - Starting dnsx resolution for 4 candidates
+2026-08-01 12:58:27,949 - INFO - dnsx resolution completed: 2/4 candidates resolved
+2026-08-01 12:58:27,950 - INFO - Starting httpx probe for 2 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-01 12:58:28,894 - INFO - Batch 1: httpx returned 2 lines
+2026-08-01 12:58:28,895 - INFO - Total live hosts found: 2
+2026-08-01 12:58:28,895 - INFO - Total dead hosts found: 2
+2026-08-01 12:58:28,895 - INFO - Live-host probing completed in 1.5 seconds (2 live hosts)
+2026-08-01 12:58:28,895 - INFO - Starting port discovery
+2026-08-01 12:59:34,476 - INFO - Nmap service progress: 2/2 hosts
+2026-08-01 12:59:38,391 - INFO - Identified 6 open host-port combinations across 2 hosts
+2026-08-01 12:59:38,391 - INFO - Port discovery completed in 69.5 seconds
+2026-08-01 12:59:38,392 - INFO - Starting technology discovery
+2026-08-01 12:59:41,743 - INFO - Technology discovery completed in 3.4 seconds
+2026-08-01 12:59:41,744 - INFO - Starting security detection
+2026-08-01 13:04:41,773 - WARNING - Nuclei scan timed out after 300 seconds
+2026-08-01 13:04:41,775 - INFO - Security detection completed in 300.0 seconds
+2026-08-01 13:04:41,834 - INFO - Completed reconnaissance for github.com
+2026-08-01 15:24:58,931 - INFO - Starting reconnaissance for github.com
+2026-08-01 15:24:58,931 - INFO - Starting subdomain discovery
+2026-08-01 15:26:14,676 - INFO - Subdomain discovery completed in 75.7 seconds (41152 candidates)
+2026-08-01 15:26:14,676 - INFO - Starting live-host probing
+2026-08-01 15:26:14,680 - INFO - Starting dnsx resolution for 41152 candidates
+2026-08-01 15:30:31,541 - INFO - dnsx resolution completed: 154/41152 candidates resolved
+2026-08-01 15:30:31,585 - INFO - Starting httpx probe for 154 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-01 15:31:19,181 - INFO - Batch 1: httpx returned 120 lines
+2026-08-01 15:31:19,219 - INFO - Total live hosts found: 120
+2026-08-01 15:31:19,219 - INFO - Total dead hosts found: 41045
+2026-08-01 15:31:19,219 - INFO - Live-host probing completed in 304.6 seconds (120 live hosts)
+2026-08-01 15:31:19,219 - INFO - Starting port discovery
+2026-08-01 15:35:58,239 - INFO - Nmap service progress: 25/59 hosts
+2026-08-01 15:38:58,304 - INFO - Nmap service progress: 50/59 hosts
+2026-08-01 15:39:58,322 - INFO - Nmap service progress: 59/59 hosts
+2026-08-01 15:43:57,989 - INFO - Identified 73 open host-port combinations across 59 hosts
+2026-08-01 15:43:57,991 - INFO - Port discovery completed in 758.8 seconds
+2026-08-01 15:43:57,991 - INFO - Starting technology discovery
+2026-08-01 15:44:49,191 - INFO - Technology discovery completed in 51.2 seconds
+2026-08-01 15:44:49,192 - INFO - Starting security detection
+2026-08-01 16:07:49,297 - WARNING - Nuclei scan timed out after 1380 seconds
+2026-08-01 16:07:49,314 - INFO - Security detection completed in 1380.1 seconds
+2026-08-01 16:07:49,393 - INFO - Completed reconnaissance for github.com
+2026-08-01 16:11:34,400 - INFO - Starting reconnaissance for github.com
+2026-08-01 16:11:34,401 - INFO - Starting subdomain discovery
+2026-08-01 16:19:09,722 - INFO - Starting reconnaissance for github.com
+2026-08-01 16:19:09,722 - INFO - Starting subdomain discovery
+2026-08-01 16:29:09,882 - INFO - Subdomain discovery completed in 600.2 seconds (41144 candidates)
+2026-08-01 16:29:09,883 - INFO - Starting live-host probing
+2026-08-01 16:29:09,886 - INFO - Starting dnsx resolution for 41144 candidates
+2026-08-01 16:33:31,841 - INFO - dnsx resolution completed: 169/41144 candidates resolved
+2026-08-01 16:33:31,891 - INFO - Starting httpx probe for 169 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-01 16:34:17,455 - INFO - Batch 1: httpx returned 126 lines
+2026-08-01 16:34:17,492 - INFO - Total live hosts found: 126
+2026-08-01 16:34:17,492 - INFO - Total dead hosts found: 41021
+2026-08-01 16:34:17,493 - INFO - Live-host probing completed in 307.6 seconds (126 live hosts)
+2026-08-01 16:34:17,493 - INFO - Starting port discovery
+2026-08-01 16:38:53,496 - INFO - Nmap service progress: 25/49 hosts
+2026-08-01 16:41:57,121 - INFO - Nmap service progress: 49/49 hosts
+2026-08-01 16:44:55,997 - INFO - Identified 55 open host-port combinations across 49 hosts
+2026-08-01 16:44:55,997 - INFO - Port discovery completed in 634.9 seconds
+2026-08-01 16:44:55,998 - INFO - Starting technology discovery
+2026-08-01 16:45:49,042 - INFO - Technology discovery completed in 53.0 seconds
+2026-08-01 16:45:49,043 - INFO - Starting security detection
+2026-08-01 17:09:49,108 - WARNING - Nuclei scan timed out after 1440 seconds
+2026-08-01 17:09:49,141 - INFO - Security detection completed in 1440.1 seconds
+2026-08-01 17:09:49,224 - INFO - Completed reconnaissance for github.com
+2026-08-02 13:50:52,269 - INFO - Starting reconnaissance for github.com
+2026-08-02 13:50:52,269 - INFO - Starting subdomain discovery
+2026-08-02 13:51:53,027 - INFO - Subdomain discovery completed in 60.8 seconds (41147 candidates)
+2026-08-02 13:51:53,028 - INFO - Starting live-host probing
+2026-08-02 13:51:53,031 - INFO - Starting dnsx resolution for 41147 candidates
+2026-08-02 13:56:15,164 - INFO - dnsx resolution completed: 130/41147 candidates resolved
+2026-08-02 13:56:15,199 - INFO - Starting httpx probe for 130 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-02 13:57:00,034 - INFO - Batch 1: httpx returned 108 lines
+2026-08-02 13:57:00,075 - INFO - Total live hosts found: 108
+2026-08-02 13:57:00,075 - INFO - Total dead hosts found: 41044
+2026-08-02 13:57:00,076 - INFO - Live-host probing completed in 307.0 seconds (108 live hosts)
+2026-08-02 13:57:00,076 - INFO - Starting port discovery
+2026-08-02 14:01:33,055 - INFO - Nmap service progress: 25/33 hosts
+2026-08-02 14:02:33,078 - INFO - Nmap service progress: 33/33 hosts
+2026-08-02 14:04:42,292 - INFO - Identified 42 open host-port combinations across 33 hosts
+2026-08-02 14:04:42,295 - INFO - Port discovery completed in 462.2 seconds
+2026-08-02 14:04:42,295 - INFO - Starting technology discovery
+2026-08-02 14:05:29,594 - INFO - Technology discovery completed in 47.3 seconds
+2026-08-02 14:05:29,594 - INFO - Starting security detection
+2026-08-02 14:26:29,642 - WARNING - Nuclei scan timed out after 1260 seconds
+2026-08-02 14:26:29,656 - INFO - Security detection completed in 1260.1 seconds
+2026-08-02 14:26:29,747 - INFO - Completed reconnaissance for github.com
+2026-08-02 14:31:00,589 - INFO - Starting reconnaissance for github.com
+2026-08-02 14:31:00,589 - INFO - Starting subdomain discovery
+2026-08-02 14:32:01,371 - INFO - Subdomain discovery completed in 60.8 seconds (41147 candidates)
+2026-08-02 14:32:01,371 - INFO - Starting live-host probing
+2026-08-02 14:32:01,375 - INFO - Starting dnsx resolution for 41147 candidates
+2026-08-02 14:36:23,812 - INFO - dnsx resolution completed: 155/41147 candidates resolved
+2026-08-02 14:36:23,857 - INFO - Starting httpx probe for 155 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-02 14:37:11,353 - INFO - Batch 1: httpx returned 118 lines
+2026-08-02 14:37:11,392 - INFO - Total live hosts found: 118
+2026-08-02 14:37:11,392 - INFO - Total dead hosts found: 41048
+2026-08-02 14:37:11,393 - INFO - Live-host probing completed in 310.0 seconds (118 live hosts)
+2026-08-02 14:37:11,393 - INFO - Starting port discovery
+2026-08-02 14:41:39,323 - INFO - Nmap service progress: 25/45 hosts
+2026-08-02 14:43:39,400 - INFO - Nmap service progress: 45/45 hosts
+2026-08-02 14:46:43,475 - INFO - Identified 60 open host-port combinations across 45 hosts
+2026-08-02 14:46:43,476 - INFO - Port discovery completed in 572.1 seconds
+2026-08-02 14:46:43,476 - INFO - Starting technology discovery
+2026-08-02 14:47:50,025 - INFO - Technology discovery completed in 66.5 seconds
+2026-08-02 14:47:50,027 - INFO - Starting security detection
+2026-08-02 15:10:30,118 - WARNING - Nuclei scan timed out after 1360 seconds
+2026-08-02 15:10:30,134 - INFO - Security detection completed in 1360.1 seconds
+2026-08-02 15:10:30,245 - INFO - Completed reconnaissance for github.com
+2026-08-02 15:42:43,776 - INFO - Starting reconnaissance for github.com
+2026-08-02 15:42:43,776 - INFO - Starting subdomain discovery
+2026-08-02 15:49:40,344 - INFO - Subdomain discovery completed in 416.6 seconds (41175 candidates)
+2026-08-02 15:49:40,344 - INFO - Starting live-host probing
+2026-08-02 15:49:40,348 - INFO - Starting dnsx resolution for 41175 candidates
+2026-08-02 15:54:02,230 - INFO - dnsx resolution completed: 160/41175 candidates resolved
+2026-08-02 15:54:02,276 - INFO - Starting httpx probe for 160 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-02 15:54:48,240 - INFO - Batch 1: httpx returned 137 lines
+2026-08-02 15:54:48,279 - INFO - Total live hosts found: 137
+2026-08-02 15:54:48,279 - INFO - Total dead hosts found: 41045
+2026-08-02 15:54:48,280 - INFO - Live-host probing completed in 307.9 seconds (137 live hosts)
+2026-08-02 15:54:48,280 - INFO - Starting port discovery
+2026-08-02 15:59:21,372 - INFO - Nmap service progress: 25/68 hosts
+2026-08-02 16:02:21,460 - INFO - Nmap service progress: 50/68 hosts
+2026-08-02 16:04:21,533 - INFO - Nmap service progress: 68/68 hosts
+2026-08-02 16:09:13,314 - INFO - Identified 92 open host-port combinations across 68 hosts
+2026-08-02 16:09:13,315 - INFO - Port discovery completed in 865.0 seconds
+2026-08-02 16:09:13,315 - INFO - Starting technology discovery
+2026-08-02 16:10:28,916 - INFO - Technology discovery completed in 75.6 seconds
+2026-08-02 16:10:28,917 - INFO - Starting security detection
+2026-08-02 17:31:24,251 - WARNING - Nuclei scan exited with code 1: [[31mERR[0m] failed to write config file at /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json got: cause="failed to write nuclei config file at /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json: open /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json: operation not permitted"
+[[31mERR[0m] failed to load provider keys got cause="couldn't write provider config file(%s): %s\n" /Users/sohampatil/Library/Application Support/uncover/provider-config.yaml=open /Users/sohampatil/Library/Application Support/uncover/provider-config.yaml: operation not permitted
+[[1;31mFTL[0m] Could not create runner: cause="operation not permitted" chain="could not create config file"
+2026-08-02 17:50:44,634 - INFO - Starting reconnaissance for github.com
+2026-08-02 17:50:44,634 - INFO - Starting subdomain discovery
+2026-08-02 17:51:13,437 - INFO - Subdomain discovery completed in 28.8 seconds (41147 candidates)
+2026-08-02 17:51:13,437 - INFO - Starting live-host probing
+2026-08-02 17:51:13,439 - INFO - Starting dnsx resolution for 41147 candidates
+2026-08-02 17:55:35,348 - INFO - dnsx resolution completed: 153/41147 candidates resolved
+2026-08-02 17:55:35,389 - INFO - Starting httpx probe for 153 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-02 17:56:20,517 - INFO - Batch 1: httpx returned 135 lines
+2026-08-02 17:56:20,548 - INFO - Total live hosts found: 135
+2026-08-02 17:56:20,548 - INFO - Total dead hosts found: 41021
+2026-08-02 17:56:20,548 - INFO - Live-host probing completed in 307.1 seconds (135 live hosts)
+2026-08-02 17:56:20,548 - INFO - Starting port discovery
+2026-08-02 18:00:50,694 - INFO - Nmap service progress: 25/57 hosts
+2026-08-02 18:03:50,782 - INFO - Nmap service progress: 50/57 hosts
+2026-08-02 18:04:50,803 - INFO - Nmap service progress: 57/57 hosts
+2026-08-02 18:07:44,299 - INFO - Identified 67 open host-port combinations across 57 hosts
+2026-08-02 18:07:44,300 - INFO - Port discovery completed in 683.7 seconds
+2026-08-02 18:07:44,300 - INFO - Starting technology discovery
+2026-08-02 18:08:20,040 - INFO - Technology discovery completed in 35.7 seconds
+2026-08-02 18:08:20,042 - INFO - Starting security detection
+2026-08-02 19:23:15,533 - INFO - Starting reconnaissance for github.com
+2026-08-02 19:23:15,534 - INFO - Starting subdomain discovery
+2026-08-02 19:31:59,397 - INFO - Subdomain discovery completed in 523.9 seconds (41174 candidates)
+2026-08-02 19:31:59,397 - INFO - Starting live-host probing
+2026-08-02 19:31:59,401 - INFO - Starting dnsx resolution for 41174 candidates
+2026-08-02 19:36:21,454 - INFO - dnsx resolution completed: 158/41174 candidates resolved
+2026-08-02 19:36:21,499 - INFO - Starting httpx probe for 158 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-02 19:37:06,725 - INFO - Batch 1: httpx returned 132 lines
+2026-08-02 19:37:06,764 - INFO - Total live hosts found: 132
+2026-08-02 19:37:06,764 - INFO - Total dead hosts found: 41047
+2026-08-02 19:37:06,765 - INFO - Live-host probing completed in 307.4 seconds (132 live hosts)
+2026-08-02 19:37:06,765 - INFO - Starting port discovery
+2026-08-02 19:41:37,066 - INFO - Nmap service progress: 25/35 hosts
+2026-08-02 19:42:37,093 - INFO - Nmap service progress: 35/35 hosts
+2026-08-02 19:45:07,801 - INFO - Identified 50 open host-port combinations across 35 hosts
+2026-08-02 19:45:07,802 - INFO - Port discovery completed in 481.0 seconds
+2026-08-02 19:45:07,802 - INFO - Starting technology discovery
+2026-08-02 19:46:22,652 - INFO - Technology discovery completed in 74.8 seconds
+2026-08-02 19:46:22,652 - INFO - Starting security detection
+2026-08-02 20:20:43,735 - INFO - Starting reconnaissance for github.com
+2026-08-02 20:20:43,735 - INFO - Starting subdomain discovery
+2026-08-02 20:21:44,459 - INFO - Subdomain discovery completed in 60.7 seconds (41147 candidates)
+2026-08-02 20:21:44,459 - INFO - Starting live-host probing
+2026-08-02 20:21:44,463 - INFO - Starting dnsx resolution for 41147 candidates
+2026-08-02 20:26:11,747 - INFO - dnsx resolution completed: 128/41147 candidates resolved
+2026-08-02 20:26:11,785 - INFO - Starting httpx probe for 128 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-02 20:26:55,940 - INFO - Batch 1: httpx returned 111 lines
+2026-08-02 20:26:55,978 - INFO - Total live hosts found: 111
+2026-08-02 20:26:55,978 - INFO - Total dead hosts found: 41048
+2026-08-02 20:26:55,978 - INFO - Live-host probing completed in 311.5 seconds (111 live hosts)
+2026-08-02 20:26:55,978 - INFO - Starting port discovery
+2026-08-02 20:31:26,000 - INFO - Nmap service progress: 25/42 hosts
+2026-08-02 20:33:26,050 - INFO - Nmap service progress: 42/42 hosts
+2026-08-02 20:36:49,073 - INFO - Identified 57 open host-port combinations across 42 hosts
+2026-08-02 20:36:49,074 - INFO - Port discovery completed in 593.1 seconds
+2026-08-02 20:36:49,075 - INFO - Starting technology discovery
+2026-08-02 20:37:35,384 - INFO - Technology discovery completed in 46.3 seconds
+2026-08-02 20:37:35,386 - INFO - Starting security detection
+2026-08-02 21:01:56,212 - INFO - Starting reconnaissance for github.com
+2026-08-02 21:01:56,212 - INFO - Starting subdomain discovery
+2026-08-02 21:02:56,988 - INFO - Subdomain discovery completed in 60.8 seconds (41147 candidates)
+2026-08-02 21:02:56,989 - INFO - Starting live-host probing
+2026-08-02 21:02:56,992 - INFO - Starting dnsx resolution for 41147 candidates
+2026-08-02 21:07:23,655 - INFO - dnsx resolution completed: 157/41147 candidates resolved
+2026-08-02 21:07:23,700 - INFO - Starting httpx probe for 157 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-02 21:08:08,932 - INFO - Batch 1: httpx returned 137 lines
+2026-08-02 21:08:08,971 - INFO - Total live hosts found: 137
+2026-08-02 21:08:08,971 - INFO - Total dead hosts found: 41032
+2026-08-02 21:08:08,972 - INFO - Live-host probing completed in 312.0 seconds (137 live hosts)
+2026-08-02 21:08:08,972 - INFO - Starting port discovery
+2026-08-02 21:12:41,873 - INFO - Nmap service progress: 25/45 hosts
+2026-08-02 21:14:41,930 - INFO - Nmap service progress: 45/45 hosts
+2026-08-02 21:21:27,911 - INFO - Identified 55 open host-port combinations across 45 hosts
+2026-08-02 21:21:27,912 - INFO - Port discovery completed in 798.9 seconds
+2026-08-02 21:21:27,912 - INFO - Starting technology discovery
+2026-08-02 21:22:42,119 - INFO - Technology discovery completed in 74.2 seconds
+2026-08-02 21:22:42,120 - INFO - Starting security detection
+2026-08-02 21:38:23,595 - WARNING - Nuclei scan batch 0 exited with code 1: [[31mERR[0m] failed to write config file at /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json got: cause="failed to write nuclei config file at /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json: open /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json: operation not permitted"
+[[31mERR[0m] failed to load provider keys got cause="couldn't write provider config file(%s): %s\n" /Users/sohampatil/Library/Application Support/uncover/provider-config.yaml=open /Users/sohampatil/Library/Application Support/uncover/provider-config.yaml: operation not permitted
+
+                     __     _
+   ____  __  _______/ /__  (_)
+  / __ \/ / / / ___/ / _ \/ /
+ / / / / /_/ / /__/ /  __/ /
+/_/ /_/\__,_/\___/_/\___/_/   v3.11.0
+
+		projectdiscovery.io
+
+[[1;31mFTL[0m] Could not create runner: cause="operation not permitted" chain="could not create config file"
+2026-08-02 21:42:09,740 - INFO - Starting reconnaissance for github.com
+2026-08-02 21:42:09,740 - INFO - Starting subdomain discovery
+2026-08-02 21:43:10,517 - INFO - Subdomain discovery completed in 60.8 seconds (41153 candidates)
+2026-08-02 21:43:10,517 - INFO - Starting live-host probing
+2026-08-02 21:43:10,521 - INFO - Starting dnsx resolution for 41153 candidates
+2026-08-02 21:47:32,433 - INFO - dnsx resolution completed: 164/41153 candidates resolved
+2026-08-02 21:47:32,480 - INFO - Starting httpx probe for 164 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-02 21:48:17,861 - INFO - Batch 1: httpx returned 139 lines
+2026-08-02 21:48:17,899 - INFO - Total live hosts found: 139
+2026-08-02 21:48:17,899 - INFO - Total dead hosts found: 41026
+2026-08-02 21:48:17,900 - INFO - Live-host probing completed in 307.4 seconds (139 live hosts)
+2026-08-02 21:48:17,900 - INFO - Starting port discovery
+2026-08-02 21:52:44,912 - INFO - Nmap service progress: 25/48 hosts
+2026-08-02 21:54:44,978 - INFO - Nmap service progress: 48/48 hosts
+2026-08-02 21:58:20,969 - INFO - Identified 65 open host-port combinations across 48 hosts
+2026-08-02 21:58:20,970 - INFO - Port discovery completed in 603.1 seconds
+2026-08-02 21:58:20,970 - INFO - Starting technology discovery
+2026-08-02 21:59:20,122 - INFO - Technology discovery completed in 59.2 seconds
+2026-08-02 21:59:20,125 - INFO - Starting security detection
+2026-08-02 22:39:16,461 - WARNING - Nuclei scan batch 0 exited with code 1: [[31mERR[0m] failed to write config file at /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json got: cause="failed to write nuclei config file at /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json: open /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json: operation not permitted"
+[[31mERR[0m] failed to load provider keys got cause="couldn't write provider config file(%s): %s\n" /Users/sohampatil/Library/Application Support/uncover/provider-config.yaml=open /Users/sohampatil/Library/Application Support/uncover/provider-config.yaml: operation not permitted
+
+                     __     _
+   ____  __  _______/ /__  (_)
+  / __ \/ / / / ___/ / _ \/ /
+ / / / / /_/ / /__/ /  __/ /
+/_/ /_/\__,_/\___/_/\___/_/   v3.11.0
+
+		projectdiscovery.io
+
+[[1;31mFTL[0m] Could not create runner: cause="operation not permitted" chain="could not create config file"
+2026-08-02 22:39:16,592 - WARNING - Nuclei scan batch 50 exited with code 1: [[31mERR[0m] failed to write config file at /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json got: cause="failed to write nuclei config file at /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json: open /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json: operation not permitted"
+[[31mERR[0m] failed to load provider keys got cause="couldn't write provider config file(%s): %s\n" /Users/sohampatil/Library/Application Support/uncover/provider-config.yaml=open /Users/sohampatil/Library/Application Support/uncover/provider-config.yaml: operation not permitted
+
+                     __     _
+   ____  __  _______/ /__  (_)
+  / __ \/ / / / ___/ / _ \/ /
+ / / / / /_/ / /__/ /  __/ /
+/_/ /_/\__,_/\___/_/\___/_/   v3.11.0
+
+		projectdiscovery.io
+
+[[1;31mFTL[0m] Could not create runner: cause="operation not permitted" chain="could not create config file"
+2026-08-02 22:39:16,722 - WARNING - Nuclei scan batch 100 exited with code 1: [[31mERR[0m] failed to write config file at /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json got: cause="failed to write nuclei config file at /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json: open /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json: operation not permitted"
+[[31mERR[0m] failed to load provider keys got cause="couldn't write provider config file(%s): %s\n" /Users/sohampatil/Library/Application Support/uncover/provider-config.yaml=open /Users/sohampatil/Library/Application Support/uncover/provider-config.yaml: operation not permitted
+
+                     __     _
+   ____  __  _______/ /__  (_)
+  / __ \/ / / / ___/ / _ \/ /
+ / / / / /_/ / /__/ /  __/ /
+/_/ /_/\__,_/\___/_/\___/_/   v3.11.0
+
+		projectdiscovery.io
+
+[[1;31mFTL[0m] Could not create runner: cause="operation not permitted" chain="could not create config file"
+2026-08-03 10:30:50,129 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 10:30:50,130 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 10:30:50,130 - INFO - Total live hosts found: 2
+2026-08-03 10:30:50,130 - INFO - Total dead hosts found: 1
+2026-08-03 10:30:50,132 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-08-03 10:30:50,132 - INFO - Batch 1: httpx returned 0 lines
+2026-08-03 10:30:50,132 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-08-03 10:30:50,134 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 10:30:50,134 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 10:30:50,134 - INFO - Total live hosts found: 2
+2026-08-03 10:30:50,134 - INFO - Total dead hosts found: 0
+2026-08-03 10:30:50,136 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 10:30:50,136 - INFO - Batch 1: httpx returned 1 lines
+2026-08-03 10:30:50,136 - INFO - Total live hosts found: 1
+2026-08-03 10:30:50,136 - INFO - Total dead hosts found: 1
+2026-08-03 10:30:50,139 - INFO - Starting dnsx resolution for 2 candidates
+2026-08-03 10:30:50,139 - INFO - dnsx resolution completed: 1/2 candidates resolved
+2026-08-03 10:30:50,140 - INFO - Starting httpx probe for 1 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 10:30:50,140 - INFO - Batch 1: httpx returned 1 lines
+2026-08-03 10:30:50,140 - INFO - Total live hosts found: 1
+2026-08-03 10:30:50,140 - INFO - Total dead hosts found: 1
+2026-08-03 10:30:50,145 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 10:30:50,145 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 10:30:50,147 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_2/pytest-of-sohampatil/pytest-1/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-08-03 10:30:50,148 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 10:30:50,148 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 10:30:50,162 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 10:30:50,167 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 10:30:50,167 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 10:30:50,169 - WARNING - Nmap service scan failed for example.com: assert 'default,safe...-cookie-flags' == 'default,safe...der,http-enum'
+  
+  Skipping 98 identical leading characters in diff, use -v to show
+  [0m[91m- r,http-enum[39;49;00m[90m[39;49;00m
+  [92m+ r,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags[39;49;00m[90m[39;49;00m
+2026-08-03 10:30:50,169 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 10:30:50,169 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 10:30:50,171 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 10:30:50,171 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 10:30:50,173 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 10:30:50,173 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 10:30:50,175 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 10:30:50,175 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 10:30:50,177 - WARNING - Nmap is unavailable; returning Naabu discoveries without service verification
+2026-08-03 10:30:50,179 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 10:30:50,179 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 11:22:29,800 - INFO - Starting reconnaissance for github.com
+2026-08-03 11:22:29,801 - INFO - Starting subdomain discovery
+2026-08-03 11:32:30,026 - INFO - Subdomain discovery completed in 600.2 seconds (41176 candidates)
+2026-08-03 11:32:30,026 - INFO - Starting live-host probing
+2026-08-03 11:32:30,030 - INFO - Starting dnsx resolution for 41176 candidates
+2026-08-03 11:36:51,960 - INFO - dnsx resolution completed: 136/41176 candidates resolved
+2026-08-03 11:36:52,000 - INFO - Starting httpx probe for 136 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-03 11:37:36,727 - INFO - Batch 1: httpx returned 113 lines
+2026-08-03 11:37:36,767 - INFO - Total live hosts found: 113
+2026-08-03 11:37:36,767 - INFO - Total dead hosts found: 41082
+2026-08-03 11:37:36,767 - INFO - Live-host probing completed in 306.7 seconds (113 live hosts)
+2026-08-03 11:37:36,768 - INFO - Starting port discovery
+2026-08-03 11:42:09,910 - INFO - Nmap service progress: 25/48 hosts
+2026-08-03 11:44:09,966 - INFO - Nmap service progress: 48/48 hosts
+2026-08-03 11:47:52,181 - INFO - Identified 61 open host-port combinations across 48 hosts
+2026-08-03 11:47:52,182 - INFO - Port discovery completed in 615.4 seconds
+2026-08-03 11:47:52,183 - INFO - Starting technology discovery
+2026-08-03 11:48:54,021 - INFO - Technology discovery completed in 61.8 seconds
+2026-08-03 11:48:54,023 - INFO - Starting security detection
+2026-08-03 12:37:18,510 - INFO - Starting reconnaissance for github.com
+2026-08-03 12:37:18,510 - INFO - Starting subdomain discovery
+2026-08-03 12:38:19,565 - INFO - Subdomain discovery completed in 61.1 seconds (41149 candidates)
+2026-08-03 12:38:19,565 - INFO - Starting live-host probing
+2026-08-03 12:38:19,568 - INFO - Starting dnsx resolution for 41149 candidates
+2026-08-03 12:43:04,026 - INFO - dnsx resolution completed: 154/41149 candidates resolved
+2026-08-03 12:43:04,070 - INFO - Starting httpx probe for 154 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-03 12:44:04,267 - INFO - Batch 1: httpx returned 111 lines
+2026-08-03 12:44:04,307 - INFO - Total live hosts found: 111
+2026-08-03 12:44:04,307 - INFO - Total dead hosts found: 41076
+2026-08-03 12:44:04,307 - INFO - Live-host probing completed in 307.6 seconds (111 live hosts)
+2026-08-03 12:44:04,307 - INFO - Starting port discovery
+2026-08-03 12:48:28,241 - INFO - Nmap service progress: 25/36 hosts
+2026-08-03 12:49:28,267 - INFO - Nmap service progress: 36/36 hosts
+2026-08-03 12:52:09,537 - INFO - Identified 48 open host-port combinations across 36 hosts
+2026-08-03 12:52:09,538 - INFO - Port discovery completed in 485.2 seconds
+2026-08-03 12:52:09,538 - INFO - Starting technology discovery
+2026-08-03 12:53:13,733 - INFO - Technology discovery completed in 64.2 seconds
+2026-08-03 12:53:13,735 - INFO - Starting security detection
+2026-08-03 13:07:13,762 - WARNING - Nuclei scan batch 100 timed out after 840 seconds
+2026-08-03 13:12:36,729 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 13:12:36,730 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 13:12:36,730 - INFO - Total live hosts found: 2
+2026-08-03 13:12:36,730 - INFO - Total dead hosts found: 1
+2026-08-03 13:12:36,732 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-08-03 13:12:36,732 - INFO - Batch 1: httpx returned 0 lines
+2026-08-03 13:12:36,732 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-08-03 13:12:36,734 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 13:12:36,734 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 13:12:36,735 - INFO - Total live hosts found: 2
+2026-08-03 13:12:36,735 - INFO - Total dead hosts found: 0
+2026-08-03 13:12:36,736 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 13:12:36,737 - INFO - Batch 1: httpx returned 1 lines
+2026-08-03 13:12:36,737 - INFO - Total live hosts found: 1
+2026-08-03 13:12:36,737 - INFO - Total dead hosts found: 1
+2026-08-03 13:12:36,740 - INFO - Starting dnsx resolution for 2 candidates
+2026-08-03 13:12:36,740 - INFO - dnsx resolution completed: 1/2 candidates resolved
+2026-08-03 13:12:36,741 - INFO - Starting httpx probe for 1 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 13:12:36,741 - INFO - Batch 1: httpx returned 1 lines
+2026-08-03 13:12:36,741 - INFO - Total live hosts found: 1
+2026-08-03 13:12:36,741 - INFO - Total dead hosts found: 1
+2026-08-03 13:12:36,746 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:12:36,746 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:12:36,747 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_2/pytest-of-sohampatil/pytest-5/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-08-03 13:12:36,748 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:12:36,748 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:12:36,763 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:12:36,768 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:12:36,768 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:12:36,770 - WARNING - Nmap service scan failed for example.com: assert 'default,safe...-cookie-flags' == 'default,safe...der,http-enum'
+  
+  Skipping 98 identical leading characters in diff, use -v to show
+  [0m[91m- r,http-enum[39;49;00m[90m[39;49;00m
+  [92m+ r,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags[39;49;00m[90m[39;49;00m
+2026-08-03 13:12:36,770 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:12:36,771 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:12:36,773 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:12:36,773 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:12:36,774 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:12:36,775 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:12:36,776 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:12:36,777 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:12:36,778 - WARNING - Nmap is unavailable; returning Naabu discoveries without service verification
+2026-08-03 13:12:36,780 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:12:36,780 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:14:58,010 - INFO - Starting reconnaissance for github.com
+2026-08-03 13:14:58,010 - INFO - Starting subdomain discovery
+2026-08-03 13:18:18,702 - INFO - Subdomain discovery completed in 200.7 seconds (40412 candidates)
+2026-08-03 13:18:18,702 - INFO - Starting live-host probing
+2026-08-03 13:18:18,705 - INFO - Starting dnsx resolution for 40412 candidates
+2026-08-03 13:22:36,318 - INFO - dnsx resolution completed: 147/40412 candidates resolved
+2026-08-03 13:22:36,358 - INFO - Starting httpx probe for 147 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-03 13:23:22,420 - INFO - Batch 1: httpx returned 107 lines
+2026-08-03 13:23:22,458 - INFO - Total live hosts found: 107
+2026-08-03 13:23:22,458 - INFO - Total dead hosts found: 40321
+2026-08-03 13:23:22,458 - INFO - Live-host probing completed in 303.8 seconds (107 live hosts)
+2026-08-03 13:23:22,458 - INFO - Starting port discovery
+2026-08-03 13:27:55,298 - INFO - Nmap service progress: 25/25 hosts
+2026-08-03 13:29:47,351 - INFO - Identified 33 open host-port combinations across 25 hosts
+2026-08-03 13:29:47,352 - INFO - Port discovery completed in 384.9 seconds
+2026-08-03 13:29:47,352 - INFO - Starting technology discovery
+2026-08-03 13:30:34,458 - INFO - Technology discovery completed in 47.1 seconds
+2026-08-03 13:30:34,459 - INFO - Starting security detection
+2026-08-03 13:40:34,499 - WARNING - Nuclei scan batch 100 timed out after 600 seconds
+2026-08-03 13:47:17,143 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 13:47:17,143 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 13:47:17,144 - INFO - Total live hosts found: 2
+2026-08-03 13:47:17,144 - INFO - Total dead hosts found: 1
+2026-08-03 13:47:17,145 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-08-03 13:47:17,146 - INFO - Batch 1: httpx returned 0 lines
+2026-08-03 13:47:17,146 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-08-03 13:47:17,147 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 13:47:17,148 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 13:47:17,148 - INFO - Total live hosts found: 2
+2026-08-03 13:47:17,148 - INFO - Total dead hosts found: 0
+2026-08-03 13:47:17,150 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 13:47:17,150 - INFO - Batch 1: httpx returned 1 lines
+2026-08-03 13:47:17,150 - INFO - Total live hosts found: 1
+2026-08-03 13:47:17,150 - INFO - Total dead hosts found: 1
+2026-08-03 13:47:17,154 - INFO - Starting dnsx resolution for 2 candidates
+2026-08-03 13:47:17,154 - INFO - dnsx resolution completed: 1/2 candidates resolved
+2026-08-03 13:47:17,154 - INFO - Starting httpx probe for 1 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 13:47:17,155 - INFO - Batch 1: httpx returned 1 lines
+2026-08-03 13:47:17,155 - INFO - Total live hosts found: 1
+2026-08-03 13:47:17,155 - INFO - Total dead hosts found: 1
+2026-08-03 13:47:17,160 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:47:17,160 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:47:17,161 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_2/pytest-of-sohampatil/pytest-7/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-08-03 13:47:17,162 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:47:17,162 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:47:17,177 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:47:17,182 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:47:17,182 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:47:17,184 - WARNING - Nmap service scan failed for example.com: assert 'default,safe...-cookie-flags' == 'default,safe...der,http-enum'
+  
+  Skipping 98 identical leading characters in diff, use -v to show
+  [0m[91m- r,http-enum[39;49;00m[90m[39;49;00m
+  [92m+ r,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags[39;49;00m[90m[39;49;00m
+2026-08-03 13:47:17,184 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:47:17,185 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:47:17,187 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:47:17,187 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:47:17,189 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:47:17,189 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:47:17,191 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:47:17,191 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:47:17,193 - WARNING - Nmap is unavailable; returning Naabu discoveries without service verification
+2026-08-03 13:47:17,195 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:47:17,195 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:51:55,151 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 13:51:55,152 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 13:51:55,152 - INFO - Total live hosts found: 2
+2026-08-03 13:51:55,152 - INFO - Total dead hosts found: 1
+2026-08-03 13:51:55,154 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-08-03 13:51:55,154 - INFO - Batch 1: httpx returned 0 lines
+2026-08-03 13:51:55,154 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-08-03 13:51:55,156 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 13:51:55,157 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 13:51:55,157 - INFO - Total live hosts found: 2
+2026-08-03 13:51:55,157 - INFO - Total dead hosts found: 0
+2026-08-03 13:51:55,158 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 13:51:55,159 - INFO - Batch 1: httpx returned 1 lines
+2026-08-03 13:51:55,159 - INFO - Total live hosts found: 1
+2026-08-03 13:51:55,159 - INFO - Total dead hosts found: 1
+2026-08-03 13:51:55,162 - INFO - Starting dnsx resolution for 2 candidates
+2026-08-03 13:51:55,162 - INFO - dnsx resolution completed: 1/2 candidates resolved
+2026-08-03 13:51:55,162 - INFO - Starting httpx probe for 1 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 13:51:55,163 - INFO - Batch 1: httpx returned 1 lines
+2026-08-03 13:51:55,163 - INFO - Total live hosts found: 1
+2026-08-03 13:51:55,163 - INFO - Total dead hosts found: 1
+2026-08-03 13:51:55,168 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:51:55,168 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:51:55,169 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_2/pytest-of-sohampatil/pytest-11/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-08-03 13:51:55,170 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:51:55,170 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:51:55,185 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:51:55,189 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:51:55,189 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:51:55,192 - WARNING - Nmap service scan failed for example.com: assert 'default,safe...-cookie-flags' == 'default,safe...der,http-enum'
+  
+  Skipping 98 identical leading characters in diff, use -v to show
+  [0m[91m- r,http-enum[39;49;00m[90m[39;49;00m
+  [92m+ r,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags[39;49;00m[90m[39;49;00m
+2026-08-03 13:51:55,192 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:51:55,192 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:51:55,194 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:51:55,195 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:51:55,196 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:51:55,197 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:51:55,198 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:51:55,199 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:51:55,200 - WARNING - Nmap is unavailable; returning Naabu discoveries without service verification
+2026-08-03 13:51:55,202 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 13:51:55,203 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 13:58:06,666 - INFO - Starting reconnaissance for github.com
+2026-08-03 13:58:06,666 - INFO - Starting subdomain discovery
+2026-08-03 14:04:37,945 - INFO - Subdomain discovery completed in 391.3 seconds (41175 candidates)
+2026-08-03 14:04:37,945 - INFO - Starting live-host probing
+2026-08-03 14:04:37,948 - INFO - Starting dnsx resolution for 41175 candidates
+2026-08-03 14:08:54,988 - INFO - dnsx resolution completed: 170/41175 candidates resolved
+2026-08-03 14:08:55,032 - INFO - Starting httpx probe for 170 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-03 14:09:43,601 - INFO - Batch 1: httpx returned 124 lines
+2026-08-03 14:09:43,639 - INFO - Total live hosts found: 124
+2026-08-03 14:09:43,639 - INFO - Total dead hosts found: 41064
+2026-08-03 14:09:43,640 - INFO - Live-host probing completed in 305.7 seconds (124 live hosts)
+2026-08-03 14:09:43,640 - INFO - Starting port discovery
+2026-08-03 14:14:18,436 - INFO - Nmap service progress: 25/44 hosts
+2026-08-03 14:16:18,487 - INFO - Nmap service progress: 44/44 hosts
+2026-08-03 14:19:40,600 - INFO - Identified 62 open host-port combinations across 44 hosts
+2026-08-03 14:19:40,600 - INFO - Port discovery completed in 597.0 seconds
+2026-08-03 14:19:40,600 - INFO - Starting technology discovery
+2026-08-03 14:20:33,062 - INFO - Technology discovery completed in 52.5 seconds
+2026-08-03 14:20:33,065 - INFO - Starting security detection
+2026-08-03 16:02:45,502 - WARNING - Nuclei scan batch 0 exited with code 1: [[31mERR[0m] failed to write config file at /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json got: cause="failed to write nuclei config file at /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json: open /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json: operation not permitted"
+[[31mERR[0m] failed to load provider keys got cause="couldn't write provider config file(%s): %s\n" /Users/sohampatil/Library/Application Support/uncover/provider-config.yaml=open /Users/sohampatil/Library/Application Support/uncover/provider-config.yaml: operation not permitted
+
+                     __     _
+   ____  __  _______/ /__  (_)
+  / __ \/ / / / ___/ / _ \/ /
+ / / / / /_/ / /__/ /  __/ /
+/_/ /_/\__,_/\___/_/\___/_/   v3.11.0
+
+		projectdiscovery.io
+
+[[1;31mFTL[0m] Could not create runner: cause="operation not permitted" chain="could not create config file"
+2026-08-03 16:09:04,757 - INFO - Nuclei returned no findings for batch 0; falling back to Nikto
+2026-08-03 16:09:10,869 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 16:09:10,869 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 16:09:10,870 - INFO - Total live hosts found: 2
+2026-08-03 16:09:10,870 - INFO - Total dead hosts found: 1
+2026-08-03 16:09:10,871 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-08-03 16:09:10,872 - INFO - Batch 1: httpx returned 0 lines
+2026-08-03 16:09:10,872 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-08-03 16:09:10,873 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 16:09:10,874 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 16:09:10,874 - INFO - Total live hosts found: 2
+2026-08-03 16:09:10,874 - INFO - Total dead hosts found: 0
+2026-08-03 16:09:10,876 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 16:09:10,876 - INFO - Batch 1: httpx returned 1 lines
+2026-08-03 16:09:10,876 - INFO - Total live hosts found: 1
+2026-08-03 16:09:10,876 - INFO - Total dead hosts found: 1
+2026-08-03 16:09:10,880 - INFO - Starting dnsx resolution for 2 candidates
+2026-08-03 16:09:10,880 - INFO - dnsx resolution completed: 1/2 candidates resolved
+2026-08-03 16:09:10,880 - INFO - Starting httpx probe for 1 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 16:09:10,881 - INFO - Batch 1: httpx returned 1 lines
+2026-08-03 16:09:10,881 - INFO - Total live hosts found: 1
+2026-08-03 16:09:10,881 - INFO - Total dead hosts found: 1
+2026-08-03 16:09:10,887 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:09:10,887 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:09:10,888 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_2/pytest-of-sohampatil/pytest-15/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-08-03 16:09:10,889 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:09:10,889 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:09:10,903 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:09:10,908 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:09:10,909 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:09:10,911 - WARNING - Nmap service scan failed for example.com: assert 'default,safe...-cookie-flags' == 'default,safe...der,http-enum'
+  
+  Skipping 98 identical leading characters in diff, use -v to show
+  [0m[91m- r,http-enum[39;49;00m[90m[39;49;00m
+  [92m+ r,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags[39;49;00m[90m[39;49;00m
+2026-08-03 16:09:10,911 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:09:10,911 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:09:10,913 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:09:10,913 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:09:10,915 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:09:10,915 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:09:10,918 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:09:10,918 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:09:10,919 - WARNING - Nmap is unavailable; returning Naabu discoveries without service verification
+2026-08-03 16:09:10,921 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:09:10,922 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:09:19,700 - INFO - Nuclei returned no findings for batch 0; falling back to Nikto
+2026-08-03 16:09:37,035 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 16:09:37,036 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 16:09:37,036 - INFO - Total live hosts found: 2
+2026-08-03 16:09:37,036 - INFO - Total dead hosts found: 1
+2026-08-03 16:09:37,037 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-08-03 16:09:37,038 - INFO - Batch 1: httpx returned 0 lines
+2026-08-03 16:09:37,038 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-08-03 16:09:37,039 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 16:09:37,040 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 16:09:37,040 - INFO - Total live hosts found: 2
+2026-08-03 16:09:37,040 - INFO - Total dead hosts found: 0
+2026-08-03 16:09:37,041 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 16:09:37,042 - INFO - Batch 1: httpx returned 1 lines
+2026-08-03 16:09:37,042 - INFO - Total live hosts found: 1
+2026-08-03 16:09:37,042 - INFO - Total dead hosts found: 1
+2026-08-03 16:09:37,045 - INFO - Starting dnsx resolution for 2 candidates
+2026-08-03 16:09:37,046 - INFO - dnsx resolution completed: 1/2 candidates resolved
+2026-08-03 16:09:37,046 - INFO - Starting httpx probe for 1 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 16:09:37,046 - INFO - Batch 1: httpx returned 1 lines
+2026-08-03 16:09:37,046 - INFO - Total live hosts found: 1
+2026-08-03 16:09:37,046 - INFO - Total dead hosts found: 1
+2026-08-03 16:09:37,052 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:09:37,052 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:09:37,053 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_2/pytest-of-sohampatil/pytest-16/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-08-03 16:09:37,054 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:09:37,054 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:09:37,069 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:09:37,073 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:09:37,073 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:09:37,076 - WARNING - Nmap service scan failed for example.com: assert 'default,safe...-cookie-flags' == 'default,safe...der,http-enum'
+  
+  Skipping 98 identical leading characters in diff, use -v to show
+  [0m[91m- r,http-enum[39;49;00m[90m[39;49;00m
+  [92m+ r,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags[39;49;00m[90m[39;49;00m
+2026-08-03 16:09:37,076 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:09:37,076 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:09:37,078 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:09:37,078 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:09:37,080 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:09:37,080 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:09:37,082 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:09:37,082 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:09:37,084 - WARNING - Nmap is unavailable; returning Naabu discoveries without service verification
+2026-08-03 16:09:37,086 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:09:37,086 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:09:45,504 - INFO - Nuclei returned no findings for batch 0; falling back to Nikto
+2026-08-03 16:10:07,191 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 16:10:07,192 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 16:10:07,193 - INFO - Total live hosts found: 2
+2026-08-03 16:10:07,193 - INFO - Total dead hosts found: 1
+2026-08-03 16:10:07,194 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-08-03 16:10:07,194 - INFO - Batch 1: httpx returned 0 lines
+2026-08-03 16:10:07,194 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-08-03 16:10:07,196 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 16:10:07,196 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 16:10:07,197 - INFO - Total live hosts found: 2
+2026-08-03 16:10:07,197 - INFO - Total dead hosts found: 0
+2026-08-03 16:10:07,198 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 16:10:07,199 - INFO - Batch 1: httpx returned 1 lines
+2026-08-03 16:10:07,199 - INFO - Total live hosts found: 1
+2026-08-03 16:10:07,199 - INFO - Total dead hosts found: 1
+2026-08-03 16:10:07,202 - INFO - Starting dnsx resolution for 2 candidates
+2026-08-03 16:10:07,203 - INFO - dnsx resolution completed: 1/2 candidates resolved
+2026-08-03 16:10:07,203 - INFO - Starting httpx probe for 1 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 16:10:07,203 - INFO - Batch 1: httpx returned 1 lines
+2026-08-03 16:10:07,204 - INFO - Total live hosts found: 1
+2026-08-03 16:10:07,204 - INFO - Total dead hosts found: 1
+2026-08-03 16:10:07,209 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:10:07,209 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:10:07,210 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_2/pytest-of-sohampatil/pytest-17/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-08-03 16:10:07,211 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:10:07,211 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:10:07,225 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:10:07,230 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:10:07,230 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:10:07,233 - WARNING - Nmap service scan failed for example.com: assert 'default,safe...-cookie-flags' == 'default,safe...der,http-enum'
+  
+  Skipping 98 identical leading characters in diff, use -v to show
+  [0m[91m- r,http-enum[39;49;00m[90m[39;49;00m
+  [92m+ r,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags[39;49;00m[90m[39;49;00m
+2026-08-03 16:10:07,233 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:10:07,233 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:10:07,235 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:10:07,235 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:10:07,237 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:10:07,237 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:10:07,239 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:10:07,239 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:10:07,240 - WARNING - Nmap is unavailable; returning Naabu discoveries without service verification
+2026-08-03 16:10:07,243 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 16:10:07,243 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 16:10:15,644 - INFO - Nuclei returned no findings for batch 0; falling back to Nikto
+2026-08-03 16:10:46,291 - INFO - Starting reconnaissance for github.com
+2026-08-03 16:10:46,291 - INFO - Starting subdomain discovery
+2026-08-03 16:11:32,044 - INFO - Subdomain discovery completed in 45.8 seconds (41150 candidates)
+2026-08-03 16:11:32,044 - INFO - Starting live-host probing
+2026-08-03 16:11:32,048 - INFO - Starting dnsx resolution for 41150 candidates
+2026-08-03 16:15:53,851 - INFO - dnsx resolution completed: 135/41150 candidates resolved
+2026-08-03 16:15:53,887 - INFO - Starting httpx probe for 135 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-03 16:16:38,531 - INFO - Batch 1: httpx returned 114 lines
+2026-08-03 16:16:38,568 - INFO - Total live hosts found: 114
+2026-08-03 16:16:38,568 - INFO - Total dead hosts found: 41043
+2026-08-03 16:16:38,569 - INFO - Live-host probing completed in 306.5 seconds (114 live hosts)
+2026-08-03 16:16:38,569 - INFO - Starting port discovery
+2026-08-03 16:21:11,480 - INFO - Nmap service progress: 25/52 hosts
+2026-08-03 16:24:11,549 - INFO - Nmap service progress: 50/52 hosts
+2026-08-03 16:24:11,549 - INFO - Nmap service progress: 52/52 hosts
+2026-08-03 16:27:52,589 - INFO - Identified 62 open host-port combinations across 52 hosts
+2026-08-03 16:27:52,589 - INFO - Port discovery completed in 674.0 seconds
+2026-08-03 16:27:52,590 - INFO - Starting technology discovery
+2026-08-03 16:28:41,428 - INFO - Technology discovery completed in 48.8 seconds
+2026-08-03 16:28:41,428 - INFO - Starting security detection
+2026-08-03 17:08:38,260 - INFO - Nuclei returned no findings for batch 0; falling back to Nikto
+2026-08-03 17:08:38,263 - INFO - Nuclei returned no findings for batch 0; falling back to Nikto
+2026-08-03 17:08:47,494 - INFO - Starting reconnaissance for github.com
+2026-08-03 17:08:47,494 - INFO - Starting subdomain discovery
+2026-08-03 17:08:47,624 - INFO - Subdomain discovery completed in 0.1 seconds (4 candidates)
+2026-08-03 17:08:47,624 - INFO - Starting live-host probing
+2026-08-03 17:08:47,625 - INFO - Starting dnsx resolution for 4 candidates
+2026-08-03 17:08:48,418 - INFO - dnsx resolution completed: 2/4 candidates resolved
+2026-08-03 17:08:48,419 - INFO - Starting httpx probe for 2 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-03 17:08:57,492 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 17:08:57,494 - INFO - Total live hosts found: 2
+2026-08-03 17:08:57,494 - INFO - Total dead hosts found: 2
+2026-08-03 17:08:57,494 - INFO - Live-host probing completed in 9.9 seconds (2 live hosts)
+2026-08-03 17:08:57,494 - INFO - Starting port discovery
+2026-08-03 17:10:03,181 - INFO - Nmap service progress: 2/2 hosts
+2026-08-03 17:10:07,190 - INFO - Identified 6 open host-port combinations across 2 hosts
+2026-08-03 17:10:07,190 - INFO - Port discovery completed in 69.7 seconds
+2026-08-03 17:10:07,190 - INFO - Starting technology discovery
+2026-08-03 17:10:10,533 - INFO - Technology discovery completed in 3.3 seconds
+2026-08-03 17:10:10,533 - INFO - Starting security detection
+2026-08-03 17:10:10,660 - WARNING - Nuclei scan batch 0 exited with code 1: [[31mERR[0m] failed to write config file at /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json got: cause="failed to write nuclei config file at /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json: open /Users/sohampatil/Library/Application Support/nuclei/.templates-config.json: operation not permitted"
+[[31mERR[0m] failed to load provider keys got cause="couldn't write provider config file(%s): %s\n" /Users/sohampatil/Library/Application Support/uncover/provider-config.yaml=open /Users/sohampatil/Library/Application Support/uncover/provider-config.yaml: operation not permitted
+
+                     __     _
+   ____  __  _______/ /__  (_)
+  / __ \/ / / / ___/ / _ \/ /
+ / / / / /_/ / /__/ /  __/ /
+/_/ /_/\__,_/\___/_/\___/_/   v3.11.0
+
+		projectdiscovery.io
+
+[[1;31mFTL[0m] Could not create runner: cause="operation not permitted" chain="could not create config file"
+2026-08-03 17:10:10,661 - INFO - Nuclei returned no findings for batch 0; falling back to Nikto
+2026-08-03 17:12:02,359 - INFO - Starting reconnaissance for github.com
+2026-08-03 17:12:02,359 - INFO - Starting subdomain discovery
+2026-08-03 17:12:47,159 - INFO - Subdomain discovery completed in 44.8 seconds (4313 candidates)
+2026-08-03 17:12:47,159 - INFO - Starting live-host probing
+2026-08-03 17:12:47,161 - INFO - Starting dnsx resolution for 4313 candidates
+2026-08-03 17:12:58,082 - INFO - dnsx resolution completed: 343/4313 candidates resolved
+2026-08-03 17:12:58,095 - INFO - Starting httpx probe for 343 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-03 17:14:48,680 - INFO - Batch 1: httpx returned 231 lines
+2026-08-03 17:14:48,690 - INFO - Total live hosts found: 231
+2026-08-03 17:14:48,690 - INFO - Total dead hosts found: 4237
+2026-08-03 17:14:48,690 - INFO - Live-host probing completed in 121.5 seconds (231 live hosts)
+2026-08-03 17:14:48,690 - INFO - Starting port discovery
+2026-08-03 17:19:21,897 - INFO - Nmap service progress: 25/126 hosts
+2026-08-03 17:22:21,956 - INFO - Nmap service progress: 50/126 hosts
+2026-08-03 18:06:17,629 - INFO - Nmap service progress: 75/126 hosts
+2026-08-03 18:09:17,684 - INFO - Nmap service progress: 100/126 hosts
+2026-08-03 18:12:17,759 - INFO - Nmap service progress: 125/126 hosts
+2026-08-03 18:12:17,761 - INFO - Nmap service progress: 126/126 hosts
+2026-08-03 18:20:42,296 - INFO - Identified 159 open host-port combinations across 126 hosts
+2026-08-03 18:20:42,299 - INFO - Port discovery completed in 1498.0 seconds
+2026-08-03 18:20:42,299 - INFO - Starting technology discovery
+2026-08-03 18:22:15,954 - INFO - Technology discovery completed in 93.7 seconds
+2026-08-03 18:22:15,957 - INFO - Starting security detection
+2026-08-03 18:58:55,494 - INFO - Nuclei returned no findings for batch 0; falling back to Nikto
+2026-08-03 19:01:05,746 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 19:01:05,747 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 19:01:05,747 - INFO - Total live hosts found: 2
+2026-08-03 19:01:05,748 - INFO - Total dead hosts found: 1
+2026-08-03 19:01:05,749 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-08-03 19:01:05,749 - INFO - Batch 1: httpx returned 0 lines
+2026-08-03 19:01:05,749 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-08-03 19:01:05,751 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 19:01:05,751 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 19:01:05,752 - INFO - Total live hosts found: 2
+2026-08-03 19:01:05,752 - INFO - Total dead hosts found: 0
+2026-08-03 19:01:05,753 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 19:01:05,753 - INFO - Batch 1: httpx returned 1 lines
+2026-08-03 19:01:05,754 - INFO - Total live hosts found: 1
+2026-08-03 19:01:05,754 - INFO - Total dead hosts found: 1
+2026-08-03 19:01:05,757 - INFO - Starting dnsx resolution for 2 candidates
+2026-08-03 19:01:05,757 - INFO - dnsx resolution completed: 1/2 candidates resolved
+2026-08-03 19:01:05,757 - INFO - Starting httpx probe for 1 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 19:01:05,757 - INFO - Batch 1: httpx returned 1 lines
+2026-08-03 19:01:05,758 - INFO - Total live hosts found: 1
+2026-08-03 19:01:05,758 - INFO - Total dead hosts found: 1
+2026-08-03 19:01:05,763 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:05,763 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:05,765 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_2/pytest-of-sohampatil/pytest-19/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-08-03 19:01:05,765 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:05,765 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:05,780 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:05,784 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:05,785 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:05,787 - WARNING - Nmap service scan failed for example.com: assert 'default,safe...-cookie-flags' == 'default,safe...der,http-enum'
+  
+  Skipping 98 identical leading characters in diff, use -v to show
+  [0m[91m- r,http-enum[39;49;00m[90m[39;49;00m
+  [92m+ r,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags[39;49;00m[90m[39;49;00m
+2026-08-03 19:01:05,787 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:05,787 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:05,789 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:05,789 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:05,791 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:05,791 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:05,793 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:05,793 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:05,794 - WARNING - Nmap is unavailable; returning Naabu discoveries without service verification
+2026-08-03 19:01:05,797 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:05,797 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:14,616 - INFO - Nuclei returned no findings for batch 0; falling back to Nikto
+2026-08-03 19:01:14,618 - INFO - Nuclei returned no findings for batch 0; falling back to Nikto
+2026-08-03 19:01:34,547 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 19:01:34,548 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 19:01:34,548 - INFO - Total live hosts found: 2
+2026-08-03 19:01:34,549 - INFO - Total dead hosts found: 1
+2026-08-03 19:01:34,550 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-08-03 19:01:34,550 - INFO - Batch 1: httpx returned 0 lines
+2026-08-03 19:01:34,550 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-08-03 19:01:34,552 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 19:01:34,552 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 19:01:34,553 - INFO - Total live hosts found: 2
+2026-08-03 19:01:34,553 - INFO - Total dead hosts found: 0
+2026-08-03 19:01:34,554 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 19:01:34,554 - INFO - Batch 1: httpx returned 1 lines
+2026-08-03 19:01:34,555 - INFO - Total live hosts found: 1
+2026-08-03 19:01:34,555 - INFO - Total dead hosts found: 1
+2026-08-03 19:01:34,558 - INFO - Starting dnsx resolution for 2 candidates
+2026-08-03 19:01:34,558 - INFO - dnsx resolution completed: 1/2 candidates resolved
+2026-08-03 19:01:34,558 - INFO - Starting httpx probe for 1 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 19:01:34,559 - INFO - Batch 1: httpx returned 1 lines
+2026-08-03 19:01:34,559 - INFO - Total live hosts found: 1
+2026-08-03 19:01:34,559 - INFO - Total dead hosts found: 1
+2026-08-03 19:01:34,564 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:34,565 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:34,566 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_2/pytest-of-sohampatil/pytest-20/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-08-03 19:01:34,567 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:34,567 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:34,581 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:34,585 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:34,586 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:34,588 - WARNING - Nmap service scan failed for example.com: assert 'default,safe...-cookie-flags' == 'default,safe...der,http-enum'
+  
+  Skipping 98 identical leading characters in diff, use -v to show
+  [0m[91m- r,http-enum[39;49;00m[90m[39;49;00m
+  [92m+ r,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags[39;49;00m[90m[39;49;00m
+2026-08-03 19:01:34,588 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:34,588 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:34,590 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:34,590 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:34,592 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:34,592 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:34,594 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:34,594 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:34,596 - WARNING - Nmap is unavailable; returning Naabu discoveries without service verification
+2026-08-03 19:01:34,598 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:34,598 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:43,040 - INFO - Nuclei returned no findings for batch 0; falling back to Nikto
+2026-08-03 19:01:43,042 - INFO - Nuclei returned no findings for batch 0; falling back to Nikto
+2026-08-03 19:01:54,231 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 19:01:54,232 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 19:01:54,232 - INFO - Total live hosts found: 2
+2026-08-03 19:01:54,232 - INFO - Total dead hosts found: 1
+2026-08-03 19:01:54,234 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-08-03 19:01:54,234 - INFO - Batch 1: httpx returned 0 lines
+2026-08-03 19:01:54,234 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-08-03 19:01:54,236 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 19:01:54,236 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 19:01:54,237 - INFO - Total live hosts found: 2
+2026-08-03 19:01:54,237 - INFO - Total dead hosts found: 0
+2026-08-03 19:01:54,238 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 19:01:54,239 - INFO - Batch 1: httpx returned 1 lines
+2026-08-03 19:01:54,239 - INFO - Total live hosts found: 1
+2026-08-03 19:01:54,239 - INFO - Total dead hosts found: 1
+2026-08-03 19:01:54,242 - INFO - Starting dnsx resolution for 2 candidates
+2026-08-03 19:01:54,242 - INFO - dnsx resolution completed: 1/2 candidates resolved
+2026-08-03 19:01:54,243 - INFO - Starting httpx probe for 1 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-03 19:01:54,243 - INFO - Batch 1: httpx returned 1 lines
+2026-08-03 19:01:54,243 - INFO - Total live hosts found: 1
+2026-08-03 19:01:54,243 - INFO - Total dead hosts found: 1
+2026-08-03 19:01:54,248 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:54,248 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:54,250 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_2/pytest-of-sohampatil/pytest-21/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-08-03 19:01:54,250 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:54,250 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:54,265 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:54,269 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:54,270 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:54,272 - WARNING - Nmap service scan failed for example.com: assert 'default,safe...-cookie-flags' == 'default,safe...der,http-enum'
+  
+  Skipping 98 identical leading characters in diff, use -v to show
+  [0m[91m- r,http-enum[39;49;00m[90m[39;49;00m
+  [92m+ r,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags[39;49;00m[90m[39;49;00m
+2026-08-03 19:01:54,272 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:54,272 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:54,274 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:54,274 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:54,276 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:54,276 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:54,277 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:54,278 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:01:54,280 - WARNING - Nmap is unavailable; returning Naabu discoveries without service verification
+2026-08-03 19:01:54,282 - INFO - Nmap service progress: 1/1 hosts
+2026-08-03 19:01:54,282 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-03 19:02:02,707 - INFO - Nuclei returned no findings for batch 0; falling back to Nikto
+2026-08-03 19:02:02,709 - INFO - Nuclei returned no findings for batch 0; falling back to Nikto
+2026-08-03 19:03:26,255 - INFO - Starting reconnaissance for github.com
+2026-08-03 19:03:26,255 - INFO - Starting subdomain discovery
+2026-08-03 19:12:17,534 - INFO - Subdomain discovery completed in 531.3 seconds (41165 candidates)
+2026-08-03 19:12:17,534 - INFO - Starting live-host probing
+2026-08-03 19:12:17,538 - INFO - Starting dnsx resolution for 41165 candidates
+2026-08-03 19:16:37,785 - INFO - dnsx resolution completed: 187/41165 candidates resolved
+2026-08-03 19:16:37,836 - INFO - Starting httpx probe for 187 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-03 19:17:24,852 - INFO - Batch 1: httpx returned 141 lines
+2026-08-03 19:17:24,891 - INFO - Total live hosts found: 141
+2026-08-03 19:17:24,891 - INFO - Total dead hosts found: 41030
+2026-08-03 19:17:24,891 - INFO - Live-host probing completed in 307.4 seconds (141 live hosts)
+2026-08-03 19:17:24,891 - INFO - Starting port discovery
+2026-08-03 19:22:00,808 - INFO - Nmap service progress: 25/49 hosts
+2026-08-03 19:25:00,874 - INFO - Nmap service progress: 49/49 hosts
+2026-08-03 19:28:46,261 - INFO - Identified 66 open host-port combinations across 49 hosts
+2026-08-03 19:28:46,262 - INFO - Port discovery completed in 681.4 seconds
+2026-08-03 19:28:46,262 - INFO - Starting technology discovery
+2026-08-03 19:29:47,361 - INFO - Technology discovery completed in 61.1 seconds
+2026-08-03 19:29:47,451 - INFO - Completed reconnaissance for github.com
