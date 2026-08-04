@@ -33,9 +33,9 @@ def _dnsx_resolve_candidates(
     input_path.write_text("\n".join(candidates) + "\n", encoding="utf-8")
     command = [
         executable, "-l", str(input_path), "-silent", "-no-color", "-a",
-        "-threads", str(max(1, int(dnsx_options.get("threads", 500)))),
-        "-retry", str(max(1, int(dnsx_options.get("retries", 1)))),
-        "-timeout", str(max(1, int(dnsx_options.get("timeout", 2)))),
+        "-threads", str(max(1, int(dnsx_options.get("threads", 50)))),
+        "-retry", str(max(1, int(dnsx_options.get("retries", 3)))),
+        "-timeout", str(max(1, int(dnsx_options.get("timeout", 15)))),
         "-o", str(result_path),
     ]
     rate_limit = int(dnsx_options.get("rate_limit", 0))
@@ -56,13 +56,16 @@ def _dnsx_resolve_candidates(
             if host in candidate_set and host not in seen:
                 seen.add(host)
                 resolved.append(host)
-        if result.returncode != 0 or not resolved:
+        if result.returncode != 0:
             diagnostics = (result.stderr or "").strip()
             logger.warning(
-                "dnsx did not return usable results (returncode=%s, stderr=%s); probing all candidates with httpx",
+                "dnsx returned a non-zero exit code (%s); continuing with httpx fallback (%s)",
                 result.returncode,
-                diagnostics or "none",
+                diagnostics or "no diagnostics",
             )
+            return candidates, []
+        if not resolved:
+            logger.info("dnsx returned no resolved hosts; continuing with httpx fallback")
             return candidates, []
         logger.info("dnsx resolution completed: %d/%d candidates resolved", len(resolved), len(candidates))
         unresolved = [candidate for candidate in candidates if candidate not in resolved]
@@ -265,9 +268,9 @@ def discover_live_hosts(subdomains: list[str], config: dict[str, Any]) -> list[s
         process_timeout = configured_process_timeout if configured_process_timeout > 0 else None
         batch_size = int(httpx_opts.get("batch_size", 5000))
         max_rounds = int(httpx_opts.get("max_rounds", 25))
-        effective_batch_size = min(batch_size, max(threads_int * max_rounds, 1000))
-        parallel_workers = int(httpx_opts.get("parallel_workers", 3))
-        max_total_threads = int(httpx_opts.get("max_total_threads", threads_int * parallel_workers))
+        effective_batch_size = min(batch_size, max(threads_int * max_rounds, 500))
+        parallel_workers = int(httpx_opts.get("parallel_workers", 2))
+        max_total_threads = int(httpx_opts.get("max_total_threads", max(threads_int * parallel_workers, 200)))
 
         resolved_candidates, dnsx_dead_candidates = _dnsx_resolve_candidates(probe_subdomains, config, env, output_path, logger)
         probe_subdomains = resolved_candidates

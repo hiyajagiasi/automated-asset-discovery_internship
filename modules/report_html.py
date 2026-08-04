@@ -200,7 +200,6 @@ DEFAULT_TEMPLATE = """
     {% set dead_preview = dead_hosts %}
     {% set port_preview = ports %}
     {% set tech_preview = technologies %}
-
     <div class="container">
         <div class="header">
             <div class="header-top">
@@ -307,6 +306,7 @@ DEFAULT_TEMPLATE = """
                 <div class="empty">No technology fingerprints detected.</div>
             {% endif %}
         </div>
+
     </div>
     <script>
         function buildExecutiveSummaryExport() {
@@ -405,6 +405,9 @@ DEFAULT_TEMPLATE = """
     <div class="section">
       <h2>Technologies</h2>
       ` + renderTechnologyTable() + `
+    </div>
+
+    <div class="section">
     </div>
   </div>
 </body>

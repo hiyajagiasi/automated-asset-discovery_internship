@@ -1,9 +1,5 @@
 Open Ports
 ==========
 
-- github.com:22 -> ssh
-- github.com:80 -> http; status=301; redirect=https://github.com/
-- github.com:443 -> https; server=github.com; status=200
-- www.github.com:22 -> ssh
-- www.github.com:80 -> http; status=301; redirect=https://www.github.com/
-- www.github.com:443 -> https; status=301; redirect=https://github.com/
+- www.example.com:80 -> http; title=Example Domain; server=cloudflare; status=200
+- www.example.com:443 -> https; title=Example Domain; server=cloudflare; status=200

@@ -82,6 +82,7 @@ def test_generate_html_report_contains_full_recon_summary(tmp_path):
     assert "Dead Hosts" in html
     assert "Open Ports" in html
     assert "Technologies" in html
+    assert "Security Findings" not in html
     assert "api.example.com" in html
     assert "dead.example.com" in html
     assert "buildExecutiveSummaryExport" in html
