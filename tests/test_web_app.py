@@ -33,6 +33,56 @@ def test_scan_status_returns_download_urls():
 
     assert payload['html_report'] == '/download/report.html'
     assert payload['excel_report'] == '/download/report.xlsx'
+    assert payload['csv_report'] == '/download/report.csv'
+    assert payload['json_report'] == '/download/report.json'
+
+
+def test_cancel_scan_marks_status_cancelled():
+    client = app.test_client()
+    scan_id = 'cancel-test'
+    ACTIVE_SCANS[scan_id] = {
+        'target': 'example.com',
+        'events': [],
+        'complete': False,
+        'error': None,
+        'cancel_requested': False,
+        'cancelled': False,
+        'html_report': None,
+        'excel_report': None,
+        'csv_report': None,
+        'json_report': None,
+    }
+
+    response = client.post(f'/cancel/{scan_id}')
+    payload = response.get_json()
+
+    assert response.status_code == 200
+    assert payload['cancelled'] is True
+    assert ACTIVE_SCANS[scan_id]['cancelled'] is True
+
+
+def test_scan_submission_redirects_to_status_page():
+    client = app.test_client()
+
+    response = client.post('/scan', data={'target': 'https://github.com'})
+    assert response.status_code == 302
+    assert response.headers['Location'].startswith('/?scan_id=')
+
+    follow_up = client.get(response.headers['Location'])
+    assert response.status_code == 302
+    assert b'Scan in progress' in follow_up.data
+    assert b'github.com' in follow_up.data
+
+
+def test_web_page_exposes_csv_and_json_download_links():
+    client = app.test_client()
+
+    response = client.post('/scan', data={'target': 'https://github.com'})
+    assert response.status_code == 302
+    assert response.headers['Location'].startswith('/?scan_id=')
+    follow_up = client.get(response.headers['Location'])
+    assert b'Open CSV export' in follow_up.data
+    assert b'Open JSON export' in follow_up.data
 
 
 def test_web_app_renders_form_and_creates_report():
@@ -44,13 +94,19 @@ def test_web_app_renders_form_and_creates_report():
 
     target = 'https://github.com'
     scan_response = client.post('/scan', data={'target': target})
-    assert scan_response.status_code == 200
-    assert b'Scan in progress' in scan_response.data
-    assert b'github.com' in scan_response.data
+    assert scan_response.status_code == 302
+    assert scan_response.headers['Location'].startswith('/?scan_id=')
+
+    status_response = client.get(scan_response.headers['Location'])
+    assert status_response.status_code == 200
+    assert b'Scan in progress' in status_response.data
+    assert b'github.com' in status_response.data
 
     report_path = Path('reports/report.html')
     assert report_path.exists(), 'Expected a generated HTML report in the reports folder.'
     assert 'github.com' in report_path.read_text(encoding='utf-8')
+    assert Path('reports/report.csv').exists(), 'Expected a generated CSV export in the reports folder.'
+    assert Path('reports/report.json').exists(), 'Expected a generated JSON export in the reports folder.'
 
 
 def test_recon_service_emits_progress_events(tmp_path):

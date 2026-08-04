@@ -1,5 +1,7 @@
 Technology Findings
 ===================
 
-- https://www.example.com
-  HTTPX: HTML5 | CDN: Cloudflare | Webanalyze: Cloudflare
+- https://www.github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: HSTS
+- https://github.com
+  HTTPX: HTML5 | Web Server: github.com | Webanalyze: React | Amazon S3 | Amazon Web Services | GitHub Pages | HSTS | Contentful

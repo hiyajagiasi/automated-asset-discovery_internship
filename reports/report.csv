@@ -1,0 +1,7 @@
+target,category,value
+example.com,subdomain,api.example.com
+example.com,live_host,https://example.com
+example.com,dead_host,https://mail.github.com
+example.com,dead_host,https://login.github.com
+example.com,port,"{""host"": ""https://example.com"", ""port"": ""443"", ""service"": ""https""}"
+example.com,technology,"{""host"": ""https://example.com"", ""technology"": ""nginx""}"

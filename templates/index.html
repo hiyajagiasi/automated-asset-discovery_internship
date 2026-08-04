@@ -47,6 +47,7 @@
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
+            align-items: center;
         }
         input {
             flex: 1 1 420px;
@@ -67,6 +68,10 @@
             color: #06131e;
             font-weight: 800;
             cursor: pointer;
+        }
+        .cancel-btn {
+            background: linear-gradient(135deg, #fda4af, #f43f5e);
+            color: #fff;
         }
         .error {
             margin-top: 14px;
@@ -124,6 +129,7 @@
         <form id="scan-form" method="post" action="/scan">
             <input id="target-input" type="text" name="target" placeholder="Enter a URL or domain" autocomplete="off" spellcheck="false" required />
             <button type="submit">Generate Report</button>
+            <button type="button" class="cancel-btn hidden" id="cancel-scan-btn">Cancel scan</button>
         </form>
 
         {% if error %}
@@ -139,6 +145,8 @@
                 <div class="link-row hidden" id="report-links">
                     <a class="link-btn" id="html-link" href="/download/report.html">Open HTML report</a>
                     <a class="link-btn" id="excel-link" href="/download/report.xlsx">Open Excel report</a>
+                    <a class="link-btn" id="csv-link" href="/download/report.csv">Open CSV export</a>
+                    <a class="link-btn" id="json-link" href="/download/report.json">Open JSON export</a>
                 </div>
             </div>
         {% endif %}
@@ -169,8 +177,32 @@
                 const reportLinks = document.getElementById('report-links');
                 const htmlLink = document.getElementById('html-link');
                 const excelLink = document.getElementById('excel-link');
+                const csvLink = document.getElementById('csv-link');
+                const jsonLink = document.getElementById('json-link');
+                const cancelButton = document.getElementById('cancel-scan-btn');
 
                 let displayedEventCount = 0;
+                let cancelled = false;
+
+                const updateCancelButton = () => {
+                    if (cancelButton) {
+                        cancelButton.classList.remove('hidden');
+                        cancelButton.disabled = cancelled;
+                        cancelButton.textContent = cancelled ? 'Scan cancelled' : 'Cancel scan';
+                    }
+                };
+
+                if (cancelButton) {
+                    cancelButton.addEventListener('click', () => {
+                        if (cancelled) {
+                            return;
+                        }
+                        cancelled = true;
+                        updateCancelButton();
+                        fetch(`/cancel/${scanId}`, { method: 'POST' })
+                            .catch(() => {});
+                    });
+                }
 
                 const pollStatus = () => {
                     fetch(`/scan-status/${scanId}`)
@@ -185,13 +217,26 @@
                             });
                             displayedEventCount = events.length;
 
+                            if (data.cancelled) {
+                                cancelled = true;
+                                updateCancelButton();
+                            }
+
                             if (data.complete) {
-                                reportLinks.classList.remove('hidden');
-                                if (data.html_report) {
-                                    htmlLink.href = data.html_report;
-                                }
-                                if (data.excel_report) {
-                                    excelLink.href = data.excel_report;
+                                if (!data.cancelled) {
+                                    reportLinks.classList.remove('hidden');
+                                    if (data.html_report) {
+                                        htmlLink.href = data.html_report;
+                                    }
+                                    if (data.excel_report) {
+                                        excelLink.href = data.excel_report;
+                                    }
+                                    if (data.csv_report) {
+                                        csvLink.href = data.csv_report;
+                                    }
+                                    if (data.json_report) {
+                                        jsonLink.href = data.json_report;
+                                    }
                                 }
                                 return;
                             }
@@ -203,6 +248,7 @@
                         });
                 };
 
+                updateCancelButton();
                 pollStatus();
             }
         </script>

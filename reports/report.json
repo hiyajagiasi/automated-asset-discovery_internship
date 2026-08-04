@@ -1,0 +1,26 @@
+{
+  "dead_hosts": [
+    "https://mail.github.com",
+    "https://login.github.com"
+  ],
+  "live_hosts": [
+    "https://example.com"
+  ],
+  "ports": [
+    {
+      "host": "https://example.com",
+      "port": "443",
+      "service": "https"
+    }
+  ],
+  "subdomains": [
+    "api.example.com"
+  ],
+  "target": "example.com",
+  "technologies": [
+    {
+      "host": "https://example.com",
+      "technology": "nginx"
+    }
+  ]
+}

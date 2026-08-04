@@ -205,22 +205,26 @@
         </div>
 
         <div class="stats">
-            <div class="stat"><span class="label">Subdomains</span><span class="value">2</span></div>
-            <div class="stat"><span class="label">Live Hosts</span><span class="value">1</span></div>
-            <div class="stat"><span class="label">Dead Hosts</span><span class="value">1</span></div>
-            <div class="stat"><span class="label">Open Ports</span><span class="value">1</span></div>
-            <div class="stat"><span class="label">Technologies</span><span class="value">1</span></div>
+            <div class="stat"><span class="label">Subdomains</span><span class="value">4</span></div>
+            <div class="stat"><span class="label">Live Hosts</span><span class="value">2</span></div>
+            <div class="stat"><span class="label">Dead Hosts</span><span class="value">2</span></div>
+            <div class="stat"><span class="label">Open Ports</span><span class="value">6</span></div>
+            <div class="stat"><span class="label">Technologies</span><span class="value">2</span></div>
         </div>
 
         <div class="section">
             <h2>Subdomains</h2>
             
-                <p class="section-meta">Showing all 2 discovered entries.</p>
+                <p class="section-meta">Showing all 4 discovered entries.</p>
                 <ul>
                     
                         <li>github.com</li>
                     
                         <li>www.github.com</li>
+                    
+                        <li>mail.github.com</li>
+                    
+                        <li>login.github.com</li>
                     
                 </ul>
             
@@ -229,8 +233,10 @@
         <div class="section">
             <h2>Live Hosts</h2>
             
-                <p class="section-meta">Showing all 1 detected entries.</p>
+                <p class="section-meta">Showing all 2 detected entries.</p>
                 <ul>
+                    
+                        <li>https://www.github.com</li>
                     
                         <li>https://github.com</li>
                     
@@ -241,10 +247,12 @@
         <div class="section">
             <h2>Dead Hosts</h2>
             
-                <p class="section-meta">Showing all 1 dead targets.</p>
+                <p class="section-meta">Showing all 2 dead targets.</p>
                 <ul>
                     
                         <li>https://mail.github.com</li>
+                    
+                        <li>https://login.github.com</li>
                     
                 </ul>
             
@@ -253,7 +261,7 @@
         <div class="section">
             <h2>Open Ports</h2>
             
-                <p class="section-meta">Showing all 1 port entries.</p>
+                <p class="section-meta">Showing all 6 port entries.</p>
                 <table>
                     <thead>
                         <tr><th>Host</th><th>Port</th><th>Service</th></tr>
@@ -261,9 +269,39 @@
                     <tbody>
                         
                             <tr>
-                                <td>https://github.com</td>
+                                <td>github.com</td>
+                                <td>22</td>
+                                <td>ssh</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>github.com</td>
+                                <td>80</td>
+                                <td>http; status=301; redirect=https://github.com/</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>github.com</td>
                                 <td>443</td>
-                                <td>https</td>
+                                <td>https; server=github.com; status=200</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>www.github.com</td>
+                                <td>22</td>
+                                <td>ssh</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>www.github.com</td>
+                                <td>80</td>
+                                <td>http; status=301; redirect=https://www.github.com/</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>www.github.com</td>
+                                <td>443</td>
+                                <td>https; status=301; redirect=https://github.com/</td>
                             </tr>
                         
                     </tbody>
@@ -274,7 +312,7 @@
         <div class="section">
             <h2>Technologies</h2>
             
-                <p class="section-meta">Showing all 1 technology fingerprints.</p>
+                <p class="section-meta">Showing all 2 technology fingerprints.</p>
                 <table>
                     <thead>
                         <tr><th>Host</th><th>Technology</th></tr>
@@ -282,8 +320,13 @@
                     <tbody>
                         
                             <tr>
+                                <td>https://www.github.com</td>
+                                <td>HTTPX: HTML5 | Web Server: github.com | Webanalyze: HSTS</td>
+                            </tr>
+                        
+                            <tr>
                                 <td>https://github.com</td>
-                                <td>nginx</td>
+                                <td>HTTPX: HTML5 | Web Server: github.com | Webanalyze: React | Amazon S3 | Amazon Web Services | GitHub Pages | HSTS | Contentful</td>
                             </tr>
                         
                     </tbody>
@@ -293,11 +336,11 @@
     </div>
     <script>
         function buildExecutiveSummaryExport() {
-            const subdomains = JSON.parse('["github.com", "www.github.com"]');
-            const liveHosts = JSON.parse('["https://github.com"]');
-            const deadHosts = JSON.parse('["https://mail.github.com"]');
-            const ports = JSON.parse('[{"host": "https://github.com", "port": "443", "service": "https"}]');
-            const technologies = JSON.parse('[{"host": "https://github.com", "technology": "nginx"}]');
+            const subdomains = JSON.parse('["github.com", "www.github.com", "mail.github.com", "login.github.com"]');
+            const liveHosts = JSON.parse('["https://www.github.com", "https://github.com"]');
+            const deadHosts = JSON.parse('["https://mail.github.com", "https://login.github.com"]');
+            const ports = JSON.parse('[{"host": "github.com", "port": "22", "service": "ssh"}, {"host": "github.com", "port": "80", "service": "http; status=301; redirect=https://github.com/"}, {"host": "github.com", "port": "443", "service": "https; server=github.com; status=200"}, {"host": "www.github.com", "port": "22", "service": "ssh"}, {"host": "www.github.com", "port": "80", "service": "http; status=301; redirect=https://www.github.com/"}, {"host": "www.github.com", "port": "443", "service": "https; status=301; redirect=https://github.com/"}]');
+            const technologies = JSON.parse('[{"host": "https://www.github.com", "technology": "HTTPX: HTML5 | Web Server: github.com | Webanalyze: HSTS"}, {"host": "https://github.com", "technology": "HTTPX: HTML5 | Web Server: github.com | Webanalyze: React | Amazon S3 | Amazon Web Services | GitHub Pages | HSTS | Contentful"}]');
 
             const renderList = (items, title) => {
                 if (!items || !items.length) {

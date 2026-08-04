@@ -5785,3 +5785,66 @@
 2026-08-03 22:26:49,620 - INFO - Completed reconnaissance for example.com
 2026-08-03 22:28:06,327 - INFO - Starting reconnaissance for github.com
 2026-08-03 22:28:06,328 - INFO - Starting subdomain discovery
+2026-08-03 22:30:10,828 - INFO - Starting reconnaissance for github.com
+2026-08-03 22:30:10,831 - INFO - Starting subdomain discovery
+2026-08-03 22:30:11,101 - WARNING - Naabu exited with 1 for batch 0: [[1;31mFTL[0m] Could not run enumeration: no valid ipv4 or ipv6 targets were found
+2026-08-03 22:30:49,756 - INFO - Starting reconnaissance for github.com
+2026-08-03 22:30:49,757 - INFO - Starting subdomain discovery
+2026-08-03 22:30:49,831 - INFO - Subdomain discovery completed in 0.1 seconds (4 candidates)
+2026-08-03 22:30:49,831 - INFO - Starting live-host probing
+2026-08-03 22:30:49,831 - INFO - Starting dnsx resolution for 4 candidates
+2026-08-03 22:30:50,471 - INFO - dnsx resolution completed: 2/4 candidates resolved
+2026-08-03 22:30:50,471 - INFO - Starting httpx probe for 2 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-03 22:30:51,670 - INFO - Batch 1: httpx returned 2 lines
+2026-08-03 22:30:51,671 - INFO - Total live hosts found: 2
+2026-08-03 22:30:51,671 - INFO - Total dead hosts found: 2
+2026-08-03 22:30:51,671 - INFO - Live-host probing completed in 1.8 seconds (2 live hosts, 2 dead hosts)
+2026-08-03 22:30:51,671 - INFO - Starting port discovery
+2026-08-03 22:31:57,444 - INFO - Nmap service progress: 2/2 hosts
+2026-08-03 22:32:01,899 - INFO - Identified 6 open host-port combinations across 2 hosts
+2026-08-03 22:32:01,899 - INFO - Port discovery completed in 70.2 seconds
+2026-08-03 22:32:01,899 - INFO - Starting technology discovery
+2026-08-03 22:32:05,325 - INFO - Technology discovery completed in 3.4 seconds
+2026-08-03 22:32:05,418 - INFO - Completed reconnaissance for github.com
+2026-08-03 22:32:12,404 - INFO - Starting reconnaissance for github.com
+2026-08-03 22:32:12,404 - INFO - Starting subdomain discovery
+2026-08-03 22:32:47,135 - INFO - Starting reconnaissance for github.com
+2026-08-03 22:32:47,136 - INFO - Starting subdomain discovery
+2026-08-03 22:32:57,001 - INFO - Starting reconnaissance for github.com
+2026-08-03 22:32:57,001 - INFO - Starting subdomain discovery
+2026-08-04 11:18:07,435 - INFO - Starting reconnaissance for github.com
+2026-08-04 11:18:07,435 - INFO - Starting reconnaissance for github.com
+2026-08-04 11:18:07,435 - INFO - Starting reconnaissance for github.com
+2026-08-04 11:18:07,435 - INFO - Starting subdomain discovery
+2026-08-04 11:18:07,435 - INFO - Starting reconnaissance for github.com
+2026-08-04 11:18:07,435 - INFO - Starting subdomain discovery
+2026-08-04 11:18:07,435 - INFO - Starting subdomain discovery
+2026-08-04 11:18:07,435 - INFO - Starting subdomain discovery
+2026-08-04 11:19:00,833 - INFO - Starting reconnaissance for github.com
+2026-08-04 11:19:00,835 - INFO - Starting reconnaissance for github.com
+2026-08-04 11:19:00,835 - INFO - Starting subdomain discovery
+2026-08-04 11:20:06,552 - INFO - Starting reconnaissance for github.com
+2026-08-04 11:20:06,553 - INFO - Starting subdomain discovery
+2026-08-04 11:20:27,584 - INFO - Starting reconnaissance for example.com
+2026-08-04 11:20:27,584 - INFO - Starting subdomain discovery
+2026-08-04 11:20:56,950 - INFO - Starting reconnaissance for github.com
+2026-08-04 11:20:56,950 - INFO - Starting reconnaissance for github.com
+2026-08-04 11:20:56,951 - INFO - Starting subdomain discovery
+2026-08-04 11:20:59,259 - INFO - Starting reconnaissance for example.com
+2026-08-04 11:20:59,259 - INFO - Starting subdomain discovery
+2026-08-04 11:21:57,921 - INFO - Starting reconnaissance for github.com
+2026-08-04 11:21:57,921 - INFO - Starting reconnaissance for github.com
+2026-08-04 11:21:57,921 - INFO - Starting subdomain discovery
+2026-08-04 11:21:57,921 - INFO - Starting subdomain discovery
+2026-08-04 11:21:57,925 - INFO - Starting reconnaissance for github.com
+2026-08-04 11:21:57,925 - INFO - Starting subdomain discovery
+2026-08-04 11:22:09,718 - INFO - Starting reconnaissance for github.com
+2026-08-04 11:22:09,719 - INFO - Starting subdomain discovery
+2026-08-04 11:22:09,723 - INFO - Starting reconnaissance for github.com
+2026-08-04 11:22:09,723 - INFO - Starting subdomain discovery
+2026-08-04 11:22:09,726 - INFO - Starting reconnaissance for github.com
+2026-08-04 11:22:09,726 - INFO - Starting subdomain discovery
+2026-08-04 11:22:31,126 - INFO - Starting reconnaissance for example.com
+2026-08-04 11:22:31,127 - INFO - Starting subdomain discovery
+2026-08-04 11:23:04,261 - INFO - Starting reconnaissance for example.com
+2026-08-04 11:23:04,261 - INFO - Starting subdomain discovery
