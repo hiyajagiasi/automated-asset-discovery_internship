@@ -4,6 +4,52 @@ from pathlib import Path
 from typing import Any
 
 import pandas as pd
+from openpyxl import load_workbook
+from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
+from openpyxl.utils import get_column_letter
+
+
+def _apply_sheet_formatting(workbook_path: Path) -> None:
+    workbook = load_workbook(workbook_path)
+    header_fill = PatternFill("solid", fgColor="1F2937")
+    header_font = Font(bold=True, color="FFFFFF")
+    border = Border(
+        left=Side(style="thin", color="D1D5DB"),
+        right=Side(style="thin", color="D1D5DB"),
+        top=Side(style="thin", color="D1D5DB"),
+        bottom=Side(style="thin", color="D1D5DB"),
+    )
+    center_alignment = Alignment(horizontal="center", vertical="center")
+
+    for sheet in workbook.worksheets:
+        sheet.freeze_panes = "A2"
+        sheet.auto_filter.ref = sheet.dimensions
+
+        for row in sheet.iter_rows(min_row=1, max_row=sheet.max_row, min_col=1, max_col=sheet.max_column):
+            for cell in row:
+                cell.border = border
+                if cell.row == 1:
+                    cell.font = header_font
+                    cell.fill = header_fill
+                    cell.alignment = center_alignment
+                else:
+                    cell.alignment = Alignment(vertical="top")
+
+                if isinstance(cell.value, str) and cell.value.startswith(("http://", "https://")):
+                    cell.hyperlink = cell.value
+                    cell.style = "Hyperlink"
+
+        for column_cells in sheet.columns:
+            column_letter = get_column_letter(column_cells[0].column)
+            max_length = 0
+            for cell in column_cells:
+                if cell.value is None:
+                    continue
+                candidate = str(cell.value)
+                max_length = max(max_length, len(candidate))
+            sheet.column_dimensions[column_letter].width = min(max_length + 2, 60)
+
+    workbook.save(workbook_path)
 
 
 def generate_excel_report(
@@ -51,19 +97,19 @@ def generate_excel_report(
             {
                 "target": target,
                 "generated_at": generated_at,
-                "subdomains_count": len(subdomains),
-                "live_hosts_count": len(live_hosts),
-                "dead_hosts_count": len(dead_hosts),
-                "ports_count": len(ports),
-                "technologies_count": len(technologies),
-                "subdomains": _join_values(subdomains),
-                "live_hosts": _join_values(live_hosts),
-                "dead_hosts": _join_values(dead_hosts),
-                "ports": _join_values([
+                "subdomains": len(subdomains),
+                "live_hosts": len(live_hosts),
+                "dead_hosts": len(dead_hosts),
+                "ports": len(ports),
+                "technologies": len(technologies),
+                "subdomains_detail": _join_values(subdomains),
+                "live_hosts_detail": _join_values(live_hosts),
+                "dead_hosts_detail": _join_values(dead_hosts),
+                "ports_detail": _join_values([
                     f"{item.get('host', 'unknown')}:{item.get('port', 'unknown')} ({item.get('service', 'unknown')})"
                     for item in ports if isinstance(item, dict)
                 ]),
-                "technologies": _join_values([
+                "technologies_detail": _join_values([
                     f"{item.get('host', 'unknown')}: {item.get('technology', 'unknown')}"
                     for item in technologies if isinstance(item, dict)
                 ]),
@@ -101,4 +147,6 @@ def generate_excel_report(
         dead_host_df.to_excel(writer, sheet_name="Dead Hosts", index=False)
         port_df.to_excel(writer, sheet_name="Ports", index=False)
         technology_df.to_excel(writer, sheet_name="Technologies", index=False)
+
+    _apply_sheet_formatting(output_path)
     return output_path
