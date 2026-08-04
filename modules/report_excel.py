@@ -1,9 +1,41 @@
 from __future__ import annotations
 
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
 import pandas as pd
+from openpyxl import load_workbook
+from openpyxl.styles import Font, PatternFill, Alignment
+from openpyxl.utils import get_column_letter
+
+
+def _apply_sheet_formatting(sheet, header_fill: PatternFill | None = None) -> None:
+    sheet.freeze_panes = "A2"
+    if sheet.max_row > 1:
+        sheet.auto_filter.ref = sheet.dimensions
+
+    for row_idx in range(1, sheet.max_row + 1):
+        for col_idx in range(1, sheet.max_column + 1):
+            cell = sheet.cell(row=row_idx, column=col_idx)
+            if row_idx == 1:
+                cell.font = Font(bold=True, color="FFFFFF")
+                cell.fill = header_fill or PatternFill("solid", fgColor="1F4E78")
+                cell.alignment = Alignment(horizontal="center", vertical="center")
+            else:
+                cell.alignment = Alignment(vertical="center")
+                if isinstance(cell.value, str) and cell.value.startswith(("http://", "https://")):
+                    cell.hyperlink = cell.value
+                    cell.style = "Hyperlink"
+
+    for column_cells in sheet.columns:
+        max_length = 0
+        column = column_cells[0].column
+        for cell in column_cells:
+            if cell.value is not None:
+                max_length = max(max_length, len(str(cell.value)))
+        adjusted_width = min(max_length + 2, 70)
+        sheet.column_dimensions[get_column_letter(column)].width = adjusted_width
 
 
 def generate_excel_report(
@@ -42,39 +74,15 @@ def generate_excel_report(
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     generated_at = pd.Timestamp.now(tz="UTC").strftime("%Y-%m-%d %H:%M:%S UTC")
-
-    def _join_values(values: list[Any]) -> str:
-        return "; ".join(str(value) for value in values if value is not None and str(value).strip())
-
-    summary = pd.DataFrame(
-        [
-            {
-                "target": target,
-                "generated_at": generated_at,
-                "subdomains": len(subdomains),
-                "live_hosts": len(live_hosts),
-                "dead_hosts": len(dead_hosts),
-                "ports": len(ports),
-                "technologies": len(technologies),
-                "subdomains_count": len(subdomains),
-                "live_hosts_count": len(live_hosts),
-                "dead_hosts_count": len(dead_hosts),
-                "ports_count": len(ports),
-                "technologies_count": len(technologies),
-                "subdomains_details": _join_values(subdomains),
-                "live_hosts_details": _join_values(live_hosts),
-                "dead_hosts_details": _join_values(dead_hosts),
-                "ports_details": _join_values([
-                    f"{item.get('host', 'unknown')}:{item.get('port', 'unknown')} ({item.get('service', 'unknown')})"
-                    for item in ports if isinstance(item, dict)
-                ]),
-                "technologies_details": _join_values([
-                    f"{item.get('host', 'unknown')}: {item.get('technology', 'unknown')}"
-                    for item in technologies if isinstance(item, dict)
-                ]),
-            }
-        ]
-    )
+    summary_rows = [
+        ["Total Subdomains", len(subdomains)],
+        ["Live Hosts", len(live_hosts)],
+        ["Dead Hosts", len(dead_hosts)],
+        ["Open Ports", len(ports)],
+        ["Technologies Detected", len(technologies)],
+        ["Scan Date", datetime.now().strftime("%d-%m-%Y")],
+    ]
+    summary = pd.DataFrame(summary_rows, columns=["Metric", "Count"])
 
     normalized_ports = []
     for item in ports:
@@ -93,17 +101,41 @@ def generate_excel_report(
                 "technology": item.get("technology", "unknown"),
             })
 
-    subdomain_df = pd.DataFrame({"subdomain": subdomains}) if subdomains else pd.DataFrame(columns=["subdomain"])
-    live_host_df = pd.DataFrame({"live_host": live_hosts}) if live_hosts else pd.DataFrame(columns=["live_host"])
-    dead_host_df = pd.DataFrame({"dead_host": dead_hosts}) if dead_hosts else pd.DataFrame(columns=["dead_host"])
-    port_df = pd.DataFrame(normalized_ports) if normalized_ports else pd.DataFrame(columns=["host", "port", "service"])
-    technology_df = pd.DataFrame(normalized_technologies) if normalized_technologies else pd.DataFrame(columns=["host", "technology"])
+    subdomain_df = pd.DataFrame({"Sr No": range(1, len(subdomains) + 1), "Subdomain": subdomains}) if subdomains else pd.DataFrame(columns=["Sr No", "Subdomain"])
+    live_host_df = pd.DataFrame({"Host": live_hosts, "Status Code": "", "IP": "", "Title": ""}) if live_hosts else pd.DataFrame(columns=["Host", "Status Code", "IP", "Title"])
+    port_df = pd.DataFrame(normalized_ports) if normalized_ports else pd.DataFrame(columns=["Host", "Port", "Protocol", "Service"])
+    if not normalized_ports:
+        port_df = pd.DataFrame(columns=["Host", "Port", "Protocol", "Service"])
+    else:
+        port_df = pd.DataFrame([
+            {
+                "Host": item.get("host", "unknown"),
+                "Port": item.get("port", "unknown"),
+                "Protocol": "TCP",
+                "Service": item.get("service", "unknown"),
+            }
+            for item in normalized_ports
+        ])
 
-    with pd.ExcelWriter(output_path) as writer:
+    technology_df = pd.DataFrame(
+        [
+            {"Host": item.get("host", "unknown"), "Technology": item.get("technology", "unknown").split("|")[0].strip(), "Version": ""}
+            for item in normalized_technologies
+        ]
+    ) if normalized_technologies else pd.DataFrame(columns=["Host", "Technology", "Version"])
+
+    with pd.ExcelWriter(output_path, engine="openpyxl") as writer:
         summary.to_excel(writer, sheet_name="Summary", index=False)
         subdomain_df.to_excel(writer, sheet_name="Subdomains", index=False)
         live_host_df.to_excel(writer, sheet_name="Live Hosts", index=False)
-        dead_host_df.to_excel(writer, sheet_name="Dead Hosts", index=False)
-        port_df.to_excel(writer, sheet_name="Ports", index=False)
+        port_df.to_excel(writer, sheet_name="Open Ports", index=False)
         technology_df.to_excel(writer, sheet_name="Technologies", index=False)
+
+    workbook = load_workbook(output_path)
+    header_fill = PatternFill("solid", fgColor="1F4E78")
+    for sheet_name in workbook.sheetnames:
+        sheet = workbook[sheet_name]
+        _apply_sheet_formatting(sheet, header_fill=header_fill)
+
+    workbook.save(output_path)
     return output_path

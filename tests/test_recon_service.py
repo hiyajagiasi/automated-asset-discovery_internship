@@ -121,19 +121,40 @@ def test_generate_excel_report_creates_multiple_sheets(tmp_path):
         {"reports": {"excel": str(tmp_path / "reports" / "report.xlsx")}},
     )
 
-    with pd.ExcelFile(report_path) as workbook:
-        assert workbook.sheet_names == ["Summary", "Subdomains", "Live Hosts", "Dead Hosts", "Ports", "Technologies"]
+    workbook = pd.ExcelFile(report_path)
+    assert workbook.sheet_names == ["Summary", "Subdomains", "Live Hosts", "Open Ports", "Technologies"]
 
-        summary = pd.read_excel(report_path, sheet_name="Summary")
-        assert summary.loc[0, "target"] == "example.com"
-        assert "generated_at" in summary.columns
-        assert "subdomains" in summary.columns
-        assert "live_hosts" in summary.columns
-        assert "dead_hosts" in summary.columns
-        assert summary.loc[0, "subdomains"] == 2
-        assert summary.loc[0, "live_hosts"] == 2
-        assert summary.loc[0, "dead_hosts"] == 1
-        summary_text = summary.to_string(index=False)
-        assert "api.example.com" in summary_text
-        assert "https://example.com" in summary_text
-        assert "https://dead.example.com" in summary_text
+    summary = pd.read_excel(report_path, sheet_name="Summary")
+    assert list(summary.columns) == ["Metric", "Count"]
+    summary_text = summary.to_string(index=False)
+    assert "Total Subdomains" in summary_text
+    assert "Live Hosts" in summary_text
+    assert "Dead Hosts" in summary_text
+    assert "Open Ports" in summary_text
+    assert "Technologies Detected" in summary_text
+    assert "Scan Date" in summary_text
+    assert summary.loc[0, "Count"] == 2
+    assert summary.loc[1, "Count"] == 2
+    assert summary.loc[2, "Count"] == 1
+    assert summary.loc[3, "Count"] == 1
+    assert summary.loc[4, "Count"] == 1
+
+    subdomains = pd.read_excel(report_path, sheet_name="Subdomains")
+    assert list(subdomains.columns) == ["Sr No", "Subdomain"]
+    assert subdomains.loc[0, "Subdomain"] == "api.example.com"
+    assert subdomains.loc[1, "Subdomain"] == "www.example.com"
+
+    live_hosts = pd.read_excel(report_path, sheet_name="Live Hosts")
+    assert list(live_hosts.columns) == ["Host", "Status Code", "IP", "Title"]
+    assert "https://example.com" in live_hosts["Host"].astype(str).tolist()
+
+    open_ports = pd.read_excel(report_path, sheet_name="Open Ports")
+    assert list(open_ports.columns) == ["Host", "Port", "Protocol", "Service"]
+    assert open_ports.loc[0, "Host"] == "https://example.com"
+    assert open_ports.loc[0, "Port"] == 443
+    assert open_ports.loc[0, "Service"] == "https"
+
+    technologies = pd.read_excel(report_path, sheet_name="Technologies")
+    assert list(technologies.columns) == ["Host", "Technology", "Version"]
+    assert technologies.loc[0, "Host"] == "https://example.com"
+    assert technologies.loc[0, "Technology"] == "HTTPX: HTML5"
