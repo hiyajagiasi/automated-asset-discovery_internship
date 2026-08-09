@@ -1,7 +1,51 @@
 Open Ports
 ==========
 
-- www.example.com:80 -> http; title=Example Domain; server=cloudflare; status=200
-- www.example.com:443 -> https; title=Example Domain; server=cloudflare; status=200
-- www.example.com:8080 -> http-alt
-- www.example.com:8443 -> pcsync-https
+- action.github.com:443 -> https; server=GitHub.com; status=302; redirect=https://github.com/pages/auth?nonce=79c0b567-2fda-48f2-b562-65b904ad3356&page_id=18312313&path=Lw
+- brasil.github.com:443 -> https; title=GitHub Brasil Sales | GitHub Brasil - TLDR; server=GitHub.com; status=200
+- cdn-185-199-109-153.github.com:443 -> https; title=Page not found &middot; GitHub Pages; server=GitHub.com; status=404
+- cdn-185-199-110-133.github.com:443 -> https; title=Site not found &middot; GitHub Pages; server=GitHub.com; status=404
+- design-camp.github.com:443 -> https; server=GitHub.com; status=302; redirect=https://github.com/pages/auth?nonce=c763c432-a07e-4775-9a80-cb74a550ac1c&page_id=77952115&path=Lw
+- developers.github.com:443 -> https; title=GitHub Developer; server=GitHub.com; status=200; redirect=http://developer.github.com/
+- diversity.github.com:443 -> https; title=Diversity and Inclusion at GitHub; server=GitHub.com; status=200
+- dns2.docker.pkg.github.com:443 -> https; status=405
+- events-feed.github.com:443 -> https; title=GitHub Events preview; server=GitHub.com; status=200
+- fi.github.com:443 -> https; status=301; redirect=https://enterprise.github.com/
+- forgoodfirstissue.github.com:443 -> https; title=For Good First Issue | Make your next open-source contribution matter.; server=GitHub.com; status=200
+- home.docker.pkg.github.com:443 -> https; status=405
+- info.github.com:8080 -> http-alt
+- lb-140-82-112-38-iad.github.com:443 -> https; title=404 Not Found; server=Splunkd; status=404
+- lb-140-82-112-6-iad.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
+- lb-140-82-113-11-iad.github.com:443 -> https; title=Page not found &middot; GitHub Pages; server=GitHub.com; status=404
+- lb-140-82-114-38-iad.github.com:443 -> https; title=404 Not Found; server=Splunkd; status=404
+- lb-140-82-114-9-iad.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
+- lb-140-82-116-35-sea.github.com:443 -> https
+- lb-140-82-121-11-fra.github.com:80 -> http; title=Site not found &middot; GitHub Pages; server=GitHub.com; status=404
+- lb-192-30-252-153-iad.github.com:443 -> https; title=Page not found &middot; GitHub Pages; server=GitHub.com; status=404
+- lfs.github.com:443 -> https; title=Git Large File Storage | Git Large File Storage (LFS) replaces large files such as audio samples, videos, datasets, and graphics with text pointers inside Git, while storing the file contents on a remote server like GitHub.com or GitHub Enterprise.; status=302; redirect=https://git-lfs.github.com
+- mac.github.com:443 -> https; server=GitHub.com; status=301; redirect=https://desktop.github.com/
+- mailing.github.com:80 -> http; title=404 Not Found; server=nginx; status=404
+- maintainers.github.com:80 -> http; title=Microsoft Forms; status=301; redirect=https://gh.io/maintainers-signup/
+- maintainers.github.com:443 -> https; title=Microsoft Forms; status=301; redirect=https://gh.io/maintainers-signup/
+- messages.github.com:443 -> https; status=200
+- next.github.com:443 -> https; title=GitHub Next; status=301; redirect=https://githubnext.com/
+- octicons.github.com:443 -> https; title=Octicons; server=GitHub.com; status=200
+- octo.github.com:80 -> http; title=GitHub Next; status=301; redirect=https://githubnext.com/
+- octo.github.com:443 -> https; title=GitHub Next; status=301; redirect=https://githubnext.com/
+- octoverse.github.com:443 -> https; title=Octoverse 2025: The state of open source | The State of the Octoverse; server=GitHub.com; status=200
+- og.github.com:443 -> https; title=Page not found &middot; GitHub Pages; server=GitHub.com; status=404
+- pages-auth.github.com:443 -> https; title=Page not found &middot; GitHub Pages; server=GitHub.com; status=404
+- raw-origin.github.com:80 -> http; status=301; redirect=https://raw.githubusercontent.com/
+- raw-origin.github.com:443 -> https; status=301; redirect=https://raw.githubusercontent.com/
+- redirect.github.com:443 -> https; status=301; redirect=https://github.com/
+- services.github.com:443 -> https; status=301; redirect=https://github.com/services/
+- skyline.github.com:443 -> https; server=GitHub.com; status=200
+- spotlights-feed.github.com:443 -> https; title=Published spotlights; server=GitHub.com; status=200
+- support.github.com:80 -> http; title=Sign in for Software Support and Product Help - GitHub Support; status=301; redirect=https://support.github.com/
+- support.github.com:443 -> https; title=Sign in for Software Support and Product Help - GitHub Support; status=302; redirect=https://support.github.com/request/landing
+- visualstudio.github.com:443 -> https; title=Visual Studio and GitHub; status=301; redirect=https://visualstudio.microsoft.com/vs/github/
+- vpn-ca.iad.github.com:443 -> https; title=Page not found &middot; GitHub Pages; server=GitHub.com; status=404
+- webdisk.wiki.github.com:80 -> http; title=Bad request &middot; GitHub; status=301; redirect=https://webdisk.wiki.github.com/
+- wellarchitected.github.com:443 -> https; title=GitHub Learn; status=301; redirect=https://learn.github.com/well-architected/
+- wildcard.review-lab.github.com:80 -> http; status=302; redirect=https://wildcard.review-lab.github.com/
+- wildcard.workspaces-ppe.github.com:443 -> https; status=404

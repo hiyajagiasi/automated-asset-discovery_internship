@@ -56,12 +56,20 @@ def _dnsx_resolve_candidates(
             if host in candidate_set and host not in seen:
                 seen.add(host)
                 resolved.append(host)
-        if result.returncode != 0 or not resolved:
+        if result.returncode != 0:
             diagnostics = (result.stderr or "").strip()
             logger.warning(
-                "dnsx did not return usable results (returncode=%s, stderr=%s); probing all candidates with httpx",
+                "dnsx failed (returncode=%s, stderr=%s); probing all candidates with httpx",
                 result.returncode,
                 diagnostics or "none",
+            )
+            return candidates, []
+        if not resolved:
+            diagnostics = (result.stderr or "").strip()
+            logger.info(
+                "dnsx resolved 0/%d candidates; probing all candidates with httpx (details: %s)",
+                len(candidates),
+                diagnostics or "no diagnostic output",
             )
             return candidates, []
         logger.info("dnsx resolution completed: %d/%d candidates resolved", len(resolved), len(candidates))

@@ -136,3 +136,22 @@ def test_generate_excel_report_creates_multiple_sheets(tmp_path):
         assert "api.example.com" in summary_text
         assert "https://example.com" in summary_text
         assert "https://dead.example.com" in summary_text
+
+
+def test_generate_excel_report_truncates_oversized_summary_cells(tmp_path):
+    report_path = generate_excel_report(
+        tmp_path,
+        "example.com",
+        [f"host-{index}.example.com" for index in range(3000)],
+        [],
+        [],
+        [],
+        [],
+        {"reports": {"excel": str(tmp_path / "reports" / "report.xlsx")}},
+    )
+
+    summary = pd.read_excel(report_path, sheet_name="Summary")
+    detail = summary.loc[0, "subdomains_detail"]
+
+    assert len(detail) <= 32767
+    assert detail.endswith("... [truncated; see detail sheet]")

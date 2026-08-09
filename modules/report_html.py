@@ -407,8 +407,8 @@ DEFAULT_TEMPLATE = """
       ` + renderTechnologyTable() + `
     </div>
   </div>
-</body>
-</html>`;
+<${'/' }body>
+<${'/' }html>`;
         }
 
         const downloadBtn = document.getElementById('downloadReportBtn');

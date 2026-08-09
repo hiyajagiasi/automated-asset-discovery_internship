@@ -42,29 +42,29 @@ limits:
   nmap_parallel_workers: 8
 
 httpx_options:
-  # More conservative live-host probing for reliability on large target sets.
   threads: 100
-  timeout: 15
-  retries: 3
-  rate_limit: 150
+  timeout: 10
+  retries: 1
+  rate_limit: 0
   stream: true
-  # Technology detection benefits from more HTML/JS content, so allow a larger response body read.
-  response_size_to_read: 10000
+  response_size_to_read: 5000
   no_decode: true
-  # Optional whole-batch safety limit in seconds; 0 disables it (recommended).
   process_timeout: 0
-  # Smaller batches release discovered live hosts to output quickly.
-  batch_size: 1000
+  batch_size: 5000
   max_rounds: 20
-  parallel_workers: 2
-  max_total_threads: 200
+  parallel_workers: 4
+  max_total_threads: 400
 
 dnsx_options:
   enabled: true
-  threads: 500
-  retries: 1
-  timeout: 5
+  threads: 200
+  retries: 2
+  timeout: 3
   rate_limit: 0
+  resolvers:
+    - 1.1.1.1
+    - 8.8.8.8
+    - 9.9.9.9
 
 batching:
   batch_size: 50

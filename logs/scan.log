@@ -5686,3 +5686,91 @@
 2026-08-09 15:28:23,299 - INFO - Starting technology discovery
 2026-08-09 15:28:25,553 - INFO - Technology discovery completed in 2.3 seconds
 2026-08-09 15:28:30,407 - INFO - Completed reconnaissance for example.com
+2026-08-09 18:15:11,714 - INFO - Starting reconnaissance for example.com
+2026-08-09 18:15:11,714 - INFO - Starting subdomain discovery
+2026-08-09 18:16:40,305 - INFO - Subdomain discovery completed in 88.6 seconds (22204 candidates)
+2026-08-09 18:16:40,305 - INFO - Starting live-host probing
+2026-08-09 18:16:40,308 - INFO - Starting dnsx resolution for 22204 candidates
+2026-08-09 18:19:01,570 - WARNING - dnsx did not return usable results (returncode=0, stderr=[WRN] 13510 domains failed to resolve (consider increasing -retry or reducing -threads)); probing all candidates with httpx
+2026-08-09 18:19:01,572 - INFO - Starting httpx probe for 22204 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=2, max_total_threads=200)
+2026-08-09 18:20:12,092 - INFO - Batch 1: httpx returned 0 lines
+2026-08-09 18:20:12,092 - INFO - Batch 2: httpx returned 0 lines
+2026-08-09 18:20:12,093 - WARNING - httpx batch 1 exited 1: no stderr
+2026-08-09 18:20:12,093 - WARNING - httpx batch 2 exited 1: no stderr
+2026-08-09 18:23:48,475 - INFO - Starting reconnaissance for example.com
+2026-08-09 18:23:48,476 - INFO - Starting subdomain discovery
+2026-08-09 18:25:21,710 - INFO - Subdomain discovery completed in 93.2 seconds (22211 candidates)
+2026-08-09 18:25:21,710 - INFO - Starting live-host probing
+2026-08-09 18:25:21,712 - INFO - Starting dnsx resolution for 22211 candidates
+2026-08-09 18:38:50,248 - INFO - dnsx resolution completed: 1/22211 candidates resolved
+2026-08-09 18:38:50,251 - INFO - Starting httpx probe for 1 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-09 18:38:51,802 - INFO - Batch 1: httpx returned 1 lines
+2026-08-09 18:38:51,814 - INFO - Total live hosts found: 1
+2026-08-09 18:38:51,814 - INFO - Total dead hosts found: 22210
+2026-08-09 18:38:51,815 - INFO - Live-host probing completed in 810.1 seconds (1 live hosts, 22210 dead hosts)
+2026-08-09 18:38:51,815 - INFO - Starting port discovery
+2026-08-09 18:39:57,438 - INFO - Nmap service progress: 1/1 hosts
+2026-08-09 18:40:05,252 - INFO - Identified 4 open host-port combinations across 1 hosts
+2026-08-09 18:40:05,252 - INFO - Port discovery completed in 73.4 seconds
+2026-08-09 18:40:05,252 - INFO - Starting technology discovery
+2026-08-09 18:40:06,736 - INFO - Technology discovery completed in 1.5 seconds
+2026-08-09 18:40:08,545 - INFO - Completed reconnaissance for example.com
+2026-08-09 18:51:25,648 - INFO - Starting reconnaissance for example.com
+2026-08-09 18:51:25,648 - INFO - Starting subdomain discovery
+2026-08-09 18:59:52,151 - INFO - Subdomain discovery completed in 506.5 seconds (22328 candidates)
+2026-08-09 18:59:52,151 - INFO - Starting live-host probing
+2026-08-09 18:59:52,153 - INFO - Starting dnsx resolution for 22328 candidates
+2026-08-09 19:16:43,933 - INFO - Starting reconnaissance for example.com
+2026-08-09 19:16:43,933 - INFO - Starting subdomain discovery
+2026-08-09 19:22:36,127 - INFO - Subdomain discovery completed in 352.2 seconds (22316 candidates)
+2026-08-09 19:22:36,127 - INFO - Starting live-host probing
+2026-08-09 19:22:36,129 - INFO - Starting dnsx resolution for 22316 candidates
+2026-08-09 19:47:52,906 - INFO - dnsx resolution completed: 1/22316 candidates resolved
+2026-08-09 19:47:52,908 - INFO - Starting httpx probe for 1 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-09 19:47:54,755 - INFO - Batch 1: httpx returned 1 lines
+2026-08-09 19:47:54,767 - INFO - Total live hosts found: 1
+2026-08-09 19:47:54,767 - INFO - Total dead hosts found: 22315
+2026-08-09 19:47:54,769 - INFO - Live-host probing completed in 1518.6 seconds (1 live hosts, 22315 dead hosts)
+2026-08-09 19:47:54,769 - INFO - Starting port discovery
+2026-08-09 19:49:00,526 - INFO - Nmap service progress: 1/1 hosts
+2026-08-09 19:49:03,715 - INFO - Identified 4 open host-port combinations across 1 hosts
+2026-08-09 19:49:03,715 - INFO - Port discovery completed in 68.9 seconds
+2026-08-09 19:49:03,716 - INFO - Starting technology discovery
+2026-08-09 19:49:05,232 - INFO - Technology discovery completed in 1.5 seconds
+2026-08-09 19:49:07,508 - INFO - Completed reconnaissance for example.com
+2026-08-09 20:16:48,255 - INFO - Starting reconnaissance for example.com
+2026-08-09 20:16:48,256 - INFO - Starting subdomain discovery
+2026-08-09 20:18:12,051 - INFO - Subdomain discovery completed in 83.8 seconds (22211 candidates)
+2026-08-09 20:18:12,051 - INFO - Starting live-host probing
+2026-08-09 20:18:12,054 - INFO - Starting dnsx resolution for 22211 candidates
+2026-08-09 20:43:21,206 - INFO - dnsx resolved 0/22211 candidates; probing all candidates with httpx (details: [WRN] 1370 domains failed to resolve (consider increasing -retry or reducing -threads))
+2026-08-09 20:43:21,208 - INFO - Starting httpx probe for 22211 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=2, max_total_threads=200)
+2026-08-09 20:43:56,197 - INFO - Batch 2: httpx returned 0 lines
+2026-08-09 20:43:56,198 - INFO - Batch 1: httpx returned 0 lines
+2026-08-09 20:43:56,198 - WARNING - httpx batch 2 exited 1: no stderr
+2026-08-09 20:43:56,198 - WARNING - httpx batch 1 exited 1: no stderr
+2026-08-09 20:43:57,274 - INFO - Batch 4: httpx returned 0 lines
+2026-08-09 20:43:57,275 - INFO - Batch 3: httpx returned 0 lines
+2026-08-09 20:43:57,275 - WARNING - httpx batch 4 exited -2: no stderr
+2026-08-09 20:43:57,275 - WARNING - httpx batch 3 exited -2: no stderr
+2026-08-09 20:44:08,413 - INFO - Starting reconnaissance for github.com
+2026-08-09 20:44:08,413 - INFO - Starting subdomain discovery
+2026-08-09 20:52:12,246 - INFO - Starting reconnaissance for github.com
+2026-08-09 20:52:12,246 - INFO - Starting subdomain discovery
+2026-08-09 20:53:43,422 - INFO - Subdomain discovery completed in 91.2 seconds (41123 candidates)
+2026-08-09 20:53:43,422 - INFO - Starting live-host probing
+2026-08-09 20:53:43,425 - INFO - Starting dnsx resolution for 41123 candidates
+2026-08-09 21:06:13,331 - INFO - dnsx resolution completed: 203/41123 candidates resolved
+2026-08-09 21:06:13,388 - INFO - Starting httpx probe for 203 candidates (requested_batch=5000, effective_batch=2000, threads=100, timeout=10, retries=1, rate_limit=httpx-default per worker, stream=True, body_read_limit=5000, process_timeout=disabled, parallel_workers=1, max_total_threads=400)
+2026-08-09 21:06:38,135 - INFO - Batch 1: httpx returned 160 lines
+2026-08-09 21:06:38,174 - INFO - Total live hosts found: 160
+2026-08-09 21:06:38,174 - INFO - Total dead hosts found: 40985
+2026-08-09 21:06:38,178 - INFO - Live-host probing completed in 771.0 seconds (160 live hosts, 40985 dead hosts)
+2026-08-09 21:06:38,178 - INFO - Starting port discovery
+2026-08-09 21:11:11,317 - INFO - Nmap service progress: 25/44 hosts
+2026-08-09 21:13:11,381 - INFO - Nmap service progress: 44/44 hosts
+2026-08-09 21:15:49,099 - INFO - Identified 48 open host-port combinations across 44 hosts
+2026-08-09 21:15:49,100 - INFO - Port discovery completed in 550.9 seconds
+2026-08-09 21:15:49,100 - INFO - Starting technology discovery
+2026-08-09 21:16:53,564 - INFO - Technology discovery completed in 64.5 seconds
+2026-08-09 21:16:59,903 - INFO - Completed reconnaissance for github.com

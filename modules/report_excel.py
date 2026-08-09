@@ -9,6 +9,16 @@ from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter
 
 
+EXCEL_CELL_LIMIT = 32767
+EXCEL_TRUNCATION_MARKER = " ... [truncated; see detail sheet]"
+
+
+def _truncate_for_excel(value: str) -> str:
+    if len(value) <= EXCEL_CELL_LIMIT:
+        return value
+    return value[:EXCEL_CELL_LIMIT - len(EXCEL_TRUNCATION_MARKER)] + EXCEL_TRUNCATION_MARKER
+
+
 def _apply_sheet_formatting(workbook_path: Path) -> None:
     workbook = load_workbook(workbook_path)
     header_fill = PatternFill("solid", fgColor="1F2937")
@@ -102,17 +112,17 @@ def generate_excel_report(
                 "dead_hosts": len(dead_hosts),
                 "ports": len(ports),
                 "technologies": len(technologies),
-                "subdomains_detail": _join_values(subdomains),
-                "live_hosts_detail": _join_values(live_hosts),
-                "dead_hosts_detail": _join_values(dead_hosts),
-                "ports_detail": _join_values([
+                "subdomains_detail": _truncate_for_excel(_join_values(subdomains)),
+                "live_hosts_detail": _truncate_for_excel(_join_values(live_hosts)),
+                "dead_hosts_detail": _truncate_for_excel(_join_values(dead_hosts)),
+                "ports_detail": _truncate_for_excel(_join_values([
                     f"{item.get('host', 'unknown')}:{item.get('port', 'unknown')} ({item.get('service', 'unknown')})"
                     for item in ports if isinstance(item, dict)
-                ]),
-                "technologies_detail": _join_values([
+                ])),
+                "technologies_detail": _truncate_for_excel(_join_values([
                     f"{item.get('host', 'unknown')}: {item.get('technology', 'unknown')}"
                     for item in technologies if isinstance(item, dict)
-                ]),
+                ])),
             }
         ]
     )

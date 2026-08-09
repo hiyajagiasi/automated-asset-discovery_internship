@@ -152,6 +152,31 @@ def test_dnsx_filters_http_probe_candidates(monkeypatch, tmp_path):
     assert "-stream" not in captured["args"]
 
 
+def test_dnsx_uses_configured_retry_and_concurrency(monkeypatch, tmp_path):
+    config = {
+        "tools": {"dnsx": "dnsx"},
+        "dnsx_options": {"enabled": True, "threads": 100, "retries": 2, "timeout": 5},
+    }
+
+    def fake_run(*args, **kwargs):
+        output_path = Path(args[0][args[0].index("-o") + 1])
+        output_path.write_text("alive.example.com\n", encoding="utf-8")
+        return subprocess.CompletedProcess(args=args[0], returncode=0, stdout="", stderr="")
+
+    monkeypatch.setattr("modules.live_hosts.shutil.which", lambda *args, **kwargs: "/usr/bin/dnsx")
+    monkeypatch.setattr("modules.live_hosts.subprocess.run", fake_run)
+
+    _dnsx_resolve_candidates(
+        ["alive.example.com"],
+        config,
+        {},
+        tmp_path / "live_hosts.txt",
+        type("Logger", (), {"info": lambda *args: None, "warning": lambda *args: None})(),
+    )
+
+    command = fake_run.last_command
+
+
 def test_dnsx_falls_back_when_unavailable(monkeypatch, tmp_path):
     config = {"dnsx_options": {"enabled": True}}
     candidates = ["one.example.com"]
