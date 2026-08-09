@@ -5603,3 +5603,86 @@
 2026-08-03 20:36:09,515 - INFO - Starting technology discovery
 2026-08-03 20:37:19,032 - INFO - Technology discovery completed in 69.5 seconds
 2026-08-03 20:37:19,688 - INFO - Completed reconnaissance for github.com
+2026-08-09 15:11:12,814 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-09 15:11:12,814 - INFO - Batch 1: httpx returned 2 lines
+2026-08-09 15:11:12,815 - INFO - Total live hosts found: 2
+2026-08-09 15:11:12,815 - INFO - Total dead hosts found: 1
+2026-08-09 15:11:12,816 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=6)
+2026-08-09 15:11:12,817 - INFO - Batch 1: httpx returned 0 lines
+2026-08-09 15:11:12,817 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-08-09 15:11:12,818 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-09 15:11:12,819 - INFO - Batch 1: httpx returned 2 lines
+2026-08-09 15:11:12,820 - INFO - Total live hosts found: 2
+2026-08-09 15:11:12,820 - INFO - Total dead hosts found: 0
+2026-08-09 15:11:12,821 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-09 15:11:12,822 - INFO - Batch 1: httpx returned 1 lines
+2026-08-09 15:11:12,822 - INFO - Total live hosts found: 1
+2026-08-09 15:11:12,822 - INFO - Total dead hosts found: 1
+2026-08-09 15:11:12,825 - INFO - Starting dnsx resolution for 2 candidates
+2026-08-09 15:11:12,826 - INFO - dnsx resolution completed: 1/2 candidates resolved
+2026-08-09 15:11:12,826 - INFO - Starting httpx probe for 1 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=300)
+2026-08-09 15:11:12,826 - INFO - Batch 1: httpx returned 1 lines
+2026-08-09 15:11:12,827 - INFO - Total live hosts found: 1
+2026-08-09 15:11:12,827 - INFO - Total dead hosts found: 1
+2026-08-09 15:11:12,832 - INFO - Nmap service progress: 1/1 hosts
+2026-08-09 15:11:12,832 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-09 15:11:12,833 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-1/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-08-09 15:11:12,834 - INFO - Nmap service progress: 1/1 hosts
+2026-08-09 15:11:12,834 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-09 15:11:12,848 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-09 15:11:12,854 - INFO - Nmap service progress: 1/1 hosts
+2026-08-09 15:11:12,854 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-09 15:11:12,857 - WARNING - Nmap service scan failed for example.com: assert 'default,safe...-cookie-flags' == 'default,safe...der,http-enum'
+  
+  Skipping 98 identical leading characters in diff, use -v to show
+  [0m[91m- r,http-enum[39;49;00m[90m[39;49;00m
+  [92m+ r,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags[39;49;00m[90m[39;49;00m
+2026-08-09 15:11:12,857 - INFO - Nmap service progress: 1/1 hosts
+2026-08-09 15:11:12,857 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-09 15:11:12,859 - INFO - Nmap service progress: 1/1 hosts
+2026-08-09 15:11:12,859 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-09 15:11:12,861 - INFO - Nmap service progress: 1/1 hosts
+2026-08-09 15:11:12,861 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-09 15:11:12,863 - INFO - Nmap service progress: 1/1 hosts
+2026-08-09 15:11:12,863 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-09 15:11:12,864 - WARNING - Nmap is unavailable; returning Naabu discoveries without service verification
+2026-08-09 15:11:12,867 - INFO - Nmap service progress: 1/1 hosts
+2026-08-09 15:11:12,867 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-09 15:12:04,443 - INFO - Starting reconnaissance for github.com
+2026-08-09 15:12:04,444 - INFO - Starting subdomain discovery
+2026-08-09 15:12:15,057 - INFO - Starting reconnaissance for example.com
+2026-08-09 15:12:15,057 - INFO - Starting subdomain discovery
+2026-08-09 15:13:45,096 - INFO - Subdomain discovery completed in 90.0 seconds (19787 candidates)
+2026-08-09 15:13:45,097 - INFO - Starting live-host probing
+2026-08-09 15:13:45,099 - INFO - Starting dnsx resolution for 19787 candidates
+2026-08-09 15:15:46,746 - INFO - dnsx resolution completed: 1/19787 candidates resolved
+2026-08-09 15:15:46,748 - INFO - Starting httpx probe for 1 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-09 15:15:48,738 - INFO - Batch 1: httpx returned 1 lines
+2026-08-09 15:15:48,756 - INFO - Total live hosts found: 1
+2026-08-09 15:15:48,757 - INFO - Total dead hosts found: 19786
+2026-08-09 15:15:48,759 - INFO - Live-host probing completed in 123.7 seconds (1 live hosts, 19786 dead hosts)
+2026-08-09 15:15:48,759 - INFO - Starting port discovery
+2026-08-09 15:16:54,362 - INFO - Nmap service progress: 1/1 hosts
+2026-08-09 15:16:56,416 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-09 15:16:56,416 - INFO - Port discovery completed in 67.7 seconds
+2026-08-09 15:16:56,416 - INFO - Starting technology discovery
+2026-08-09 15:16:58,522 - INFO - Technology discovery completed in 2.1 seconds
+2026-08-09 15:17:01,451 - INFO - Completed reconnaissance for example.com
+2026-08-09 15:23:16,047 - INFO - Starting reconnaissance for example.com
+2026-08-09 15:23:16,047 - INFO - Starting subdomain discovery
+2026-08-09 15:24:44,855 - INFO - Subdomain discovery completed in 88.8 seconds (22211 candidates)
+2026-08-09 15:24:44,855 - INFO - Starting live-host probing
+2026-08-09 15:24:44,857 - INFO - Starting dnsx resolution for 22211 candidates
+2026-08-09 15:27:06,115 - INFO - dnsx resolution completed: 1/22211 candidates resolved
+2026-08-09 15:27:06,116 - INFO - Starting httpx probe for 1 candidates (requested_batch=1000, effective_batch=1000, threads=100, timeout=15, retries=3, rate_limit=150 per worker, stream=True, body_read_limit=10000, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-09 15:27:09,271 - INFO - Batch 1: httpx returned 1 lines
+2026-08-09 15:27:09,292 - INFO - Total live hosts found: 1
+2026-08-09 15:27:09,292 - INFO - Total dead hosts found: 22210
+2026-08-09 15:27:09,295 - INFO - Live-host probing completed in 144.4 seconds (1 live hosts, 22210 dead hosts)
+2026-08-09 15:27:09,295 - INFO - Starting port discovery
+2026-08-09 15:28:14,960 - INFO - Nmap service progress: 1/1 hosts
+2026-08-09 15:28:23,299 - INFO - Identified 4 open host-port combinations across 1 hosts
+2026-08-09 15:28:23,299 - INFO - Port discovery completed in 74.0 seconds
+2026-08-09 15:28:23,299 - INFO - Starting technology discovery
+2026-08-09 15:28:25,553 - INFO - Technology discovery completed in 2.3 seconds
+2026-08-09 15:28:30,407 - INFO - Completed reconnaissance for example.com

@@ -195,11 +195,11 @@ DEFAULT_TEMPLATE = """
     </style>
 </head>
 <body>
-    {% set sub_preview = subdomains[:50] %}
-    {% set live_preview = live_hosts[:50] %}
-    {% set dead_preview = dead_hosts[:50] %}
-    {% set port_preview = ports[:50] %}
-    {% set tech_preview = technologies[:50] %}
+    {% set sub_preview = subdomains %}
+    {% set live_preview = live_hosts %}
+    {% set dead_preview = dead_hosts %}
+    {% set port_preview = ports %}
+    {% set tech_preview = technologies %}
 
     <div class="container">
         <div class="header">
@@ -321,7 +321,7 @@ DEFAULT_TEMPLATE = """
                     return '<div style="padding:14px;border:1px dashed #334155;border-radius:10px;color:#a9b9d1;">No ' + title.toLowerCase() + ' recorded.</div>';
                 }
                 return '<ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;">'
-                    + items.slice(0, 30).map((item) => '<li style="background:rgba(15,23,42,0.9);border:1px solid rgba(148,163,184,0.28);border-radius:10px;padding:10px 12px;color:#e5eefc;word-break:break-word;">' + item + '</li>').join('')
+                    + items.map((item) => '<li style="background:rgba(15,23,42,0.9);border:1px solid rgba(148,163,184,0.28);border-radius:10px;padding:10px 12px;color:#e5eefc;word-break:break-word;">' + item + '</li>').join('')
                     + '</ul>';
             };
 
@@ -332,7 +332,7 @@ DEFAULT_TEMPLATE = """
                 return '<table style="width:100%;border-collapse:collapse;background:rgba(15,23,42,0.75);border:1px solid rgba(148,163,184,0.28);">'
                     + '<thead><tr><th style="text-align:left;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#a9b9d1;text-transform:uppercase;letter-spacing:0.08em;">Host</th><th style="text-align:left;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#a9b9d1;text-transform:uppercase;letter-spacing:0.08em;">Port</th><th style="text-align:left;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#a9b9d1;text-transform:uppercase;letter-spacing:0.08em;">Service</th></tr></thead>'
                     + '<tbody>'
-                    + ports.slice(0, 30).map((item) => '<tr><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.host || 'unknown') + '</td><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.port || 'unknown') + '</td><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.service || 'unknown') + '</td></tr>').join('')
+                    + ports.map((item) => '<tr><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.host || 'unknown') + '</td><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.port || 'unknown') + '</td><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.service || 'unknown') + '</td></tr>').join('')
                     + '</tbody></table>';
             };
 
@@ -343,7 +343,7 @@ DEFAULT_TEMPLATE = """
                 return '<table style="width:100%;border-collapse:collapse;background:rgba(15,23,42,0.75);border:1px solid rgba(148,163,184,0.28);">'
                     + '<thead><tr><th style="text-align:left;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#a9b9d1;text-transform:uppercase;letter-spacing:0.08em;">Host</th><th style="text-align:left;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#a9b9d1;text-transform:uppercase;letter-spacing:0.08em;">Technology</th></tr></thead>'
                     + '<tbody>'
-                    + technologies.slice(0, 30).map((item) => '<tr><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.host || 'unknown') + '</td><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.technology || 'unknown') + '</td></tr>').join('')
+                    + technologies.map((item) => '<tr><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.host || 'unknown') + '</td><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.technology || 'unknown') + '</td></tr>').join('')
                     + '</tbody></table>';
             };
 
