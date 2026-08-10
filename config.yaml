@@ -5,7 +5,7 @@ tools:
   naabu: naabu
   nmap: nmap
   whatweb: whatweb
-  webanalyze: /Users/sohampatil/go/bin/webanalyze
+  webanalyze: /Users/pmc/go/bin/webanalyze
   nuclei: nuclei
   nuclei_templates: output/.nuclei-home/nuclei-templates
   nikto: nikto
