@@ -1,5 +1,38 @@
 Open Ports
 ==========
 
-- www.example.com:80 -> http; title=Example Domain; server=cloudflare; status=200
-- www.example.com:443 -> https; title=Example Domain; server=cloudflare; status=200
+- 928-sigmavirus.wiki.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
+- alive-staging.github.com:443 -> https; server=github.com; status=404
+- alive.github.com:443 -> https; server=github.com; status=404
+- api.github.com:80 -> http; status=301; redirect=https://api.github.com/
+- api.mcp.github.com:443 -> https; server=github.com; status=200
+- api.security.github.com:443 -> https; status=200
+- blog-freeze.github.com:443 -> https; title=Page not found &middot; GitHub Pages; server=GitHub.com; status=404
+- ca.antivirus.webapp.wiki.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
+- ca.delivery.antivirus.wiki.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
+- cdn-185-199-108-154.github.com:443 -> https; title=Site not found &middot; GitHub Pages; server=GitHub.com; status=404
+- edu.github.com:443 -> https; status=200
+- examregistration-uat.github.com:443 -> https; title=GitHub, Inc. - Prod - Sign In; status=301; redirect=https://learn-staging.githubapp.com/
+- galaxy.github.com:443 -> https; title=GitHub Galaxy 2025; server=GitHub.com; status=200
+- insights.github.com:80 -> http; status=301; redirect=https://insights.github.com/
+- insights.github.com:443 -> https; status=200
+- lb-140-82-112-18-iad.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
+- lb-140-82-112-20-iad.github.com:22 -> ssh
+- lb-140-82-112-4-iad.github.com:443 -> https; status=301; redirect=https://github.com/
+- lb-140-82-113-12-iad.github.com:443 -> https; title=Site not found &middot; GitHub Pages; server=GitHub.com; status=404
+- lb-140-82-113-34-iad.github.com:443 -> https; title=Not Found; status=404
+- lb-140-82-113-6-iad.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
+- lb-140-82-114-29-iad.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
+- lb-140-82-114-30-iad.github.com:80 -> http; title=Bad request &middot; GitHub; status=301; redirect=https://lb-140-82-114-30-iad.github.com/
+- lb-140-82-114-6-iad.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
+- lb-140-82-114-9-iad.github.com:80 -> http; title=Bad request &middot; GitHub; status=301; redirect=https://lb-140-82-114-9-iad.github.com/
+- lb-140-82-116-11-sea.github.com:443 -> https; title=Site not found &middot; GitHub Pages; server=GitHub.com; status=404
+- lb-140-82-116-19-sea.github.com:443 -> https; status=301; redirect=https://github.com/
+- messages.github.com:443 -> https; status=200
+- services.github.com:443 -> https; status=301; redirect=https://github.com/services/
+- sigmavirus.wiki.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
+- tbfeed.wiki.github.com:443 -> https; title=Bad request &middot; GitHub; status=400
+- teach.github.com:443 -> https; status=301; redirect=https://services.github.com/
+- thehub.github.com:443 -> https; title=GitHub, Inc. - Prod - Sign In; server=GitHub.com; status=302; redirect=https://github.okta.com/app/github_oktanetworkgatewaythehubgithubcom_1/exk1wzbtcg39Wyzjp1d8/sso/saml?RelayState=95747ae3-7abf-49ca-a963-d9464a8a33f9
+- ws.support.github.com:80 -> http; title=Bad request &middot; GitHub; status=301; redirect=https://ws.support.github.com/
+- ws.support.github.com:443 -> https; title=Bad request &middot; GitHub; status=400

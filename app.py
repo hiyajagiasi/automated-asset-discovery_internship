@@ -53,8 +53,6 @@ def scan_target():
             "cancelled": False,
             "html_report": None,
             "excel_report": None,
-            "csv_report": None,
-            "json_report": None,
         }
 
     def run_scan_in_thread() -> None:
@@ -88,8 +86,6 @@ def scan_target():
                         status["complete"] = True
                         status["html_report"] = "/download/report.html"
                         status["excel_report"] = "/download/report.xlsx"
-                        status["csv_report"] = "/download/report.csv"
-                        status["json_report"] = "/download/report.json"
                         status["events"].append({
                             "phase": "complete",
                             "message": "Report ready",
@@ -152,8 +148,6 @@ def get_scan_status(scan_id: str):
 
         html_report = "/download/report.html" if status.get("html_report") or (Path(__file__).resolve().parent / "reports" / "report.html").exists() else None
         excel_report = "/download/report.xlsx" if status.get("excel_report") or (Path(__file__).resolve().parent / "reports" / "report.xlsx").exists() else None
-        csv_report = "/download/report.csv" if status.get("csv_report") or (Path(__file__).resolve().parent / "reports" / "report.csv").exists() else None
-        json_report = "/download/report.json" if status.get("json_report") or (Path(__file__).resolve().parent / "reports" / "report.json").exists() else None
 
         return jsonify({
             "target": status["target"],
@@ -163,8 +157,6 @@ def get_scan_status(scan_id: str):
             "events": status["events"],
             "html_report": html_report,
             "excel_report": excel_report,
-            "csv_report": csv_report,
-            "json_report": json_report,
         })
 
 
@@ -193,34 +185,6 @@ def download_excel_report():
         mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         as_attachment=True,
         download_name="report.xlsx",
-    )
-
-
-@app.get("/download/report.csv")
-def download_csv_report():
-    report_path = Path(__file__).resolve().parent / "reports" / "report.csv"
-    if not report_path.exists():
-        return "No CSV export generated yet.", 404
-
-    return send_file(
-        report_path,
-        mimetype="text/csv",
-        as_attachment=True,
-        download_name="report.csv",
-    )
-
-
-@app.get("/download/report.json")
-def download_json_report():
-    report_path = Path(__file__).resolve().parent / "reports" / "report.json"
-    if not report_path.exists():
-        return "No JSON export generated yet.", 404
-
-    return send_file(
-        report_path,
-        mimetype="application/json",
-        as_attachment=True,
-        download_name="report.json",
     )
 
 

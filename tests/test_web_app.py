@@ -33,8 +33,8 @@ def test_scan_status_returns_download_urls():
 
     assert payload['html_report'] == '/download/report.html'
     assert payload['excel_report'] == '/download/report.xlsx'
-    assert payload['csv_report'] == '/download/report.csv'
-    assert payload['json_report'] == '/download/report.json'
+    assert 'csv_report' not in payload
+    assert 'json_report' not in payload
 
 
 def test_cancel_scan_marks_status_cancelled():
@@ -49,8 +49,6 @@ def test_cancel_scan_marks_status_cancelled():
         'cancelled': False,
         'html_report': None,
         'excel_report': None,
-        'csv_report': None,
-        'json_report': None,
     }
 
     response = client.post(f'/cancel/{scan_id}')
@@ -74,15 +72,17 @@ def test_scan_submission_redirects_to_status_page():
     assert b'github.com' in follow_up.data
 
 
-def test_web_page_exposes_csv_and_json_download_links():
+def test_web_page_exposes_only_html_and_excel_download_links():
     client = app.test_client()
 
     response = client.post('/scan', data={'target': 'https://github.com'})
     assert response.status_code == 302
     assert response.headers['Location'].startswith('/?scan_id=')
     follow_up = client.get(response.headers['Location'])
-    assert b'Open CSV export' in follow_up.data
-    assert b'Open JSON export' in follow_up.data
+    assert b'Open HTML report' in follow_up.data
+    assert b'Open Excel report' in follow_up.data
+    assert b'Open CSV export' not in follow_up.data
+    assert b'Open JSON export' not in follow_up.data
 
 
 def test_web_app_renders_form_and_creates_report():
@@ -105,8 +105,8 @@ def test_web_app_renders_form_and_creates_report():
     report_path = Path('reports/report.html')
     assert report_path.exists(), 'Expected a generated HTML report in the reports folder.'
     assert 'github.com' in report_path.read_text(encoding='utf-8')
-    assert Path('reports/report.csv').exists(), 'Expected a generated CSV export in the reports folder.'
-    assert Path('reports/report.json').exists(), 'Expected a generated JSON export in the reports folder.'
+    assert not Path('reports/report.csv').exists()
+    assert not Path('reports/report.json').exists()
 
 
 def test_recon_service_emits_progress_events(tmp_path):

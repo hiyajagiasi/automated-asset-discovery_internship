@@ -6052,3 +6052,54 @@
 2026-08-04 14:29:51,157 - INFO - Starting technology discovery
 2026-08-04 14:29:53,418 - INFO - Technology discovery completed in 2.3 seconds
 2026-08-04 14:29:54,355 - INFO - Completed reconnaissance for example.com
+2026-08-10 10:08:21,524 - INFO - Starting reconnaissance for example.com
+2026-08-10 10:08:21,524 - INFO - Starting subdomain discovery
+2026-08-10 10:09:36,787 - INFO - Starting reconnaissance for github.com
+2026-08-10 10:09:36,787 - INFO - Starting subdomain discovery
+2026-08-10 10:09:36,788 - INFO - Starting reconnaissance for github.com
+2026-08-10 10:09:36,788 - INFO - Starting subdomain discovery
+2026-08-10 10:09:36,792 - INFO - Starting reconnaissance for github.com
+2026-08-10 10:09:36,792 - INFO - Starting subdomain discovery
+2026-08-10 10:09:36,850 - INFO - Subdomain discovery completed in 0.1 seconds (4 candidates)
+2026-08-10 10:09:36,850 - INFO - Starting live-host probing
+2026-08-10 10:09:36,850 - INFO - Subdomain discovery completed in 0.1 seconds (4 candidates)
+2026-08-10 10:09:36,850 - INFO - Starting live-host probing
+2026-08-10 10:09:36,852 - INFO - Starting dnsx resolution for 4 candidates
+2026-08-10 10:09:36,852 - INFO - Starting dnsx resolution for 4 candidates
+2026-08-10 10:09:36,852 - INFO - Starting dnsx resolution for 4 candidates
+2026-08-10 10:09:36,852 - INFO - Starting dnsx resolution for 4 candidates
+2026-08-10 10:09:36,857 - INFO - Subdomain discovery completed in 0.1 seconds (4 candidates)
+2026-08-10 10:09:36,857 - INFO - Subdomain discovery completed in 0.1 seconds (4 candidates)
+2026-08-10 10:09:36,858 - INFO - Starting live-host probing
+2026-08-10 10:09:36,858 - INFO - Starting live-host probing
+2026-08-10 10:09:36,859 - INFO - Starting dnsx resolution for 4 candidates
+2026-08-10 10:09:54,769 - INFO - Starting reconnaissance for github.com
+2026-08-10 10:09:54,770 - INFO - Starting reconnaissance for github.com
+2026-08-10 10:09:54,770 - INFO - Starting subdomain discovery
+2026-08-10 10:10:11,374 - INFO - Starting reconnaissance for github.com
+2026-08-10 10:10:11,374 - INFO - Starting reconnaissance for github.com
+2026-08-10 10:10:11,374 - INFO - Starting reconnaissance for github.com
+2026-08-10 10:10:11,374 - INFO - Starting subdomain discovery
+2026-08-10 10:10:11,374 - INFO - Starting reconnaissance for github.com
+2026-08-10 10:10:11,374 - INFO - Starting subdomain discovery
+2026-08-10 10:10:11,374 - INFO - Starting subdomain discovery
+2026-08-10 10:10:11,374 - INFO - Starting subdomain discovery
+2026-08-10 10:11:17,147 - INFO - Starting reconnaissance for github.com
+2026-08-10 10:11:17,147 - INFO - Starting subdomain discovery
+2026-08-10 10:21:17,317 - INFO - Subdomain discovery completed in 600.2 seconds (41154 candidates)
+2026-08-10 10:21:17,318 - INFO - Starting live-host probing
+2026-08-10 10:21:17,322 - INFO - Starting dnsx resolution for 41154 candidates
+2026-08-10 10:33:42,911 - INFO - dnsx resolution completed: 223/41154 candidates resolved
+2026-08-10 10:33:42,971 - INFO - Starting httpx probe for 223 candidates (requested_batch=5000, effective_batch=2000, threads=100, timeout=10, retries=1, rate_limit=httpx-default per worker, stream=True, body_read_limit=5000, process_timeout=disabled, parallel_workers=1, max_total_threads=400)
+2026-08-10 10:34:06,702 - INFO - Batch 1: httpx returned 187 lines
+2026-08-10 10:34:06,741 - INFO - Total live hosts found: 187
+2026-08-10 10:34:06,741 - INFO - Total dead hosts found: 40980
+2026-08-10 10:34:06,745 - INFO - Live-host probing completed in 769.4 seconds (187 live hosts, 40980 dead hosts)
+2026-08-10 10:34:06,745 - INFO - Starting port discovery
+2026-08-10 10:38:51,756 - INFO - Nmap service progress: 25/33 hosts
+2026-08-10 10:39:51,740 - INFO - Nmap service progress: 33/33 hosts
+2026-08-10 10:41:52,944 - INFO - Identified 35 open host-port combinations across 33 hosts
+2026-08-10 10:41:52,945 - INFO - Port discovery completed in 466.2 seconds
+2026-08-10 10:41:52,945 - INFO - Starting technology discovery
+2026-08-10 10:43:25,119 - INFO - Technology discovery completed in 92.2 seconds
+2026-08-10 10:45:29,009 - INFO - Completed reconnaissance for github.com

@@ -9,7 +9,6 @@ from modules.live_hosts import discover_live_hosts
 from modules.port_scan import scan_ports
 from modules.report_excel import generate_excel_report
 from modules.report_html import generate_html_report
-from modules.report_export import generate_csv_report, generate_json_report
 from modules.subdomain import discover_subdomains
 from modules.technology import discover_technologies
 from modules.utils import ensure_directories, get_logger, load_config, load_hosts_from_output, validate_domain
@@ -110,28 +109,8 @@ class ReconnaissanceService:
             technologies,
             self.config,
         )
-        csv_report = generate_csv_report(
-            self.base_dir,
-            self.target,
-            subdomains,
-            live_hosts,
-            dead_hosts,
-            ports,
-            technologies,
-            self.config,
-        )
-        json_report = generate_json_report(
-            self.base_dir,
-            self.target,
-            subdomains,
-            live_hosts,
-            dead_hosts,
-            ports,
-            technologies,
-            self.config,
-        )
 
-        emit({"phase": "complete", "message": "Report generation complete", "html_report": str(html_report), "excel_report": str(excel_report), "csv_report": str(csv_report), "json_report": str(json_report)})
+        emit({"phase": "complete", "message": "Report generation complete", "html_report": str(html_report), "excel_report": str(excel_report)})
         self.logger.info("Completed reconnaissance for %s", self.target)
         return {
             "target": self.target,
@@ -142,6 +121,4 @@ class ReconnaissanceService:
             "technologies": technologies,
             "html_report": html_report,
             "excel_report": excel_report,
-            "csv_report": csv_report,
-            "json_report": json_report,
         }
