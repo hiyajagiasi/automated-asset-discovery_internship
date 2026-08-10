@@ -6103,3 +6103,24 @@
 2026-08-10 10:41:52,945 - INFO - Starting technology discovery
 2026-08-10 10:43:25,119 - INFO - Technology discovery completed in 92.2 seconds
 2026-08-10 10:45:29,009 - INFO - Completed reconnaissance for github.com
+2026-08-10 10:58:38,282 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-10 10:58:38,283 - INFO - Batch 1: httpx returned 2 lines
+2026-08-10 10:58:38,284 - INFO - Total live hosts found: 2
+2026-08-10 10:58:38,284 - INFO - Total dead hosts found: 1
+2026-08-10 10:58:38,285 - INFO - Starting httpx probe for 3 candidates (requested_batch=3, effective_batch=3, threads=2, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=55, parallel_workers=1, max_total_threads=200)
+2026-08-10 10:58:38,285 - INFO - Batch 1: httpx returned 0 lines
+2026-08-10 10:58:38,286 - INFO - Batch 1 produced no HTTP responses from 3 candidates
+2026-08-10 10:58:38,287 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-10 10:58:38,287 - INFO - Batch 1: httpx returned 2 lines
+2026-08-10 10:58:38,288 - INFO - Total live hosts found: 2
+2026-08-10 10:58:38,288 - INFO - Total dead hosts found: 0
+2026-08-10 10:58:38,289 - INFO - Starting httpx probe for 2 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-10 10:58:38,290 - INFO - Batch 1: httpx returned 1 lines
+2026-08-10 10:58:38,290 - INFO - Total live hosts found: 1
+2026-08-10 10:58:38,290 - INFO - Total dead hosts found: 1
+2026-08-10 10:58:38,294 - INFO - Starting dnsx resolution for 2 candidates
+2026-08-10 10:58:38,294 - INFO - dnsx resolution completed: 1/2 candidates resolved
+2026-08-10 10:58:38,294 - INFO - Starting httpx probe for 1 candidates (requested_batch=5000, effective_batch=2500, threads=100, timeout=10, retries=1, rate_limit=150 per worker, stream=True, body_read_limit=1024, process_timeout=disabled, parallel_workers=1, max_total_threads=200)
+2026-08-10 10:58:38,294 - INFO - Batch 1: httpx returned 1 lines
+2026-08-10 10:58:38,295 - INFO - Total live hosts found: 1
+2026-08-10 10:58:38,295 - INFO - Total dead hosts found: 1

@@ -61,10 +61,6 @@ dnsx_options:
   retries: 2
   timeout: 3
   rate_limit: 0
-  resolvers:
-    - 1.1.1.1
-    - 8.8.8.8
-    - 9.9.9.9
 
 batching:
   batch_size: 50
