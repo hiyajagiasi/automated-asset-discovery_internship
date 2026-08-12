@@ -376,3 +376,83 @@ def test_scan_ports_includes_nmap_script_and_host_info(monkeypatch, tmp_path):
     result = scan_ports(["https://example.com"], config)
 
     assert_port_result(result, "example.com", "443", "https; ssl-cert: Subject: commonName=example.com; OS: Linux")
+
+
+def test_scan_ports_drops_http_when_redirects_to_https(monkeypatch, tmp_path):
+    config = {
+        "output": {"ports": str(tmp_path / "ports.txt")},
+        "tools": {"naabu": "naabu", "nmap": "nmap", "curl": "curl"},
+        "timeouts": {"naabu": 10, "nmap": 10, "curl": 10},
+    }
+
+    def fake_run(cmd, **kwargs):
+        if cmd[0] == "naabu":
+            return subprocess.CompletedProcess(
+                args=cmd,
+                returncode=0,
+                stdout='[{"host":"example.com","port":80,"service":"http"}]\n[{"host":"example.com","port":443,"service":"https"}]\n',
+                stderr="",
+            )
+        if cmd[0] == "nmap":
+            if "-p" in cmd and cmd[cmd.index("-p") + 1] == "80":
+                return subprocess.CompletedProcess(args=cmd, returncode=0, stdout='Nmap scan report for example.com\n80/tcp open  http\n', stderr="")
+            return subprocess.CompletedProcess(args=cmd, returncode=0, stdout='Nmap scan report for example.com\n443/tcp open  https\n', stderr="")
+        if cmd[0] == "curl":
+            if cmd[-1] == "http://example.com:80":
+                return subprocess.CompletedProcess(
+                    args=cmd,
+                    returncode=0,
+                    stdout='HTTP/1.1 301 Moved Permanently\r\nLocation: https://example.com/\r\n',
+                    stderr="",
+                )
+            return subprocess.CompletedProcess(args=cmd, returncode=0, stdout='HTTP/1.1 200 OK\r\n', stderr="")
+        raise AssertionError(f"unexpected command {cmd}")
+
+    def fake_which(cmd, *args, **kwargs):
+        if cmd in {"naabu", "curl"}:
+            return "/usr/bin/" + cmd
+        return None
+
+    monkeypatch.setattr("modules.port_scan.shutil.which", fake_which)
+    monkeypatch.setattr("modules.port_scan.subprocess.run", fake_run)
+
+    result = scan_ports(["https://example.com"], config)
+
+    assert len(result) == 1
+    assert result[0]["host"] == "example.com"
+    assert result[0]["port"] == "443"
+    assert result[0]["service"].startswith("https")
+
+
+def test_scan_ports_extracts_version_from_nmap_service_name(monkeypatch, tmp_path):
+    config = {
+        "output": {"ports": str(tmp_path / "ports.txt")},
+        "tools": {"naabu": "naabu", "nmap": "nmap"},
+        "timeouts": {"naabu": 10, "nmap": 10},
+    }
+
+    def fake_run(cmd, **kwargs):
+        if "naabu" in cmd[0]:
+            return subprocess.CompletedProcess(
+                args=cmd,
+                returncode=0,
+                stdout='[{"host":"example.com","port":443,"service":"https"}]\n',
+                stderr="",
+            )
+        if "nmap" in cmd[0]:
+            return subprocess.CompletedProcess(
+                args=cmd,
+                returncode=0,
+                stdout='Nmap scan report for example.com\n443/tcp open  https nginx 1.25.5\n',
+                stderr="",
+            )
+        raise AssertionError(f"unexpected command {cmd}")
+
+    monkeypatch.setattr("modules.port_scan.shutil.which", lambda *args, **kwargs: "/usr/bin/naabu")
+    monkeypatch.setattr("modules.port_scan.subprocess.run", fake_run)
+
+    result = scan_ports(["https://example.com"], config)
+
+    assert result[0]["host"] == "example.com"
+    assert result[0]["port"] == "443"
+    assert result[0]["service"] == "https; nginx; 1.25.5"

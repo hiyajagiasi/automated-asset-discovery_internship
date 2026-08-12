@@ -6124,3 +6124,217 @@
 2026-08-10 10:58:38,294 - INFO - Batch 1: httpx returned 1 lines
 2026-08-10 10:58:38,295 - INFO - Total live hosts found: 1
 2026-08-10 10:58:38,295 - INFO - Total dead hosts found: 1
+2026-08-12 14:32:04,605 - INFO - Starting reconnaissance for github.com
+2026-08-12 14:32:04,606 - INFO - Starting subdomain discovery
+2026-08-12 14:33:28,055 - INFO - Subdomain discovery completed in 83.4 seconds (41146 candidates)
+2026-08-12 14:33:28,055 - INFO - Starting live-host probing
+2026-08-12 14:33:28,059 - INFO - Starting dnsx resolution for 41146 candidates
+2026-08-12 14:34:28,507 - INFO - dnsx resolution completed: 424/41146 candidates resolved
+2026-08-12 14:34:28,613 - INFO - Starting httpx probe for 424 candidates (requested_batch=5000, effective_batch=2000, threads=100, timeout=10, retries=1, rate_limit=httpx-default per worker, stream=True, body_read_limit=5000, process_timeout=disabled, parallel_workers=1, max_total_threads=400)
+2026-08-12 14:34:54,816 - INFO - Batch 1: httpx returned 363 lines
+2026-08-12 14:34:54,859 - INFO - Total live hosts found: 363
+2026-08-12 14:34:54,859 - INFO - Total dead hosts found: 40800
+2026-08-12 14:34:54,863 - INFO - Live-host probing completed in 86.8 seconds (363 live hosts, 40800 dead hosts)
+2026-08-12 14:34:54,863 - INFO - Starting port discovery
+2026-08-12 14:39:20,084 - INFO - Nmap service progress: 25/361 hosts
+2026-08-12 14:42:20,211 - INFO - Nmap service progress: 50/361 hosts
+2026-08-12 14:45:20,293 - INFO - Nmap service progress: 75/361 hosts
+2026-08-12 14:48:20,365 - INFO - Nmap service progress: 100/361 hosts
+2026-08-12 14:51:20,437 - INFO - Nmap service progress: 125/361 hosts
+2026-08-12 14:54:20,491 - INFO - Nmap service progress: 150/361 hosts
+2026-08-12 14:57:20,548 - INFO - Nmap service progress: 175/361 hosts
+2026-08-12 15:00:20,646 - INFO - Nmap service progress: 200/361 hosts
+2026-08-12 15:04:20,689 - INFO - Nmap service progress: 225/361 hosts
+2026-08-12 15:07:20,780 - INFO - Nmap service progress: 250/361 hosts
+2026-08-12 15:09:29,160 - INFO - Nmap service progress: 275/361 hosts
+2026-08-12 15:09:45,569 - INFO - Starting reconnaissance for github.com
+2026-08-12 15:09:45,569 - INFO - Starting subdomain discovery
+2026-08-12 15:10:46,512 - INFO - Subdomain discovery completed in 60.9 seconds (41143 candidates)
+2026-08-12 15:10:46,512 - INFO - Starting live-host probing
+2026-08-12 15:10:46,516 - INFO - Starting dnsx resolution for 41143 candidates
+2026-08-12 15:11:49,962 - INFO - dnsx resolution completed: 424/41143 candidates resolved
+2026-08-12 15:11:50,071 - INFO - Starting httpx probe for 424 candidates (requested_batch=5000, effective_batch=2000, threads=100, timeout=10, retries=1, rate_limit=httpx-default per worker, stream=True, body_read_limit=5000, process_timeout=disabled, parallel_workers=1, max_total_threads=400)
+2026-08-12 15:12:18,259 - INFO - Batch 1: httpx returned 363 lines
+2026-08-12 15:12:18,300 - INFO - Total live hosts found: 363
+2026-08-12 15:12:18,300 - INFO - Total dead hosts found: 40797
+2026-08-12 15:12:18,305 - INFO - Live-host probing completed in 91.8 seconds (363 live hosts, 40797 dead hosts)
+2026-08-12 15:12:18,305 - INFO - Starting port discovery
+2026-08-12 15:16:44,883 - INFO - Nmap service progress: 25/360 hosts
+2026-08-12 15:19:45,014 - INFO - Nmap service progress: 50/360 hosts
+2026-08-12 15:29:02,597 - INFO - Starting reconnaissance for github.com
+2026-08-12 15:29:02,597 - INFO - Starting subdomain discovery
+2026-08-12 15:37:06,516 - INFO - Subdomain discovery completed in 483.9 seconds (41146 candidates)
+2026-08-12 15:37:06,516 - INFO - Starting live-host probing
+2026-08-12 15:37:06,520 - INFO - Starting dnsx resolution for 41146 candidates
+2026-08-12 15:38:07,843 - INFO - dnsx resolution completed: 423/41146 candidates resolved
+2026-08-12 15:38:07,954 - INFO - Starting httpx probe for 423 candidates (requested_batch=5000, effective_batch=2000, threads=100, timeout=10, retries=1, rate_limit=httpx-default per worker, stream=True, body_read_limit=5000, process_timeout=disabled, parallel_workers=1, max_total_threads=400)
+2026-08-12 15:38:33,525 - INFO - Batch 1: httpx returned 362 lines
+2026-08-12 15:38:33,567 - INFO - Total live hosts found: 362
+2026-08-12 15:38:33,567 - INFO - Total dead hosts found: 40801
+2026-08-12 15:38:33,571 - INFO - Live-host probing completed in 87.1 seconds (362 live hosts, 40801 dead hosts)
+2026-08-12 15:38:33,572 - INFO - Starting port discovery
+2026-08-12 15:40:38,646 - INFO - Starting reconnaissance for pha.org.pk
+2026-08-12 15:40:38,646 - INFO - Starting subdomain discovery
+2026-08-12 15:41:01,432 - INFO - Subdomain discovery completed in 22.8 seconds (5 candidates)
+2026-08-12 15:41:01,432 - INFO - Starting live-host probing
+2026-08-12 15:41:01,433 - INFO - Starting dnsx resolution for 5 candidates
+2026-08-12 15:41:02,584 - INFO - dnsx resolution completed: 5/5 candidates resolved
+2026-08-12 15:41:02,584 - INFO - Starting httpx probe for 5 candidates (requested_batch=5000, effective_batch=2000, threads=100, timeout=10, retries=1, rate_limit=httpx-default per worker, stream=True, body_read_limit=5000, process_timeout=disabled, parallel_workers=1, max_total_threads=400)
+2026-08-12 15:41:07,898 - INFO - Batch 1: httpx returned 5 lines
+2026-08-12 15:41:07,899 - INFO - Total live hosts found: 5
+2026-08-12 15:41:07,899 - INFO - Total dead hosts found: 1
+2026-08-12 15:41:07,899 - INFO - Live-host probing completed in 6.5 seconds (5 live hosts, 1 dead hosts)
+2026-08-12 15:41:07,899 - INFO - Starting port discovery
+2026-08-12 15:42:14,278 - INFO - Nmap service progress: 5/5 hosts
+2026-08-12 15:42:58,199 - INFO - Identified 65 open host-port combinations across 5 hosts
+2026-08-12 15:42:58,200 - INFO - Port discovery completed in 110.3 seconds
+2026-08-12 15:42:58,200 - INFO - Starting technology discovery
+2026-08-12 15:42:58,883 - INFO - Nmap service progress: 25/361 hosts
+2026-08-12 15:43:10,407 - INFO - Technology discovery completed in 12.2 seconds
+2026-08-12 15:43:10,465 - INFO - Completed reconnaissance for pha.org.pk
+2026-08-12 15:45:58,927 - INFO - Nmap service progress: 50/361 hosts
+2026-08-12 15:48:58,987 - INFO - Nmap service progress: 75/361 hosts
+2026-08-12 15:51:59,049 - INFO - Nmap service progress: 100/361 hosts
+2026-08-12 15:54:59,146 - INFO - Nmap service progress: 125/361 hosts
+2026-08-12 16:34:41,408 - INFO - Starting reconnaissance for pha.org.pk
+2026-08-12 16:34:41,408 - INFO - Starting subdomain discovery
+2026-08-12 16:35:30,373 - INFO - Subdomain discovery completed in 49.0 seconds (5 candidates)
+2026-08-12 16:35:30,373 - INFO - Starting live-host probing
+2026-08-12 16:35:30,374 - INFO - Starting dnsx resolution for 5 candidates
+2026-08-12 16:35:31,843 - INFO - dnsx resolution completed: 5/5 candidates resolved
+2026-08-12 16:35:31,843 - INFO - Starting httpx probe for 5 candidates (requested_batch=5000, effective_batch=2000, threads=100, timeout=10, retries=1, rate_limit=httpx-default per worker, stream=True, body_read_limit=5000, process_timeout=disabled, parallel_workers=1, max_total_threads=400)
+2026-08-12 16:35:37,190 - INFO - Batch 1: httpx returned 5 lines
+2026-08-12 16:35:37,192 - INFO - Total live hosts found: 5
+2026-08-12 16:35:37,192 - INFO - Total dead hosts found: 1
+2026-08-12 16:35:37,192 - INFO - Live-host probing completed in 6.8 seconds (5 live hosts, 1 dead hosts)
+2026-08-12 16:35:37,192 - INFO - Starting port discovery
+2026-08-12 16:36:44,018 - INFO - Nmap service progress: 3/3 hosts
+2026-08-12 16:37:33,186 - INFO - Identified 39 open host-port combinations across 3 hosts
+2026-08-12 16:37:33,189 - INFO - Port discovery completed in 116.0 seconds
+2026-08-12 16:37:33,189 - INFO - Starting technology discovery
+2026-08-12 16:37:50,545 - INFO - Technology discovery completed in 17.4 seconds
+2026-08-12 16:37:50,598 - INFO - Completed reconnaissance for pha.org.pk
+2026-08-12 19:14:26,608 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:14:26,609 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:14:26,610 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-0/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-08-12 19:14:26,611 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:14:26,611 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:14:26,625 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:14:26,630 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:14:26,630 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:14:26,633 - WARNING - Nmap service scan failed for example.com: assert 'default,safe...-cookie-flags' == 'default,safe...der,http-enum'
+  
+  Skipping 98 identical leading characters in diff, use -v to show
+  [0m[91m- r,http-enum[39;49;00m[90m[39;49;00m
+  [92m+ r,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags[39;49;00m[90m[39;49;00m
+2026-08-12 19:14:26,633 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:14:26,633 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:14:26,635 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:14:26,635 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:14:26,637 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:14:26,637 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:14:26,639 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:14:26,639 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:14:26,641 - WARNING - Nmap is unavailable; returning Naabu discoveries without service verification
+2026-08-12 19:14:26,643 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:14:26,643 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:14:26,645 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:14:26,645 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:15:45,747 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:15:45,747 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:15:45,749 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-1/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-08-12 19:15:45,750 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:15:45,750 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:15:45,764 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:15:45,768 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:15:45,768 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:15:45,770 - WARNING - Nmap service scan failed for example.com: assert 'default,safe...-cookie-flags' == 'default,safe...der,http-enum'
+  
+  Skipping 98 identical leading characters in diff, use -v to show
+  [0m[91m- r,http-enum[39;49;00m[90m[39;49;00m
+  [92m+ r,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags[39;49;00m[90m[39;49;00m
+2026-08-12 19:15:45,771 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:15:45,771 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:15:45,773 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:15:45,773 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:15:45,775 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:15:45,775 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:15:45,777 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:15:45,777 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:15:45,778 - WARNING - Nmap is unavailable; returning Naabu discoveries without service verification
+2026-08-12 19:15:45,780 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:15:45,780 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:15:45,782 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:15:45,782 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:16:48,734 - INFO - Starting reconnaissance for pha.org.pk
+2026-08-12 19:16:48,734 - INFO - Starting subdomain discovery
+2026-08-12 19:17:16,174 - INFO - Subdomain discovery completed in 27.4 seconds (5 candidates)
+2026-08-12 19:17:16,174 - INFO - Starting live-host probing
+2026-08-12 19:17:16,175 - INFO - Starting dnsx resolution for 5 candidates
+2026-08-12 19:17:17,077 - INFO - dnsx resolution completed: 5/5 candidates resolved
+2026-08-12 19:17:17,078 - INFO - Starting httpx probe for 5 candidates (requested_batch=5000, effective_batch=2000, threads=100, timeout=10, retries=1, rate_limit=httpx-default per worker, stream=True, body_read_limit=5000, process_timeout=disabled, parallel_workers=1, max_total_threads=400)
+2026-08-12 19:17:21,037 - INFO - Batch 1: httpx returned 5 lines
+2026-08-12 19:17:21,038 - INFO - Total live hosts found: 5
+2026-08-12 19:17:21,038 - INFO - Total dead hosts found: 1
+2026-08-12 19:17:21,038 - INFO - Live-host probing completed in 4.9 seconds (5 live hosts, 1 dead hosts)
+2026-08-12 19:17:21,038 - INFO - Starting port discovery
+2026-08-12 19:18:27,577 - INFO - Nmap service progress: 4/4 hosts
+2026-08-12 19:19:02,562 - INFO - Identified 68 open host-port combinations across 4 hosts
+2026-08-12 19:19:02,563 - INFO - Port discovery completed in 101.5 seconds
+2026-08-12 19:19:02,563 - INFO - Starting technology discovery
+2026-08-12 19:19:14,030 - INFO - Technology discovery completed in 11.5 seconds
+2026-08-12 19:19:14,089 - INFO - Completed reconnaissance for pha.org.pk
+2026-08-12 19:22:32,964 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:22:32,964 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:22:32,966 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-2/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-08-12 19:22:32,967 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:22:32,967 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:22:32,981 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:22:32,985 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:22:32,985 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:22:32,988 - WARNING - Nmap service scan failed for example.com: assert 'default,safe...-cookie-flags' == 'default,safe...der,http-enum'
+  
+  Skipping 98 identical leading characters in diff, use -v to show
+  [0m[91m- r,http-enum[39;49;00m[90m[39;49;00m
+  [92m+ r,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags[39;49;00m[90m[39;49;00m
+2026-08-12 19:22:32,988 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:22:32,988 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:22:32,990 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:22:32,990 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:22:32,992 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:22:32,992 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:22:32,994 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:22:32,994 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:22:32,996 - WARNING - Nmap is unavailable; returning Naabu discoveries without service verification
+2026-08-12 19:22:32,998 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:22:32,998 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:22:32,999 - WARNING - Nmap is unavailable; returning Naabu discoveries without service verification
+2026-08-12 19:22:33,020 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:22:33,021 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:23:18,672 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:23:18,672 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:23:18,674 - WARNING - Transient command failure on attempt 1/3: Command '['naabu', '-list', '/Users/sohampatil/.vscode/tmp/tmp_vscode_1/pytest-of-sohampatil/pytest-3/test_scan_ports_retries_transi0/ports.naabu_input_0.txt', '-json', '-silent']' timed out after 10 seconds
+2026-08-12 19:23:18,675 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:23:18,675 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:23:18,689 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:23:18,693 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:23:18,693 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:23:18,695 - WARNING - Nmap service scan failed for example.com: assert 'default,safe...-cookie-flags' == 'default,safe...der,http-enum'
+  
+  Skipping 98 identical leading characters in diff, use -v to show
+  [0m[91m- r,http-enum[39;49;00m[90m[39;49;00m
+  [92m+ r,http-enum,banner,http-methods,http-security-headers,http-robots.txt,http-auth,ssh-hostkey,ssl-dh-params,tls-nextprotoneg,http-generator,http-favicon,http-cookie-flags[39;49;00m[90m[39;49;00m
+2026-08-12 19:23:18,695 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:23:18,696 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:23:18,697 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:23:18,698 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:23:18,699 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:23:18,699 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:23:18,701 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:23:18,701 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:23:18,703 - WARNING - Nmap is unavailable; returning Naabu discoveries without service verification
+2026-08-12 19:23:18,705 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:23:18,705 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-12 19:23:18,707 - WARNING - Nmap is unavailable; returning Naabu discoveries without service verification
+2026-08-12 19:23:18,709 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:23:18,709 - INFO - Identified 1 open host-port combinations across 1 hosts

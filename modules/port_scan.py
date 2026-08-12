@@ -103,6 +103,24 @@ def _parse_naabu(stdout: str) -> dict[str, set[str]]:
     return discovered
 
 
+def _extract_product_version(extra_info: str) -> tuple[str | None, str | None, str | None]:
+    """Convert trailing service text like 'nginx 1.25.5' into product/version fields."""
+    text = (extra_info or "").strip()
+    if not text:
+        return None, None, None
+
+    match = re.match(r"^(?P<product>.+?)\s+(?P<version>v?\d[\w.+-]*)(?:\s+(?P<extra>.*))?$", text)
+    if not match:
+        return None, None, None
+
+    product = (match.group("product") or "").strip()
+    version = (match.group("version") or "").strip()
+    extra = (match.group("extra") or "").strip()
+    if not product or not version:
+        return None, None, None
+    return product, version, extra or None
+
+
 def _parse_nmap(
     stdout: str,
     default_host: str,
@@ -149,8 +167,24 @@ def _parse_nmap(
             host_value = _display_host(current_host, aliases, aggregate_results, preserve_aliases)
             service_name = match.group(4)
             extra_info = (match.group(5) or "").strip()
-            service_value = service_name if not extra_info else f"{service_name} {extra_info}"
-            results.append({"host": host_value, "port": match.group(1), "service": service_value})
+            product, version, trailing = _extract_product_version(extra_info)
+            item: dict[str, Any] = {
+                "host": host_value,
+                "port": match.group(1),
+                "service": service_name,
+                "service_name": service_name,
+            }
+            if product:
+                item["product"] = product
+            if version:
+                item["version"] = version
+            if trailing:
+                item["extrainfo"] = trailing
+            if extra_info and not product and not version:
+                item["service"] = f"{service_name} {extra_info}"
+            else:
+                item["service"] = _build_service_summary(item)
+            results.append(item)
             last_result_index = len(results) - 1
             continue
 
@@ -909,6 +943,29 @@ def _merge_results(existing: list[dict[str, Any]], incoming: list[dict[str, Any]
     return sorted(merged.values(), key=lambda item: (item["host"], int(item["port"])))
 
 
+def _drop_http_redirects(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Prefer HTTPS when the same host redirects from HTTP to HTTPS."""
+    by_host: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for item in results:
+        by_host[str(item.get("host", ""))].append(item)
+
+    filtered: list[dict[str, Any]] = []
+    for host, host_items in by_host.items():
+        https_ports = {item.get("port") for item in host_items if item.get("port") == "443"}
+        if not https_ports:
+            filtered.extend(host_items)
+            continue
+
+        for item in host_items:
+            port = str(item.get("port") or "")
+            redirect = str(item.get("redirect") or "").strip()
+            if port == "80" and redirect.lower().startswith("https://"):
+                continue
+            filtered.append(item)
+
+    return sorted(filtered, key=lambda item: (item["host"], int(item.get("port", "0") or 0)))
+
+
 def _probe_httpx(host: str, port: str, httpx_bin: str, timeout: int) -> dict[str, str]:
     """Use httpx to probe a host:port and return structured details."""
     if not shutil.which(httpx_bin):
@@ -1127,6 +1184,7 @@ def scan_ports(
                     if detail:
                         item.update(detail)
                         item["service"] = _build_service_summary(item)
+        deduped_results = _drop_http_redirects(deduped_results)
         if aggregate_results is not None:
             aggregate_results[:] = _merge_results(aggregate_results, deduped_results)
             _write_results(output_path, aggregate_results)
@@ -1258,7 +1316,7 @@ def scan_ports(
                 except Exception:
                     continue
 
-    deduped_results = final_results
+    deduped_results = _drop_http_redirects(final_results)
     processed_hosts.update(targets)
     if aggregate_results is not None:
         aggregate_results[:] = _merge_results(aggregate_results, deduped_results)
