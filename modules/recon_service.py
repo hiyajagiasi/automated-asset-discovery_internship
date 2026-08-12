@@ -22,15 +22,46 @@ class ReconnaissanceService:
     def __init__(self, base_dir: str | Path | None = None, target: str = "example.com", config_path: str | Path | None = None) -> None:
         self.base_dir = Path(base_dir or Path(__file__).resolve().parents[1])
         self.target = validate_domain(target)
+        self.scan_dir = self.base_dir / "scans" / self.target
         self.config = load_config(Path(config_path) if config_path else self.base_dir / "config.yaml")
-        self.logger = get_logger(self.base_dir / self.config.get("logging", {}).get("file", "logs/scan.log"))
+        self._apply_target_paths()
+        self.logger = get_logger(self.config.get("logging", {}).get("file", "logs/scan.log"))
+
+    def _apply_target_paths(self) -> None:
+        for section in ("output", "reports", "logging"):
+            values = self.config.get(section, {})
+            if not isinstance(values, dict):
+                continue
+            for key, value in list(values.items()):
+                if not isinstance(value, str):
+                    continue
+
+                path = Path(value)
+                if not path.is_absolute():
+                    values[key] = str((self.scan_dir / path).resolve())
+                    continue
+
+                try:
+                    relative = path.relative_to(self.base_dir)
+                except ValueError:
+                    continue
+
+                if relative.parts[:1] in (("output",), ("reports",), ("logs",)):
+                    values[key] = str((self.scan_dir / relative).resolve())
+            self.config[section] = values
+
+        ensure_directories([
+            self.scan_dir / "reports",
+            self.scan_dir / "output",
+            self.scan_dir / "logs",
+        ])
 
     def run(self, progress_callback: Callable[[dict[str, Any]], None] | None = None, cancel_check: Callable[[], bool] | None = None) -> dict[str, Any]:
         validate_domain(self.target)
         ensure_directories([
-            self.base_dir / "reports",
-            self.base_dir / "output",
-            self.base_dir / "logs",
+            self.scan_dir / "reports",
+            self.scan_dir / "output",
+            self.scan_dir / "logs",
         ])
 
         def emit(event: dict[str, Any]) -> None:

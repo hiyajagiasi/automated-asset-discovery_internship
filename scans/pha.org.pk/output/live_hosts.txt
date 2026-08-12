@@ -1,0 +1,5 @@
+https://webmail.pha.org.pk
+https://mail.pha.org.pk
+https://wildcard.pha.org.pk
+http://www.pha.org.pk
+https://mail2.pha.org.pk

@@ -1,0 +1,5 @@
+Technology Findings
+===================
+
+- https://www.tmail.pk
+  HTTPX: HTML5 | Web Server: Vercel | Webanalyze: HSTS | Vercel

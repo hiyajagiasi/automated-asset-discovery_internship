@@ -1,0 +1,5 @@
+Open Ports
+==========
+
+- www.tmail.pk:80 -> http; title=Free Temp Mail — Disposable Temporary Email Address | Tmail.pk; server=Vercel; status=308; redirect=https://www.tmail.pk/
+- www.tmail.pk:443 -> https; title=Free Temp Mail — Disposable Temporary Email Address | Tmail.pk; server=Vercel; status=200

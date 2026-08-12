@@ -1,0 +1,18 @@
+2026-08-12 19:41:28,640 - INFO - Starting reconnaissance for www.tmail.pk
+2026-08-12 19:41:28,640 - INFO - Starting subdomain discovery
+2026-08-12 19:41:39,519 - INFO - Subdomain discovery completed in 10.9 seconds (4 candidates)
+2026-08-12 19:41:39,519 - INFO - Starting live-host probing
+2026-08-12 19:41:39,520 - INFO - Starting dnsx resolution for 4 candidates
+2026-08-12 19:41:40,692 - INFO - dnsx resolution completed: 1/4 candidates resolved
+2026-08-12 19:41:40,692 - INFO - Starting httpx probe for 1 candidates (requested_batch=5000, effective_batch=2000, threads=100, timeout=10, retries=1, rate_limit=httpx-default per worker, stream=True, body_read_limit=5000, process_timeout=disabled, parallel_workers=1, max_total_threads=400)
+2026-08-12 19:41:42,943 - INFO - Batch 1: httpx returned 1 lines
+2026-08-12 19:41:42,944 - INFO - Total live hosts found: 1
+2026-08-12 19:41:42,944 - INFO - Total dead hosts found: 3
+2026-08-12 19:41:42,944 - INFO - Live-host probing completed in 3.4 seconds (1 live hosts, 3 dead hosts)
+2026-08-12 19:41:42,944 - INFO - Starting port discovery
+2026-08-12 19:42:48,603 - INFO - Nmap service progress: 1/1 hosts
+2026-08-12 19:42:52,791 - INFO - Identified 2 open host-port combinations across 1 hosts
+2026-08-12 19:42:52,791 - INFO - Port discovery completed in 69.8 seconds
+2026-08-12 19:42:52,791 - INFO - Starting technology discovery
+2026-08-12 19:42:55,453 - INFO - Technology discovery completed in 2.7 seconds
+2026-08-12 19:42:55,480 - INFO - Completed reconnaissance for www.tmail.pk

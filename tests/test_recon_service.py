@@ -29,6 +29,44 @@ def test_recon_service_generates_reports(tmp_path):
     assert result["excel_report"].exists()
 
 
+def test_recon_service_stores_scan_files_in_domain_folder(tmp_path):
+    service = ReconnaissanceService(base_dir=tmp_path, target="example.com")
+    scan_root = tmp_path / "scans" / "example.com"
+
+    assert service.config["output"]["subdomains"] == str((scan_root / "output" / "subdomains.txt").resolve())
+    assert service.config["output"]["live_hosts"] == str((scan_root / "output" / "live_hosts.txt").resolve())
+    assert service.config["output"]["ports"] == str((scan_root / "output" / "ports.txt").resolve())
+    assert service.config["output"]["technologies"] == str((scan_root / "output" / "technologies.txt").resolve())
+    assert service.config["reports"]["html"] == str((scan_root / "reports" / "report.html").resolve())
+    assert service.config["reports"]["excel"] == str((scan_root / "reports" / "report.xlsx").resolve())
+
+    report_html = generate_html_report(
+        tmp_path,
+        "example.com",
+        ["example.com", "www.example.com"],
+        ["https://example.com"],
+        [],
+        [{"host": "example.com", "port": "443", "service": "https"}],
+        [{"host": "example.com", "technology": "HTTPX: HTML5"}],
+        service.config,
+    )
+    report_excel = generate_excel_report(
+        tmp_path,
+        "example.com",
+        ["example.com", "www.example.com"],
+        ["https://example.com"],
+        [],
+        [{"host": "example.com", "port": "443", "service": "https"}],
+        [{"host": "example.com", "technology": "HTTPX: HTML5"}],
+        service.config,
+    )
+
+    assert report_html.exists()
+    assert report_excel.exists()
+    assert report_html.parent == scan_root / "reports"
+    assert report_excel.parent == scan_root / "reports"
+
+
 def test_recon_service_runs_reports_after_technology_detection(tmp_path):
     service = ReconnaissanceService(base_dir=tmp_path, target="example.com")
 
