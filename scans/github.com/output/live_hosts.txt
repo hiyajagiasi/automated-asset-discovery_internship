@@ -1,0 +1,4 @@
+http://www.github.com
+http://mail.github.com
+http://login.github.com
+http://github.com

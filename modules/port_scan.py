@@ -944,24 +944,48 @@ def _merge_results(existing: list[dict[str, Any]], incoming: list[dict[str, Any]
 
 
 def _drop_http_redirects(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Prefer HTTPS when the same host redirects from HTTP to HTTPS."""
+    """Prefer HTTPS when the same host redirects from HTTP to HTTPS, and deduplicate redirect chains."""
     by_host: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for item in results:
         by_host[str(item.get("host", ""))].append(item)
 
     filtered: list[dict[str, Any]] = []
     for host, host_items in by_host.items():
+        # Group by port and check for HTTP->HTTPS redirects
         https_ports = {item.get("port") for item in host_items if item.get("port") == "443"}
-        if not https_ports:
-            filtered.extend(host_items)
-            continue
-
+        
+        to_keep: list[dict[str, Any]] = []
+        redirected_ports: set[str] = set()
+        
         for item in host_items:
             port = str(item.get("port") or "")
             redirect = str(item.get("redirect") or "").strip()
-            if port == "80" and redirect.lower().startswith("https://"):
+            
+            # If port 80 redirects to HTTPS, mark it for removal and keep port 443 instead
+            if port == "80" and redirect.lower().startswith("https://") and https_ports:
+                redirected_ports.add(port)
                 continue
-            filtered.append(item)
+            
+            # If a port has a redirect to another port on the same host, keep only the redirect destination
+            if redirect and "://" in redirect:
+                redirect_host = urlparse(redirect).netloc.split(":")[0] if redirect.startswith("http") else ""
+                # If redirect points to different host entirely, still show this port
+                if not redirect_host or redirect_host == host:
+                    # Extract the destination port from redirect if possible
+                    redirect_port_match = None
+                    if ":443" in redirect or "https://" in redirect.lower():
+                        redirect_port_match = "443"
+                    elif ":80" in redirect or "http://" in redirect.lower():
+                        redirect_port_match = "80"
+                    
+                    # Only skip if there's a matching port in our results
+                    if redirect_port_match and any(i.get("port") == redirect_port_match and i.get("host") == host for i in host_items):
+                        # Prefer the redirect destination port over this one
+                        continue
+            
+            to_keep.append(item)
+        
+        filtered.extend(to_keep)
 
     return sorted(filtered, key=lambda item: (item["host"], int(item.get("port", "0") or 0)))
 

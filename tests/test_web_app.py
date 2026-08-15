@@ -86,6 +86,9 @@ def test_web_page_exposes_only_html_and_excel_download_links():
 
 
 def test_web_app_renders_form_and_creates_report():
+    import time
+    import os
+    import json
     client = app.test_client()
 
     response = client.get('/')
@@ -96,17 +99,41 @@ def test_web_app_renders_form_and_creates_report():
     scan_response = client.post('/scan', data={'target': target})
     assert scan_response.status_code == 302
     assert scan_response.headers['Location'].startswith('/?scan_id=')
+    
+    scan_id = scan_response.headers['Location'].split('scan_id=')[1]
 
     status_response = client.get(scan_response.headers['Location'])
     assert status_response.status_code == 200
     assert b'Scan in progress' in status_response.data
     assert b'github.com' in status_response.data
 
-    report_path = Path('reports/report.html')
-    assert report_path.exists(), 'Expected a generated HTML report in the reports folder.'
-    assert 'github.com' in report_path.read_text(encoding='utf-8')
-    assert not Path('reports/report.csv').exists()
-    assert not Path('reports/report.json').exists()
+    # Poll for scan completion with timeout
+    max_wait_time = 30
+    start_time = time.time()
+    # Report is generated in scan-specific directory
+    report_path = Path('scans/github.com/reports/report.html')
+    
+    print(f'\n[TEST DEBUG] Current working directory: {os.getcwd()}')
+    print(f'[TEST DEBUG] Report path: {report_path.resolve()}')
+    
+    while time.time() - start_time < max_wait_time:
+        if report_path.exists():
+            break
+        time.sleep(0.5)
+    
+    # Check scan status for errors
+    status_json = client.get(f'/scan-status/{scan_id}').get_json()
+    print(f'[TEST DEBUG] Report exists: {report_path.exists()}')
+    if report_path.parent.exists():
+        files_in_reports = list(report_path.parent.glob('*'))
+        print(f'[TEST DEBUG] Files in reports dir: {files_in_reports}')
+    
+    assert status_json.get('error') is None, f"Scan error: {status_json.get('error')}"
+    assert report_path.exists(), f'Expected report at {report_path}'
+    report_content = report_path.read_text(encoding='utf-8')
+    assert 'github.com' in report_content
+    assert not Path('scans/github.com/reports/report.csv').exists()
+    assert not Path('scans/github.com/reports/report.json').exists()
 
 
 def test_recon_service_emits_progress_events(tmp_path):

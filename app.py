@@ -53,6 +53,8 @@ def scan_target():
             "cancelled": False,
             "html_report": None,
             "excel_report": None,
+            "html_report_path": None,
+            "excel_report_path": None,
         }
 
     def run_scan_in_thread() -> None:
@@ -71,7 +73,7 @@ def scan_target():
                     status = ACTIVE_SCANS.get(scan_id)
                     return bool(status and status.get("cancel_requested"))
 
-            service.run(progress_callback=progress, cancel_check=cancel_check)
+            result = service.run(progress_callback=progress, cancel_check=cancel_check)
             with ACTIVE_SCANS_LOCK:
                 status = ACTIVE_SCANS.get(scan_id)
                 if status is not None:
@@ -84,6 +86,8 @@ def scan_target():
                         })
                     else:
                         status["complete"] = True
+                        status["html_report_path"] = str(result.get("html_report")) if result and result.get("html_report") else None
+                        status["excel_report_path"] = str(result.get("excel_report")) if result and result.get("excel_report") else None
                         status["html_report"] = "/download/report.html"
                         status["excel_report"] = "/download/report.xlsx"
                         status["events"].append({
@@ -162,12 +166,35 @@ def get_scan_status(scan_id: str):
 
 @app.get("/download/report.html")
 def download_report():
-    report_path = Path(__file__).resolve().parent / "reports" / "report.html"
-    if not report_path.exists():
+    # Try to find the most recently modified report
+    base_dir = Path(__file__).resolve().parent
+    scans_dir = base_dir / "scans"
+    
+    # Search for the most recent report in scan directories
+    latest_report = None
+    latest_mtime = 0
+    
+    if scans_dir.exists():
+        for report_path in scans_dir.glob("*/reports/report.html"):
+            try:
+                mtime = report_path.stat().st_mtime
+                if mtime > latest_mtime:
+                    latest_mtime = mtime
+                    latest_report = report_path
+            except (OSError, FileNotFoundError):
+                continue
+    
+    # Fallback to root reports directory
+    if not latest_report:
+        fallback_path = base_dir / "reports" / "report.html"
+        if fallback_path.exists():
+            latest_report = fallback_path
+    
+    if not latest_report or not latest_report.exists():
         return "No report generated yet.", 404
 
     return send_file(
-        report_path,
+        latest_report,
         mimetype="text/html",
         as_attachment=True,
         download_name="report.html",
@@ -176,12 +203,35 @@ def download_report():
 
 @app.get("/download/report.xlsx")
 def download_excel_report():
-    report_path = Path(__file__).resolve().parent / "reports" / "report.xlsx"
-    if not report_path.exists():
+    # Try to find the most recently modified report
+    base_dir = Path(__file__).resolve().parent
+    scans_dir = base_dir / "scans"
+    
+    # Search for the most recent report in scan directories
+    latest_report = None
+    latest_mtime = 0
+    
+    if scans_dir.exists():
+        for report_path in scans_dir.glob("*/reports/report.xlsx"):
+            try:
+                mtime = report_path.stat().st_mtime
+                if mtime > latest_mtime:
+                    latest_mtime = mtime
+                    latest_report = report_path
+            except (OSError, FileNotFoundError):
+                continue
+    
+    # Fallback to root reports directory
+    if not latest_report:
+        fallback_path = base_dir / "reports" / "report.xlsx"
+        if fallback_path.exists():
+            latest_report = fallback_path
+    
+    if not latest_report or not latest_report.exists():
         return "No Excel report generated yet.", 404
 
     return send_file(
-        report_path,
+        latest_report,
         mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         as_attachment=True,
         download_name="report.xlsx",

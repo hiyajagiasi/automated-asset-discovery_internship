@@ -1,6 +1,23 @@
 Open Ports
 ==========
 
+- mail.pha.org.pk:21 -> ftp
+- mail.pha.org.pk:25 -> smtp
+- mail.pha.org.pk:53 -> domain
+- mail.pha.org.pk:80 -> http; title=Web Server's Default Page; server=Microsoft-IIS/10.0; status=200
+- mail.pha.org.pk:110 -> pop3
+- mail.pha.org.pk:135 -> epmap
+- mail.pha.org.pk:139 -> netbios-ssn
+- mail.pha.org.pk:143 -> imap
+- mail.pha.org.pk:443 -> https; title=Softrack Technologies; server=Microsoft-IIS/10.0; status=303; redirect=https://mail.pha.org.pk/login.php
+- mail.pha.org.pk:445 -> microsoft-ds
+- mail.pha.org.pk:465 -> urd
+- mail.pha.org.pk:587 -> submission
+- mail.pha.org.pk:993 -> imaps
+- mail.pha.org.pk:995 -> pop3s
+- mail.pha.org.pk:1433 -> ms-sql-s
+- mail.pha.org.pk:3389 -> ms-wbt-server
+- mail.pha.org.pk:8443 -> pcsync-https
 - mail2.pha.org.pk:21 -> ftp
 - mail2.pha.org.pk:25 -> smtp
 - mail2.pha.org.pk:53 -> domain

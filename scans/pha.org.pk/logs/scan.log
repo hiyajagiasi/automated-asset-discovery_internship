@@ -16,3 +16,93 @@
 2026-08-12 19:39:57,195 - INFO - Starting technology discovery
 2026-08-12 19:40:07,968 - INFO - Technology discovery completed in 10.8 seconds
 2026-08-12 19:40:08,020 - INFO - Completed reconnaissance for pha.org.pk
+2026-08-14 11:21:02,580 - INFO - Starting reconnaissance for pha.org.pk
+2026-08-14 11:21:02,581 - INFO - Starting subdomain discovery
+2026-08-14 11:21:08,784 - INFO - Subdomain discovery completed in 6.2 seconds (5 candidates)
+2026-08-14 11:21:08,784 - INFO - Starting live-host probing
+2026-08-14 11:21:08,785 - INFO - Starting dnsx resolution for 5 candidates
+2026-08-14 11:21:09,912 - INFO - dnsx resolution completed: 5/5 candidates resolved
+2026-08-14 11:21:09,912 - INFO - Starting httpx probe for 5 candidates (requested_batch=5000, effective_batch=2000, threads=100, timeout=10, retries=1, rate_limit=httpx-default per worker, stream=True, body_read_limit=5000, process_timeout=disabled, parallel_workers=1, max_total_threads=400)
+2026-08-14 11:21:13,649 - INFO - Batch 1: httpx returned 5 lines
+2026-08-14 11:21:13,650 - INFO - Total live hosts found: 5
+2026-08-14 11:21:13,650 - INFO - Total dead hosts found: 1
+2026-08-14 11:21:13,650 - INFO - Live-host probing completed in 4.9 seconds (5 live hosts, 1 dead hosts)
+2026-08-14 11:21:13,650 - INFO - Starting port discovery
+2026-08-14 11:22:20,404 - INFO - Nmap service progress: 5/5 hosts
+2026-08-14 11:23:04,570 - INFO - Identified 85 open host-port combinations across 5 hosts
+2026-08-14 11:23:04,571 - INFO - Port discovery completed in 110.9 seconds
+2026-08-14 11:23:04,571 - INFO - Starting technology discovery
+2026-08-14 11:23:10,948 - INFO - Technology discovery completed in 6.4 seconds
+2026-08-14 11:23:11,009 - INFO - Completed reconnaissance for pha.org.pk
+2026-08-14 11:28:12,823 - INFO - Starting reconnaissance for pha.org.pk
+2026-08-14 11:28:12,823 - INFO - Starting subdomain discovery
+2026-08-14 11:28:18,561 - INFO - Subdomain discovery completed in 5.7 seconds (5 candidates)
+2026-08-14 11:28:18,562 - INFO - Starting live-host probing
+2026-08-14 11:28:18,563 - INFO - Starting dnsx resolution for 5 candidates
+2026-08-14 11:28:19,477 - INFO - dnsx resolution completed: 5/5 candidates resolved
+2026-08-14 11:28:19,477 - INFO - Starting httpx probe for 5 candidates (requested_batch=5000, effective_batch=2000, threads=100, timeout=10, retries=1, rate_limit=httpx-default per worker, stream=True, body_read_limit=5000, process_timeout=disabled, parallel_workers=1, max_total_threads=400)
+2026-08-14 11:28:23,104 - INFO - Batch 1: httpx returned 5 lines
+2026-08-14 11:28:23,105 - INFO - Total live hosts found: 5
+2026-08-14 11:28:23,105 - INFO - Total dead hosts found: 1
+2026-08-14 11:28:23,106 - INFO - Live-host probing completed in 4.5 seconds (5 live hosts, 1 dead hosts)
+2026-08-14 11:28:23,106 - INFO - Starting port discovery
+2026-08-14 11:29:29,658 - INFO - Nmap service progress: 5/5 hosts
+2026-08-14 11:30:21,340 - INFO - Identified 85 open host-port combinations across 5 hosts
+2026-08-14 11:30:21,340 - INFO - Port discovery completed in 118.2 seconds
+2026-08-14 11:30:21,340 - INFO - Starting technology discovery
+2026-08-14 11:30:26,814 - INFO - Technology discovery completed in 5.5 seconds
+2026-08-14 11:30:26,878 - INFO - Completed reconnaissance for pha.org.pk
+2026-08-14 11:44:15,900 - INFO - Starting reconnaissance for pha.org.pk
+2026-08-14 11:44:15,900 - INFO - Starting subdomain discovery
+2026-08-14 11:44:17,856 - INFO - Subdomain discovery completed in 2.0 seconds (5 candidates)
+2026-08-14 11:44:17,856 - INFO - Starting live-host probing
+2026-08-14 11:44:17,857 - INFO - Starting dnsx resolution for 5 candidates
+2026-08-14 11:44:18,674 - INFO - dnsx resolution completed: 5/5 candidates resolved
+2026-08-14 11:44:18,675 - INFO - Starting httpx probe for 5 candidates (requested_batch=5000, effective_batch=2000, threads=100, timeout=10, retries=1, rate_limit=httpx-default per worker, stream=True, body_read_limit=5000, process_timeout=disabled, parallel_workers=1, max_total_threads=400)
+2026-08-14 11:44:22,696 - INFO - Batch 1: httpx returned 5 lines
+2026-08-14 11:44:22,698 - INFO - Total live hosts found: 5
+2026-08-14 11:44:22,698 - INFO - Total dead hosts found: 1
+2026-08-14 11:44:22,698 - INFO - Live-host probing completed in 4.8 seconds (5 live hosts, 1 dead hosts)
+2026-08-14 11:44:22,698 - INFO - Starting port discovery
+2026-08-14 11:45:28,930 - INFO - Nmap service progress: 4/4 hosts
+2026-08-14 11:46:03,954 - INFO - Identified 68 open host-port combinations across 4 hosts
+2026-08-14 11:46:03,954 - INFO - Port discovery completed in 101.3 seconds
+2026-08-14 11:46:03,954 - INFO - Starting technology discovery
+2026-08-14 11:46:10,392 - INFO - Technology discovery completed in 6.4 seconds
+2026-08-14 11:46:10,450 - INFO - Completed reconnaissance for pha.org.pk
+2026-08-14 11:50:28,641 - INFO - Starting reconnaissance for pha.org.pk
+2026-08-14 11:50:28,641 - INFO - Starting subdomain discovery
+2026-08-14 11:51:29,576 - INFO - Subdomain discovery completed in 60.9 seconds (5 candidates)
+2026-08-14 11:51:29,576 - INFO - Starting live-host probing
+2026-08-14 11:51:29,577 - INFO - Starting dnsx resolution for 5 candidates
+2026-08-14 11:51:30,600 - INFO - dnsx resolution completed: 5/5 candidates resolved
+2026-08-14 11:51:30,601 - INFO - Starting httpx probe for 5 candidates (requested_batch=5000, effective_batch=2000, threads=100, timeout=10, retries=1, rate_limit=httpx-default per worker, stream=True, body_read_limit=5000, process_timeout=disabled, parallel_workers=1, max_total_threads=400)
+2026-08-14 11:51:34,222 - INFO - Batch 1: httpx returned 5 lines
+2026-08-14 11:51:34,224 - INFO - Total live hosts found: 5
+2026-08-14 11:51:34,224 - INFO - Total dead hosts found: 1
+2026-08-14 11:51:34,224 - INFO - Live-host probing completed in 4.6 seconds (5 live hosts, 1 dead hosts)
+2026-08-14 11:51:34,224 - INFO - Starting port discovery
+2026-08-14 11:52:40,587 - INFO - Nmap service progress: 5/5 hosts
+2026-08-14 11:53:36,555 - INFO - Identified 85 open host-port combinations across 5 hosts
+2026-08-14 11:53:36,556 - INFO - Port discovery completed in 122.3 seconds
+2026-08-14 11:53:36,556 - INFO - Starting technology discovery
+2026-08-14 11:53:43,006 - INFO - Technology discovery completed in 6.4 seconds
+2026-08-14 11:53:43,065 - INFO - Completed reconnaissance for pha.org.pk
+2026-08-15 15:33:15,541 - INFO - Starting reconnaissance for pha.org.pk
+2026-08-15 15:33:15,541 - INFO - Starting subdomain discovery
+2026-08-15 15:33:43,119 - INFO - Subdomain discovery completed in 27.6 seconds (5 candidates)
+2026-08-15 15:33:43,119 - INFO - Starting live-host probing
+2026-08-15 15:33:43,120 - INFO - Starting dnsx resolution for 5 candidates
+2026-08-15 15:33:44,226 - INFO - dnsx resolution completed: 5/5 candidates resolved
+2026-08-15 15:33:44,227 - INFO - Starting httpx probe for 5 candidates (requested_batch=5000, effective_batch=2000, threads=100, timeout=10, retries=1, rate_limit=httpx-default per worker, stream=True, body_read_limit=5000, process_timeout=disabled, parallel_workers=1, max_total_threads=400)
+2026-08-15 15:33:48,224 - INFO - Batch 1: httpx returned 5 lines
+2026-08-15 15:33:48,225 - INFO - Total live hosts found: 5
+2026-08-15 15:33:48,225 - INFO - Total dead hosts found: 1
+2026-08-15 15:33:48,225 - INFO - Live-host probing completed in 5.1 seconds (5 live hosts, 1 dead hosts)
+2026-08-15 15:33:48,225 - INFO - Starting port discovery
+2026-08-15 15:34:54,855 - INFO - Nmap service progress: 5/5 hosts
+2026-08-15 15:35:38,509 - INFO - Identified 85 open host-port combinations across 5 hosts
+2026-08-15 15:35:38,509 - INFO - Port discovery completed in 110.3 seconds
+2026-08-15 15:35:38,509 - INFO - Starting technology discovery
+2026-08-15 15:35:45,075 - INFO - Technology discovery completed in 6.6 seconds
+2026-08-15 15:35:45,138 - INFO - Completed reconnaissance for pha.org.pk

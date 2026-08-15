@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ target }} Reconnaissance Report</title>
+    <title>github.com Reconnaissance Report</title>
     <style>
         :root {
             --bg: #f3f7fb;
@@ -281,9 +281,9 @@
             justify-content: space-between;
             align-items: center;
             gap: 16px;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--line);
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px solid var(--line);
         }
         .pagination-nav {
             display: flex;
@@ -334,30 +334,167 @@
     </style>
 </head>
 <body>
-    {% set sub_preview = subdomains %}
-    {% set live_preview = live_hosts %}
-    {% set dead_preview = dead_hosts %}
-    {% set port_preview = ports %}
-    {% set tech_preview = technologies %}
+    
+    
+    
+    
+    
     <div id="report-data"
-         data-subdomains='{{ subdomains|tojson|safe }}'
-         data-live-hosts='{{ live_hosts|tojson|safe }}'
-         data-dead-hosts='{{ dead_hosts|tojson|safe }}'
-         data-ports='{{ ports|tojson|safe }}'
-         data-technologies='{{ technologies|tojson|safe }}'
+         data-subdomains='["github.com", "www.github.com", "mail.github.com", "login.github.com"]'
+         data-live-hosts='["http://www.github.com", "http://mail.github.com", "http://login.github.com", "http://github.com"]'
+         data-dead-hosts='["https://github.com", "https://www.github.com", "https://mail.github.com", "https://login.github.com"]'
+         data-ports='[]'
+         data-technologies='[{"host": "http://www.github.com", "technology": "HTTPX: unreachable | Webanalyze: no fingerprint matched"}, {"host": "http://mail.github.com", "technology": "HTTPX: unreachable | Webanalyze: no fingerprint matched"}, {"host": "http://login.github.com", "technology": "HTTPX: unreachable | Webanalyze: no fingerprint matched"}, {"host": "http://github.com", "technology": "HTTPX: unreachable | Webanalyze: no fingerprint matched"}]'
          style="display:none;"></div>
     <div class="container">
         <div class="header">
             <div class="header-top">
                 <div>
                     <span class="kicker">Asset Discovery</span>
-                    <h1>Reconnaissance Report for {{ target }}</h1>
+                    <h1>Reconnaissance Report for github.com</h1>
                 </div>
                 <div class="header-actions">
                     <button class="download-btn" id="downloadReportBtn" type="button">Download HTML</button>
                 </div>
             </div>
             <div class="subtitle">Executive overview of discovered assets, reachable endpoints, and technology exposure.</div>
+        </div>
+
+        <!-- Page 1: Summary -->
+        <div class="page active" data-page="0">
+            <div class="stats">
+                <div class="stat"><span class="label">Subdomains</span><span class="value">4</span></div>
+                <div class="stat"><span class="label">Live Hosts</span><span class="value">4</span></div>
+                <div class="stat"><span class="label">Dead Hosts</span><span class="value">4</span></div>
+                <div class="stat"><span class="label">Open Ports</span><span class="value">0</span></div>
+                <div class="stat"><span class="label">Technologies</span><span class="value">4</span></div>
+            </div>
+        </div>
+
+        <!-- Page 2: Subdomains -->
+        <div class="page" data-page="1">
+            <div class="section">
+                <div class="section-header">
+                    <h2>Subdomains</h2>
+                    <span class="pill">4 entries</span>
+                </div>
+                
+                    <p class="section-meta">Showing all 4 discovered entries.</p>
+                    <ul>
+                        
+                            <li>github.com</li>
+                        
+                            <li>www.github.com</li>
+                        
+                            <li>mail.github.com</li>
+                        
+                            <li>login.github.com</li>
+                        
+                    </ul>
+                
+            </div>
+        </div>
+
+        <!-- Page 3: Live Hosts -->
+        <div class="page" data-page="2">
+            <div class="section">
+                <div class="section-header">
+                    <h2>Live Hosts</h2>
+                    <span class="pill">4 entries</span>
+                </div>
+                
+                    <p class="section-meta">Showing all 4 detected entries.</p>
+                    <ul>
+                        
+                            <li>http://www.github.com</li>
+                        
+                            <li>http://mail.github.com</li>
+                        
+                            <li>http://login.github.com</li>
+                        
+                            <li>http://github.com</li>
+                        
+                    </ul>
+                
+            </div>
+        </div>
+
+        <!-- Page 4: Dead Hosts -->
+        <div class="page" data-page="3">
+            <div class="section">
+                <div class="section-header">
+                    <h2>Dead Hosts</h2>
+                    <span class="pill">4 entries</span>
+                </div>
+                
+                    <p class="section-meta">Showing all 4 dead targets.</p>
+                    <ul>
+                        
+                            <li>https://github.com</li>
+                        
+                            <li>https://www.github.com</li>
+                        
+                            <li>https://mail.github.com</li>
+                        
+                            <li>https://login.github.com</li>
+                        
+                    </ul>
+                
+            </div>
+        </div>
+
+        <!-- Page 5: Open Ports -->
+        <div class="page" data-page="4">
+            <div class="section">
+                <div class="section-header">
+                    <h2>Open Ports</h2>
+                    <span class="pill">0 entries</span>
+                </div>
+                
+                    <div class="empty">No open ports found.</div>
+                
+            </div>
+        </div>
+
+        <!-- Page 6: Technologies -->
+        <div class="page" data-page="5">
+            <div class="section">
+                <div class="section-header">
+                    <h2>Technologies</h2>
+                    <span class="pill">4 entries</span>
+                </div>
+                
+                    <p class="section-meta">Showing all 4 technology fingerprints.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Host</th><th>Technology</th></tr>
+                        </thead>
+                        <tbody>
+                            
+                                <tr>
+                                    <td>http://www.github.com</td>
+                                    <td>HTTPX: unreachable | Webanalyze: no fingerprint matched</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>http://mail.github.com</td>
+                                    <td>HTTPX: unreachable | Webanalyze: no fingerprint matched</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>http://login.github.com</td>
+                                    <td>HTTPX: unreachable | Webanalyze: no fingerprint matched</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>http://github.com</td>
+                                    <td>HTTPX: unreachable | Webanalyze: no fingerprint matched</td>
+                                </tr>
+                            
+                        </tbody>
+                    </table>
+                
+            </div>
         </div>
 
         <!-- Pagination Controls -->
@@ -372,134 +509,6 @@
             </div>
             <div class="page-indicator">
                 <span id="pageNumber">1</span> of <span id="pageTotal">6</span>
-            </div>
-        </div>
-
-        <!-- Page 1: Summary -->
-        <div class="page active" data-page="0">
-            <div class="stats">
-                <div class="stat"><span class="label">Subdomains</span><span class="value">{{ subdomains|length }}</span></div>
-                <div class="stat"><span class="label">Live Hosts</span><span class="value">{{ live_hosts|length }}</span></div>
-                <div class="stat"><span class="label">Dead Hosts</span><span class="value">{{ dead_hosts|length }}</span></div>
-                <div class="stat"><span class="label">Open Ports</span><span class="value">{{ ports|length }}</span></div>
-                <div class="stat"><span class="label">Technologies</span><span class="value">{{ technologies|length }}</span></div>
-            </div>
-        </div>
-
-        <!-- Page 2: Subdomains -->
-        <div class="page" data-page="1">
-            <div class="section">
-                <div class="section-header">
-                    <h2>Subdomains</h2>
-                    <span class="pill">{{ subdomains|length }} entries</span>
-                </div>
-                {% if subdomains %}
-                    <p class="section-meta">Showing all {{ sub_preview|length }} discovered entries.</p>
-                    <ul>
-                        {% for item in sub_preview %}
-                            <li>{{ item }}</li>
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                    <div class="empty">No subdomains discovered.</div>
-                {% endif %}
-            </div>
-        </div>
-
-        <!-- Page 3: Live Hosts -->
-        <div class="page" data-page="2">
-            <div class="section">
-                <div class="section-header">
-                    <h2>Live Hosts</h2>
-                    <span class="pill">{{ live_hosts|length }} entries</span>
-                </div>
-                {% if live_hosts %}
-                    <p class="section-meta">Showing all {{ live_preview|length }} detected entries.</p>
-                    <ul>
-                        {% for item in live_preview %}
-                            <li>{{ item }}</li>
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                    <div class="empty">No live hosts detected.</div>
-                {% endif %}
-            </div>
-        </div>
-
-        <!-- Page 4: Dead Hosts -->
-        <div class="page" data-page="3">
-            <div class="section">
-                <div class="section-header">
-                    <h2>Dead Hosts</h2>
-                    <span class="pill">{{ dead_hosts|length }} entries</span>
-                </div>
-                {% if dead_hosts %}
-                    <p class="section-meta">Showing all {{ dead_preview|length }} dead targets.</p>
-                    <ul>
-                        {% for item in dead_preview %}
-                            <li>{{ item }}</li>
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                    <div class="empty">No dead hosts recorded.</div>
-                {% endif %}
-            </div>
-        </div>
-
-        <!-- Page 5: Open Ports -->
-        <div class="page" data-page="4">
-            <div class="section">
-                <div class="section-header">
-                    <h2>Open Ports</h2>
-                    <span class="pill">{{ ports|length }} entries</span>
-                </div>
-                {% if ports %}
-                    <p class="section-meta">Showing all {{ port_preview|length }} port entries.</p>
-                    <table>
-                        <thead>
-                            <tr><th>Host</th><th>Port</th><th>Service</th></tr>
-                        </thead>
-                        <tbody>
-                            {% for item in port_preview %}
-                                <tr>
-                                    <td>{{ item.get('host', 'unknown') }}</td>
-                                    <td>{{ item.get('port', 'unknown') }}</td>
-                                    <td>{{ item.get('service', 'unknown') }}</td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                {% else %}
-                    <div class="empty">No open ports found.</div>
-                {% endif %}
-            </div>
-        </div>
-
-        <!-- Page 6: Technologies -->
-        <div class="page" data-page="5">
-            <div class="section">
-                <div class="section-header">
-                    <h2>Technologies</h2>
-                    <span class="pill">{{ technologies|length }} entries</span>
-                </div>
-                {% if technologies %}
-                    <p class="section-meta">Showing all {{ tech_preview|length }} technology fingerprints.</p>
-                    <table>
-                        <thead>
-                            <tr><th>Host</th><th>Technology</th></tr>
-                        </thead>
-                        <tbody>
-                            {% for item in tech_preview %}
-                                <tr>
-                                    <td>{{ item.get('host', 'unknown') }}</td>
-                                    <td>{{ item.get('technology', 'unknown') }}</td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                {% else %}
-                    <div class="empty">No technology fingerprints detected.</div>
-                {% endif %}
             </div>
         </div>
 
@@ -609,7 +618,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ target }} Executive Summary</title>
+  <title>github.com Executive Summary</title>
   <style>
     body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: linear-gradient(180deg, #f3f7fb 0%, #eaf2ff 100%); color: #12263f; }
     .container { max-width: 1200px; margin: 32px auto; padding: 0 20px 40px; }
@@ -627,7 +636,7 @@
 <body>
   <div class="container">
     <div class="header">
-      <h1 class="title">{{ target }} Executive Summary</h1>
+      <h1 class="title">github.com Executive Summary</h1>
       <div class="badge">Asset Discovery Overview</div>
     </div>
 
@@ -676,7 +685,7 @@
                 const url = URL.createObjectURL(blob);
                 const anchor = document.createElement('a');
                 anchor.href = url;
-                anchor.download = '{{ target }}-executive-summary.html';
+                anchor.download = 'github.com-executive-summary.html';
                 document.body.appendChild(anchor);
                 anchor.click();
                 anchor.remove();

@@ -1,0 +1,4 @@
+pa.org.pk
+www.pa.org.pk
+mail.pa.org.pk
+login.pa.org.pk

@@ -1,0 +1,11 @@
+Technology Findings
+===================
+
+- http://www.github.com
+  HTTPX: unreachable | Webanalyze: no fingerprint matched
+- http://mail.github.com
+  HTTPX: unreachable | Webanalyze: no fingerprint matched
+- http://login.github.com
+  HTTPX: unreachable | Webanalyze: no fingerprint matched
+- http://github.com
+  HTTPX: unreachable | Webanalyze: no fingerprint matched
