@@ -345,6 +345,7 @@
          data-dead-hosts='{{ dead_hosts|tojson|safe }}'
          data-ports='{{ ports|tojson|safe }}'
          data-technologies='{{ technologies|tojson|safe }}'
+         data-dmarc='{{ dmarc|tojson|safe }}'
          style="display:none;"></div>
     <div class="container">
         <div class="header">
@@ -354,6 +355,21 @@
                     <h1>Reconnaissance Report for {{ target }}</h1>
                 </div>
                 <div class="header-actions">
+                    <div class="filter-wrap">
+                        <button class="filter-btn" id="filterToggleBtn" type="button" aria-expanded="false" aria-controls="filterMenu">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+                            <span>Filter</span>
+                        </button>
+                        <div class="filter-menu hidden" id="filterMenu" role="menu" aria-label="Report filters">
+                            <button class="filter-option active" data-filter="all" type="button">All sections</button>
+                            <button class="filter-option" data-filter="subdomains" type="button">Subdomains</button>
+                            <button class="filter-option" data-filter="live-hosts" type="button">Live Hosts</button>
+                            <button class="filter-option" data-filter="dead-hosts" type="button">Dead Hosts</button>
+                            <button class="filter-option" data-filter="open-ports" type="button">Open Ports</button>
+                            <button class="filter-option" data-filter="technologies" type="button">Technologies</button>
+                            <button class="filter-option" data-filter="dmarc" type="button">DMARC</button>
+                        </div>
+                    </div>
                     <button class="download-btn" id="downloadReportBtn" type="button">Download HTML</button>
                 </div>
             </div>
@@ -371,12 +387,12 @@
                 </button>
             </div>
             <div class="page-indicator">
-                <span id="pageNumber">1</span> of <span id="pageTotal">6</span>
+                <span id="pageNumber">1</span> of <span id="pageTotal">7</span>
             </div>
         </div>
 
         <!-- Page 1: Summary -->
-        <div class="page active" data-page="0">
+        <div class="page active" data-page="0" data-section="summary">
             <div class="stats">
                 <div class="stat"><span class="label">Subdomains</span><span class="value">{{ subdomains|length }}</span></div>
                 <div class="stat"><span class="label">Live Hosts</span><span class="value">{{ live_hosts|length }}</span></div>
@@ -387,7 +403,7 @@
         </div>
 
         <!-- Page 2: Subdomains -->
-        <div class="page" data-page="1">
+        <div class="page" data-page="1" data-section="subdomains">
             <div class="section">
                 <div class="section-header">
                     <h2>Subdomains</h2>
@@ -407,7 +423,7 @@
         </div>
 
         <!-- Page 3: Live Hosts -->
-        <div class="page" data-page="2">
+        <div class="page" data-page="2" data-section="live-hosts">
             <div class="section">
                 <div class="section-header">
                     <h2>Live Hosts</h2>
@@ -427,7 +443,7 @@
         </div>
 
         <!-- Page 4: Dead Hosts -->
-        <div class="page" data-page="3">
+        <div class="page" data-page="3" data-section="dead-hosts">
             <div class="section">
                 <div class="section-header">
                     <h2>Dead Hosts</h2>
@@ -447,7 +463,7 @@
         </div>
 
         <!-- Page 5: Open Ports -->
-        <div class="page" data-page="4">
+        <div class="page" data-page="4" data-section="open-ports">
             <div class="section">
                 <div class="section-header">
                     <h2>Open Ports</h2>
@@ -476,7 +492,7 @@
         </div>
 
         <!-- Page 6: Technologies -->
-        <div class="page" data-page="5">
+        <div class="page" data-page="5" data-section="technologies">
             <div class="section">
                 <div class="section-header">
                     <h2>Technologies</h2>
@@ -503,6 +519,40 @@
             </div>
         </div>
 
+        <!-- Page 7: DMARC -->
+        <div class="page" data-page="6" data-section="dmarc">
+            <div class="section">
+                <div class="section-header">
+                    <h2>DMARC</h2>
+                    <span class="pill">{{ dmarc|length }} entries</span>
+                </div>
+                {% if dmarc %}
+                    <p class="section-meta">Showing DMARC findings for the discovered hosts.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Host</th><th>Status</th><th>Policy</th><th>Policy Type</th><th>Source</th><th>Source Type</th><th>Policy Source</th><th>Record</th></tr>
+                        </thead>
+                        <tbody>
+                            {% for item in dmarc %}
+                                <tr>
+                                    <td>{{ item.get('host', 'unknown') }}</td>
+                                    <td>{{ (item.get('status') or 'unknown')|upper }}</td>
+                                    <td>{{ (item.get('policy') or 'none')|upper }}</td>
+                                    <td>{{ ((item.get('policy') or 'none')|lower in ['quarantine','reject'] and 'ENFORCEMENT' or (item.get('policy') or 'none')|lower == 'none' and 'MONITORING' or 'UNKNOWN') }}</td>
+                                    <td>{{ item.get('source_domain') or item.get('source') or 'NONE' }}</td>
+                                    <td>{{ (item.get('source_type') or 'none')|upper }}</td>
+                                    <td>{{ ((item.get('source_type') or 'none')|upper + ' ' + ((item.get('policy_source') or 'none')|upper)) if (item.get('source_type') or 'none') != 'none' and (item.get('policy_source') or 'none') != 'none' else 'NONE' }}</td>
+                                    <td>{{ item.get('dmarc_record') or 'NONE' }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <div class="empty">No DMARC findings recorded.</div>
+                {% endif %}
+            </div>
+        </div>
+
     </div>
     <script>
         const reportData = document.getElementById('report-data');
@@ -511,14 +561,18 @@
         const deadHosts = JSON.parse(reportData.dataset.deadHosts || '[]');
         const ports = JSON.parse(reportData.dataset.ports || '[]');
         const technologies = JSON.parse(reportData.dataset.technologies || '[]');
+        const dmarc = JSON.parse(reportData.dataset.dmarc || '[]');
 
         // Pagination state
-        const totalPages = 6;
+        const totalPages = 7;
         let currentPage = 0;
 
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const pageNumberSpan = document.getElementById('pageNumber');
+        const filterToggleBtn = document.getElementById('filterToggleBtn');
+        const filterMenu = document.getElementById('filterMenu');
+        const filterOptions = document.querySelectorAll('.filter-option');
 
         function showPage(pageNum) {
             // Hide all pages
@@ -566,6 +620,40 @@
                 currentPage++;
                 showPage(currentPage);
             }
+        });
+
+        // Filter menu functionality
+        filterToggleBtn.addEventListener('click', function () {
+            const isHidden = filterMenu.classList.toggle('hidden');
+            filterToggleBtn.setAttribute('aria-expanded', String(!isHidden));
+        });
+
+        filterOptions.forEach((option) => {
+            option.addEventListener('click', function () {
+                const selectedFilter = this.dataset.filter;
+                filterOptions.forEach((item) => item.classList.toggle('active', item === this));
+
+                if (selectedFilter === 'all') {
+                    document.querySelectorAll('.page').forEach((page) => {
+                        page.classList.remove('hidden-section');
+                    });
+                    currentPage = 0;
+                    showPage(currentPage);
+                } else {
+                    const targetPage = document.querySelector(`.page[data-section="${selectedFilter}"]`);
+                    document.querySelectorAll('.page').forEach((page) => {
+                        const shouldShow = page.dataset.section === selectedFilter;
+                        page.classList.toggle('hidden-section', !shouldShow);
+                    });
+                    if (targetPage) {
+                        currentPage = Number(targetPage.dataset.page);
+                        showPage(currentPage);
+                    }
+                }
+
+                filterMenu.classList.add('hidden');
+                filterToggleBtn.setAttribute('aria-expanded', 'false');
+            });
         });
 
         // Initialize

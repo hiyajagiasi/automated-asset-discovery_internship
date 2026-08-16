@@ -3,11 +3,11 @@ Technology Findings
 
 - https://wildcard.pha.org.pk
   HTTPX: unreachable | Webanalyze: no fingerprint matched
-- https://mail2.pha.org.pk
-  HTTPX: unreachable | Webanalyze: no fingerprint matched
 - https://webmail.pha.org.pk
   HTTPX: HTML5 | Web Server: Microsoft-IIS/10.0 | Programming Language: ASP.NET | Webanalyze: no fingerprint matched
+- https://www.pha.org.pk
+  HTTPX: HTML5 | Web Server: Microsoft-IIS/10.0 | Programming Language: ASP.NET | Webanalyze: no fingerprint matched
+- https://mail2.pha.org.pk
+  HTTPX: unreachable | Webanalyze: no fingerprint matched
 - https://mail.pha.org.pk
   HTTPX: unreachable | Webanalyze: no fingerprint matched
-- http://www.pha.org.pk
-  HTTPX: HTML5 | Web Server: Microsoft-IIS/10.0 | Programming Language: ASP.NET | Webanalyze: no fingerprint matched

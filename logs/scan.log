@@ -6639,3 +6639,41 @@
 2026-08-14 11:57:16,713 - WARNING - Nmap is unavailable; returning Naabu discoveries without service verification
 2026-08-14 11:57:16,715 - INFO - Nmap service progress: 1/1 hosts
 2026-08-14 11:57:16,715 - INFO - Identified 1 open host-port combinations across 1 hosts
+2026-08-16 14:45:39,772 - INFO - Starting reconnaissance for www.tmail.pk
+2026-08-16 14:45:39,773 - INFO - Starting subdomain discovery
+2026-08-16 14:45:39,895 - INFO - Subdomain discovery completed in 0.1 seconds (4 candidates)
+2026-08-16 14:45:39,895 - INFO - Starting live-host probing
+2026-08-16 14:45:39,896 - INFO - Starting dnsx resolution for 4 candidates
+2026-08-16 14:45:40,050 - INFO - dnsx returned no resolved hosts; continuing with httpx fallback
+2026-08-16 14:45:40,050 - INFO - Starting httpx probe for 4 candidates (requested_batch=5000, effective_batch=2000, threads=100, timeout=10, retries=1, rate_limit=httpx-default per worker, stream=True, body_read_limit=5000, process_timeout=disabled, parallel_workers=1, max_total_threads=400)
+2026-08-16 14:45:41,558 - INFO - Batch 1: httpx returned 4 lines
+2026-08-16 14:45:41,560 - INFO - Total live hosts found: 4
+2026-08-16 14:45:41,560 - INFO - Total dead hosts found: 4
+2026-08-16 14:45:41,560 - INFO - Live-host probing completed in 1.7 seconds (4 live hosts, 4 dead hosts)
+2026-08-16 14:45:41,560 - INFO - Starting port discovery
+2026-08-16 14:45:41,723 - WARNING - Naabu exited with 1 for batch 0: [[1;31mFTL[0m] Could not run enumeration: no valid ipv4 or ipv6 targets were found
+2026-08-16 14:45:41,724 - INFO - Port discovery completed in 0.2 seconds
+2026-08-16 14:45:41,724 - INFO - Starting technology discovery
+2026-08-16 14:45:42,549 - INFO - Technology discovery completed in 0.8 seconds
+2026-08-16 14:45:42,550 - INFO - Starting DMARC discovery
+2026-08-16 14:45:42,552 - INFO - DMARC discovery completed in 0.0 seconds
+2026-08-16 14:45:42,599 - INFO - Completed reconnaissance for www.tmail.pk
+2026-08-16 14:52:40,010 - INFO - Starting reconnaissance for www.tmail.pk
+2026-08-16 14:52:40,010 - INFO - Starting subdomain discovery
+2026-08-16 14:52:40,073 - INFO - Subdomain discovery completed in 0.1 seconds (4 candidates)
+2026-08-16 14:52:40,073 - INFO - Starting live-host probing
+2026-08-16 14:52:40,074 - INFO - Starting dnsx resolution for 4 candidates
+2026-08-16 14:52:40,176 - INFO - dnsx returned no resolved hosts; continuing with httpx fallback
+2026-08-16 14:52:40,177 - INFO - Starting httpx probe for 4 candidates (requested_batch=5000, effective_batch=2000, threads=100, timeout=10, retries=1, rate_limit=httpx-default per worker, stream=True, body_read_limit=5000, process_timeout=disabled, parallel_workers=1, max_total_threads=400)
+2026-08-16 14:52:41,591 - INFO - Batch 1: httpx returned 4 lines
+2026-08-16 14:52:41,592 - INFO - Total live hosts found: 4
+2026-08-16 14:52:41,592 - INFO - Total dead hosts found: 4
+2026-08-16 14:52:41,593 - INFO - Live-host probing completed in 1.5 seconds (4 live hosts, 4 dead hosts)
+2026-08-16 14:52:41,593 - INFO - Starting port discovery
+2026-08-16 14:52:41,692 - WARNING - Naabu exited with 1 for batch 0: [[1;31mFTL[0m] Could not run enumeration: no valid ipv4 or ipv6 targets were found
+2026-08-16 14:52:41,692 - INFO - Port discovery completed in 0.1 seconds
+2026-08-16 14:52:41,693 - INFO - Starting technology discovery
+2026-08-16 14:52:42,461 - INFO - Technology discovery completed in 0.8 seconds
+2026-08-16 14:52:42,461 - INFO - Starting DMARC discovery
+2026-08-16 14:52:42,464 - INFO - DMARC discovery completed in 0.0 seconds
+2026-08-16 14:52:42,512 - INFO - Completed reconnaissance for www.tmail.pk

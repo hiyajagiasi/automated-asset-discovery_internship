@@ -1,0 +1,7 @@
+Open Ports
+==========
+
+- www.example.org:80 -> http; title=Example Domain; server=cloudflare; status=200
+- www.example.org:443 -> https; title=Example Domain; server=cloudflare; status=200
+- www.example.org:8080 -> http-alt
+- www.example.org:8443 -> pcsync-https

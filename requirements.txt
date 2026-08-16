@@ -3,5 +3,6 @@ openpyxl
 jinja2
 pyyaml
 validators
+dnspython
 pytest
 Flask

@@ -1,0 +1,58 @@
+DMARC SECURITY FINDINGS
+=======================
+Total Hosts Checked : 5
+Organizational Domain : pha.org.pk
+Hosts with DMARC    : 0
+Hosts without DMARC : 5
+------------------------------------------------------------
+
+[LOW] DMARC Policy Missing
+Host        : wildcard.pha.org.pk
+Status      : MISSING
+Policy      : NONE
+Source      : NONE
+Record      : NONE
+Description : No DMARC record was found for this host or the organizational domain pha.org.pk.
+------------------------------------------------------------
+
+[LOW] DMARC Policy Missing
+Host        : webmail.pha.org.pk
+Status      : MISSING
+Policy      : NONE
+Source      : NONE
+Record      : NONE
+Description : No DMARC record was found for this host or the organizational domain pha.org.pk.
+------------------------------------------------------------
+
+[LOW] DMARC Policy Missing
+Host        : www.pha.org.pk
+Status      : MISSING
+Policy      : NONE
+Source      : NONE
+Record      : NONE
+Description : No DMARC record was found for this host or the organizational domain pha.org.pk.
+------------------------------------------------------------
+
+[LOW] DMARC Policy Missing
+Host        : mail2.pha.org.pk
+Status      : MISSING
+Policy      : NONE
+Source      : NONE
+Record      : NONE
+Description : No DMARC record was found for this host or the organizational domain pha.org.pk.
+------------------------------------------------------------
+
+[LOW] DMARC Policy Missing
+Host        : mail.pha.org.pk
+Status      : MISSING
+Policy      : NONE
+Source      : NONE
+Record      : NONE
+Description : No DMARC record was found for this host or the organizational domain pha.org.pk.
+------------------------------------------------------------
+
+RECOMMENDATION
+--------------
+No DMARC record was found for the organizational domain pha.org.pk.
+Consider publishing a DMARC TXT record at:
+_dmarc.pha.org.pk

@@ -1,0 +1,17 @@
+Open Ports
+==========
+
+- lists.dmarc.org:25 -> smtp
+- lists.dmarc.org:80 -> http; title=lists.dmarc.org; server=Apache/2.4.55 (FreeBSD) OpenSSL/1.1.1t-freebsd; status=302; redirect=https://lists.dmarc.org/
+- lists.dmarc.org:443 -> https; title=lists.dmarc.org; server=Apache/2.4.55 (FreeBSD) OpenSSL/1.1.1t-freebsd; status=200
+- lists.dmarc.org:465 -> urd
+- lists.dmarc.org:587 -> submission
+- stamp.dmarc.org:25 -> smtp
+- stamp.dmarc.org:80 -> http; title=stamp.dmarc.org; server=Apache/2.4.55 (FreeBSD) OpenSSL/1.1.1t-freebsd; status=200
+- stamp.dmarc.org:443 -> https; title=stamp.dmarc.org; server=Apache/2.4.55 (FreeBSD) OpenSSL/1.1.1t-freebsd; status=200
+- stamp.dmarc.org:465 -> urd
+- stamp.dmarc.org:587 -> submission
+- wiki.dmarc.org:80 -> http; title=Login required - wiki.dmarc.org; server=Apache/2.4.29 (FreeBSD) PHP/7.2.3 OpenSSL/1.0.2u-freebsd; status=200
+- wiki.dmarc.org:443 -> https; title=Login required - wiki.dmarc.org; server=Apache/2.4.29 (FreeBSD) PHP/7.2.3 OpenSSL/1.0.2u-freebsd; status=200
+- www.dmarc.org:80 -> http; title=dmarc.org &#8211; Domain Message Authentication Reporting &amp; Conformance; server=Apache/2.4.29 (FreeBSD) PHP/7.2.3 OpenSSL/1.0.2u-freebsd; status=301; redirect=https://dmarc.org/
+- www.dmarc.org:443 -> https; title=dmarc.org &#8211; Domain Message Authentication Reporting &amp; Conformance; server=Apache/2.4.29 (FreeBSD) PHP/7.2.3 OpenSSL/1.0.2u-freebsd; status=301; redirect=https://dmarc.org/

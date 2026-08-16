@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example.org Reconnaissance Report</title>
+    <style>
+        :root {
+            --bg: #f3f7fb;
+            --bg-strong: #eaf2ff;
+            --surface: rgba(255, 255, 255, 0.92);
+            --surface-alt: #f8fbff;
+            --line: #dfeaf7;
+            --line-strong: #bfd4ef;
+            --text: #12263f;
+            --muted: #5e738d;
+            --accent: #1e7ae8;
+            --accent-soft: #eaf4ff;
+            --accent-strong: #0d5ec9;
+            --shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: linear-gradient(180deg, var(--bg) 0%, var(--bg-strong) 100%);
+            color: var(--text);
+        }
+        .container {
+            max-width: 1280px;
+            margin: 32px auto;
+            padding: 0 20px 40px;
+        }
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            padding: 28px 28px 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+        }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: clamp(2rem, 3vw, 3rem);
+            line-height: 1.2;
+            letter-spacing: -0.05em;
+        }
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 7px 12px;
+            border: 1px solid var(--line-strong);
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent-strong);
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        .filter-wrap {
+            position: relative;
+        }
+        .filter-btn, .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .filter-btn {
+            background: var(--surface-alt);
+            border-color: var(--line);
+            color: var(--text);
+            padding: 11px 14px;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6);
+        }
+        .filter-btn svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .filter-btn:hover, .download-btn:hover {
+            transform: translateY(-1px);
+        }
+        .download-btn {
+            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+            color: #ffffff;
+            padding: 11px 16px;
+            box-shadow: 0 12px 24px rgba(30, 122, 232, 0.18);
+        }
+        .subtitle {
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: 0.96rem;
+        }
+        .filter-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            min-width: 180px;
+            background: rgba(255,255,255,0.98);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 20;
+        }
+        .filter-menu.hidden {
+            display: none;
+        }
+        .filter-option {
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            color: var(--text);
+            text-align: left;
+            padding: 10px 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .filter-option.active {
+            background: var(--accent-soft);
+            border-color: var(--line-strong);
+            color: var(--accent-strong);
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin: 24px 0 28px;
+        }
+        .stat {
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 18px 18px 16px;
+            box-shadow: var(--shadow);
+        }
+        .stat .label {
+            display: block;
+            font-size: 0.74rem;
+            color: var(--muted);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 10px;
+        }
+        .stat .value {
+            font-size: clamp(1.7rem, 2vw, 2.3rem);
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            color: var(--text);
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 22px 20px 18px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .section.hidden-section {
+            display: none;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .section h2 {
+            margin: 0;
+            font-size: 1.35rem;
+            color: var(--text);
+        }
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            background: var(--accent-soft);
+            color: var(--accent-strong);
+            border: 1px solid var(--line-strong);
+            border-radius: 999px;
+            padding: 6px 10px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .section-meta {
+            color: var(--muted);
+            margin: 0 0 14px;
+            font-size: 0.92rem;
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 10px;
+        }
+        li {
+            background: linear-gradient(180deg, var(--surface-alt), rgba(255,255,255,0.88));
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--accent);
+            border-radius: 12px;
+            padding: 12px 14px;
+            color: var(--text);
+            word-break: break-word;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255,255,255,0.96);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        th, td {
+            text-align: left;
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--line);
+            vertical-align: top;
+        }
+        th {
+            background: linear-gradient(180deg, #f5f9ff, #edf5ff);
+            color: var(--muted);
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        tr:last-child td { border-bottom: none; }
+        .empty {
+            color: var(--muted);
+            background: var(--surface-alt);
+            border: 1px dashed var(--line-strong);
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--line);
+        }
+        .pagination-nav {
+            display: flex;
+            gap: 12px;
+        }
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            border-radius: 10px;
+            border: 1px solid var(--line);
+            background: var(--surface-alt);
+            color: var(--text);
+            padding: 10px 14px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .nav-btn:hover:not(:disabled) {
+            background: rgba(30, 122, 232, 0.1);
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+        .nav-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .page-indicator {
+            color: var(--muted);
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-align: center;
+            min-width: 120px;
+        }
+        @media (max-width: 640px) {
+            .container { padding: 0 12px 30px; }
+            .header { padding: 22px 18px 18px; }
+            .header-top { align-items: stretch; }
+            .header-actions { width: 100%; justify-content: space-between; }
+            .pagination { flex-direction: column; gap: 12px; }
+            .pagination-nav { width: 100%; }
+            .nav-btn { flex: 1; }
+            .page-indicator { order: -1; }
+        }
+    </style>
+</head>
+<body>
+    
+    
+    
+    
+    
+    <div id="report-data"
+         data-subdomains='["ff-1c7d2277faf7.internal.example.org", "jirecon.meet.example.org", "hostx.example.org", "nobody.example.org", "sinemarc.example.org", "ecbiz103.example.org", "nginx-master.example.org", "box.example.org", "moderated.example.org", "vantly.internal.example.org", "address.example.org", "casadmin.example.org", "host.example.org", "npi1490ce.example.org", "hotel.example.org", "ipsec-ams.example.org", "smtp.example.org", "webmail.example.org", "gallery.example.org", "media.example.org", "work.example.org", "foo.example.org", "ubuntu-1004-lucid-32-minimal.example.org", "unprov-2-ilo.internal.example.org", "st-7738429-dl4recheqrgyl6n6eoiz-cas01.example.org", "auth.meet.example.org", "feone.example.org", "nnick-awesome-unifi.example.org", "vger.example.org", "centos.example.org", "ilouse409sl1v.example.org", "origin-simulator.example.org", "mcast-sender.example.org", "host2.example.org", "cache.example.org", "isbn.example.org", "phishing.example.org", "index.htmlwww.example.org", "myserver.example.org", "cf2dev-ctrl2.example.org", "cf2dev-ctrl3.example.org", "vernon.example.org", "mainzelliste.example.org", "api.example.org", "corp.example.org", "ilias.example.org", "x.example.org", "www.example.org", "kickseed.example.org", "aap.example.org", "debian.example.org", "debian10.internal.example.org", "obs600.example.org", "domainresponsemimi.example.org", "my.example.org", "mydc.example.org", "qwmsk.example.org", "chat.example.org", "mysql.example.org", "nick-awesome-unifi.example.org", "usersvc.example.org", "data.example.org", "packages.example.org", "server.example.org", "dummycert.example.org", "localhost.internal.example.org", "ebsapps01.example.org", "web-0.example.org", "cdn.example.org", "ebsapp01.example.org", "foskifo.example.org", "opus3.example.org", "whatever.example.org", "colin014.example.org", "wpad.example.org", "1004-lucid-64-minimal.example.org", "cs5-minimal.example.org", "fmq-tank.example.org", "iframe-host.example.org", "subdomain.example.org", "58649367.example.org", "tann.example.org", "portal.com.example.org", "mokienkov.example.org", "blah.example.org", "default.server.example.org", "noreply.example.org", "www.testdomain.example.org", "postmaster.example.org", "smoke.example.org", "ldap2.example.org", "176-56-231-229.example.org", "27576348.example.org", "conference.meet.example.org", "dscvpn01.example.org", "dummy.example.org", "pmg.internal.example.org", "portal.example.org", "hg.example.org", "flyte.example.org", "ns2.example.org", "repos.example.org", "web.example.org", "upload.example.org", "sample-cert-01.example.org", "db2.example.org", "where.example.org", "27447660.example.org", "iloczj2020bfz.example.org", "www.git.example.org", "ftp.example.org", "57843927.example.org", "1104-natty-64-minimal.example.org", "galaxy.example.org", "gitlab.example.org", "help.com.example.org", "ilocz3346t915.example.org", "sub-68-71-173-160.example.org", "joe.example.org", "s3.com.example.org", "odata.example.org", "tus.example.org", "smpt.example.org", "deadlink.example.org", "groupseries.internal.example.org", "lovetex-6cd4539.internal.example.org", "moderated.meet.example.org", "hogehoge.example.org", "lifestreams.example.org", "owlbike.example.org", "nas000081.example.org", "aws.com.example.org", "cf2dev-ctrl1.example.org", "cts.example.org", "freeside4.example.org", "hpia79c98.example.org", "test.example.org", "v3.com.example.org", "cpcontacts.example.org", "npi552575.example.org", "lf.example.org", "ns3.example.org", "oparl.example.org", "owncloud.example.org", "policy.example.org", "coap.example.org", "oetb.example.org", "legalruleml.example.org", "preservation.example.org", "awan.example.org", "helpdesk.example.org", "web.com.example.org", "bibframe.example.org", "books.example.org", "qt-bsd.netbsd.example.org", "hosty.example.org", "cpanel.example.org", "ebpacketix.example.org", "jenkins.example.org", "no.mx.example.org", "sql.com.example.org", "tenray.internal.example.org", "morev.example.org", "koha.example.org", "endpoint.example.org", "st-5013111-jfb1zhna7fede34g64uy-cas01.example.org", "haproxy.ad.example.org", "ic-glasgow.example.org", "ubuntu-1004-lucid-64-minimal.example.org", "death.example.org", "auth.example.org", "go.com.example.org", "nextcloud.example.org", "board.example.org", "cas01.example.org", "nichos.example.org", "acme.example.org", "aap01.example.org", "conference.example.org", "hp-server-ilo.example.org", "postiz.example.org", "creatorwww.example.org", "versus.example.org", "gitlab.k8s.example.org", "vpn.example.org", "buster.example.org", "nero.example.org", "caddy-c2.example.org", "ilocz22110dqr.example.org", "meet.example.org", "cpcalendars.example.org", "ilocz140901zn.example.org", "kibana.example.org", "mail1.example.org", "admin.example.org", "gscout.example.org", "nagios.example.org", "nethserver.example.org", "ns1.example.org", "oldcorp.example.org", "newvh3m.example.org", "focus.example.org", "ilouse303t21j.example.org", "ldap.example.org", "mysite.example.org", "lookingglass.example.org", "asesmtk.example.org", "cns0005234.example.org", "remote.com.example.org", "en.example.org", "app.example.org", "home.example.org", "studioas.example.org", "services.example.org", "redirect.example.org", "ilouse136n66n.example.org", "imap.example.org", "dteamusingthedoorrunningonthehostgridftp-door.example.org", "1104-natty-32-minimal.example.org", "dev.example.org", "login.example.org", "npi083124.example.org", "rhsatellite.example.org", "logger.example.org", "sensor.example.org", "new.example.org", "ets.example.org", "tbd.example.org", "demo.example.org", "idp.example.org", "mail.com.example.org", "webdisk.example.org", "app.ubiquitous.example.org", "library.example.org", "mail.example.org", "qnap-219p.example.org", "build.example.org", "faun.example.org", "localhost.example.org", "reversdns.example.org", "sp.example.org", "cipafilter.example.org", "com.example.org", "preview.com.example.org", "private-moinmoin.example.org", "dfe.example.org", "eduroam-admin.example.org", "sep-poly.example.org", "brand.example.org", "focus.meet.example.org", "subdomena.example.org", "27576345.example.org", "office.example.org", "sip.example.org", "catalog.example.org", "nsmtp.example.org", "boot.ns4.example.org", "printer.example.org", "s2.www.example.org", "db.example.org", "diaspora.example.org", "evil.example.org", "info.example.org", "default.example.org", "autodiscover.example.org", "cas.example.org", "stoader.example.org", "certificationbody.example.org", "graphs.example.org", "anonymous.example.org", "l.example.org", "1004-lucid-32-minimal.example.org", "fr.example.org", "h2c.example.org", "nginx-southeast.example.org", "vangogh.example.org", "snakeoil.example.org", "s01.www.example.org", "webs01.example.org", "dismissed.example.org", "220-pmg.internal.example.org", "conference.chat.example.org"]'
+         data-live-hosts='["https://www.example.org"]'
+         data-dead-hosts='["https://ff-1c7d2277faf7.internal.example.org", "https://jirecon.meet.example.org", "https://hostx.example.org", "https://nobody.example.org", "https://sinemarc.example.org", "https://ecbiz103.example.org", "https://nginx-master.example.org", "https://box.example.org", "https://moderated.example.org", "https://vantly.internal.example.org", "https://address.example.org", "https://casadmin.example.org", "https://host.example.org", "https://npi1490ce.example.org", "https://hotel.example.org", "https://ipsec-ams.example.org", "https://smtp.example.org", "https://webmail.example.org", "https://gallery.example.org", "https://media.example.org", "https://work.example.org", "https://foo.example.org", "https://ubuntu-1004-lucid-32-minimal.example.org", "https://unprov-2-ilo.internal.example.org", "https://st-7738429-dl4recheqrgyl6n6eoiz-cas01.example.org", "https://auth.meet.example.org", "https://feone.example.org", "https://nnick-awesome-unifi.example.org", "https://vger.example.org", "https://centos.example.org", "https://ilouse409sl1v.example.org", "https://origin-simulator.example.org", "https://mcast-sender.example.org", "https://host2.example.org", "https://cache.example.org", "https://isbn.example.org", "https://phishing.example.org", "https://index.htmlwww.example.org", "https://myserver.example.org", "https://cf2dev-ctrl2.example.org", "https://cf2dev-ctrl3.example.org", "https://vernon.example.org", "https://mainzelliste.example.org", "https://api.example.org", "https://corp.example.org", "https://ilias.example.org", "https://x.example.org", "https://kickseed.example.org", "https://aap.example.org", "https://debian.example.org", "https://debian10.internal.example.org", "https://obs600.example.org", "https://domainresponsemimi.example.org", "https://my.example.org", "https://mydc.example.org", "https://qwmsk.example.org", "https://chat.example.org", "https://mysql.example.org", "https://nick-awesome-unifi.example.org", "https://usersvc.example.org", "https://data.example.org", "https://packages.example.org", "https://server.example.org", "https://dummycert.example.org", "https://localhost.internal.example.org", "https://ebsapps01.example.org", "https://web-0.example.org", "https://cdn.example.org", "https://ebsapp01.example.org", "https://foskifo.example.org", "https://opus3.example.org", "https://whatever.example.org", "https://colin014.example.org", "https://wpad.example.org", "https://1004-lucid-64-minimal.example.org", "https://cs5-minimal.example.org", "https://fmq-tank.example.org", "https://iframe-host.example.org", "https://subdomain.example.org", "https://58649367.example.org", "https://tann.example.org", "https://portal.com.example.org", "https://mokienkov.example.org", "https://blah.example.org", "https://default.server.example.org", "https://noreply.example.org", "https://www.testdomain.example.org", "https://postmaster.example.org", "https://smoke.example.org", "https://ldap2.example.org", "https://176-56-231-229.example.org", "https://27576348.example.org", "https://conference.meet.example.org", "https://dscvpn01.example.org", "https://dummy.example.org", "https://pmg.internal.example.org", "https://portal.example.org", "https://hg.example.org", "https://flyte.example.org", "https://ns2.example.org", "https://repos.example.org", "https://web.example.org", "https://upload.example.org", "https://sample-cert-01.example.org", "https://db2.example.org", "https://where.example.org", "https://27447660.example.org", "https://iloczj2020bfz.example.org", "https://www.git.example.org", "https://ftp.example.org", "https://57843927.example.org", "https://1104-natty-64-minimal.example.org", "https://galaxy.example.org", "https://gitlab.example.org", "https://help.com.example.org", "https://ilocz3346t915.example.org", "https://sub-68-71-173-160.example.org", "https://joe.example.org", "https://s3.com.example.org", "https://odata.example.org", "https://tus.example.org", "https://smpt.example.org", "https://deadlink.example.org", "https://groupseries.internal.example.org", "https://lovetex-6cd4539.internal.example.org", "https://moderated.meet.example.org", "https://hogehoge.example.org", "https://lifestreams.example.org", "https://owlbike.example.org", "https://nas000081.example.org", "https://aws.com.example.org", "https://cf2dev-ctrl1.example.org", "https://cts.example.org", "https://freeside4.example.org", "https://hpia79c98.example.org", "https://test.example.org", "https://v3.com.example.org", "https://cpcontacts.example.org", "https://npi552575.example.org", "https://lf.example.org", "https://ns3.example.org", "https://oparl.example.org", "https://owncloud.example.org", "https://policy.example.org", "https://coap.example.org", "https://oetb.example.org", "https://legalruleml.example.org", "https://preservation.example.org", "https://awan.example.org", "https://helpdesk.example.org", "https://web.com.example.org", "https://bibframe.example.org", "https://books.example.org", "https://qt-bsd.netbsd.example.org", "https://hosty.example.org", "https://cpanel.example.org", "https://ebpacketix.example.org", "https://jenkins.example.org", "https://no.mx.example.org", "https://sql.com.example.org", "https://tenray.internal.example.org", "https://morev.example.org", "https://koha.example.org", "https://endpoint.example.org", "https://st-5013111-jfb1zhna7fede34g64uy-cas01.example.org", "https://haproxy.ad.example.org", "https://ic-glasgow.example.org", "https://ubuntu-1004-lucid-64-minimal.example.org", "https://death.example.org", "https://auth.example.org", "https://go.com.example.org", "https://nextcloud.example.org", "https://board.example.org", "https://cas01.example.org", "https://nichos.example.org", "https://acme.example.org", "https://aap01.example.org", "https://conference.example.org", "https://hp-server-ilo.example.org", "https://postiz.example.org", "https://creatorwww.example.org", "https://versus.example.org", "https://gitlab.k8s.example.org", "https://vpn.example.org", "https://buster.example.org", "https://nero.example.org", "https://caddy-c2.example.org", "https://ilocz22110dqr.example.org", "https://meet.example.org", "https://cpcalendars.example.org", "https://ilocz140901zn.example.org", "https://kibana.example.org", "https://mail1.example.org", "https://admin.example.org", "https://gscout.example.org", "https://nagios.example.org", "https://nethserver.example.org", "https://ns1.example.org", "https://oldcorp.example.org", "https://newvh3m.example.org", "https://focus.example.org", "https://ilouse303t21j.example.org", "https://ldap.example.org", "https://mysite.example.org", "https://lookingglass.example.org", "https://asesmtk.example.org", "https://cns0005234.example.org", "https://remote.com.example.org", "https://en.example.org", "https://app.example.org", "https://home.example.org", "https://studioas.example.org", "https://services.example.org", "https://redirect.example.org", "https://ilouse136n66n.example.org", "https://imap.example.org", "https://dteamusingthedoorrunningonthehostgridftp-door.example.org", "https://1104-natty-32-minimal.example.org", "https://dev.example.org", "https://login.example.org", "https://npi083124.example.org", "https://rhsatellite.example.org", "https://logger.example.org", "https://sensor.example.org", "https://new.example.org", "https://ets.example.org", "https://tbd.example.org", "https://demo.example.org", "https://idp.example.org", "https://mail.com.example.org", "https://webdisk.example.org", "https://app.ubiquitous.example.org", "https://library.example.org", "https://mail.example.org", "https://qnap-219p.example.org", "https://build.example.org", "https://faun.example.org", "https://localhost.example.org", "https://reversdns.example.org", "https://sp.example.org", "https://cipafilter.example.org", "https://com.example.org", "https://preview.com.example.org", "https://private-moinmoin.example.org", "https://dfe.example.org", "https://eduroam-admin.example.org", "https://sep-poly.example.org", "https://brand.example.org", "https://focus.meet.example.org", "https://subdomena.example.org", "https://27576345.example.org", "https://office.example.org", "https://sip.example.org", "https://catalog.example.org", "https://nsmtp.example.org", "https://boot.ns4.example.org", "https://printer.example.org", "https://s2.www.example.org", "https://db.example.org", "https://diaspora.example.org", "https://evil.example.org", "https://info.example.org", "https://default.example.org", "https://autodiscover.example.org", "https://cas.example.org", "https://stoader.example.org", "https://certificationbody.example.org", "https://graphs.example.org", "https://anonymous.example.org", "https://l.example.org", "https://1004-lucid-32-minimal.example.org", "https://fr.example.org", "https://h2c.example.org", "https://nginx-southeast.example.org", "https://vangogh.example.org", "https://snakeoil.example.org", "https://s01.www.example.org", "https://webs01.example.org", "https://dismissed.example.org", "https://220-pmg.internal.example.org", "https://conference.chat.example.org"]'
+         data-ports='[{"host": "www.example.org", "port": "80", "service": "http; title=Example Domain; server=cloudflare; status=200"}, {"host": "www.example.org", "port": "443", "service": "https; title=Example Domain; server=cloudflare; status=200"}, {"host": "www.example.org", "port": "8080", "service": "http-alt"}, {"host": "www.example.org", "port": "8443", "service": "pcsync-https"}]'
+         data-technologies='[{"host": "https://www.example.org", "technology": "HTTPX: unreachable | Webanalyze: no fingerprint matched"}]'
+         style="display:none;"></div>
+    <div class="container">
+        <div class="header">
+            <div class="header-top">
+                <div>
+                    <span class="kicker">Asset Discovery</span>
+                    <h1>Reconnaissance Report for example.org</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="download-btn" id="downloadReportBtn" type="button">Download HTML</button>
+                </div>
+            </div>
+            <div class="subtitle">Executive overview of discovered assets, reachable endpoints, and technology exposure.</div>
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="pagination">
+            <div class="pagination-nav">
+                <button class="nav-btn" id="prevBtn" type="button">
+                    <span>← Previous</span>
+                </button>
+                <button class="nav-btn" id="nextBtn" type="button">
+                    <span>Next →</span>
+                </button>
+            </div>
+            <div class="page-indicator">
+                <span id="pageNumber">1</span> of <span id="pageTotal">6</span>
+            </div>
+        </div>
+
+        <!-- Page 1: Summary -->
+        <div class="page active" data-page="0">
+            <div class="stats">
+                <div class="stat"><span class="label">Subdomains</span><span class="value">282</span></div>
+                <div class="stat"><span class="label">Live Hosts</span><span class="value">1</span></div>
+                <div class="stat"><span class="label">Dead Hosts</span><span class="value">281</span></div>
+                <div class="stat"><span class="label">Open Ports</span><span class="value">4</span></div>
+                <div class="stat"><span class="label">Technologies</span><span class="value">1</span></div>
+            </div>
+        </div>
+
+        <!-- Page 2: Subdomains -->
+        <div class="page" data-page="1">
+            <div class="section">
+                <div class="section-header">
+                    <h2>Subdomains</h2>
+                    <span class="pill">282 entries</span>
+                </div>
+                
+                    <p class="section-meta">Showing all 282 discovered entries.</p>
+                    <ul>
+                        
+                            <li>ff-1c7d2277faf7.internal.example.org</li>
+                        
+                            <li>jirecon.meet.example.org</li>
+                        
+                            <li>hostx.example.org</li>
+                        
+                            <li>nobody.example.org</li>
+                        
+                            <li>sinemarc.example.org</li>
+                        
+                            <li>ecbiz103.example.org</li>
+                        
+                            <li>nginx-master.example.org</li>
+                        
+                            <li>box.example.org</li>
+                        
+                            <li>moderated.example.org</li>
+                        
+                            <li>vantly.internal.example.org</li>
+                        
+                            <li>address.example.org</li>
+                        
+                            <li>casadmin.example.org</li>
+                        
+                            <li>host.example.org</li>
+                        
+                            <li>npi1490ce.example.org</li>
+                        
+                            <li>hotel.example.org</li>
+                        
+                            <li>ipsec-ams.example.org</li>
+                        
+                            <li>smtp.example.org</li>
+                        
+                            <li>webmail.example.org</li>
+                        
+                            <li>gallery.example.org</li>
+                        
+                            <li>media.example.org</li>
+                        
+                            <li>work.example.org</li>
+                        
+                            <li>foo.example.org</li>
+                        
+                            <li>ubuntu-1004-lucid-32-minimal.example.org</li>
+                        
+                            <li>unprov-2-ilo.internal.example.org</li>
+                        
+                            <li>st-7738429-dl4recheqrgyl6n6eoiz-cas01.example.org</li>
+                        
+                            <li>auth.meet.example.org</li>
+                        
+                            <li>feone.example.org</li>
+                        
+                            <li>nnick-awesome-unifi.example.org</li>
+                        
+                            <li>vger.example.org</li>
+                        
+                            <li>centos.example.org</li>
+                        
+                            <li>ilouse409sl1v.example.org</li>
+                        
+                            <li>origin-simulator.example.org</li>
+                        
+                            <li>mcast-sender.example.org</li>
+                        
+                            <li>host2.example.org</li>
+                        
+                            <li>cache.example.org</li>
+                        
+                            <li>isbn.example.org</li>
+                        
+                            <li>phishing.example.org</li>
+                        
+                            <li>index.htmlwww.example.org</li>
+                        
+                            <li>myserver.example.org</li>
+                        
+                            <li>cf2dev-ctrl2.example.org</li>
+                        
+                            <li>cf2dev-ctrl3.example.org</li>
+                        
+                            <li>vernon.example.org</li>
+                        
+                            <li>mainzelliste.example.org</li>
+                        
+                            <li>api.example.org</li>
+                        
+                            <li>corp.example.org</li>
+                        
+                            <li>ilias.example.org</li>
+                        
+                            <li>x.example.org</li>
+                        
+                            <li>www.example.org</li>
+                        
+                            <li>kickseed.example.org</li>
+                        
+                            <li>aap.example.org</li>
+                        
+                            <li>debian.example.org</li>
+                        
+                            <li>debian10.internal.example.org</li>
+                        
+                            <li>obs600.example.org</li>
+                        
+                            <li>domainresponsemimi.example.org</li>
+                        
+                            <li>my.example.org</li>
+                        
+                            <li>mydc.example.org</li>
+                        
+                            <li>qwmsk.example.org</li>
+                        
+                            <li>chat.example.org</li>
+                        
+                            <li>mysql.example.org</li>
+                        
+                            <li>nick-awesome-unifi.example.org</li>
+                        
+                            <li>usersvc.example.org</li>
+                        
+                            <li>data.example.org</li>
+                        
+                            <li>packages.example.org</li>
+                        
+                            <li>server.example.org</li>
+                        
+                            <li>dummycert.example.org</li>
+                        
+                            <li>localhost.internal.example.org</li>
+                        
+                            <li>ebsapps01.example.org</li>
+                        
+                            <li>web-0.example.org</li>
+                        
+                            <li>cdn.example.org</li>
+                        
+                            <li>ebsapp01.example.org</li>
+                        
+                            <li>foskifo.example.org</li>
+                        
+                            <li>opus3.example.org</li>
+                        
+                            <li>whatever.example.org</li>
+                        
+                            <li>colin014.example.org</li>
+                        
+                            <li>wpad.example.org</li>
+                        
+                            <li>1004-lucid-64-minimal.example.org</li>
+                        
+                            <li>cs5-minimal.example.org</li>
+                        
+                            <li>fmq-tank.example.org</li>
+                        
+                            <li>iframe-host.example.org</li>
+                        
+                            <li>subdomain.example.org</li>
+                        
+                            <li>58649367.example.org</li>
+                        
+                            <li>tann.example.org</li>
+                        
+                            <li>portal.com.example.org</li>
+                        
+                            <li>mokienkov.example.org</li>
+                        
+                            <li>blah.example.org</li>
+                        
+                            <li>default.server.example.org</li>
+                        
+                            <li>noreply.example.org</li>
+                        
+                            <li>www.testdomain.example.org</li>
+                        
+                            <li>postmaster.example.org</li>
+                        
+                            <li>smoke.example.org</li>
+                        
+                            <li>ldap2.example.org</li>
+                        
+                            <li>176-56-231-229.example.org</li>
+                        
+                            <li>27576348.example.org</li>
+                        
+                            <li>conference.meet.example.org</li>
+                        
+                            <li>dscvpn01.example.org</li>
+                        
+                            <li>dummy.example.org</li>
+                        
+                            <li>pmg.internal.example.org</li>
+                        
+                            <li>portal.example.org</li>
+                        
+                            <li>hg.example.org</li>
+                        
+                            <li>flyte.example.org</li>
+                        
+                            <li>ns2.example.org</li>
+                        
+                            <li>repos.example.org</li>
+                        
+                            <li>web.example.org</li>
+                        
+                            <li>upload.example.org</li>
+                        
+                            <li>sample-cert-01.example.org</li>
+                        
+                            <li>db2.example.org</li>
+                        
+                            <li>where.example.org</li>
+                        
+                            <li>27447660.example.org</li>
+                        
+                            <li>iloczj2020bfz.example.org</li>
+                        
+                            <li>www.git.example.org</li>
+                        
+                            <li>ftp.example.org</li>
+                        
+                            <li>57843927.example.org</li>
+                        
+                            <li>1104-natty-64-minimal.example.org</li>
+                        
+                            <li>galaxy.example.org</li>
+                        
+                            <li>gitlab.example.org</li>
+                        
+                            <li>help.com.example.org</li>
+                        
+                            <li>ilocz3346t915.example.org</li>
+                        
+                            <li>sub-68-71-173-160.example.org</li>
+                        
+                            <li>joe.example.org</li>
+                        
+                            <li>s3.com.example.org</li>
+                        
+                            <li>odata.example.org</li>
+                        
+                            <li>tus.example.org</li>
+                        
+                            <li>smpt.example.org</li>
+                        
+                            <li>deadlink.example.org</li>
+                        
+                            <li>groupseries.internal.example.org</li>
+                        
+                            <li>lovetex-6cd4539.internal.example.org</li>
+                        
+                            <li>moderated.meet.example.org</li>
+                        
+                            <li>hogehoge.example.org</li>
+                        
+                            <li>lifestreams.example.org</li>
+                        
+                            <li>owlbike.example.org</li>
+                        
+                            <li>nas000081.example.org</li>
+                        
+                            <li>aws.com.example.org</li>
+                        
+                            <li>cf2dev-ctrl1.example.org</li>
+                        
+                            <li>cts.example.org</li>
+                        
+                            <li>freeside4.example.org</li>
+                        
+                            <li>hpia79c98.example.org</li>
+                        
+                            <li>test.example.org</li>
+                        
+                            <li>v3.com.example.org</li>
+                        
+                            <li>cpcontacts.example.org</li>
+                        
+                            <li>npi552575.example.org</li>
+                        
+                            <li>lf.example.org</li>
+                        
+                            <li>ns3.example.org</li>
+                        
+                            <li>oparl.example.org</li>
+                        
+                            <li>owncloud.example.org</li>
+                        
+                            <li>policy.example.org</li>
+                        
+                            <li>coap.example.org</li>
+                        
+                            <li>oetb.example.org</li>
+                        
+                            <li>legalruleml.example.org</li>
+                        
+                            <li>preservation.example.org</li>
+                        
+                            <li>awan.example.org</li>
+                        
+                            <li>helpdesk.example.org</li>
+                        
+                            <li>web.com.example.org</li>
+                        
+                            <li>bibframe.example.org</li>
+                        
+                            <li>books.example.org</li>
+                        
+                            <li>qt-bsd.netbsd.example.org</li>
+                        
+                            <li>hosty.example.org</li>
+                        
+                            <li>cpanel.example.org</li>
+                        
+                            <li>ebpacketix.example.org</li>
+                        
+                            <li>jenkins.example.org</li>
+                        
+                            <li>no.mx.example.org</li>
+                        
+                            <li>sql.com.example.org</li>
+                        
+                            <li>tenray.internal.example.org</li>
+                        
+                            <li>morev.example.org</li>
+                        
+                            <li>koha.example.org</li>
+                        
+                            <li>endpoint.example.org</li>
+                        
+                            <li>st-5013111-jfb1zhna7fede34g64uy-cas01.example.org</li>
+                        
+                            <li>haproxy.ad.example.org</li>
+                        
+                            <li>ic-glasgow.example.org</li>
+                        
+                            <li>ubuntu-1004-lucid-64-minimal.example.org</li>
+                        
+                            <li>death.example.org</li>
+                        
+                            <li>auth.example.org</li>
+                        
+                            <li>go.com.example.org</li>
+                        
+                            <li>nextcloud.example.org</li>
+                        
+                            <li>board.example.org</li>
+                        
+                            <li>cas01.example.org</li>
+                        
+                            <li>nichos.example.org</li>
+                        
+                            <li>acme.example.org</li>
+                        
+                            <li>aap01.example.org</li>
+                        
+                            <li>conference.example.org</li>
+                        
+                            <li>hp-server-ilo.example.org</li>
+                        
+                            <li>postiz.example.org</li>
+                        
+                            <li>creatorwww.example.org</li>
+                        
+                            <li>versus.example.org</li>
+                        
+                            <li>gitlab.k8s.example.org</li>
+                        
+                            <li>vpn.example.org</li>
+                        
+                            <li>buster.example.org</li>
+                        
+                            <li>nero.example.org</li>
+                        
+                            <li>caddy-c2.example.org</li>
+                        
+                            <li>ilocz22110dqr.example.org</li>
+                        
+                            <li>meet.example.org</li>
+                        
+                            <li>cpcalendars.example.org</li>
+                        
+                            <li>ilocz140901zn.example.org</li>
+                        
+                            <li>kibana.example.org</li>
+                        
+                            <li>mail1.example.org</li>
+                        
+                            <li>admin.example.org</li>
+                        
+                            <li>gscout.example.org</li>
+                        
+                            <li>nagios.example.org</li>
+                        
+                            <li>nethserver.example.org</li>
+                        
+                            <li>ns1.example.org</li>
+                        
+                            <li>oldcorp.example.org</li>
+                        
+                            <li>newvh3m.example.org</li>
+                        
+                            <li>focus.example.org</li>
+                        
+                            <li>ilouse303t21j.example.org</li>
+                        
+                            <li>ldap.example.org</li>
+                        
+                            <li>mysite.example.org</li>
+                        
+                            <li>lookingglass.example.org</li>
+                        
+                            <li>asesmtk.example.org</li>
+                        
+                            <li>cns0005234.example.org</li>
+                        
+                            <li>remote.com.example.org</li>
+                        
+                            <li>en.example.org</li>
+                        
+                            <li>app.example.org</li>
+                        
+                            <li>home.example.org</li>
+                        
+                            <li>studioas.example.org</li>
+                        
+                            <li>services.example.org</li>
+                        
+                            <li>redirect.example.org</li>
+                        
+                            <li>ilouse136n66n.example.org</li>
+                        
+                            <li>imap.example.org</li>
+                        
+                            <li>dteamusingthedoorrunningonthehostgridftp-door.example.org</li>
+                        
+                            <li>1104-natty-32-minimal.example.org</li>
+                        
+                            <li>dev.example.org</li>
+                        
+                            <li>login.example.org</li>
+                        
+                            <li>npi083124.example.org</li>
+                        
+                            <li>rhsatellite.example.org</li>
+                        
+                            <li>logger.example.org</li>
+                        
+                            <li>sensor.example.org</li>
+                        
+                            <li>new.example.org</li>
+                        
+                            <li>ets.example.org</li>
+                        
+                            <li>tbd.example.org</li>
+                        
+                            <li>demo.example.org</li>
+                        
+                            <li>idp.example.org</li>
+                        
+                            <li>mail.com.example.org</li>
+                        
+                            <li>webdisk.example.org</li>
+                        
+                            <li>app.ubiquitous.example.org</li>
+                        
+                            <li>library.example.org</li>
+                        
+                            <li>mail.example.org</li>
+                        
+                            <li>qnap-219p.example.org</li>
+                        
+                            <li>build.example.org</li>
+                        
+                            <li>faun.example.org</li>
+                        
+                            <li>localhost.example.org</li>
+                        
+                            <li>reversdns.example.org</li>
+                        
+                            <li>sp.example.org</li>
+                        
+                            <li>cipafilter.example.org</li>
+                        
+                            <li>com.example.org</li>
+                        
+                            <li>preview.com.example.org</li>
+                        
+                            <li>private-moinmoin.example.org</li>
+                        
+                            <li>dfe.example.org</li>
+                        
+                            <li>eduroam-admin.example.org</li>
+                        
+                            <li>sep-poly.example.org</li>
+                        
+                            <li>brand.example.org</li>
+                        
+                            <li>focus.meet.example.org</li>
+                        
+                            <li>subdomena.example.org</li>
+                        
+                            <li>27576345.example.org</li>
+                        
+                            <li>office.example.org</li>
+                        
+                            <li>sip.example.org</li>
+                        
+                            <li>catalog.example.org</li>
+                        
+                            <li>nsmtp.example.org</li>
+                        
+                            <li>boot.ns4.example.org</li>
+                        
+                            <li>printer.example.org</li>
+                        
+                            <li>s2.www.example.org</li>
+                        
+                            <li>db.example.org</li>
+                        
+                            <li>diaspora.example.org</li>
+                        
+                            <li>evil.example.org</li>
+                        
+                            <li>info.example.org</li>
+                        
+                            <li>default.example.org</li>
+                        
+                            <li>autodiscover.example.org</li>
+                        
+                            <li>cas.example.org</li>
+                        
+                            <li>stoader.example.org</li>
+                        
+                            <li>certificationbody.example.org</li>
+                        
+                            <li>graphs.example.org</li>
+                        
+                            <li>anonymous.example.org</li>
+                        
+                            <li>l.example.org</li>
+                        
+                            <li>1004-lucid-32-minimal.example.org</li>
+                        
+                            <li>fr.example.org</li>
+                        
+                            <li>h2c.example.org</li>
+                        
+                            <li>nginx-southeast.example.org</li>
+                        
+                            <li>vangogh.example.org</li>
+                        
+                            <li>snakeoil.example.org</li>
+                        
+                            <li>s01.www.example.org</li>
+                        
+                            <li>webs01.example.org</li>
+                        
+                            <li>dismissed.example.org</li>
+                        
+                            <li>220-pmg.internal.example.org</li>
+                        
+                            <li>conference.chat.example.org</li>
+                        
+                    </ul>
+                
+            </div>
+        </div>
+
+        <!-- Page 3: Live Hosts -->
+        <div class="page" data-page="2">
+            <div class="section">
+                <div class="section-header">
+                    <h2>Live Hosts</h2>
+                    <span class="pill">1 entries</span>
+                </div>
+                
+                    <p class="section-meta">Showing all 1 detected entries.</p>
+                    <ul>
+                        
+                            <li>https://www.example.org</li>
+                        
+                    </ul>
+                
+            </div>
+        </div>
+
+        <!-- Page 4: Dead Hosts -->
+        <div class="page" data-page="3">
+            <div class="section">
+                <div class="section-header">
+                    <h2>Dead Hosts</h2>
+                    <span class="pill">281 entries</span>
+                </div>
+                
+                    <p class="section-meta">Showing all 281 dead targets.</p>
+                    <ul>
+                        
+                            <li>https://ff-1c7d2277faf7.internal.example.org</li>
+                        
+                            <li>https://jirecon.meet.example.org</li>
+                        
+                            <li>https://hostx.example.org</li>
+                        
+                            <li>https://nobody.example.org</li>
+                        
+                            <li>https://sinemarc.example.org</li>
+                        
+                            <li>https://ecbiz103.example.org</li>
+                        
+                            <li>https://nginx-master.example.org</li>
+                        
+                            <li>https://box.example.org</li>
+                        
+                            <li>https://moderated.example.org</li>
+                        
+                            <li>https://vantly.internal.example.org</li>
+                        
+                            <li>https://address.example.org</li>
+                        
+                            <li>https://casadmin.example.org</li>
+                        
+                            <li>https://host.example.org</li>
+                        
+                            <li>https://npi1490ce.example.org</li>
+                        
+                            <li>https://hotel.example.org</li>
+                        
+                            <li>https://ipsec-ams.example.org</li>
+                        
+                            <li>https://smtp.example.org</li>
+                        
+                            <li>https://webmail.example.org</li>
+                        
+                            <li>https://gallery.example.org</li>
+                        
+                            <li>https://media.example.org</li>
+                        
+                            <li>https://work.example.org</li>
+                        
+                            <li>https://foo.example.org</li>
+                        
+                            <li>https://ubuntu-1004-lucid-32-minimal.example.org</li>
+                        
+                            <li>https://unprov-2-ilo.internal.example.org</li>
+                        
+                            <li>https://st-7738429-dl4recheqrgyl6n6eoiz-cas01.example.org</li>
+                        
+                            <li>https://auth.meet.example.org</li>
+                        
+                            <li>https://feone.example.org</li>
+                        
+                            <li>https://nnick-awesome-unifi.example.org</li>
+                        
+                            <li>https://vger.example.org</li>
+                        
+                            <li>https://centos.example.org</li>
+                        
+                            <li>https://ilouse409sl1v.example.org</li>
+                        
+                            <li>https://origin-simulator.example.org</li>
+                        
+                            <li>https://mcast-sender.example.org</li>
+                        
+                            <li>https://host2.example.org</li>
+                        
+                            <li>https://cache.example.org</li>
+                        
+                            <li>https://isbn.example.org</li>
+                        
+                            <li>https://phishing.example.org</li>
+                        
+                            <li>https://index.htmlwww.example.org</li>
+                        
+                            <li>https://myserver.example.org</li>
+                        
+                            <li>https://cf2dev-ctrl2.example.org</li>
+                        
+                            <li>https://cf2dev-ctrl3.example.org</li>
+                        
+                            <li>https://vernon.example.org</li>
+                        
+                            <li>https://mainzelliste.example.org</li>
+                        
+                            <li>https://api.example.org</li>
+                        
+                            <li>https://corp.example.org</li>
+                        
+                            <li>https://ilias.example.org</li>
+                        
+                            <li>https://x.example.org</li>
+                        
+                            <li>https://kickseed.example.org</li>
+                        
+                            <li>https://aap.example.org</li>
+                        
+                            <li>https://debian.example.org</li>
+                        
+                            <li>https://debian10.internal.example.org</li>
+                        
+                            <li>https://obs600.example.org</li>
+                        
+                            <li>https://domainresponsemimi.example.org</li>
+                        
+                            <li>https://my.example.org</li>
+                        
+                            <li>https://mydc.example.org</li>
+                        
+                            <li>https://qwmsk.example.org</li>
+                        
+                            <li>https://chat.example.org</li>
+                        
+                            <li>https://mysql.example.org</li>
+                        
+                            <li>https://nick-awesome-unifi.example.org</li>
+                        
+                            <li>https://usersvc.example.org</li>
+                        
+                            <li>https://data.example.org</li>
+                        
+                            <li>https://packages.example.org</li>
+                        
+                            <li>https://server.example.org</li>
+                        
+                            <li>https://dummycert.example.org</li>
+                        
+                            <li>https://localhost.internal.example.org</li>
+                        
+                            <li>https://ebsapps01.example.org</li>
+                        
+                            <li>https://web-0.example.org</li>
+                        
+                            <li>https://cdn.example.org</li>
+                        
+                            <li>https://ebsapp01.example.org</li>
+                        
+                            <li>https://foskifo.example.org</li>
+                        
+                            <li>https://opus3.example.org</li>
+                        
+                            <li>https://whatever.example.org</li>
+                        
+                            <li>https://colin014.example.org</li>
+                        
+                            <li>https://wpad.example.org</li>
+                        
+                            <li>https://1004-lucid-64-minimal.example.org</li>
+                        
+                            <li>https://cs5-minimal.example.org</li>
+                        
+                            <li>https://fmq-tank.example.org</li>
+                        
+                            <li>https://iframe-host.example.org</li>
+                        
+                            <li>https://subdomain.example.org</li>
+                        
+                            <li>https://58649367.example.org</li>
+                        
+                            <li>https://tann.example.org</li>
+                        
+                            <li>https://portal.com.example.org</li>
+                        
+                            <li>https://mokienkov.example.org</li>
+                        
+                            <li>https://blah.example.org</li>
+                        
+                            <li>https://default.server.example.org</li>
+                        
+                            <li>https://noreply.example.org</li>
+                        
+                            <li>https://www.testdomain.example.org</li>
+                        
+                            <li>https://postmaster.example.org</li>
+                        
+                            <li>https://smoke.example.org</li>
+                        
+                            <li>https://ldap2.example.org</li>
+                        
+                            <li>https://176-56-231-229.example.org</li>
+                        
+                            <li>https://27576348.example.org</li>
+                        
+                            <li>https://conference.meet.example.org</li>
+                        
+                            <li>https://dscvpn01.example.org</li>
+                        
+                            <li>https://dummy.example.org</li>
+                        
+                            <li>https://pmg.internal.example.org</li>
+                        
+                            <li>https://portal.example.org</li>
+                        
+                            <li>https://hg.example.org</li>
+                        
+                            <li>https://flyte.example.org</li>
+                        
+                            <li>https://ns2.example.org</li>
+                        
+                            <li>https://repos.example.org</li>
+                        
+                            <li>https://web.example.org</li>
+                        
+                            <li>https://upload.example.org</li>
+                        
+                            <li>https://sample-cert-01.example.org</li>
+                        
+                            <li>https://db2.example.org</li>
+                        
+                            <li>https://where.example.org</li>
+                        
+                            <li>https://27447660.example.org</li>
+                        
+                            <li>https://iloczj2020bfz.example.org</li>
+                        
+                            <li>https://www.git.example.org</li>
+                        
+                            <li>https://ftp.example.org</li>
+                        
+                            <li>https://57843927.example.org</li>
+                        
+                            <li>https://1104-natty-64-minimal.example.org</li>
+                        
+                            <li>https://galaxy.example.org</li>
+                        
+                            <li>https://gitlab.example.org</li>
+                        
+                            <li>https://help.com.example.org</li>
+                        
+                            <li>https://ilocz3346t915.example.org</li>
+                        
+                            <li>https://sub-68-71-173-160.example.org</li>
+                        
+                            <li>https://joe.example.org</li>
+                        
+                            <li>https://s3.com.example.org</li>
+                        
+                            <li>https://odata.example.org</li>
+                        
+                            <li>https://tus.example.org</li>
+                        
+                            <li>https://smpt.example.org</li>
+                        
+                            <li>https://deadlink.example.org</li>
+                        
+                            <li>https://groupseries.internal.example.org</li>
+                        
+                            <li>https://lovetex-6cd4539.internal.example.org</li>
+                        
+                            <li>https://moderated.meet.example.org</li>
+                        
+                            <li>https://hogehoge.example.org</li>
+                        
+                            <li>https://lifestreams.example.org</li>
+                        
+                            <li>https://owlbike.example.org</li>
+                        
+                            <li>https://nas000081.example.org</li>
+                        
+                            <li>https://aws.com.example.org</li>
+                        
+                            <li>https://cf2dev-ctrl1.example.org</li>
+                        
+                            <li>https://cts.example.org</li>
+                        
+                            <li>https://freeside4.example.org</li>
+                        
+                            <li>https://hpia79c98.example.org</li>
+                        
+                            <li>https://test.example.org</li>
+                        
+                            <li>https://v3.com.example.org</li>
+                        
+                            <li>https://cpcontacts.example.org</li>
+                        
+                            <li>https://npi552575.example.org</li>
+                        
+                            <li>https://lf.example.org</li>
+                        
+                            <li>https://ns3.example.org</li>
+                        
+                            <li>https://oparl.example.org</li>
+                        
+                            <li>https://owncloud.example.org</li>
+                        
+                            <li>https://policy.example.org</li>
+                        
+                            <li>https://coap.example.org</li>
+                        
+                            <li>https://oetb.example.org</li>
+                        
+                            <li>https://legalruleml.example.org</li>
+                        
+                            <li>https://preservation.example.org</li>
+                        
+                            <li>https://awan.example.org</li>
+                        
+                            <li>https://helpdesk.example.org</li>
+                        
+                            <li>https://web.com.example.org</li>
+                        
+                            <li>https://bibframe.example.org</li>
+                        
+                            <li>https://books.example.org</li>
+                        
+                            <li>https://qt-bsd.netbsd.example.org</li>
+                        
+                            <li>https://hosty.example.org</li>
+                        
+                            <li>https://cpanel.example.org</li>
+                        
+                            <li>https://ebpacketix.example.org</li>
+                        
+                            <li>https://jenkins.example.org</li>
+                        
+                            <li>https://no.mx.example.org</li>
+                        
+                            <li>https://sql.com.example.org</li>
+                        
+                            <li>https://tenray.internal.example.org</li>
+                        
+                            <li>https://morev.example.org</li>
+                        
+                            <li>https://koha.example.org</li>
+                        
+                            <li>https://endpoint.example.org</li>
+                        
+                            <li>https://st-5013111-jfb1zhna7fede34g64uy-cas01.example.org</li>
+                        
+                            <li>https://haproxy.ad.example.org</li>
+                        
+                            <li>https://ic-glasgow.example.org</li>
+                        
+                            <li>https://ubuntu-1004-lucid-64-minimal.example.org</li>
+                        
+                            <li>https://death.example.org</li>
+                        
+                            <li>https://auth.example.org</li>
+                        
+                            <li>https://go.com.example.org</li>
+                        
+                            <li>https://nextcloud.example.org</li>
+                        
+                            <li>https://board.example.org</li>
+                        
+                            <li>https://cas01.example.org</li>
+                        
+                            <li>https://nichos.example.org</li>
+                        
+                            <li>https://acme.example.org</li>
+                        
+                            <li>https://aap01.example.org</li>
+                        
+                            <li>https://conference.example.org</li>
+                        
+                            <li>https://hp-server-ilo.example.org</li>
+                        
+                            <li>https://postiz.example.org</li>
+                        
+                            <li>https://creatorwww.example.org</li>
+                        
+                            <li>https://versus.example.org</li>
+                        
+                            <li>https://gitlab.k8s.example.org</li>
+                        
+                            <li>https://vpn.example.org</li>
+                        
+                            <li>https://buster.example.org</li>
+                        
+                            <li>https://nero.example.org</li>
+                        
+                            <li>https://caddy-c2.example.org</li>
+                        
+                            <li>https://ilocz22110dqr.example.org</li>
+                        
+                            <li>https://meet.example.org</li>
+                        
+                            <li>https://cpcalendars.example.org</li>
+                        
+                            <li>https://ilocz140901zn.example.org</li>
+                        
+                            <li>https://kibana.example.org</li>
+                        
+                            <li>https://mail1.example.org</li>
+                        
+                            <li>https://admin.example.org</li>
+                        
+                            <li>https://gscout.example.org</li>
+                        
+                            <li>https://nagios.example.org</li>
+                        
+                            <li>https://nethserver.example.org</li>
+                        
+                            <li>https://ns1.example.org</li>
+                        
+                            <li>https://oldcorp.example.org</li>
+                        
+                            <li>https://newvh3m.example.org</li>
+                        
+                            <li>https://focus.example.org</li>
+                        
+                            <li>https://ilouse303t21j.example.org</li>
+                        
+                            <li>https://ldap.example.org</li>
+                        
+                            <li>https://mysite.example.org</li>
+                        
+                            <li>https://lookingglass.example.org</li>
+                        
+                            <li>https://asesmtk.example.org</li>
+                        
+                            <li>https://cns0005234.example.org</li>
+                        
+                            <li>https://remote.com.example.org</li>
+                        
+                            <li>https://en.example.org</li>
+                        
+                            <li>https://app.example.org</li>
+                        
+                            <li>https://home.example.org</li>
+                        
+                            <li>https://studioas.example.org</li>
+                        
+                            <li>https://services.example.org</li>
+                        
+                            <li>https://redirect.example.org</li>
+                        
+                            <li>https://ilouse136n66n.example.org</li>
+                        
+                            <li>https://imap.example.org</li>
+                        
+                            <li>https://dteamusingthedoorrunningonthehostgridftp-door.example.org</li>
+                        
+                            <li>https://1104-natty-32-minimal.example.org</li>
+                        
+                            <li>https://dev.example.org</li>
+                        
+                            <li>https://login.example.org</li>
+                        
+                            <li>https://npi083124.example.org</li>
+                        
+                            <li>https://rhsatellite.example.org</li>
+                        
+                            <li>https://logger.example.org</li>
+                        
+                            <li>https://sensor.example.org</li>
+                        
+                            <li>https://new.example.org</li>
+                        
+                            <li>https://ets.example.org</li>
+                        
+                            <li>https://tbd.example.org</li>
+                        
+                            <li>https://demo.example.org</li>
+                        
+                            <li>https://idp.example.org</li>
+                        
+                            <li>https://mail.com.example.org</li>
+                        
+                            <li>https://webdisk.example.org</li>
+                        
+                            <li>https://app.ubiquitous.example.org</li>
+                        
+                            <li>https://library.example.org</li>
+                        
+                            <li>https://mail.example.org</li>
+                        
+                            <li>https://qnap-219p.example.org</li>
+                        
+                            <li>https://build.example.org</li>
+                        
+                            <li>https://faun.example.org</li>
+                        
+                            <li>https://localhost.example.org</li>
+                        
+                            <li>https://reversdns.example.org</li>
+                        
+                            <li>https://sp.example.org</li>
+                        
+                            <li>https://cipafilter.example.org</li>
+                        
+                            <li>https://com.example.org</li>
+                        
+                            <li>https://preview.com.example.org</li>
+                        
+                            <li>https://private-moinmoin.example.org</li>
+                        
+                            <li>https://dfe.example.org</li>
+                        
+                            <li>https://eduroam-admin.example.org</li>
+                        
+                            <li>https://sep-poly.example.org</li>
+                        
+                            <li>https://brand.example.org</li>
+                        
+                            <li>https://focus.meet.example.org</li>
+                        
+                            <li>https://subdomena.example.org</li>
+                        
+                            <li>https://27576345.example.org</li>
+                        
+                            <li>https://office.example.org</li>
+                        
+                            <li>https://sip.example.org</li>
+                        
+                            <li>https://catalog.example.org</li>
+                        
+                            <li>https://nsmtp.example.org</li>
+                        
+                            <li>https://boot.ns4.example.org</li>
+                        
+                            <li>https://printer.example.org</li>
+                        
+                            <li>https://s2.www.example.org</li>
+                        
+                            <li>https://db.example.org</li>
+                        
+                            <li>https://diaspora.example.org</li>
+                        
+                            <li>https://evil.example.org</li>
+                        
+                            <li>https://info.example.org</li>
+                        
+                            <li>https://default.example.org</li>
+                        
+                            <li>https://autodiscover.example.org</li>
+                        
+                            <li>https://cas.example.org</li>
+                        
+                            <li>https://stoader.example.org</li>
+                        
+                            <li>https://certificationbody.example.org</li>
+                        
+                            <li>https://graphs.example.org</li>
+                        
+                            <li>https://anonymous.example.org</li>
+                        
+                            <li>https://l.example.org</li>
+                        
+                            <li>https://1004-lucid-32-minimal.example.org</li>
+                        
+                            <li>https://fr.example.org</li>
+                        
+                            <li>https://h2c.example.org</li>
+                        
+                            <li>https://nginx-southeast.example.org</li>
+                        
+                            <li>https://vangogh.example.org</li>
+                        
+                            <li>https://snakeoil.example.org</li>
+                        
+                            <li>https://s01.www.example.org</li>
+                        
+                            <li>https://webs01.example.org</li>
+                        
+                            <li>https://dismissed.example.org</li>
+                        
+                            <li>https://220-pmg.internal.example.org</li>
+                        
+                            <li>https://conference.chat.example.org</li>
+                        
+                    </ul>
+                
+            </div>
+        </div>
+
+        <!-- Page 5: Open Ports -->
+        <div class="page" data-page="4">
+            <div class="section">
+                <div class="section-header">
+                    <h2>Open Ports</h2>
+                    <span class="pill">4 entries</span>
+                </div>
+                
+                    <p class="section-meta">Showing all 4 port entries.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Host</th><th>Port</th><th>Service</th></tr>
+                        </thead>
+                        <tbody>
+                            
+                                <tr>
+                                    <td>www.example.org</td>
+                                    <td>80</td>
+                                    <td>http; title=Example Domain; server=cloudflare; status=200</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>www.example.org</td>
+                                    <td>443</td>
+                                    <td>https; title=Example Domain; server=cloudflare; status=200</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>www.example.org</td>
+                                    <td>8080</td>
+                                    <td>http-alt</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>www.example.org</td>
+                                    <td>8443</td>
+                                    <td>pcsync-https</td>
+                                </tr>
+                            
+                        </tbody>
+                    </table>
+                
+            </div>
+        </div>
+
+        <!-- Page 6: Technologies -->
+        <div class="page" data-page="5">
+            <div class="section">
+                <div class="section-header">
+                    <h2>Technologies</h2>
+                    <span class="pill">1 entries</span>
+                </div>
+                
+                    <p class="section-meta">Showing all 1 technology fingerprints.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Host</th><th>Technology</th></tr>
+                        </thead>
+                        <tbody>
+                            
+                                <tr>
+                                    <td>https://www.example.org</td>
+                                    <td>HTTPX: unreachable | Webanalyze: no fingerprint matched</td>
+                                </tr>
+                            
+                        </tbody>
+                    </table>
+                
+            </div>
+        </div>
+
+    </div>
+    <script>
+        const reportData = document.getElementById('report-data');
+        const subdomains = JSON.parse(reportData.dataset.subdomains || '[]');
+        const liveHosts = JSON.parse(reportData.dataset.liveHosts || '[]');
+        const deadHosts = JSON.parse(reportData.dataset.deadHosts || '[]');
+        const ports = JSON.parse(reportData.dataset.ports || '[]');
+        const technologies = JSON.parse(reportData.dataset.technologies || '[]');
+
+        // Pagination state
+        const totalPages = 6;
+        let currentPage = 0;
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const pageNumberSpan = document.getElementById('pageNumber');
+
+        function showPage(pageNum) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show current page
+            const currentPageEl = document.querySelector(`[data-page="${pageNum}"]`);
+            if (currentPageEl) {
+                currentPageEl.classList.add('active');
+            }
+            
+            // Update page number
+            pageNumberSpan.textContent = pageNum + 1;
+            
+            // Update button states
+            prevBtn.disabled = pageNum === 0;
+            nextBtn.disabled = pageNum === totalPages - 1;
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 0) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentPage < totalPages - 1) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' && currentPage > 0) {
+                currentPage--;
+                showPage(currentPage);
+            } else if (e.key === 'ArrowRight' && currentPage < totalPages - 1) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        });
+
+        // Initialize
+        showPage(0);
+
+        function buildExecutiveSummaryExport() {
+
+            const renderList = (items, title) => {
+                if (!items || !items.length) {
+                    return '<div style="padding:14px;border:1px dashed #334155;border-radius:10px;color:#a9b9d1;">No ' + title.toLowerCase() + ' recorded.</div>';
+                }
+                return '<ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;">'
+                    + items.slice(0, 30).map((item) => '<li style="background:rgba(15,23,42,0.9);border:1px solid rgba(148,163,184,0.28);border-radius:10px;padding:10px 12px;color:#e5eefc;word-break:break-word;">' + item + '</li>').join('')
+                    + '</ul>';
+            };
+
+            const renderPortTable = () => {
+                if (!ports || !ports.length) {
+                    return '<div style="padding:14px;border:1px dashed #334155;border-radius:10px;color:#a9b9d1;">No open ports found.</div>';
+                }
+                return '<table style="width:100%;border-collapse:collapse;background:rgba(15,23,42,0.75);border:1px solid rgba(148,163,184,0.28);">'
+                    + '<thead><tr><th style="text-align:left;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#a9b9d1;text-transform:uppercase;letter-spacing:0.08em;">Host</th><th style="text-align:left;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#a9b9d1;text-transform:uppercase;letter-spacing:0.08em;">Port</th><th style="text-align:left;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#a9b9d1;text-transform:uppercase;letter-spacing:0.08em;">Service</th></tr></thead>'
+                    + '<tbody>'
+                    + ports.slice(0, 30).map((item) => '<tr><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.host || 'unknown') + '</td><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.port || 'unknown') + '</td><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.service || 'unknown') + '</td></tr>').join('')
+                    + '</tbody></table>';
+            };
+
+            const renderTechnologyTable = () => {
+                if (!technologies || !technologies.length) {
+                    return '<div style="padding:14px;border:1px dashed #334155;border-radius:10px;color:#a9b9d1;">No technology fingerprints detected.</div>';
+                }
+                return '<table style="width:100%;border-collapse:collapse;background:rgba(15,23,42,0.75);border:1px solid rgba(148,163,184,0.28);">'
+                    + '<thead><tr><th style="text-align:left;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#a9b9d1;text-transform:uppercase;letter-spacing:0.08em;">Host</th><th style="text-align:left;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#a9b9d1;text-transform:uppercase;letter-spacing:0.08em;">Technology</th></tr></thead>'
+                    + '<tbody>'
+                    + technologies.slice(0, 30).map((item) => '<tr><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.host || 'unknown') + '</td><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.technology || 'unknown') + '</td></tr>').join('')
+                    + '</tbody></table>';
+            };
+
+            return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>example.org Executive Summary</title>
+  <style>
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: linear-gradient(180deg, #f3f7fb 0%, #eaf2ff 100%); color: #12263f; }
+    .container { max-width: 1200px; margin: 32px auto; padding: 0 20px 40px; }
+    .header { background: rgba(255,255,255,0.95); border:1px solid #dfeaf7; border-radius:20px; padding:24px 28px; box-shadow: 0 14px 32px rgba(15,23,42,0.08); }
+    .title { margin: 0; font-size: clamp(2rem, 3vw, 2.5rem); letter-spacing: -0.04em; }
+    .badge { display:inline-block; margin-top:16px; background: #eaf4ff; border:1px solid #bfd4ef; color:#0d5ec9; padding:8px 12px; border-radius:999px; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.06em; font-weight:700; }
+    .stats { display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-top: 24px; }
+    .stat { background: rgba(255,255,255,0.96); border:1px solid #dfeaf7; border-radius:16px; padding:18px; }
+    .label { display:block; font-size:0.7rem; color:#5e738d; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px; }
+    .value { font-size: clamp(1.7rem, 2vw, 2.4rem); font-weight:800; }
+    .section { background: rgba(255,255,255,0.96); border:1px solid #dfeaf7; border-radius:18px; padding:20px; margin-top:24px; box-shadow: 0 14px 32px rgba(15,23,42,0.08); }
+    h2 { margin:0 0 12px; font-size:1.35rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">example.org Executive Summary</h1>
+      <div class="badge">Asset Discovery Overview</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><span class="label">Subdomains</span><span class="value">` + subdomains.length + `</span></div>
+      <div class="stat"><span class="label">Live Hosts</span><span class="value">` + liveHosts.length + `</span></div>
+      <div class="stat"><span class="label">Dead Hosts</span><span class="value">` + deadHosts.length + `</span></div>
+      <div class="stat"><span class="label">Open Ports</span><span class="value">` + ports.length + `</span></div>
+      <div class="stat"><span class="label">Technologies</span><span class="value">` + technologies.length + `</span></div>
+    </div>
+
+    <div class="section">
+      <h2>Subdomains</h2>
+      ` + renderList(subdomains, 'Subdomains') + `
+    </div>
+
+    <div class="section">
+      <h2>Live Hosts</h2>
+      ` + renderList(liveHosts, 'Live Hosts') + `
+    </div>
+
+    <div class="section">
+      <h2>Dead Hosts</h2>
+      ` + renderList(deadHosts, 'Dead Hosts') + `
+    </div>
+
+    <div class="section">
+      <h2>Open Ports</h2>
+      ` + renderPortTable() + `
+    </div>
+
+    <div class="section">
+      <h2>Technologies</h2>
+      ` + renderTechnologyTable() + `
+    </div>
+  </div>
+</body>
+</html>`;
+        }
+
+        const downloadBtn = document.getElementById('downloadReportBtn');
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', function () {
+                const html = buildExecutiveSummaryExport();
+                const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const anchor = document.createElement('a');
+                anchor.href = url;
+                anchor.download = 'example.org-executive-summary.html';
+                document.body.appendChild(anchor);
+                anchor.click();
+                anchor.remove();
+                URL.revokeObjectURL(url);
+            });
+        }
+    </script>
+</body>
+</html>

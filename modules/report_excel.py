@@ -45,6 +45,7 @@ def generate_excel_report(
     live_hosts: list[str],
     *args,
     config: dict[str, Any] | None = None,
+    dmarc: list[dict[str, str]] | None = None,
 ) -> Path:
     dead_hosts: list[str] = []
     ports: list[dict[str, str]] = []
@@ -69,6 +70,9 @@ def generate_excel_report(
     if config is None:
         config = {}
 
+    if dmarc is None:
+        dmarc = []
+
     report_cfg = config.get("reports", {}) if isinstance(config, dict) else {}
     output_path = Path(report_cfg.get("excel", "reports/report.xlsx"))
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -80,6 +84,8 @@ def generate_excel_report(
         ["Dead Hosts", len(dead_hosts)],
         ["Open Ports", len(ports)],
         ["Technologies Detected", len(technologies)],
+        ["DMARC Hosts", sum(1 for item in dmarc if item.get("status") in {"configured", "inherited"})],
+        ["DMARC Missing", sum(1 for item in dmarc if item.get("status") == "missing")],
         ["Scan Date", datetime.now().strftime("%d-%m-%Y")],
     ]
     summary = pd.DataFrame(summary_rows, columns=["Metric", "Count"])
@@ -99,6 +105,24 @@ def generate_excel_report(
             normalized_technologies.append({
                 "host": item.get("host", "unknown"),
                 "technology": item.get("technology", "unknown"),
+            })
+
+    normalized_dmarc = []
+    for item in dmarc:
+        if isinstance(item, dict):
+            normalized_dmarc.append({
+                "Host": item.get("host", "unknown"),
+                "Status": (item.get("status") or "unknown").upper(),
+                "Policy": (item.get("policy") or "none").upper(),
+                "Policy Type": "MONITORING" if (item.get("policy") or "none").lower() == "none" else "ENFORCEMENT" if (item.get("policy") or "none").lower() in {"quarantine", "reject"} else "UNKNOWN",
+                "Source": item.get("source_domain") or item.get("source") or "NONE",
+                "Source Type": (item.get("source_type") or "none").upper(),
+                "Policy Source": (
+                    f"{(item.get('source_type') or 'none').upper()} {(item.get('policy_source') or 'none').upper()}"
+                    if (item.get("source_type") or "none") not in {"none", ""} and (item.get("policy_source") or "none") not in {"none", ""}
+                    else "NONE"
+                ),
+                "Record": item.get("dmarc_record") or "NONE",
             })
 
     subdomain_df = pd.DataFrame({"Sr No": range(1, len(subdomains) + 1), "Subdomain": subdomains}) if subdomains else pd.DataFrame(columns=["Sr No", "Subdomain"])
@@ -124,12 +148,15 @@ def generate_excel_report(
         ]
     ) if normalized_technologies else pd.DataFrame(columns=["Host", "Technology", "Version"])
 
+    dmarc_df = pd.DataFrame(normalized_dmarc) if normalized_dmarc else pd.DataFrame(columns=["Host", "Status", "Policy", "Policy Type", "Source", "Source Type", "Policy Source", "Record"])
+
     with pd.ExcelWriter(output_path, engine="openpyxl") as writer:
         summary.to_excel(writer, sheet_name="Summary", index=False)
         subdomain_df.to_excel(writer, sheet_name="Subdomains", index=False)
         live_host_df.to_excel(writer, sheet_name="Live Hosts", index=False)
         port_df.to_excel(writer, sheet_name="Open Ports", index=False)
         technology_df.to_excel(writer, sheet_name="Technologies", index=False)
+        dmarc_df.to_excel(writer, sheet_name="DMARC", index=False)
 
     workbook = load_workbook(output_path)
     header_fill = PatternFill("solid", fgColor="1F4E78")

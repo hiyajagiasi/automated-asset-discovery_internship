@@ -1,5 +1,4 @@
-https://wildcard.pha.org.pk
-https://webmail.pha.org.pk
-https://mail2.pha.org.pk
-https://mail.pha.org.pk
-http://www.pha.org.pk
+http://www.www.tmail.pk
+http://www.tmail.pk
+http://mail.www.tmail.pk
+http://login.www.tmail.pk

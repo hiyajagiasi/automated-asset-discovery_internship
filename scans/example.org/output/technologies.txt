@@ -1,0 +1,5 @@
+Technology Findings
+===================
+
+- https://www.example.org
+  HTTPX: unreachable | Webanalyze: no fingerprint matched

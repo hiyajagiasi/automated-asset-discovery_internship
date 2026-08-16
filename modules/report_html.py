@@ -355,6 +355,7 @@ DEFAULT_TEMPLATE = """
          data-dead-hosts='{{ dead_hosts|tojson|safe }}'
          data-ports='{{ ports|tojson|safe }}'
          data-technologies='{{ technologies|tojson|safe }}'
+         data-dmarc='{{ dmarc|tojson|safe }}'
          style="display:none;"></div>
     <div class="container">
         <div class="header">
@@ -376,6 +377,7 @@ DEFAULT_TEMPLATE = """
                             <button class="filter-option" data-filter="dead-hosts" type="button">Dead Hosts</button>
                             <button class="filter-option" data-filter="open-ports" type="button">Open Ports</button>
                             <button class="filter-option" data-filter="technologies" type="button">Technologies</button>
+                            <button class="filter-option" data-filter="dmarc" type="button">DMARC</button>
                         </div>
                     </div>
                     <button class="download-btn" id="downloadReportBtn" type="button">Download HTML</button>
@@ -395,12 +397,12 @@ DEFAULT_TEMPLATE = """
                 </button>
             </div>
             <div class="page-indicator">
-                <span id="pageNumber">1</span> of <span id="pageTotal">6</span>
+                <span id="pageNumber">1</span> of <span id="pageTotal">7</span>
             </div>
         </div>
 
         <!-- Page 1: Summary -->
-        <div class="page active" data-page="0">
+        <div class="page active" data-page="0" data-section="summary">
             <div class="stats">
                 <div class="stat"><span class="label">Subdomains</span><span class="value">{{ subdomains|length }}</span></div>
                 <div class="stat"><span class="label">Live Hosts</span><span class="value">{{ live_hosts|length }}</span></div>
@@ -527,6 +529,40 @@ DEFAULT_TEMPLATE = """
             </div>
         </div>
 
+        <!-- Page 7: DMARC -->
+        <div class="page" data-page="6" data-section="dmarc">
+            <div class="section">
+                <div class="section-header">
+                    <h2>DMARC</h2>
+                    <span class="pill">{{ dmarc|length }} entries</span>
+                </div>
+                {% if dmarc %}
+                    <p class="section-meta">Showing DMARC findings for the discovered hosts.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Host</th><th>Status</th><th>Policy</th><th>Policy Type</th><th>Source</th><th>Source Type</th><th>Policy Source</th><th>Record</th></tr>
+                        </thead>
+                        <tbody>
+                            {% for item in dmarc %}
+                                <tr>
+                                    <td>{{ item.get('host', 'unknown') }}</td>
+                                    <td>{{ (item.get('status') or 'unknown')|upper }}</td>
+                                    <td>{{ (item.get('policy') or 'none')|upper }}</td>
+                                    <td>{{ ((item.get('policy') or 'none')|lower in ['quarantine','reject'] and 'ENFORCEMENT' or (item.get('policy') or 'none')|lower == 'none' and 'MONITORING' or 'UNKNOWN') }}</td>
+                                    <td>{{ item.get('source_domain') or item.get('source') or 'NONE' }}</td>
+                                    <td>{{ (item.get('source_type') or 'none')|upper }}</td>
+                                    <td>{{ ((item.get('source_type') or 'none')|upper + ' ' + ((item.get('policy_source') or 'none')|upper)) if (item.get('source_type') or 'none') != 'none' and (item.get('policy_source') or 'none') != 'none' else 'NONE' }}</td>
+                                    <td>{{ item.get('dmarc_record') or 'NONE' }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <div class="empty">No DMARC findings recorded.</div>
+                {% endif %}
+            </div>
+        </div>
+
     </div>
     <script>
         const reportData = document.getElementById('report-data');
@@ -535,9 +571,10 @@ DEFAULT_TEMPLATE = """
         const deadHosts = JSON.parse(reportData.dataset.deadHosts || '[]');
         const ports = JSON.parse(reportData.dataset.ports || '[]');
         const technologies = JSON.parse(reportData.dataset.technologies || '[]');
+        const dmarc = JSON.parse(reportData.dataset.dmarc || '[]');
 
         // Pagination state
-        const totalPages = 6;
+        const totalPages = 7;
         let currentPage = 0;
 
         const prevBtn = document.getElementById('prevBtn');
@@ -605,10 +642,25 @@ DEFAULT_TEMPLATE = """
             option.addEventListener('click', function () {
                 const selectedFilter = this.dataset.filter;
                 filterOptions.forEach((item) => item.classList.toggle('active', item === this));
-                document.querySelectorAll('.page[data-section]').forEach((page) => {
-                    const showPage = selectedFilter === 'all' || page.dataset.section === selectedFilter;
-                    page.classList.toggle('hidden-section', !showPage);
-                });
+
+                if (selectedFilter === 'all') {
+                    document.querySelectorAll('.page').forEach((page) => {
+                        page.classList.remove('hidden-section');
+                    });
+                    currentPage = 0;
+                    showPage(currentPage);
+                } else {
+                    const targetPage = document.querySelector(`.page[data-section="${selectedFilter}"]`);
+                    document.querySelectorAll('.page').forEach((page) => {
+                        const shouldShow = page.dataset.section === selectedFilter;
+                        page.classList.toggle('hidden-section', !shouldShow);
+                    });
+                    if (targetPage) {
+                        currentPage = Number(targetPage.dataset.page);
+                        showPage(currentPage);
+                    }
+                }
+
                 filterMenu.classList.add('hidden');
                 filterToggleBtn.setAttribute('aria-expanded', 'false');
             });
@@ -742,6 +794,7 @@ def generate_html_report(
     live_hosts: list[str],
     *args,
     config: dict[str, Any] | None = None,
+    dmarc: list[dict[str, str]] | None = None,
 ) -> Path:
     dead_hosts: list[str] = []
     ports: list[dict[str, str]] = []
@@ -766,6 +819,9 @@ def generate_html_report(
     if config is None:
         config = {}
 
+    if dmarc is None:
+        dmarc = []
+
     template_path = base_dir / "templates" / "report.html"
     output_path = Path(config.get("reports", {}).get("html", "reports/report.html"))
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -784,6 +840,7 @@ def generate_html_report(
         dead_hosts=dead_hosts,
         ports=ports,
         technologies=technologies,
+        dmarc=dmarc,
     )
     output_path.write_text(rendered, encoding="utf-8")
     return output_path

@@ -1,0 +1,49 @@
+DMARC SECURITY FINDINGS
+=======================
+Total Hosts Checked : 4
+Organizational Domain : www.tmail.pk
+Hosts with DMARC    : 0
+Hosts without DMARC : 4
+------------------------------------------------------------
+
+[LOW] DMARC Policy Missing
+Host        : www.www.tmail.pk
+Status      : MISSING
+Policy      : NONE
+Source      : NONE
+Record      : NONE
+Description : No DMARC record was found for this host or the organizational domain www.tmail.pk.
+------------------------------------------------------------
+
+[LOW] DMARC Policy Missing
+Host        : www.tmail.pk
+Status      : MISSING
+Policy      : NONE
+Source      : NONE
+Record      : NONE
+Description : No DMARC record was found for this host or the organizational domain www.tmail.pk.
+------------------------------------------------------------
+
+[LOW] DMARC Policy Missing
+Host        : mail.www.tmail.pk
+Status      : MISSING
+Policy      : NONE
+Source      : NONE
+Record      : NONE
+Description : No DMARC record was found for this host or the organizational domain www.tmail.pk.
+------------------------------------------------------------
+
+[LOW] DMARC Policy Missing
+Host        : login.www.tmail.pk
+Status      : MISSING
+Policy      : NONE
+Source      : NONE
+Record      : NONE
+Description : No DMARC record was found for this host or the organizational domain www.tmail.pk.
+------------------------------------------------------------
+
+RECOMMENDATION
+--------------
+No DMARC record was found for the organizational domain www.tmail.pk.
+Consider publishing a DMARC TXT record at:
+_dmarc.www.tmail.pk

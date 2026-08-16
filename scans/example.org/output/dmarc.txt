@@ -1,0 +1,18 @@
+DMARC SECURITY FINDINGS
+=======================
+Total Hosts Checked : 1
+Organizational Domain : example.org
+Hosts with DMARC    : 1
+Hosts without DMARC : 0
+------------------------------------------------------------
+
+[INFO] DMARC Policy Present
+Host        : www.example.org
+Status      : INHERITED
+Policy      : REJECT
+Source      : example.org
+Source Type : ORGANIZATIONAL
+Policy Source: SP
+Record      : v=DMARC1;p=reject;sp=reject;adkim=s;aspf=s
+Description : DMARC policy is applied from the configured or inherited record for example.org.
+------------------------------------------------------------

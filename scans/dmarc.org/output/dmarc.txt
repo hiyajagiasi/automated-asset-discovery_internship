@@ -1,0 +1,60 @@
+DMARC SECURITY FINDINGS
+=======================
+Total Hosts Checked : 4
+Organizational Domain : dmarc.org
+Hosts with DMARC    : 4
+Hosts without DMARC : 0
+------------------------------------------------------------
+
+[INFO] DMARC Policy Present
+Host        : www.dmarc.org
+Status      : INHERITED
+Policy      : NONE
+Policy Type : MONITORING
+Source      : dmarc.org
+Source Type : ORGANIZATIONAL
+Policy Source: ORGANIZATIONAL P
+Record      : v=DMARC1; p=none; pct=100; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org
+Assessment  : DMARC is configured, but the policy is set to NONE. The domain is monitoring DMARC failures without requesting quarantine or rejection.
+------------------------------------------------------------
+
+[INFO] DMARC Policy Present
+Host        : stamp.dmarc.org
+Status      : INHERITED
+Policy      : NONE
+Policy Type : MONITORING
+Source      : dmarc.org
+Source Type : ORGANIZATIONAL
+Policy Source: ORGANIZATIONAL P
+Record      : v=DMARC1; p=none; pct=100; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org
+Assessment  : DMARC is configured, but the policy is set to NONE. The domain is monitoring DMARC failures without requesting quarantine or rejection.
+------------------------------------------------------------
+
+[INFO] DMARC Policy Present
+Host        : wiki.dmarc.org
+Status      : INHERITED
+Policy      : NONE
+Policy Type : MONITORING
+Source      : dmarc.org
+Source Type : ORGANIZATIONAL
+Policy Source: ORGANIZATIONAL P
+Record      : v=DMARC1; p=none; pct=100; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org
+Assessment  : DMARC is configured, but the policy is set to NONE. The domain is monitoring DMARC failures without requesting quarantine or rejection.
+------------------------------------------------------------
+
+[INFO] DMARC Policy Present
+Host        : lists.dmarc.org
+Status      : INHERITED
+Policy      : NONE
+Policy Type : MONITORING
+Source      : dmarc.org
+Source Type : ORGANIZATIONAL
+Policy Source: ORGANIZATIONAL P
+Record      : v=DMARC1; p=none; pct=100; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org
+Assessment  : DMARC is configured, but the policy is set to NONE. The domain is monitoring DMARC failures without requesting quarantine or rejection.
+------------------------------------------------------------
+
+RECOMMENDATION
+--------------
+DMARC is configured for the organizational domain dmarc.org.
+Subdomains without their own DMARC record inherit the organizational-domain policy.

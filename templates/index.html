@@ -3,245 +3,1453 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Asset Discovery</title>
+
     <style>
         :root {
-            --bg: #07111f;
-            --panel: rgba(15, 23, 42, 0.82);
-            --panel-strong: #111827;
-            --border: rgba(148, 163, 184, 0.28);
-            --text: #e5eefc;
-            --muted: #a9b9d1;
-            --accent: #5eead4;
-            --accent-2: #7dd3fc;
+            --bg: #050914;
+            --bg-soft: #0a1020;
+            --panel: rgba(13, 20, 36, 0.82);
+            --panel-solid: #0d1424;
+
+            --border: rgba(148, 163, 184, 0.14);
+            --border-strong: rgba(148, 163, 184, 0.24);
+
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --muted-light: #cbd5e1;
+
+            --primary: #38bdf8;
+            --primary-dark: #0284c7;
+            --cyan: #22d3ee;
+            --green: #34d399;
+            --red: #fb7185;
+            --yellow: #fbbf24;
+
+            --shadow:
+                0 25px 70px rgba(0, 0, 0, 0.45),
+                0 0 0 1px rgba(255, 255, 255, 0.02);
+
+            --radius: 18px;
         }
-        * { box-sizing: border-box; }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             min-height: 100vh;
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            color: var(--text);
+
+            background:
+                radial-gradient(
+                    circle at 20% 10%,
+                    rgba(14, 165, 233, 0.12),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(34, 211, 238, 0.08),
+                    transparent 25%
+                ),
+                linear-gradient(
+                    180deg,
+                    #050914 0%,
+                    #07101f 55%,
+                    #050914 100%
+                );
+        }
+
+        /* ---------------------------------------
+           Background grid
+        --------------------------------------- */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+
+            pointer-events: none;
+
+            background-image:
+                linear-gradient(
+                    rgba(148, 163, 184, 0.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(148, 163, 184, 0.035) 1px,
+                    transparent 1px
+                );
+
+            background-size: 42px 42px;
+
+            mask-image: linear-gradient(
+                to bottom,
+                black,
+                transparent 80%
+            );
+        }
+
+        /* ---------------------------------------
+           App
+        --------------------------------------- */
+
+        .app {
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 34px 0 70px;
+        }
+
+        /* ---------------------------------------
+           Header
+        --------------------------------------- */
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 42px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+
             display: grid;
             place-items: center;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: linear-gradient(180deg, #07111f 0%, #0f172a 100%);
-            color: var(--text);
-        }
-        .card {
-            width: min(760px, calc(100% - 32px));
-            background: var(--panel);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 28px;
-            box-shadow: 0 18px 40px rgba(2, 6, 23, 0.45);
-        }
-        h1 {
-            margin: 0 0 10px;
-            font-size: clamp(2rem, 3vw, 2.8rem);
-            letter-spacing: -0.04em;
-        }
-        p {
-            margin: 0 0 22px;
-            color: var(--muted);
-            line-height: 1.6;
-        }
-        form {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        input {
-            flex: 1 1 420px;
-            min-height: 52px;
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid var(--border);
+
             border-radius: 12px;
-            color: var(--text);
-            padding: 0 16px;
-            font-size: 1rem;
-        }
-        button {
-            min-height: 52px;
-            padding: 0 22px;
-            border: none;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-2));
-            color: #06131e;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(56, 189, 248, 0.22),
+                    rgba(34, 211, 238, 0.08)
+                );
+
+            border: 1px solid rgba(56, 189, 248, 0.28);
+
+            color: var(--primary);
+
+            font-size: 19px;
             font-weight: 800;
-            cursor: pointer;
         }
-        .cancel-btn {
-            background: linear-gradient(135deg, #fda4af, #f43f5e);
-            color: #fff;
+
+        .brand-name {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
         }
-        .error {
-            margin-top: 14px;
-            padding: 12px 14px;
-            border-radius: 10px;
-            background: rgba(248, 113, 113, 0.08);
-            border: 1px solid rgba(248, 113, 113, 0.35);
-            color: #fecaca;
-        }
-        .status {
-            margin-top: 18px;
-            padding: 16px;
-            border-radius: 12px;
-            background: rgba(15, 23, 42, 0.72);
-            border: 1px solid var(--border);
-        }
-        .status-title {
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        .status-list {
-            margin: 0;
-            padding-left: 18px;
+
+        .brand-subtitle {
+            margin-top: 2px;
+
+            font-size: 12px;
             color: var(--muted);
         }
-        .status-list li {
-            margin-bottom: 6px;
+
+        .system-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 8px 12px;
+
+            border-radius: 999px;
+
+            background: rgba(52, 211, 153, 0.06);
+            border: 1px solid rgba(52, 211, 153, 0.16);
+
+            color: #a7f3d0;
+
+            font-size: 12px;
+            font-weight: 700;
         }
-        .link-row {
-            margin-top: 12px;
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: var(--green);
+
+            box-shadow:
+                0 0 0 4px rgba(52, 211, 153, 0.08),
+                0 0 12px rgba(52, 211, 153, 0.7);
+        }
+
+        /* ---------------------------------------
+           Hero
+        --------------------------------------- */
+
+        .hero {
+            text-align: center;
+
+            max-width: 800px;
+
+            margin: 0 auto 36px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            padding: 7px 12px;
+
+            border-radius: 999px;
+
+            background: rgba(56, 189, 248, 0.07);
+            border: 1px solid rgba(56, 189, 248, 0.17);
+
+            color: #7dd3fc;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: var(--primary);
+        }
+
+        .hero h1 {
+            margin: 20px 0 14px;
+
+            font-size: clamp(
+                2.6rem,
+                6vw,
+                4.8rem
+            );
+
+            line-height: 0.98;
+
+            letter-spacing: -0.065em;
+        }
+
+        .hero h1 span {
+            background:
+                linear-gradient(
+                    135deg,
+                    #f8fafc 20%,
+                    #7dd3fc 70%,
+                    #22d3ee
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 650px;
+
+            margin: 0 auto;
+
+            color: var(--muted);
+
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* ---------------------------------------
+           Scan Card
+        --------------------------------------- */
+
+        .scan-card {
+            position: relative;
+
+            padding: 26px;
+
+            border-radius: var(--radius);
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(15, 23, 42, 0.9),
+                    rgba(8, 15, 29, 0.94)
+                );
+
+            border: 1px solid var(--border-strong);
+
+            box-shadow: var(--shadow);
+
+            overflow: hidden;
+        }
+
+        .scan-card::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+            right: 0;
+
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(56, 189, 248, 0.7),
+                    transparent
+                );
+        }
+
+        .scan-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 20px;
+        }
+
+        .scan-card-title {
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .scan-card-description {
+            margin-top: 4px;
+
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .scan-badge {
+            padding: 6px 10px;
+
+            border-radius: 8px;
+
+            background: rgba(148, 163, 184, 0.07);
+            border: 1px solid var(--border);
+
+            color: var(--muted-light);
+
+            font-size: 10px;
+            font-weight: 800;
+
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* ---------------------------------------
+           Input
+        --------------------------------------- */
+
+        .scan-form {
             display: flex;
             gap: 10px;
-            flex-wrap: wrap;
         }
-        .link-btn {
-            display: inline-block;
-            padding: 10px 14px;
-            border-radius: 999px;
+
+        .input-wrapper {
+            position: relative;
+            flex: 1;
+        }
+
+        .input-icon {
+            position: absolute;
+
+            left: 16px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: var(--muted);
+
+            font-size: 15px;
+        }
+
+        input {
+            width: 100%;
+            height: 56px;
+
+            padding: 0 18px 0 44px;
+
+            border-radius: 13px;
+
+            border: 1px solid var(--border-strong);
+
+            outline: none;
+
+            background: rgba(2, 6, 23, 0.72);
+
             color: var(--text);
-            background: rgba(94, 234, 212, 0.14);
-            border: 1px solid rgba(94, 234, 212, 0.35);
-            text-decoration: none;
-            font-weight: 700;
+
+            font-size: 14px;
+
+            transition:
+                border-color 0.2s,
+                box-shadow 0.2s,
+                background 0.2s;
         }
+
+        input::placeholder {
+            color: #64748b;
+        }
+
+        input:focus {
+            border-color: rgba(56, 189, 248, 0.55);
+
+            background: rgba(2, 6, 23, 0.9);
+
+            box-shadow:
+                0 0 0 4px rgba(56, 189, 248, 0.08);
+        }
+
+        .scan-btn {
+            height: 56px;
+
+            padding: 0 24px;
+
+            border: none;
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #38bdf8,
+                    #06b6d4
+                );
+
+            color: #03111d;
+
+            font-size: 13px;
+            font-weight: 900;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 25px rgba(6, 182, 212, 0.18);
+
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s;
+        }
+
+        .scan-btn:hover {
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 14px 30px rgba(6, 182, 212, 0.25);
+        }
+
+        .scan-btn:active {
+            transform: translateY(0);
+        }
+
+        .cancel-btn {
+            height: 56px;
+
+            padding: 0 20px;
+
+            border: 1px solid rgba(251, 113, 133, 0.3);
+            border-radius: 13px;
+
+            background: rgba(251, 113, 133, 0.08);
+
+            color: #fda4af;
+
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+        /* ---------------------------------------
+           Error
+        --------------------------------------- */
+
+        .error {
+            margin-top: 14px;
+
+            padding: 13px 15px;
+
+            border-radius: 11px;
+
+            background: rgba(248, 113, 113, 0.07);
+
+            border: 1px solid rgba(248, 113, 113, 0.22);
+
+            color: #fecaca;
+
+            font-size: 13px;
+        }
+
+        /* ---------------------------------------
+           Scan Status
+        --------------------------------------- */
+
+        .status {
+            margin-top: 22px;
+
+            border-top: 1px solid var(--border);
+
+            padding-top: 24px;
+        }
+
+        .status-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 16px;
+
+            margin-bottom: 18px;
+        }
+
+        .status-target {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .scanning-indicator {
+            width: 10px;
+            height: 10px;
+
+            border-radius: 50%;
+
+            background: var(--primary);
+
+            box-shadow:
+                0 0 0 5px rgba(56, 189, 248, 0.08),
+                0 0 18px rgba(56, 189, 248, 0.7);
+
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.45;
+                transform: scale(0.8);
+            }
+        }
+
+        .status-title {
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .status-subtitle {
+            margin-top: 3px;
+
+            color: var(--muted);
+
+            font-size: 11px;
+        }
+
+        /* ---------------------------------------
+           Timeline
+        --------------------------------------- */
+
+        .status-list {
+            list-style: none;
+
+            margin: 0;
+            padding: 0;
+
+            display: grid;
+
+            gap: 8px;
+
+            max-height: 260px;
+
+            overflow-y: auto;
+        }
+
+        .status-list li {
+            position: relative;
+
+            padding: 11px 13px 11px 35px;
+
+            border-radius: 10px;
+
+            background: rgba(148, 163, 184, 0.035);
+
+            border: 1px solid rgba(148, 163, 184, 0.07);
+
+            color: var(--muted-light);
+
+            font-size: 12px;
+
+            line-height: 1.45;
+        }
+
+        .status-list li::before {
+            content: "";
+
+            position: absolute;
+
+            left: 14px;
+            top: 16px;
+
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: var(--primary);
+        }
+
+        .status-list li:first-child::before {
+            box-shadow:
+                0 0 10px rgba(56, 189, 248, 0.7);
+        }
+
+        /* ---------------------------------------
+           Reports
+        --------------------------------------- */
+
+        .reports {
+            margin-top: 24px;
+        }
+
+        .reports-title {
+            margin-bottom: 12px;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .report-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 12px;
+        }
+
+        .report-card {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding: 16px;
+
+            border-radius: 13px;
+
+            background: rgba(148, 163, 184, 0.035);
+
+            border: 1px solid var(--border);
+
+            text-decoration: none;
+
+            transition:
+                border-color 0.2s,
+                background 0.2s,
+                transform 0.2s;
+        }
+
+        .report-card:hover {
+            transform: translateY(-2px);
+
+            background: rgba(148, 163, 184, 0.06);
+
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .report-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .report-icon {
+            width: 40px;
+            height: 40px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 10px;
+
+            background: rgba(56, 189, 248, 0.08);
+
+            color: var(--primary);
+
+            font-size: 14px;
+            font-weight: 900;
+        }
+
+        .report-name {
+            color: var(--text);
+
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .report-description {
+            margin-top: 3px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+        }
+
+        .report-arrow {
+            color: var(--muted);
+
+            font-size: 18px;
+        }
+
+        /* ---------------------------------------
+           Footer
+        --------------------------------------- */
+
+        .footer {
+            margin-top: 26px;
+
+            display: flex;
+            justify-content: space-between;
+
+            color: #64748b;
+
+            font-size: 11px;
+        }
+
+        /* ---------------------------------------
+           Utilities
+        --------------------------------------- */
+
         .hidden {
-            display: none;
+            display: none !important;
+        }
+
+        /* ---------------------------------------
+           Responsive
+        --------------------------------------- */
+
+        @media (max-width: 720px) {
+
+            .app {
+                width: min(100% - 24px, 680px);
+
+                padding-top: 20px;
+            }
+
+            .topbar {
+                margin-bottom: 30px;
+            }
+
+            .system-status {
+                display: none;
+            }
+
+            .hero {
+                text-align: left;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .scan-form {
+                flex-direction: column;
+            }
+
+            .scan-btn,
+            .cancel-btn {
+                width: 100%;
+            }
+
+            .report-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer {
+                flex-direction: column;
+                gap: 6px;
+            }
+        }
+
+        @media (max-width: 460px) {
+
+            .scan-card {
+                padding: 18px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 13px;
+            }
+
+            .scan-card-header {
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="card">
-        <h1>Asset Discovery</h1>
-        <p>Paste the target URL or domain to run the backend reconnaissance pipeline and generate the full executive report with all subdomains, live hosts, dead hosts, ports, and technologies.</p>
 
-        <form id="scan-form" method="post" action="/scan">
-            <input id="target-input" type="text" name="target" placeholder="Enter a URL or domain" autocomplete="off" spellcheck="false" required />
-            <button type="submit">Generate Report</button>
-            <button type="button" class="cancel-btn hidden" id="cancel-scan-btn">Cancel scan</button>
-        </form>
+<div class="app">
 
-        {% if error %}
-            <div class="error" id="form-error">{{ error }}</div>
-        {% endif %}
+    <!-- =====================================
+         HEADER
+    ====================================== -->
 
-        {% if scan_started %}
-            <div class="status" id="status-panel" data-scan-id="{{ scan_id }}">
-                <div class="status-title">Scan in progress for {{ target }}</div>
-                <ul class="status-list" id="status-list">
-                    <li>Starting reconnaissance…</li>
-                </ul>
-                <div class="link-row hidden" id="report-links">
-                    <a class="link-btn" id="html-link" href="/download/report.html">Open HTML report</a>
-                    <a class="link-btn" id="excel-link" href="/download/report.xlsx">Open Excel report</a>
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                AD
+            </div>
+
+            <div>
+                <div class="brand-name">
+                    Asset Discovery
+                </div>
+
+                <div class="brand-subtitle">
+                    Reconnaissance & Exposure Intelligence
                 </div>
             </div>
+
+        </div>
+
+        <div class="system-status">
+            <span class="status-dot"></span>
+            Scanner Ready
+        </div>
+
+    </header>
+
+
+    <!-- =====================================
+         HERO
+    ====================================== -->
+
+    <section class="hero">
+
+        <div class="eyebrow">
+            Automated Reconnaissance
+        </div>
+
+        <h1>
+            Discover your
+            <span>attack surface.</span>
+        </h1>
+
+        <p>
+            Map subdomains, identify live hosts, discover open ports,
+            fingerprint technologies, and generate a complete
+            reconnaissance report from a single target.
+        </p>
+
+    </section>
+
+
+    <!-- =====================================
+         SCAN CARD
+    ====================================== -->
+
+    <section class="scan-card">
+
+        <div class="scan-card-header">
+
+            <div>
+                <div class="scan-card-title">
+                    Start New Discovery
+                </div>
+
+                <div class="scan-card-description">
+                    Enter a domain or URL to begin reconnaissance.
+                </div>
+            </div>
+
+            <div class="scan-badge">
+                Automated
+            </div>
+
+        </div>
+
+
+        <!-- =================================
+             FORM
+        ================================== -->
+
+        <form
+            id="scan-form"
+            class="scan-form"
+            method="post"
+            action="/scan"
+        >
+
+            <div class="input-wrapper">
+
+                <span class="input-icon">
+                    ⌕
+                </span>
+
+                <input
+                    id="target-input"
+                    type="text"
+                    name="target"
+                    placeholder="example.com or https://example.com"
+                    autocomplete="off"
+                    spellcheck="false"
+                    required
+                />
+
+            </div>
+
+            <button
+                type="submit"
+                class="scan-btn"
+                id="start-scan-btn"
+            >
+                Start Discovery
+            </button>
+
+            <button
+                type="button"
+                class="cancel-btn hidden"
+                id="cancel-scan-btn"
+            >
+                Cancel Scan
+            </button>
+
+        </form>
+
+
+        <!-- =================================
+             ERROR
+        ================================== -->
+
+        {% if error %}
+
+        <div class="error" id="form-error">
+            {{ error }}
+        </div>
+
         {% endif %}
 
-        <script>
-            const form = document.getElementById('scan-form');
-            const targetInput = document.getElementById('target-input');
-            const formError = document.getElementById('form-error');
 
-            if (form && targetInput) {
-                form.addEventListener('submit', (event) => {
-                    const value = (targetInput.value || '').trim();
-                    const placeholder = (targetInput.getAttribute('placeholder') || '').trim();
-                    if (!value || value.toLowerCase() === placeholder.toLowerCase()) {
-                        event.preventDefault();
-                        if (formError) {
-                            formError.textContent = 'Please paste a real target URL or domain.';
-                        }
-                        targetInput.focus();
+        <!-- =================================
+             SCAN STATUS
+        ================================== -->
+
+        {% if scan_started %}
+
+        <div
+            class="status"
+            id="status-panel"
+            data-scan-id="{{ scan_id }}"
+        >
+
+            <div class="status-header">
+
+                <div class="status-target">
+
+                    <div class="scanning-indicator"></div>
+
+                    <div>
+
+                        <div class="status-title">
+                            Scanning {{ target }}
+                        </div>
+
+                        <div class="status-subtitle">
+                            Reconnaissance pipeline is running
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- LIVE EVENTS -->
+
+            <ul
+                class="status-list"
+                id="status-list"
+            >
+
+                <li>
+                    Initializing reconnaissance…
+                </li>
+
+            </ul>
+
+
+            <!-- =================================
+                 REPORTS
+            ================================== -->
+
+            <div
+                class="reports hidden"
+                id="report-links"
+            >
+
+                <div class="reports-title">
+                    Reports Ready
+                </div>
+
+                <div class="report-grid">
+
+                    <a
+                        class="report-card"
+                        id="html-link"
+                        href="/download/report.html"
+                    >
+
+                        <div class="report-info">
+
+                            <div class="report-icon">
+                                HTML
+                            </div>
+
+                            <div>
+
+                                <div class="report-name">
+                                    HTML Report
+                                </div>
+
+                                <div class="report-description">
+                                    Interactive reconnaissance report
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="report-arrow">
+                            →
+                        </div>
+
+                    </a>
+
+
+                    <a
+                        class="report-card"
+                        id="excel-link"
+                        href="/download/report.xlsx"
+                    >
+
+                        <div class="report-info">
+
+                            <div class="report-icon">
+                                XLS
+                            </div>
+
+                            <div>
+
+                                <div class="report-name">
+                                    Excel Report
+                                </div>
+
+                                <div class="report-description">
+                                    Structured asset discovery data
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="report-arrow">
+                            →
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </section>
+
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+
+    <footer class="footer">
+
+        <span>
+            Asset Discovery Platform
+        </span>
+
+        <span>
+            Automated reconnaissance pipeline
+        </span>
+
+    </footer>
+
+</div>
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script>
+
+    const form =
+        document.getElementById("scan-form");
+
+    const targetInput =
+        document.getElementById("target-input");
+
+    const formError =
+        document.getElementById("form-error");
+
+    const startButton =
+        document.getElementById("start-scan-btn");
+
+
+    /* ========================================
+       TARGET VALIDATION
+    ======================================== */
+
+    if (form && targetInput) {
+
+        form.addEventListener(
+            "submit",
+            (event) => {
+
+                const value =
+                    (targetInput.value || "").trim();
+
+                if (!value) {
+
+                    event.preventDefault();
+
+                    if (formError) {
+
+                        formError.textContent =
+                            "Please enter a valid target URL or domain.";
+
                     }
-                });
-            }
 
-            const panel = document.getElementById('status-panel');
-            if (panel) {
-                const scanId = panel.getAttribute('data-scan-id');
-                const list = document.getElementById('status-list');
-                const reportLinks = document.getElementById('report-links');
-                const htmlLink = document.getElementById('html-link');
-                const excelLink = document.getElementById('excel-link');
-                const cancelButton = document.getElementById('cancel-scan-btn');
+                    targetInput.focus();
 
-                let displayedEventCount = 0;
-                let cancelled = false;
-
-                const updateCancelButton = () => {
-                    if (cancelButton) {
-                        cancelButton.classList.remove('hidden');
-                        cancelButton.disabled = cancelled;
-                        cancelButton.textContent = cancelled ? 'Scan cancelled' : 'Cancel scan';
-                    }
-                };
-
-                if (cancelButton) {
-                    cancelButton.addEventListener('click', () => {
-                        if (cancelled) {
-                            return;
-                        }
-                        cancelled = true;
-                        updateCancelButton();
-                        fetch(`/cancel/${scanId}`, { method: 'POST' })
-                            .catch(() => {});
-                    });
+                    return;
                 }
 
-                const pollStatus = () => {
-                    fetch(`/scan-status/${scanId}`)
-                        .then((response) => response.json())
-                        .then((data) => {
-                            const events = Array.isArray(data.events) ? data.events : [];
-                            const newEvents = events.slice(displayedEventCount);
-                            newEvents.forEach((event) => {
-                                const item = document.createElement('li');
-                                item.textContent = event.message || event.phase;
-                                list.appendChild(item);
-                            });
-                            displayedEventCount = events.length;
+                /*
+                 * Prevent double submission.
+                 */
 
-                            if (data.cancelled) {
-                                cancelled = true;
-                                updateCancelButton();
-                            }
+                if (startButton) {
 
-                            if (data.complete) {
-                                if (!data.cancelled) {
-                                    reportLinks.classList.remove('hidden');
-                                    if (data.html_report) {
-                                        htmlLink.href = data.html_report;
-                                    }
-                                    if (data.excel_report) {
-                                        excelLink.href = data.excel_report;
-                                    }
-                                }
-                                return;
-                            }
+                    startButton.disabled = true;
 
-                            setTimeout(pollStatus, 1000);
-                        })
-                        .catch(() => {
-                            setTimeout(pollStatus, 1000);
-                        });
-                };
+                    startButton.textContent =
+                        "Starting…";
 
-                updateCancelButton();
-                pollStatus();
+                }
+
             }
-        </script>
-    </div>
+        );
+
+    }
+
+
+    /* ========================================
+       SCAN STATUS
+    ======================================== */
+
+    const panel =
+        document.getElementById("status-panel");
+
+
+    if (panel) {
+
+        const scanId =
+            panel.getAttribute("data-scan-id");
+
+        const list =
+            document.getElementById("status-list");
+
+        const reportLinks =
+            document.getElementById("report-links");
+
+        const htmlLink =
+            document.getElementById("html-link");
+
+        const excelLink =
+            document.getElementById("excel-link");
+
+        const cancelButton =
+            document.getElementById("cancel-scan-btn");
+
+        let displayedEventCount = 0;
+
+        let cancelled = false;
+
+
+        /* ====================================
+           CANCEL BUTTON
+        ==================================== */
+
+        const updateCancelButton = () => {
+
+            if (!cancelButton) {
+                return;
+            }
+
+            cancelButton.classList.remove("hidden");
+
+            cancelButton.disabled =
+                cancelled;
+
+            cancelButton.textContent =
+                cancelled
+                    ? "Scan Cancelled"
+                    : "Cancel Scan";
+
+        };
+
+
+        if (cancelButton) {
+
+            cancelButton.addEventListener(
+                "click",
+                () => {
+
+                    if (cancelled) {
+                        return;
+                    }
+
+                    cancelled = true;
+
+                    updateCancelButton();
+
+                    fetch(
+                        `/cancel/${scanId}`,
+                        {
+                            method: "POST"
+                        }
+                    ).catch(() => {});
+
+                }
+            );
+
+        }
+
+
+        /* ====================================
+           ADD STATUS EVENT
+        ==================================== */
+
+        const addEvent = (event) => {
+
+            if (!list) {
+                return;
+            }
+
+            const item =
+                document.createElement("li");
+
+            item.textContent =
+                event.message ||
+                event.phase ||
+                "Scan event received.";
+
+            list.appendChild(item);
+
+            list.scrollTop =
+                list.scrollHeight;
+
+        };
+
+
+        /* ====================================
+           POLL SCAN
+        ==================================== */
+
+        const pollStatus = () => {
+
+            fetch(
+                `/scan-status/${scanId}`
+            )
+
+            .then(
+                response => response.json()
+            )
+
+            .then(
+                data => {
+
+                    const events =
+                        Array.isArray(data.events)
+                            ? data.events
+                            : [];
+
+
+                    const newEvents =
+                        events.slice(
+                            displayedEventCount
+                        );
+
+
+                    newEvents.forEach(
+                        addEvent
+                    );
+
+
+                    displayedEventCount =
+                        events.length;
+
+
+                    /* ------------------------
+                       Cancelled
+                    ------------------------- */
+
+                    if (data.cancelled) {
+
+                        cancelled = true;
+
+                        updateCancelButton();
+
+                    }
+
+
+                    /* ------------------------
+                       Complete
+                    ------------------------- */
+
+                    if (data.complete) {
+
+                        if (!data.cancelled) {
+
+                            if (reportLinks) {
+
+                                reportLinks.classList.remove(
+                                    "hidden"
+                                );
+
+                            }
+
+                            if (
+                                data.html_report &&
+                                htmlLink
+                            ) {
+
+                                htmlLink.href =
+                                    data.html_report;
+
+                            }
+
+                            if (
+                                data.excel_report &&
+                                excelLink
+                            ) {
+
+                                excelLink.href =
+                                    data.excel_report;
+
+                            }
+
+
+                            if (startButton) {
+
+                                startButton.disabled =
+                                    false;
+
+                                startButton.textContent =
+                                    "Start New Discovery";
+
+                            }
+
+                        }
+
+                        return;
+                    }
+
+
+                    /* ------------------------
+                       Continue polling
+                    ------------------------- */
+
+                    setTimeout(
+                        pollStatus,
+                        1000
+                    );
+
+                }
+            )
+
+            .catch(
+                () => {
+
+                    setTimeout(
+                        pollStatus,
+                        1500
+                    );
+
+                }
+            );
+
+        };
+
+
+        updateCancelButton();
+
+        pollStatus();
+
+    }
+
+</script>
+
 </body>
 </html>

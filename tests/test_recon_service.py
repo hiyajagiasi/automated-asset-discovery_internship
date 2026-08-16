@@ -6,6 +6,7 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from modules.dmarc import discover_dmarc
 from modules.recon_service import ReconnaissanceService
 from modules.report_excel import generate_excel_report
 from modules.report_html import generate_html_report
@@ -88,17 +89,117 @@ def test_recon_service_runs_reports_after_technology_detection(tmp_path):
         order.append("technologies")
         return [{"host": "example.com", "technology": "HTTPX: HTML5"}]
 
+    def fake_discover_dmarc(hosts, config):
+        order.append("dmarc")
+        return [{"host": "example.com", "status": "missing", "dmarc_record": "none"}]
+
     with patch("modules.recon_service.discover_subdomains", side_effect=fake_discover_subdomains), \
          patch("modules.recon_service.discover_live_hosts", side_effect=fake_discover_live_hosts), \
          patch("modules.recon_service.scan_ports", side_effect=fake_scan_ports), \
          patch("modules.recon_service.discover_technologies", side_effect=fake_discover_technologies), \
+         patch("modules.recon_service.discover_dmarc", side_effect=fake_discover_dmarc), \
          patch("modules.recon_service.generate_html_report", return_value=tmp_path / "report.html"), \
          patch("modules.recon_service.generate_excel_report", return_value=tmp_path / "report.xlsx"):
         result = service.run()
 
-    assert order == ["subdomains", "live_hosts", "ports", "technologies"]
+    assert order == ["subdomains", "live_hosts", "ports", "technologies", "dmarc"]
+    assert result["dmarc"][0]["status"] == "missing"
     assert result["html_report"] == tmp_path / "report.html"
     assert result["excel_report"] == tmp_path / "report.xlsx"
+
+
+def test_discover_dmarc_checks_parent_domain_for_inherited_policy(tmp_path, monkeypatch):
+    def fake_query_txt_records(domain):
+        if domain == "mail.pha.org.pk":
+            return []
+        if domain == "pha.org.pk":
+            return ["v=DMARC1; p=reject; rua=mailto:admin@pha.org.pk"]
+        return []
+
+    monkeypatch.setattr("modules.dmarc._query_txt_records", fake_query_txt_records)
+    result = discover_dmarc([
+        "https://mail.pha.org.pk",
+        "https://www.pha.org.pk",
+        "https://webmail.pha.org.pk",
+    ], {"output": {"dmarc": str(tmp_path / "dmarc.txt")}})
+
+    assert len(result) == 3
+    assert all(item["status"] == "inherited" for item in result)
+    assert all(item["policy"] == "reject" for item in result)
+    assert all(item["source"] == "pha.org.pk" for item in result)
+    assert all(item["source_domain"] == "pha.org.pk" for item in result)
+    assert (tmp_path / "dmarc.txt").exists()
+
+
+def test_discover_dmarc_formats_missing_records_clarity(tmp_path, monkeypatch):
+    def fake_query_txt_records(domain):
+        return []
+
+    monkeypatch.setattr("modules.dmarc._query_txt_records", fake_query_txt_records)
+
+    discover_dmarc([
+        "mail2.pha.org.pk",
+        "webmail.pha.org.pk",
+        "mail.pha.org.pk",
+    ], {"output": {"dmarc": str(tmp_path / "dmarc.txt")}})
+
+    content = (tmp_path / "dmarc.txt").read_text(encoding="utf-8")
+
+    assert "DMARC SECURITY FINDINGS" in content
+    assert "Hosts without DMARC" in content
+    assert "[LOW] DMARC Policy Missing" in content
+    assert "No DMARC record was found for this host or the" in content
+    assert "Source Type : NONE" not in content
+    assert "Policy Source: NONE" not in content
+
+
+def test_discover_dmarc_reports_policy_type_and_assessment(tmp_path, monkeypatch):
+    def fake_query_txt_records(domain):
+        if domain == "dmarc.org":
+            return ["v=DMARC1; p=none; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org"]
+        if domain == "www.dmarc.org":
+            return []
+        return []
+
+    monkeypatch.setattr("modules.dmarc._query_txt_records", fake_query_txt_records)
+
+    discover_dmarc(["www.dmarc.org"], {"output": {"dmarc": str(tmp_path / "dmarc.txt")}})
+
+    content = (tmp_path / "dmarc.txt").read_text(encoding="utf-8")
+
+    assert "Status      : INHERITED" in content
+    assert "Policy      : NONE" in content
+    assert "Policy Type : MONITORING" in content
+    assert "Source      : dmarc.org" in content
+    assert "Source Type : ORGANIZATIONAL" in content
+    assert "Policy Source: ORGANIZATIONAL P" in content
+    assert "Assessment  : DMARC is configured, but the policy is set to NONE." in content
+    assert "monitoring DMARC failures without requesting quarantine or rejection" in content
+
+
+def test_discover_dmarc_single_subdomain_uses_organizational_domain(tmp_path, monkeypatch):
+    def fake_query_txt_records(domain):
+        if domain == "example.org":
+            return ["v=DMARC1;p=reject;sp=reject;adkim=s;aspf=s"]
+        return []
+
+    monkeypatch.setattr("modules.dmarc._query_txt_records", fake_query_txt_records)
+
+    discover_dmarc([
+        "www.example.org",
+    ], {"output": {"dmarc": str(tmp_path / "dmarc.txt")}})
+
+    content = (tmp_path / "dmarc.txt").read_text(encoding="utf-8")
+
+    assert "Organizational Domain : example.org" in content
+    assert "Hosts with DMARC    : 1" in content
+    assert "Hosts without DMARC : 0" in content
+    assert "Status      : INHERITED" in content
+    assert "Source      : example.org" in content
+    assert "RECOMMENDATION" in content
+    assert "DMARC is configured for the organizational domain example.org." in content
+    assert "Subdomains without their own DMARC record inherit the subdomain policy (sp=reject)." in content
+    assert "DMARC is not configured" not in content
 
 
 def test_generate_html_report_contains_full_recon_summary(tmp_path):
@@ -149,6 +250,54 @@ def test_generate_html_report_rebuilds_empty_template(tmp_path):
     assert "}}" not in html
 
 
+def test_generate_reports_include_dmarc_findings(tmp_path):
+    dmarc = [{
+        "host": "www.example.com",
+        "status": "inherited",
+        "policy": "reject",
+        "source_domain": "example.com",
+        "source_type": "organizational",
+        "policy_source": "sp",
+        "dmarc_record": "v=DMARC1; p=reject; sp=reject",
+    }]
+
+    html_report = generate_html_report(
+        tmp_path,
+        "example.com",
+        ["www.example.com"],
+        ["https://example.com"],
+        [],
+        [],
+        [],
+        {"reports": {"html": str(tmp_path / "reports" / "report.html")}},
+        dmarc=dmarc,
+    )
+    excel_report = generate_excel_report(
+        tmp_path,
+        "example.com",
+        ["www.example.com"],
+        ["https://example.com"],
+        [],
+        [],
+        [],
+        {"reports": {"excel": str(tmp_path / "reports" / "report.xlsx")}},
+        dmarc=dmarc,
+    )
+
+    html = html_report.read_text(encoding="utf-8")
+    assert "DMARC" in html
+    assert "www.example.com" in html
+    assert "INHERITED" in html
+
+    workbook = pd.ExcelFile(excel_report)
+    assert "DMARC" in workbook.sheet_names
+    dmarc_sheet = pd.read_excel(excel_report, sheet_name="DMARC")
+    assert "Host" in dmarc_sheet.columns
+    assert "Status" in dmarc_sheet.columns
+    assert "Policy" in dmarc_sheet.columns
+    assert "Source" in dmarc_sheet.columns
+
+
 def test_generate_excel_report_creates_multiple_sheets(tmp_path):
     report_path = generate_excel_report(
         tmp_path,
@@ -162,7 +311,7 @@ def test_generate_excel_report_creates_multiple_sheets(tmp_path):
     )
 
     workbook = pd.ExcelFile(report_path)
-    assert workbook.sheet_names == ["Summary", "Subdomains", "Live Hosts", "Open Ports", "Technologies"]
+    assert workbook.sheet_names == ["Summary", "Subdomains", "Live Hosts", "Open Ports", "Technologies", "DMARC"]
 
     summary = pd.read_excel(report_path, sheet_name="Summary")
     assert list(summary.columns) == ["Metric", "Count"]

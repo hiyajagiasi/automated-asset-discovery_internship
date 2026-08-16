@@ -1,13 +1,11 @@
 Technology Findings
 ===================
 
-- https://wildcard.pha.org.pk
-  HTTPX: no fingerprint matched | Webanalyze: IIS (10.0) | Windows Server | Microsoft ASP.NET | Application Request Routing (3.0) | IIS | Plesk
-- https://webmail.pha.org.pk
-  HTTPX: HTML5 | Web Server: Microsoft-IIS/10.0 | Programming Language: ASP.NET | Webanalyze: Microsoft ASP.NET | IIS (10.0) | Windows Server
-- https://mail2.pha.org.pk
-  HTTPX: no fingerprint matched | Webanalyze: Application Request Routing (3.0) | IIS | Plesk | IIS (10.0) | Windows Server | Microsoft ASP.NET
-- https://mail.pha.org.pk
-  HTTPX: no fingerprint matched | Webanalyze: Plesk | Microsoft ASP.NET | Application Request Routing (3.0) | IIS | IIS (10.0) | Windows Server
-- http://www.pha.org.pk
-  HTTPX: HTML5 | Web Server: Microsoft-IIS/10.0 | Programming Language: ASP.NET | Webanalyze: PHP | IIS (10.0) | Windows Server | Microsoft ASP.NET | Bootstrap | Plesk
+- http://www.www.tmail.pk
+  HTTPX: unreachable | Webanalyze: no fingerprint matched
+- http://www.tmail.pk
+  HTTPX: unreachable | Webanalyze: no fingerprint matched
+- http://mail.www.tmail.pk
+  HTTPX: unreachable | Webanalyze: no fingerprint matched
+- http://login.www.tmail.pk
+  HTTPX: unreachable | Webanalyze: no fingerprint matched

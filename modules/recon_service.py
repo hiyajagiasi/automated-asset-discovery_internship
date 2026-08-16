@@ -5,6 +5,7 @@ import time
 from pathlib import Path
 from typing import Any, Callable
 
+from modules.dmarc import discover_dmarc
 from modules.live_hosts import discover_live_hosts
 from modules.port_scan import scan_ports
 from modules.report_excel import generate_excel_report
@@ -120,6 +121,15 @@ class ReconnaissanceService:
         emit({"phase": "technologies", "message": f"Detected {len(technologies)} technologies", "technologies": technologies[:20]})
         self.logger.info("Technology discovery completed in %.1f seconds", time.monotonic() - phase_started)
 
+        phase_started = time.monotonic()
+        self.logger.info("Starting DMARC discovery")
+        emit({"phase": "dmarc", "message": "Checking DMARC records for live hosts"})
+        if cancel_check is not None and cancel_check():
+            raise ScanCancelledError("Scan cancelled")
+        dmarc = discover_dmarc(live_hosts, self.config)
+        emit({"phase": "dmarc", "message": f"Checked DMARC for {len(dmarc)} hosts", "dmarc": dmarc[:20]})
+        self.logger.info("DMARC discovery completed in %.1f seconds", time.monotonic() - phase_started)
+
         html_report = generate_html_report(
             self.base_dir,
             self.target,
@@ -129,6 +139,7 @@ class ReconnaissanceService:
             ports,
             technologies,
             self.config,
+            dmarc=dmarc,
         )
         excel_report = generate_excel_report(
             self.base_dir,
@@ -139,6 +150,7 @@ class ReconnaissanceService:
             ports,
             technologies,
             self.config,
+            dmarc=dmarc,
         )
 
         emit({"phase": "complete", "message": "Report generation complete", "html_report": str(html_report), "excel_report": str(excel_report)})
@@ -150,6 +162,7 @@ class ReconnaissanceService:
             "dead_hosts": dead_hosts,
             "ports": ports,
             "technologies": technologies,
+            "dmarc": dmarc,
             "html_report": html_report,
             "excel_report": excel_report,
         }

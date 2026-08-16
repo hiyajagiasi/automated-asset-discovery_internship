@@ -17,6 +17,7 @@ output:
   ports: output/ports.txt
   technologies: output/technologies.txt
   security: output/security.txt
+  dmarc: output/dmarc.txt
 
 logging:
   file: logs/scan.log
