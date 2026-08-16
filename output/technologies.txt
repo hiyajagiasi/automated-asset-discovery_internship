@@ -1,11 +1,11 @@
 Technology Findings
 ===================
 
+- http://mail.www.tmail.pk
+  HTTPX: unreachable | Webanalyze: no fingerprint matched
 - http://www.www.tmail.pk
   HTTPX: unreachable | Webanalyze: no fingerprint matched
 - http://www.tmail.pk
-  HTTPX: unreachable | Webanalyze: no fingerprint matched
-- http://mail.www.tmail.pk
   HTTPX: unreachable | Webanalyze: no fingerprint matched
 - http://login.www.tmail.pk
   HTTPX: unreachable | Webanalyze: no fingerprint matched

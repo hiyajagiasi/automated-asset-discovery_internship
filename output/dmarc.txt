@@ -7,6 +7,15 @@ Hosts without DMARC : 4
 ------------------------------------------------------------
 
 [LOW] DMARC Policy Missing
+Host        : mail.www.tmail.pk
+Status      : MISSING
+Policy      : NONE
+Source      : NONE
+Record      : NONE
+Description : No DMARC record was found for this host or the organizational domain www.tmail.pk.
+------------------------------------------------------------
+
+[LOW] DMARC Policy Missing
 Host        : www.www.tmail.pk
 Status      : MISSING
 Policy      : NONE
@@ -17,15 +26,6 @@ Description : No DMARC record was found for this host or the organizational doma
 
 [LOW] DMARC Policy Missing
 Host        : www.tmail.pk
-Status      : MISSING
-Policy      : NONE
-Source      : NONE
-Record      : NONE
-Description : No DMARC record was found for this host or the organizational domain www.tmail.pk.
-------------------------------------------------------------
-
-[LOW] DMARC Policy Missing
-Host        : mail.www.tmail.pk
 Status      : MISSING
 Policy      : NONE
 Source      : NONE

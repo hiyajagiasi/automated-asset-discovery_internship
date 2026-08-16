@@ -6,6 +6,8 @@
 
     <title>dmarc.org Reconnaissance Report</title>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
     <style>
         :root {
             --bg: #f5f8fc;
@@ -1085,6 +1087,28 @@
         }
 
         /* =========================================================
+           ASSET DISTRIBUTION CHART
+        ========================================================= */
+
+        .distribution {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .distribution-chart-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            margin: 20px 0;
+            padding: 20px 0;
+        }
+
+        .distribution-chart-canvas {
+            max-height: 400px;
+        }
+
+        /* =========================================================
            EMPTY STATE
         ========================================================= */
 
@@ -1360,7 +1384,7 @@
             <span>Open Ports</span>
 
             <span class="nav-count">
-                10
+                14
             </span>
         </button>
 
@@ -1390,25 +1414,6 @@
             <span class="nav-count">
                 4
             </span>
-        </button>
-
-    </nav>
-
-
-    <div class="sidebar-label">
-        Actions
-    </div>
-
-
-    <nav class="nav">
-
-        <button
-            class="nav-item"
-            id="sidebarExport"
-            type="button"
-        >
-            <span class="nav-icon">↓</span>
-            <span>Export Report</span>
         </button>
 
     </nav>
@@ -1591,7 +1596,7 @@
                 </div>
 
                 <div class="stat-value">
-                    10
+                    14
                 </div>
 
                 <div class="stat-description">
@@ -1726,7 +1731,7 @@
 
                             
                                 <span class="badge warning">
-                                    10 Found
+                                    14 Found
                                 </span>
                             
 
@@ -1777,125 +1782,8 @@
 
                 <div class="card-body">
 
-                    
-                    
-                    
-                    
-                    
-                    
-
-                    <div class="distribution">
-
-
-                        <div class="distribution-row">
-
-                            <span class="distribution-label">
-                                Subdomains
-                            </span>
-
-                            <div class="progress">
-
-                                <div
-                                    class="progress-bar"
-                                    data-percent="100.0"
-                                ></div>
-
-                            </div>
-
-                            <span class="distribution-value">
-                                13
-                            </span>
-
-                        </div>
-
-
-                        <div class="distribution-row">
-
-                            <span class="distribution-label">
-                                Live Hosts
-                            </span>
-
-                            <div class="progress">
-
-                                <div
-                                    class="progress-bar"
-                                    data-percent="30.8"
-                                ></div>
-
-                            </div>
-
-                            <span class="distribution-value">
-                                4
-                            </span>
-
-                        </div>
-
-
-                        <div class="distribution-row">
-
-                            <span class="distribution-label">
-                                Dead Hosts
-                            </span>
-
-                            <div class="progress">
-
-                                <div
-                                    class="progress-bar"
-                                    data-percent="69.2"
-                                ></div>
-
-                            </div>
-
-                            <span class="distribution-value">
-                                9
-                            </span>
-
-                        </div>
-
-
-                        <div class="distribution-row">
-
-                            <span class="distribution-label">
-                                Open Ports
-                            </span>
-
-                            <div class="progress">
-
-                                <div
-                                    class="progress-bar"
-                                    data-percent="76.9"
-                                ></div>
-
-                            </div>
-
-                            <span class="distribution-value">
-                                10
-                            </span>
-
-                        </div>
-
-
-                        <div class="distribution-row">
-
-                            <span class="distribution-label">
-                                Technologies
-                            </span>
-
-                            <div class="progress">
-
-                                <div
-                                    class="progress-bar"
-                                    data-percent="30.8"
-                                ></div>
-
-                            </div>
-
-                            <span class="distribution-value">
-                                4
-                            </span>
-
-                        </div>
-
+                    <div class="distribution-chart-container" data-chart-counts="[13, 4, 9, 14, 4]">
+                        <canvas id="assetDistributionChart"></canvas>
                     </div>
 
                 </div>
@@ -2065,42 +1953,19 @@
 
                         <div
                             class="asset-item searchable-item"
-                            data-search-value="wiki.dmarc.org"
+                            data-search-value="staging.dmarc.org"
                         >
 
                             <span class="asset-dot"></span>
 
                             <span>
-                                wiki.dmarc.org
+                                staging.dmarc.org
                             </span>
 
                             <button
                                 class="copy-btn"
                                 type="button"
-                                data-copy="wiki.dmarc.org"
-                            >
-                                Copy
-                            </button>
-
-                        </div>
-
-                    
-
-                        <div
-                            class="asset-item searchable-item"
-                            data-search-value="www.dmarc.org"
-                        >
-
-                            <span class="asset-dot"></span>
-
-                            <span>
-                                www.dmarc.org
-                            </span>
-
-                            <button
-                                class="copy-btn"
-                                type="button"
-                                data-copy="www.dmarc.org"
+                                data-copy="staging.dmarc.org"
                             >
                                 Copy
                             </button>
@@ -2124,29 +1989,6 @@
                                 class="copy-btn"
                                 type="button"
                                 data-copy="admin.dmarc.org"
-                            >
-                                Copy
-                            </button>
-
-                        </div>
-
-                    
-
-                        <div
-                            class="asset-item searchable-item"
-                            data-search-value="lists.dmarc.org"
-                        >
-
-                            <span class="asset-dot"></span>
-
-                            <span>
-                                lists.dmarc.org
-                            </span>
-
-                            <button
-                                class="copy-btn"
-                                type="button"
-                                data-copy="lists.dmarc.org"
                             >
                                 Copy
                             </button>
@@ -2203,52 +2045,6 @@
 
                         <div
                             class="asset-item searchable-item"
-                            data-search-value="staging.dmarc.org"
-                        >
-
-                            <span class="asset-dot"></span>
-
-                            <span>
-                                staging.dmarc.org
-                            </span>
-
-                            <button
-                                class="copy-btn"
-                                type="button"
-                                data-copy="staging.dmarc.org"
-                            >
-                                Copy
-                            </button>
-
-                        </div>
-
-                    
-
-                        <div
-                            class="asset-item searchable-item"
-                            data-search-value="stamp.dmarc.org"
-                        >
-
-                            <span class="asset-dot"></span>
-
-                            <span>
-                                stamp.dmarc.org
-                            </span>
-
-                            <button
-                                class="copy-btn"
-                                type="button"
-                                data-copy="stamp.dmarc.org"
-                            >
-                                Copy
-                            </button>
-
-                        </div>
-
-                    
-
-                        <div
-                            class="asset-item searchable-item"
                             data-search-value="test.dmarc.org"
                         >
 
@@ -2295,6 +2091,121 @@
 
                         <div
                             class="asset-item searchable-item"
+                            data-search-value="web.dmarc.org"
+                        >
+
+                            <span class="asset-dot"></span>
+
+                            <span>
+                                web.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="web.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="lists.dmarc.org"
+                        >
+
+                            <span class="asset-dot"></span>
+
+                            <span>
+                                lists.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="lists.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="stamp.dmarc.org"
+                        >
+
+                            <span class="asset-dot"></span>
+
+                            <span>
+                                stamp.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="stamp.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="wiki.dmarc.org"
+                        >
+
+                            <span class="asset-dot"></span>
+
+                            <span>
+                                wiki.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="wiki.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="www.dmarc.org"
+                        >
+
+                            <span class="asset-dot"></span>
+
+                            <span>
+                                www.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="www.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
                             data-search-value="cdn.dmarc.org"
                         >
 
@@ -2331,29 +2242,6 @@
                                 class="copy-btn"
                                 type="button"
                                 data-copy="dns1.dmarc.org"
-                            >
-                                Copy
-                            </button>
-
-                        </div>
-
-                    
-
-                        <div
-                            class="asset-item searchable-item"
-                            data-search-value="web.dmarc.org"
-                        >
-
-                            <span class="asset-dot"></span>
-
-                            <span>
-                                web.dmarc.org
-                            </span>
-
-                            <button
-                                class="copy-btn"
-                                type="button"
-                                data-copy="web.dmarc.org"
                             >
                                 Copy
                             </button>
@@ -2447,32 +2335,6 @@
 
                         <div
                             class="asset-item searchable-item"
-                            data-search-value="https://stamp.dmarc.org"
-                        >
-
-                            <span
-                                class="asset-dot"
-                                style="background:#16a34a;"
-                            ></span>
-
-                            <span>
-                                https://stamp.dmarc.org
-                            </span>
-
-                            <button
-                                class="copy-btn"
-                                type="button"
-                                data-copy="https://stamp.dmarc.org"
-                            >
-                                Copy
-                            </button>
-
-                        </div>
-
-                    
-
-                        <div
-                            class="asset-item searchable-item"
                             data-search-value="https://lists.dmarc.org"
                         >
 
@@ -2489,6 +2351,32 @@
                                 class="copy-btn"
                                 type="button"
                                 data-copy="https://lists.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="https://stamp.dmarc.org"
+                        >
+
+                            <span
+                                class="asset-dot"
+                                style="background:#16a34a;"
+                            ></span>
+
+                            <span>
+                                https://stamp.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="https://stamp.dmarc.org"
                             >
                                 Copy
                             </button>
@@ -2583,6 +2471,32 @@
 
                         <div
                             class="asset-item searchable-item"
+                            data-search-value="https://staging.dmarc.org"
+                        >
+
+                            <span
+                                class="asset-dot"
+                                style="background:#94a3b8;"
+                            ></span>
+
+                            <span>
+                                https://staging.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="https://staging.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
                             data-search-value="https://admin.dmarc.org"
                         >
 
@@ -2661,32 +2575,6 @@
 
                         <div
                             class="asset-item searchable-item"
-                            data-search-value="https://staging.dmarc.org"
-                        >
-
-                            <span
-                                class="asset-dot"
-                                style="background:#94a3b8;"
-                            ></span>
-
-                            <span>
-                                https://staging.dmarc.org
-                            </span>
-
-                            <button
-                                class="copy-btn"
-                                type="button"
-                                data-copy="https://staging.dmarc.org"
-                            >
-                                Copy
-                            </button>
-
-                        </div>
-
-                    
-
-                        <div
-                            class="asset-item searchable-item"
                             data-search-value="https://test.dmarc.org"
                         >
 
@@ -2729,6 +2617,32 @@
                                 class="copy-btn"
                                 type="button"
                                 data-copy="https://v3.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="https://web.dmarc.org"
+                        >
+
+                            <span
+                                class="asset-dot"
+                                style="background:#94a3b8;"
+                            ></span>
+
+                            <span>
+                                https://web.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="https://web.dmarc.org"
                             >
                                 Copy
                             </button>
@@ -2789,32 +2703,6 @@
 
                     
 
-                        <div
-                            class="asset-item searchable-item"
-                            data-search-value="https://web.dmarc.org"
-                        >
-
-                            <span
-                                class="asset-dot"
-                                style="background:#94a3b8;"
-                            ></span>
-
-                            <span>
-                                https://web.dmarc.org
-                            </span>
-
-                            <button
-                                class="copy-btn"
-                                type="button"
-                                data-copy="https://web.dmarc.org"
-                            >
-                                Copy
-                            </button>
-
-                        </div>
-
-                    
-
                 </div>
 
             
@@ -2844,7 +2732,7 @@
                     </h2>
 
                     <p class="section-description">
-                        10
+                        14
                         detected port and service entries.
                     </p>
 
@@ -3041,6 +2929,41 @@
                                 <tr
                                     class="searchable-row"
                                     data-search-value="
+                                        lists.dmarc.org
+                                        587
+                                        submission
+                                    "
+                                >
+
+                                    <td>
+
+                                        <span class="host">
+                                            lists.dmarc.org
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge blue">
+                                            587
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        submission
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                                <tr
+                                    class="searchable-row"
+                                    data-search-value="
                                         stamp.dmarc.org
                                         25
                                         smtp
@@ -3181,6 +3104,41 @@
                                 <tr
                                     class="searchable-row"
                                     data-search-value="
+                                        stamp.dmarc.org
+                                        587
+                                        submission
+                                    "
+                                >
+
+                                    <td>
+
+                                        <span class="host">
+                                            stamp.dmarc.org
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge blue">
+                                            587
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        submission
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                                <tr
+                                    class="searchable-row"
+                                    data-search-value="
                                         wiki.dmarc.org
                                         80
                                         http; title=login required - wiki.dmarc.org; server=apache/2.4.29 (freebsd) php/7.2.3 openssl/1.0.2u-freebsd; status=200
@@ -3216,6 +3174,41 @@
                                 <tr
                                     class="searchable-row"
                                     data-search-value="
+                                        wiki.dmarc.org
+                                        443
+                                        https; title=login required - wiki.dmarc.org; server=apache/2.4.29 (freebsd) php/7.2.3 openssl/1.0.2u-freebsd; status=200
+                                    "
+                                >
+
+                                    <td>
+
+                                        <span class="host">
+                                            wiki.dmarc.org
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge blue">
+                                            443
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        https; title=Login required - wiki.dmarc.org; server=Apache/2.4.29 (FreeBSD) PHP/7.2.3 OpenSSL/1.0.2u-freebsd; status=200
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                                <tr
+                                    class="searchable-row"
+                                    data-search-value="
                                         www.dmarc.org
                                         80
                                         http; title=dmarc.org &#8211; domain message authentication reporting &amp; conformance; server=apache/2.4.29 (freebsd) php/7.2.3 openssl/1.0.2u-freebsd; status=301; redirect=https://dmarc.org/
@@ -3241,6 +3234,41 @@
                                     <td>
 
                                         http; title=dmarc.org &#8211; Domain Message Authentication Reporting &amp; Conformance; server=Apache/2.4.29 (FreeBSD) PHP/7.2.3 OpenSSL/1.0.2u-freebsd; status=301; redirect=https://dmarc.org/
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                                <tr
+                                    class="searchable-row"
+                                    data-search-value="
+                                        www.dmarc.org
+                                        443
+                                        https; title=dmarc.org &#8211; domain message authentication reporting &amp; conformance; server=apache/2.4.29 (freebsd) php/7.2.3 openssl/1.0.2u-freebsd; status=301; redirect=https://dmarc.org/
+                                    "
+                                >
+
+                                    <td>
+
+                                        <span class="host">
+                                            www.dmarc.org
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge blue">
+                                            443
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        https; title=dmarc.org &#8211; Domain Message Authentication Reporting &amp; Conformance; server=Apache/2.4.29 (FreeBSD) PHP/7.2.3 OpenSSL/1.0.2u-freebsd; status=301; redirect=https://dmarc.org/
 
                                     </td>
 
@@ -3364,7 +3392,7 @@
                                 <tr
                                     class="searchable-row"
                                     data-search-value="
-                                        https://stamp.dmarc.org
+                                        https://lists.dmarc.org
                                         httpx: web server: apache | html5 | webanalyze: no fingerprint matched
                                     "
                                 >
@@ -3372,7 +3400,7 @@
                                     <td>
 
                                         <span class="host">
-                                            https://stamp.dmarc.org
+                                            https://lists.dmarc.org
                                         </span>
 
                                     </td>
@@ -3394,7 +3422,7 @@
                                 <tr
                                     class="searchable-row"
                                     data-search-value="
-                                        https://lists.dmarc.org
+                                        https://stamp.dmarc.org
                                         httpx: web server: apache | html5 | webanalyze: no fingerprint matched
                                     "
                                 >
@@ -3402,7 +3430,7 @@
                                     <td>
 
                                         <span class="host">
-                                            https://lists.dmarc.org
+                                            https://stamp.dmarc.org
                                         </span>
 
                                     </td>
@@ -3743,13 +3771,13 @@
                                     <td>
 
                                         <span class="host">
-                                            stamp.dmarc.org
+                                            lists.dmarc.org
                                         </span>
 
                                         <button
                                             class="copy-btn"
                                             type="button"
-                                            data-copy="stamp.dmarc.org"
+                                            data-copy="lists.dmarc.org"
                                         >
                                             Copy
                                         </button>
@@ -3854,13 +3882,13 @@
                                     <td>
 
                                         <span class="host">
-                                            lists.dmarc.org
+                                            stamp.dmarc.org
                                         </span>
 
                                         <button
                                             class="copy-btn"
                                             type="button"
-                                            data-copy="lists.dmarc.org"
+                                            data-copy="stamp.dmarc.org"
                                         >
                                             Copy
                                         </button>
@@ -4095,6 +4123,113 @@
 <script>
 
     /*
+     * Asset Distribution Chart
+     */
+    
+    const assetChartEl = document.getElementById('assetDistributionChart');
+    
+    if (assetChartEl) {
+        const chartContainer = assetChartEl.closest('.distribution-chart-container');
+        const countsJson = chartContainer ? chartContainer.dataset.chartCounts : '[]';
+        const [subdomainCount, liveHostCount, deadHostCount, portCount, techCount] = JSON.parse(countsJson);
+
+        const chartData = {
+            labels: ['Subdomains', 'Live Hosts', 'Dead Hosts', 'Open Ports', 'Technologies'],
+            datasets: [{
+                label: 'Asset Count',
+                data: [subdomainCount, liveHostCount, deadHostCount, portCount, techCount],
+                backgroundColor: [
+                    'rgba(37, 99, 235, 0.7)',
+                    'rgba(22, 163, 74, 0.7)',
+                    'rgba(148, 163, 184, 0.7)',
+                    'rgba(217, 119, 6, 0.7)',
+                    'rgba(139, 92, 246, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(37, 99, 235, 1)',
+                    'rgba(22, 163, 74, 1)',
+                    'rgba(148, 163, 184, 1)',
+                    'rgba(217, 119, 6, 1)',
+                    'rgba(139, 92, 246, 1)'
+                ],
+                borderWidth: 2,
+                borderRadius: 8,
+                hoverBackgroundColor: [
+                    'rgba(37, 99, 235, 0.9)',
+                    'rgba(22, 163, 74, 0.9)',
+                    'rgba(148, 163, 184, 0.9)',
+                    'rgba(217, 119, 6, 0.9)',
+                    'rgba(139, 92, 246, 0.9)'
+                ],
+            }]
+        };
+        
+        const chartCtx = assetChartEl.getContext('2d');
+        new Chart(chartCtx, {
+            type: 'bar',
+            data: chartData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            font: { size: 13, weight: 600 },
+                            color: '#334155',
+                            padding: 15,
+                            usePointStyle: true,
+                            pointStyle: 'circle'
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                        titleColor: '#fff',
+                        bodyColor: '#fff',
+                        borderColor: '#2563eb',
+                        borderWidth: 1,
+                        padding: 12,
+                        titleFont: { size: 14, weight: 700 },
+                        bodyFont: { size: 13 },
+                        cornerRadius: 8,
+                        displayColors: true,
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y + ' items';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            font: { size: 12, weight: 600 },
+                            color: '#64748b'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(226, 232, 240, 0.5)',
+                            drawBorder: false
+                        },
+                        ticks: {
+                            font: { size: 12, weight: 600 },
+                            color: '#64748b',
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    /*
      * ------------------------------------------------------------
      * NAVIGATION
      * ------------------------------------------------------------
@@ -4107,15 +4242,6 @@
 
     const sections =
         document.querySelectorAll('.report-section');
-
-    document.querySelectorAll('.progress-bar').forEach((bar) => {
-        const percent = Number(bar.dataset.percent || 0);
-        if (!Number.isFinite(percent)) {
-            bar.style.width = '0%';
-            return;
-        }
-        bar.style.width = percent + '%';
-    });
 
     function showSection(sectionName) {
 

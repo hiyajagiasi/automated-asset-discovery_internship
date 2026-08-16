@@ -80,3 +80,23 @@
 2026-08-16 15:16:00,217 - INFO - Starting DMARC discovery
 2026-08-16 15:16:00,267 - INFO - DMARC discovery completed in 0.0 seconds
 2026-08-16 15:16:00,339 - INFO - Completed reconnaissance for dmarc.org
+2026-08-16 15:28:12,407 - INFO - Starting reconnaissance for dmarc.org
+2026-08-16 15:28:12,408 - INFO - Starting subdomain discovery
+2026-08-16 15:28:30,745 - INFO - Subdomain discovery completed in 18.3 seconds (13 candidates)
+2026-08-16 15:28:30,745 - INFO - Starting live-host probing
+2026-08-16 15:28:30,746 - INFO - Starting dnsx resolution for 13 candidates
+2026-08-16 15:28:34,007 - INFO - dnsx resolution completed: 4/13 candidates resolved
+2026-08-16 15:28:34,007 - INFO - Starting httpx probe for 4 candidates (requested_batch=5000, effective_batch=2000, threads=100, timeout=10, retries=1, rate_limit=httpx-default per worker, stream=True, body_read_limit=5000, process_timeout=disabled, parallel_workers=1, max_total_threads=400)
+2026-08-16 15:28:38,356 - INFO - Batch 1: httpx returned 4 lines
+2026-08-16 15:28:38,357 - INFO - Total live hosts found: 4
+2026-08-16 15:28:38,357 - INFO - Total dead hosts found: 9
+2026-08-16 15:28:38,357 - INFO - Live-host probing completed in 7.6 seconds (4 live hosts, 9 dead hosts)
+2026-08-16 15:28:38,357 - INFO - Starting port discovery
+2026-08-16 15:29:45,519 - INFO - Nmap service progress: 4/4 hosts
+2026-08-16 15:30:23,227 - INFO - Identified 14 open host-port combinations across 4 hosts
+2026-08-16 15:30:23,230 - INFO - Port discovery completed in 104.9 seconds
+2026-08-16 15:30:23,230 - INFO - Starting technology discovery
+2026-08-16 15:30:27,055 - INFO - Technology discovery completed in 3.8 seconds
+2026-08-16 15:30:27,056 - INFO - Starting DMARC discovery
+2026-08-16 15:30:27,098 - INFO - DMARC discovery completed in 0.0 seconds
+2026-08-16 15:30:27,164 - INFO - Completed reconnaissance for dmarc.org

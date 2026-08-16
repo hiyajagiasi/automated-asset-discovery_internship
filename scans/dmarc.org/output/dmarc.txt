@@ -19,7 +19,7 @@ Assessment  : DMARC is configured, but the policy is set to NONE. The domain is 
 ------------------------------------------------------------
 
 [INFO] DMARC Policy Present
-Host        : stamp.dmarc.org
+Host        : lists.dmarc.org
 Status      : INHERITED
 Policy      : NONE
 Policy Type : MONITORING
@@ -31,7 +31,7 @@ Assessment  : DMARC is configured, but the policy is set to NONE. The domain is 
 ------------------------------------------------------------
 
 [INFO] DMARC Policy Present
-Host        : lists.dmarc.org
+Host        : stamp.dmarc.org
 Status      : INHERITED
 Policy      : NONE
 Policy Type : MONITORING

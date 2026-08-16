@@ -1,9 +1,9 @@
+https://staging.dmarc.org
 https://admin.dmarc.org
 https://ns2.dmarc.org
 https://public.dmarc.org
-https://staging.dmarc.org
 https://test.dmarc.org
 https://v3.dmarc.org
+https://web.dmarc.org
 https://cdn.dmarc.org
 https://dns1.dmarc.org
-https://web.dmarc.org

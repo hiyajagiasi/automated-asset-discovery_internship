@@ -6,6 +6,8 @@
 
     <title>{{ target }} Reconnaissance Report</title>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
     <style>
         :root {
             --bg: #f5f8fc;
@@ -931,8 +933,9 @@
         .copy-btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
 
-            margin-left: 7px;
+            margin-left: auto;
 
             padding: 4px 7px;
 
@@ -947,6 +950,10 @@
             font-size: 0.62rem;
 
             cursor: pointer;
+
+            flex-shrink: 0;
+
+            white-space: nowrap;
         }
 
         .copy-btn:hover {
@@ -1082,6 +1089,28 @@
             line-height: 1.6;
 
             word-break: break-word;
+        }
+
+        /* =========================================================
+           ASSET DISTRIBUTION CHART
+        ========================================================= */
+
+        .distribution {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .distribution-chart-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            margin: 20px 0;
+            padding: 20px 0;
+        }
+
+        .distribution-chart-canvas {
+            max-height: 400px;
         }
 
         /* =========================================================
@@ -1801,133 +1830,8 @@
 
                 <div class="card-body">
 
-                    {% set max_assets =
-                        [
-                            subdomains|length,
-                            live_hosts|length,
-                            dead_hosts|length,
-                            ports|length,
-                            technologies|length
-                        ] | max
-                    %}
-                    {% set subdomains_pct = (subdomains|length / max_assets * 100) if max_assets > 0 else 0 %}
-                    {% set live_hosts_pct = (live_hosts|length / max_assets * 100) if max_assets > 0 else 0 %}
-                    {% set dead_hosts_pct = (dead_hosts|length / max_assets * 100) if max_assets > 0 else 0 %}
-                    {% set ports_pct = (ports|length / max_assets * 100) if max_assets > 0 else 0 %}
-                    {% set technologies_pct = (technologies|length / max_assets * 100) if max_assets > 0 else 0 %}
-
-                    <div class="distribution">
-
-
-                        <div class="distribution-row">
-
-                            <span class="distribution-label">
-                                Subdomains
-                            </span>
-
-                            <div class="progress">
-
-                                <div
-                                    class="progress-bar"
-                                    data-percent="{{ subdomains_pct|round(1) }}"
-                                ></div>
-
-                            </div>
-
-                            <span class="distribution-value">
-                                {{ subdomains|length }}
-                            </span>
-
-                        </div>
-
-
-                        <div class="distribution-row">
-
-                            <span class="distribution-label">
-                                Live Hosts
-                            </span>
-
-                            <div class="progress">
-
-                                <div
-                                    class="progress-bar"
-                                    data-percent="{{ live_hosts_pct|round(1) }}"
-                                ></div>
-
-                            </div>
-
-                            <span class="distribution-value">
-                                {{ live_hosts|length }}
-                            </span>
-
-                        </div>
-
-
-                        <div class="distribution-row">
-
-                            <span class="distribution-label">
-                                Dead Hosts
-                            </span>
-
-                            <div class="progress">
-
-                                <div
-                                    class="progress-bar"
-                                    data-percent="{{ dead_hosts_pct|round(1) }}"
-                                ></div>
-
-                            </div>
-
-                            <span class="distribution-value">
-                                {{ dead_hosts|length }}
-                            </span>
-
-                        </div>
-
-
-                        <div class="distribution-row">
-
-                            <span class="distribution-label">
-                                Open Ports
-                            </span>
-
-                            <div class="progress">
-
-                                <div
-                                    class="progress-bar"
-                                    data-percent="{{ ports_pct|round(1) }}"
-                                ></div>
-
-                            </div>
-
-                            <span class="distribution-value">
-                                {{ ports|length }}
-                            </span>
-
-                        </div>
-
-
-                        <div class="distribution-row">
-
-                            <span class="distribution-label">
-                                Technologies
-                            </span>
-
-                            <div class="progress">
-
-                                <div
-                                    class="progress-bar"
-                                    data-percent="{{ technologies_pct|round(1) }}"
-                                ></div>
-
-                            </div>
-
-                            <span class="distribution-value">
-                                {{ technologies|length }}
-                            </span>
-
-                        </div>
-
+                    <div class="distribution-chart-container" data-chart-counts="{{ [subdomains|length, live_hosts|length, dead_hosts|length, ports|length, technologies|length]|tojson }}">
+                        <canvas id="assetDistributionChart"></canvas>
                     </div>
 
                 </div>
@@ -3039,6 +2943,113 @@
 <script>
 
     /*
+     * Asset Distribution Chart
+     */
+    
+    const assetChartEl = document.getElementById('assetDistributionChart');
+    
+    if (assetChartEl) {
+        const chartContainer = assetChartEl.closest('.distribution-chart-container');
+        const countsJson = chartContainer ? chartContainer.dataset.chartCounts : '[]';
+        const [subdomainCount, liveHostCount, deadHostCount, portCount, techCount] = JSON.parse(countsJson);
+
+        const chartData = {
+            labels: ['Subdomains', 'Live Hosts', 'Dead Hosts', 'Open Ports', 'Technologies'],
+            datasets: [{
+                label: 'Asset Count',
+                data: [subdomainCount, liveHostCount, deadHostCount, portCount, techCount],
+                backgroundColor: [
+                    'rgba(37, 99, 235, 0.7)',
+                    'rgba(22, 163, 74, 0.7)',
+                    'rgba(148, 163, 184, 0.7)',
+                    'rgba(217, 119, 6, 0.7)',
+                    'rgba(139, 92, 246, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(37, 99, 235, 1)',
+                    'rgba(22, 163, 74, 1)',
+                    'rgba(148, 163, 184, 1)',
+                    'rgba(217, 119, 6, 1)',
+                    'rgba(139, 92, 246, 1)'
+                ],
+                borderWidth: 2,
+                borderRadius: 8,
+                hoverBackgroundColor: [
+                    'rgba(37, 99, 235, 0.9)',
+                    'rgba(22, 163, 74, 0.9)',
+                    'rgba(148, 163, 184, 0.9)',
+                    'rgba(217, 119, 6, 0.9)',
+                    'rgba(139, 92, 246, 0.9)'
+                ],
+            }]
+        };
+        
+        const chartCtx = assetChartEl.getContext('2d');
+        new Chart(chartCtx, {
+            type: 'bar',
+            data: chartData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            font: { size: 13, weight: 600 },
+                            color: '#334155',
+                            padding: 15,
+                            usePointStyle: true,
+                            pointStyle: 'circle'
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                        titleColor: '#fff',
+                        bodyColor: '#fff',
+                        borderColor: '#2563eb',
+                        borderWidth: 1,
+                        padding: 12,
+                        titleFont: { size: 14, weight: 700 },
+                        bodyFont: { size: 13 },
+                        cornerRadius: 8,
+                        displayColors: true,
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y + ' items';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            font: { size: 12, weight: 600 },
+                            color: '#64748b'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(226, 232, 240, 0.5)',
+                            drawBorder: false
+                        },
+                        ticks: {
+                            font: { size: 12, weight: 600 },
+                            color: '#64748b',
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    /*
      * ------------------------------------------------------------
      * NAVIGATION
      * ------------------------------------------------------------
@@ -3051,15 +3062,6 @@
 
     const sections =
         document.querySelectorAll('.report-section');
-
-    document.querySelectorAll('.progress-bar').forEach((bar) => {
-        const percent = Number(bar.dataset.percent || 0);
-        if (!Number.isFinite(percent)) {
-            bar.style.width = '0%';
-            return;
-        }
-        bar.style.width = percent + '%';
-    });
 
     function showSection(sectionName) {
 
