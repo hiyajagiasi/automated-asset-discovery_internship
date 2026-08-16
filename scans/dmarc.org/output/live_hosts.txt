@@ -1,4 +1,4 @@
 https://www.dmarc.org
 https://stamp.dmarc.org
-https://wiki.dmarc.org
 https://lists.dmarc.org
+https://wiki.dmarc.org

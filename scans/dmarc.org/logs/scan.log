@@ -58,3 +58,25 @@
 2026-08-16 15:04:09,076 - INFO - Starting DMARC discovery
 2026-08-16 15:04:09,128 - INFO - DMARC discovery completed in 0.1 seconds
 2026-08-16 15:04:09,185 - INFO - Completed reconnaissance for dmarc.org
+2026-08-16 15:13:44,388 - INFO - Starting reconnaissance for dmarc.org
+2026-08-16 15:13:44,388 - INFO - Starting subdomain discovery
+2026-08-16 15:14:06,341 - INFO - Subdomain discovery completed in 34.4 seconds (4 candidates)
+2026-08-16 15:14:06,342 - INFO - Starting live-host probing
+2026-08-16 15:14:15,572 - INFO - Subdomain discovery completed in 31.2 seconds (13 candidates)
+2026-08-16 15:14:15,572 - INFO - Starting live-host probing
+2026-08-16 15:14:15,573 - INFO - Starting dnsx resolution for 13 candidates
+2026-08-16 15:14:18,766 - INFO - dnsx resolution completed: 4/13 candidates resolved
+2026-08-16 15:14:18,767 - INFO - Starting httpx probe for 4 candidates (requested_batch=5000, effective_batch=2000, threads=100, timeout=10, retries=1, rate_limit=httpx-default per worker, stream=True, body_read_limit=5000, process_timeout=disabled, parallel_workers=1, max_total_threads=400)
+2026-08-16 15:14:25,154 - INFO - Batch 1: httpx returned 4 lines
+2026-08-16 15:14:25,156 - INFO - Total live hosts found: 4
+2026-08-16 15:14:25,156 - INFO - Total dead hosts found: 9
+2026-08-16 15:14:25,156 - INFO - Live-host probing completed in 9.6 seconds (4 live hosts, 9 dead hosts)
+2026-08-16 15:14:25,156 - INFO - Starting port discovery
+2026-08-16 15:15:33,343 - INFO - Nmap service progress: 4/4 hosts
+2026-08-16 15:15:56,238 - INFO - Identified 10 open host-port combinations across 4 hosts
+2026-08-16 15:15:56,238 - INFO - Port discovery completed in 91.1 seconds
+2026-08-16 15:15:56,239 - INFO - Starting technology discovery
+2026-08-16 15:16:00,215 - INFO - Technology discovery completed in 4.0 seconds
+2026-08-16 15:16:00,217 - INFO - Starting DMARC discovery
+2026-08-16 15:16:00,267 - INFO - DMARC discovery completed in 0.0 seconds
+2026-08-16 15:16:00,339 - INFO - Completed reconnaissance for dmarc.org

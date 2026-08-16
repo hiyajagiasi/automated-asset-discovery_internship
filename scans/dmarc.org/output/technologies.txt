@@ -5,7 +5,7 @@ Technology Findings
   HTTPX: unreachable | Webanalyze: no fingerprint matched
 - https://stamp.dmarc.org
   HTTPX: Web Server: apache | HTML5 | Webanalyze: no fingerprint matched
-- https://wiki.dmarc.org
-  HTTPX: Web Server: apache | Programming Language: PHP | HTML5 | Webanalyze: no fingerprint matched
 - https://lists.dmarc.org
   HTTPX: Web Server: apache | HTML5 | Webanalyze: no fingerprint matched
+- https://wiki.dmarc.org
+  HTTPX: Web Server: apache | Programming Language: PHP | HTML5 | Webanalyze: no fingerprint matched

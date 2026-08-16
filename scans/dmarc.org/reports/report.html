@@ -3,934 +3,4547 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>dmarc.org Reconnaissance Report</title>
+
     <style>
         :root {
-            --bg: #f3f7fb;
-            --bg-strong: #eaf2ff;
-            --surface: rgba(255, 255, 255, 0.92);
-            --surface-alt: #f8fbff;
-            --line: #dfeaf7;
-            --line-strong: #bfd4ef;
-            --text: #12263f;
-            --muted: #5e738d;
-            --accent: #1e7ae8;
-            --accent-soft: #eaf4ff;
-            --accent-strong: #0d5ec9;
-            --shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
+            --bg: #f5f8fc;
+            --surface: #ffffff;
+            --surface-soft: #f8fafc;
+            --surface-blue: #f1f7ff;
+
+            --border: #e2e8f0;
+            --border-blue: #cfe1f7;
+
+            --text: #0f172a;
+            --text-secondary: #334155;
+            --muted: #64748b;
+
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-soft: #eff6ff;
+
+            --success: #16a34a;
+            --success-soft: #ecfdf3;
+
+            --warning: #d97706;
+            --warning-soft: #fff7ed;
+
+            --danger: #dc2626;
+            --danger-soft: #fef2f2;
+
+            --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+            --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+
+            --sidebar-width: 250px;
         }
-        * { box-sizing: border-box; }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: linear-gradient(180deg, var(--bg) 0%, var(--bg-strong) 100%);
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            background: var(--bg);
             color: var(--text);
         }
-        .container {
-            max-width: 1280px;
-            margin: 32px auto;
-            padding: 0 20px 40px;
+
+        button,
+        input {
+            font: inherit;
         }
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid var(--line);
-            border-radius: 22px;
-            padding: 28px 28px 20px;
-            box-shadow: var(--shadow);
-            margin-bottom: 24px;
-        }
-        .header-top {
+
+        /* =========================================================
+           SIDEBAR
+        ========================================================= */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+
+            width: var(--sidebar-width);
+
+            background: #ffffff;
+            border-right: 1px solid var(--border);
+
+            padding: 24px 16px;
+
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            padding: 0 10px 24px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand-icon {
+            width: 38px;
+            height: 38px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 11px;
+
+            background: linear-gradient(
+                135deg,
+                #2563eb,
+                #3b82f6
+            );
+
+            color: white;
+
+            font-weight: 800;
+            font-size: 17px;
+
+            box-shadow:
+                0 8px 18px rgba(37, 99, 235, 0.2);
+        }
+
+        .brand-title {
+            font-weight: 800;
+            font-size: 0.95rem;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-subtitle {
+            margin-top: 2px;
+            font-size: 0.72rem;
+            color: var(--muted);
+        }
+
+        .sidebar-label {
+            margin: 24px 10px 8px;
+
+            color: #94a3b8;
+
+            font-size: 0.68rem;
+            font-weight: 800;
+
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .nav {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .nav-item {
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+            gap: 11px;
+
+            padding: 11px 12px;
+
+            border: 1px solid transparent;
+            border-radius: 10px;
+
+            background: transparent;
+
+            color: var(--text-secondary);
+
+            cursor: pointer;
+
+            text-align: left;
+
+            transition:
+                background 0.18s ease,
+                color 0.18s ease,
+                border-color 0.18s ease;
+        }
+
+        .nav-item:hover {
+            background: var(--surface-soft);
+        }
+
+        .nav-item.active {
+            background: var(--primary-soft);
+            border-color: #dbeafe;
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        .nav-icon {
+            width: 20px;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .nav-count {
+            margin-left: auto;
+
+            min-width: 24px;
+
+            padding: 2px 6px;
+
+            border-radius: 999px;
+
+            background: #f1f5f9;
+
+            color: var(--muted);
+
+            font-size: 0.68rem;
+            font-weight: 700;
+
+            text-align: center;
+        }
+
+        .nav-item.active .nav-count {
+            background: #dbeafe;
+            color: var(--primary-dark);
+        }
+
+        .sidebar-bottom {
+            margin-top: auto;
+
+            padding: 14px;
+
+            background: var(--surface-soft);
+
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .sidebar-bottom-title {
+            font-size: 0.72rem;
+            color: var(--muted);
+            margin-bottom: 5px;
+        }
+
+        .sidebar-target {
+            font-weight: 700;
+            font-size: 0.82rem;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* =========================================================
+           MAIN
+        ========================================================= */
+
+        .main {
+            margin-left: var(--sidebar-width);
+
+            min-height: 100vh;
+
+            padding: 30px;
+        }
+
+        .content {
+            max-width: 1450px;
+            margin: 0 auto;
+        }
+
+        /* =========================================================
+           TOP HEADER
+        ========================================================= */
+
+        .topbar {
+            display: flex;
             align-items: flex-start;
-            gap: 18px;
-            flex-wrap: wrap;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin-bottom: 26px;
         }
-        .header h1 {
-            margin: 0;
-            font-size: clamp(2rem, 3vw, 3rem);
-            line-height: 1.2;
-            letter-spacing: -0.05em;
+
+        .header-left {
+            min-width: 0;
         }
+
         .kicker {
             display: inline-flex;
             align-items: center;
-            margin-bottom: 12px;
-            padding: 7px 12px;
-            border: 1px solid var(--line-strong);
+
+            padding: 6px 10px;
+
             border-radius: 999px;
-            background: var(--accent-soft);
-            color: var(--accent-strong);
-            font-size: 0.74rem;
-            font-weight: 700;
+
+            background: var(--primary-soft);
+            border: 1px solid #dbeafe;
+
+            color: var(--primary-dark);
+
+            font-size: 0.68rem;
+            font-weight: 800;
+
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.09em;
         }
+
+        .page-title {
+            margin: 10px 0 5px;
+
+            font-size: clamp(1.8rem, 3vw, 2.65rem);
+
+            line-height: 1.1;
+
+            letter-spacing: -0.055em;
+        }
+
+        .target-name {
+            color: var(--primary);
+        }
+
+        .page-description {
+            margin: 0;
+
+            color: var(--muted);
+
+            font-size: 0.92rem;
+        }
+
         .header-actions {
             display: flex;
             align-items: center;
             gap: 10px;
-            flex-wrap: wrap;
-            position: relative;
+
+            flex-shrink: 0;
         }
-        .filter-wrap {
-            position: relative;
-        }
-        .filter-btn, .download-btn {
+
+        .header-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            border-radius: 12px;
-            border: 1px solid transparent;
-            font-size: 0.88rem;
+
+            min-height: 42px;
+
+            padding: 0 15px;
+
+            border-radius: 10px;
+
+            border: 1px solid var(--border);
+
+            background: white;
+
+            color: var(--text-secondary);
+
+            font-size: 0.82rem;
             font-weight: 700;
+
             cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+
+            transition: all 0.18s ease;
         }
-        .filter-btn {
-            background: var(--surface-alt);
-            border-color: var(--line);
-            color: var(--text);
-            padding: 11px 14px;
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6);
+
+        .header-btn:hover {
+            border-color: #bfdbfe;
+            background: var(--surface-blue);
+            color: var(--primary-dark);
         }
-        .filter-btn svg {
-            width: 16px;
-            height: 16px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+
+        .header-btn.primary {
+            background: var(--primary);
+            color: white;
+
+            border-color: var(--primary);
+
+            box-shadow:
+                0 7px 18px rgba(37, 99, 235, 0.18);
         }
-        .filter-btn:hover, .download-btn:hover {
-            transform: translateY(-1px);
+
+        .header-btn.primary:hover {
+            background: var(--primary-dark);
+            color: white;
         }
-        .download-btn {
-            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-            color: #ffffff;
-            padding: 11px 16px;
-            box-shadow: 0 12px 24px rgba(30, 122, 232, 0.18);
-        }
-        .subtitle {
-            margin-top: 12px;
-            color: var(--muted);
-            font-size: 0.96rem;
-        }
-        .filter-menu {
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            min-width: 180px;
-            background: rgba(255,255,255,0.98);
-            border: 1px solid var(--line);
-            border-radius: 14px;
-            box-shadow: var(--shadow);
-            padding: 8px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            z-index: 20;
-        }
-        .filter-menu.hidden {
+
+        /* =========================================================
+           PAGE SECTIONS
+        ========================================================= */
+
+        .report-section {
             display: none;
         }
-        .filter-option {
-            background: transparent;
-            border: 1px solid transparent;
-            border-radius: 10px;
-            color: var(--text);
-            text-align: left;
-            padding: 10px 12px;
-            font-size: 0.88rem;
-            font-weight: 600;
-            cursor: pointer;
+
+        .report-section.active {
+            display: block;
+            animation: fadeIn 0.22s ease;
         }
-        .filter-option.active {
-            background: var(--accent-soft);
-            border-color: var(--line-strong);
-            color: var(--accent-strong);
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(4px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .stats {
+
+        /* =========================================================
+           STAT CARDS
+        ========================================================= */
+
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-            margin: 24px 0 28px;
+
+            grid-template-columns:
+                repeat(5, minmax(0, 1fr));
+
+            gap: 14px;
+
+            margin-bottom: 18px;
         }
-        .stat {
-            background: rgba(255, 255, 255, 0.96);
-            border: 1px solid var(--line);
-            border-radius: 18px;
-            padding: 18px 18px 16px;
+
+        .stat-card {
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+
+            border-radius: 15px;
+
+            padding: 18px;
+
+            box-shadow: var(--shadow-sm);
+
+            transition:
+                transform 0.18s ease,
+                box-shadow 0.18s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
             box-shadow: var(--shadow);
         }
-        .stat .label {
-            display: block;
-            font-size: 0.74rem;
+
+        .stat-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 15px;
+        }
+
+        .stat-icon {
+            width: 34px;
+            height: 34px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 9px;
+
+            background: var(--primary-soft);
+
+            color: var(--primary);
+
+            font-size: 0.9rem;
+        }
+
+        .stat-label {
             color: var(--muted);
-            font-weight: 700;
+
+            font-size: 0.69rem;
+            font-weight: 800;
+
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            margin-bottom: 10px;
         }
-        .stat .value {
-            font-size: clamp(1.7rem, 2vw, 2.3rem);
+
+        .stat-value {
+            font-size: 1.9rem;
+            line-height: 1;
+
             font-weight: 800;
+
             letter-spacing: -0.05em;
-            color: var(--text);
         }
-        .section {
-            background: rgba(255, 255, 255, 0.96);
-            border: 1px solid var(--line);
-            border-radius: 20px;
-            padding: 22px 20px 18px;
-            margin-bottom: 24px;
-            box-shadow: var(--shadow);
-            transition: opacity 0.2s ease, transform 0.2s ease;
-        }
-        .section.hidden-section {
-            display: none;
-        }
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-            flex-wrap: wrap;
-        }
-        .section h2 {
-            margin: 0;
-            font-size: 1.35rem;
-            color: var(--text);
-        }
-        .pill {
-            display: inline-flex;
-            align-items: center;
-            background: var(--accent-soft);
-            color: var(--accent-strong);
-            border: 1px solid var(--line-strong);
-            border-radius: 999px;
-            padding: 6px 10px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-        }
-        .section-meta {
+
+        .stat-description {
+            margin-top: 8px;
+
             color: var(--muted);
-            margin: 0 0 14px;
-            font-size: 0.92rem;
+
+            font-size: 0.72rem;
         }
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
+
+        /* =========================================================
+           DASHBOARD GRID
+        ========================================================= */
+
+        .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 10px;
+
+            grid-template-columns:
+                minmax(0, 1.2fr)
+                minmax(320px, 0.8fr);
+
+            gap: 18px;
+
+            margin-bottom: 18px;
         }
-        li {
-            background: linear-gradient(180deg, var(--surface-alt), rgba(255,255,255,0.88));
-            border: 1px solid var(--line);
-            border-left: 4px solid var(--accent);
-            border-radius: 12px;
-            padding: 12px 14px;
-            color: var(--text);
-            word-break: break-word;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: rgba(255,255,255,0.96);
-            border: 1px solid var(--line);
-            border-radius: 12px;
+
+        .card {
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+
+            border-radius: 16px;
+
+            box-shadow: var(--shadow-sm);
+
             overflow: hidden;
         }
-        th, td {
-            text-align: left;
-            padding: 12px 14px;
-            border-bottom: 1px solid var(--line);
-            vertical-align: top;
-        }
-        th {
-            background: linear-gradient(180deg, #f5f9ff, #edf5ff);
-            color: var(--muted);
-            font-size: 0.76rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-        tr:last-child td { border-bottom: none; }
-        .empty {
-            color: var(--muted);
-            background: var(--surface-alt);
-            border: 1px dashed var(--line-strong);
-            border-radius: 12px;
-            padding: 18px;
-        }
-        .page {
-            display: none;
-        }
-        .page.active {
-            display: block;
-        }
-        .pagination {
+
+        .card-header {
             display: flex;
+            align-items: center;
             justify-content: space-between;
+
+            gap: 12px;
+
+            padding: 18px 20px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card-title {
+            margin: 0;
+
+            font-size: 0.98rem;
+
+            letter-spacing: -0.02em;
+        }
+
+        .card-subtitle {
+            margin: 3px 0 0;
+
+            color: var(--muted);
+
+            font-size: 0.74rem;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        /* =========================================================
+           SECURITY POSTURE
+        ========================================================= */
+
+        .posture {
+            display: flex;
             align-items: center;
             gap: 16px;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--line);
+
+            padding: 14px;
+
+            border-radius: 12px;
+
+            background: var(--success-soft);
+
+            border: 1px solid #bbf7d0;
+
+            margin-bottom: 16px;
         }
-        .pagination-nav {
+
+        .posture-icon {
+            width: 44px;
+            height: 44px;
+
+            flex-shrink: 0;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+
+            background: white;
+
+            color: var(--success);
+
+            font-size: 1.15rem;
+
+            border: 1px solid #bbf7d0;
+        }
+
+        .posture-title {
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+
+        .posture-description {
+            margin-top: 3px;
+
+            color: var(--muted);
+
+            font-size: 0.76rem;
+            line-height: 1.45;
+        }
+
+        .checks {
+            display: grid;
+            gap: 9px;
+        }
+
+        .check-row {
             display: flex;
-            gap: 12px;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 10px 12px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+
+            background: var(--surface-soft);
         }
-        .nav-btn {
+
+        .check-name {
+            font-size: 0.78rem;
+            font-weight: 650;
+        }
+
+        /* =========================================================
+           BADGES
+        ========================================================= */
+
+        .badge {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            border-radius: 10px;
-            border: 1px solid var(--line);
-            background: var(--surface-alt);
-            color: var(--text);
-            padding: 10px 14px;
-            font-size: 0.88rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
+
+            padding: 5px 8px;
+
+            border-radius: 999px;
+
+            font-size: 0.64rem;
+            font-weight: 800;
+
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+
+            white-space: nowrap;
         }
-        .nav-btn:hover:not(:disabled) {
-            background: rgba(30, 122, 232, 0.1);
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateY(-1px);
+
+        .badge.success {
+            background: var(--success-soft);
+            color: var(--success);
+            border: 1px solid #bbf7d0;
         }
-        .nav-btn:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
+
+        .badge.warning {
+            background: var(--warning-soft);
+            color: var(--warning);
+            border: 1px solid #fed7aa;
         }
-        .page-indicator {
+
+        .badge.danger {
+            background: var(--danger-soft);
+            color: var(--danger);
+            border: 1px solid #fecaca;
+        }
+
+        .badge.neutral {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+        }
+
+        .badge.blue {
+            background: var(--primary-soft);
+            color: var(--primary-dark);
+            border: 1px solid #bfdbfe;
+        }
+
+        /* =========================================================
+           ASSET DISTRIBUTION
+        ========================================================= */
+
+        .distribution {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .distribution-row {
+            display: grid;
+
+            grid-template-columns: 100px 1fr 40px;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+        .distribution-label {
+            color: var(--text-secondary);
+
+            font-size: 0.75rem;
+            font-weight: 650;
+        }
+
+        .progress {
+            height: 8px;
+
+            background: #edf2f7;
+
+            border-radius: 999px;
+
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+
+            border-radius: inherit;
+
+            background: linear-gradient(
+                90deg,
+                #2563eb,
+                #60a5fa
+            );
+
+            min-width: 3px;
+        }
+
+        .distribution-value {
             color: var(--muted);
-            font-size: 0.88rem;
-            font-weight: 600;
-            text-align: center;
-            min-width: 120px;
+
+            font-size: 0.72rem;
+
+            font-weight: 750;
+
+            text-align: right;
         }
-        @media (max-width: 640px) {
-            .container { padding: 0 12px 30px; }
-            .header { padding: 22px 18px 18px; }
-            .header-top { align-items: stretch; }
-            .header-actions { width: 100%; justify-content: space-between; }
-            .pagination { flex-direction: column; gap: 12px; }
-            .pagination-nav { width: 100%; }
-            .nav-btn { flex: 1; }
-            .page-indicator { order: -1; }
+
+        /* =========================================================
+           SECTION HEADER
+        ========================================================= */
+
+        .section-card {
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+
+            border-radius: 16px;
+
+            box-shadow: var(--shadow-sm);
+
+            overflow: hidden;
+        }
+
+        .section-toolbar {
+            display: flex;
+
+            align-items: flex-end;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding: 20px;
+
+            border-bottom: 1px solid var(--border);
+
+            flex-wrap: wrap;
+        }
+
+        .section-title {
+            margin: 0;
+
+            font-size: 1.15rem;
+
+            letter-spacing: -0.025em;
+        }
+
+        .section-description {
+            margin: 4px 0 0;
+
+            color: var(--muted);
+
+            font-size: 0.78rem;
+        }
+
+        .search-box {
+            position: relative;
+
+            min-width: 240px;
+        }
+
+        .search-box input {
+            width: 100%;
+
+            height: 38px;
+
+            padding: 0 12px 0 35px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 9px;
+
+            outline: none;
+
+            background: var(--surface-soft);
+
+            color: var(--text);
+
+            font-size: 0.78rem;
+        }
+
+        .search-box input:focus {
+            border-color: #93c5fd;
+
+            box-shadow:
+                0 0 0 3px rgba(37, 99, 235, 0.08);
+        }
+
+        .search-icon {
+            position: absolute;
+
+            left: 12px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #94a3b8;
+
+            font-size: 0.75rem;
+        }
+
+        /* =========================================================
+           TABLE
+        ========================================================= */
+
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 700px;
+        }
+
+        th {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+
+            background: #f8fafc;
+
+            color: #64748b;
+
+            font-size: 0.66rem;
+            font-weight: 800;
+
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+
+            text-align: left;
+
+            padding: 12px 16px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 13px 16px;
+
+            border-bottom: 1px solid #eef2f7;
+
+            color: var(--text-secondary);
+
+            font-size: 0.78rem;
+
+            vertical-align: top;
+        }
+
+        tbody tr {
+            transition: background 0.15s ease;
+        }
+
+        tbody tr:hover {
+            background: #f8fbff;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .host {
+            color: var(--text);
+
+            font-weight: 650;
+
+            word-break: break-word;
+        }
+
+        .record {
+            max-width: 520px;
+
+            font-family:
+                ui-monospace,
+                SFMono-Regular,
+                Menlo,
+                Monaco,
+                Consolas,
+                monospace;
+
+            font-size: 0.7rem;
+
+            line-height: 1.5;
+
+            word-break: break-word;
+
+            color: #475569;
+        }
+
+        /* =========================================================
+           COPY BUTTON
+        ========================================================= */
+
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+
+            margin-left: 7px;
+
+            padding: 4px 7px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 6px;
+
+            background: white;
+
+            color: var(--muted);
+
+            font-size: 0.62rem;
+
+            cursor: pointer;
+        }
+
+        .copy-btn:hover {
+            background: var(--primary-soft);
+            color: var(--primary);
+            border-color: #bfdbfe;
+        }
+
+        /* =========================================================
+           LIST
+        ========================================================= */
+
+        .asset-list {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fill, minmax(260px, 1fr));
+
+            gap: 10px;
+
+            padding: 18px;
+        }
+
+        .asset-item {
+            display: flex;
+            align-items: center;
+
+            gap: 9px;
+
+            padding: 11px 12px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 9px;
+
+            background: var(--surface-soft);
+
+            color: var(--text-secondary);
+
+            font-size: 0.76rem;
+
+            word-break: break-word;
+
+            transition:
+                border-color 0.15s ease,
+                background 0.15s ease;
+        }
+
+        .asset-item:hover {
+            border-color: #bfdbfe;
+            background: #f8fbff;
+        }
+
+        .asset-dot {
+            width: 6px;
+            height: 6px;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            background: var(--primary);
+        }
+
+        /* =========================================================
+           DMARC
+        ========================================================= */
+
+        .dmarc-overview {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 12px;
+
+            padding: 18px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dmarc-stat {
+            padding: 14px;
+
+            background: var(--surface-soft);
+
+            border: 1px solid var(--border);
+
+            border-radius: 11px;
+        }
+
+        .dmarc-stat-label {
+            color: var(--muted);
+
+            font-size: 0.66rem;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.07em;
+        }
+
+        .dmarc-stat-value {
+            margin-top: 7px;
+
+            font-size: 1.25rem;
+
+            font-weight: 800;
+
+            letter-spacing: -0.04em;
+        }
+
+        .policy-record {
+            padding: 16px;
+
+            background: #f8fafc;
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+
+            font-family:
+                ui-monospace,
+                SFMono-Regular,
+                Menlo,
+                Monaco,
+                Consolas,
+                monospace;
+
+            font-size: 0.7rem;
+
+            line-height: 1.6;
+
+            word-break: break-word;
+        }
+
+        /* =========================================================
+           EMPTY STATE
+        ========================================================= */
+
+        .empty {
+            padding: 45px 20px;
+
+            text-align: center;
+
+            color: var(--muted);
+        }
+
+        .empty-icon {
+            width: 42px;
+            height: 42px;
+
+            display: grid;
+            place-items: center;
+
+            margin: 0 auto 10px;
+
+            border-radius: 50%;
+
+            background: #f1f5f9;
+
+            color: #64748b;
+        }
+
+        .empty-title {
+            color: var(--text-secondary);
+
+            font-size: 0.84rem;
+            font-weight: 700;
+        }
+
+        .empty-text {
+            margin-top: 4px;
+
+            font-size: 0.73rem;
+        }
+
+        /* =========================================================
+           MOBILE SIDEBAR
+        ========================================================= */
+
+        .mobile-header {
+            display: none;
+        }
+
+        @media (max-width: 1100px) {
+            .stats-grid {
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dmarc-overview {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 760px) {
+            :root {
+                --sidebar-width: 0px;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+
+                transition: transform 0.25s ease;
+
+                width: 250px;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .mobile-header {
+                display: flex;
+
+                position: sticky;
+                top: 0;
+                z-index: 90;
+
+                align-items: center;
+                justify-content: space-between;
+
+                padding: 12px 15px;
+
+                background: rgba(255, 255, 255, 0.96);
+
+                backdrop-filter: blur(10px);
+
+                border-bottom: 1px solid var(--border);
+            }
+
+            .mobile-menu-btn {
+                border: 1px solid var(--border);
+
+                background: white;
+
+                border-radius: 8px;
+
+                width: 38px;
+                height: 38px;
+
+                cursor: pointer;
+            }
+
+            .main {
+                margin-left: 0;
+
+                padding: 20px 14px 35px;
+            }
+
+            .topbar {
+                flex-direction: column;
+            }
+
+            .header-actions {
+                width: 100%;
+            }
+
+            .header-btn {
+                flex: 1;
+            }
+
+            .stats-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .search-box {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .dmarc-overview {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dmarc-overview {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
-<body>
-    
-    
-    
-    
-    
-    <div id="report-data"
-         data-subdomains='["lists.dmarc.org", "www.dmarc.org", "admin.dmarc.org", "test.dmarc.org", "web.dmarc.org", "stamp.dmarc.org", "wiki.dmarc.org", "cdn.dmarc.org", "dns1.dmarc.org", "ns2.dmarc.org", "public.dmarc.org", "staging.dmarc.org", "v3.dmarc.org"]'
-         data-live-hosts='["https://www.dmarc.org", "https://stamp.dmarc.org", "https://wiki.dmarc.org", "https://lists.dmarc.org"]'
-         data-dead-hosts='["https://admin.dmarc.org", "https://test.dmarc.org", "https://web.dmarc.org", "https://cdn.dmarc.org", "https://dns1.dmarc.org", "https://ns2.dmarc.org", "https://public.dmarc.org", "https://staging.dmarc.org", "https://v3.dmarc.org"]'
-         data-ports='[{"host": "lists.dmarc.org", "port": "25", "service": "smtp"}, {"host": "lists.dmarc.org", "port": "80", "service": "http; title=lists.dmarc.org; server=Apache/2.4.55 (FreeBSD) OpenSSL/1.1.1t-freebsd; status=302; redirect=https://lists.dmarc.org/"}, {"host": "lists.dmarc.org", "port": "443", "service": "https; title=lists.dmarc.org; server=Apache/2.4.55 (FreeBSD) OpenSSL/1.1.1t-freebsd; status=200"}, {"host": "lists.dmarc.org", "port": "465", "service": "urd"}, {"host": "lists.dmarc.org", "port": "587", "service": "submission"}, {"host": "stamp.dmarc.org", "port": "25", "service": "smtp"}, {"host": "stamp.dmarc.org", "port": "80", "service": "http; title=stamp.dmarc.org; server=Apache/2.4.55 (FreeBSD) OpenSSL/1.1.1t-freebsd; status=200"}, {"host": "stamp.dmarc.org", "port": "443", "service": "https; title=stamp.dmarc.org; server=Apache/2.4.55 (FreeBSD) OpenSSL/1.1.1t-freebsd; status=200"}, {"host": "stamp.dmarc.org", "port": "465", "service": "urd"}, {"host": "stamp.dmarc.org", "port": "587", "service": "submission"}, {"host": "wiki.dmarc.org", "port": "80", "service": "http; title=Login required - wiki.dmarc.org; server=Apache/2.4.29 (FreeBSD) PHP/7.2.3 OpenSSL/1.0.2u-freebsd; status=200"}, {"host": "wiki.dmarc.org", "port": "443", "service": "https; title=Login required - wiki.dmarc.org; server=Apache/2.4.29 (FreeBSD) PHP/7.2.3 OpenSSL/1.0.2u-freebsd; status=200"}, {"host": "www.dmarc.org", "port": "80", "service": "http; title=dmarc.org \u0026#8211; Domain Message Authentication Reporting \u0026amp; Conformance; server=Apache/2.4.29 (FreeBSD) PHP/7.2.3 OpenSSL/1.0.2u-freebsd; status=301; redirect=https://dmarc.org/"}, {"host": "www.dmarc.org", "port": "443", "service": "https; title=dmarc.org \u0026#8211; Domain Message Authentication Reporting \u0026amp; Conformance; server=Apache/2.4.29 (FreeBSD) PHP/7.2.3 OpenSSL/1.0.2u-freebsd; status=301; redirect=https://dmarc.org/"}]'
-         data-technologies='[{"host": "https://www.dmarc.org", "technology": "HTTPX: unreachable | Webanalyze: no fingerprint matched"}, {"host": "https://stamp.dmarc.org", "technology": "HTTPX: Web Server: apache | HTML5 | Webanalyze: no fingerprint matched"}, {"host": "https://wiki.dmarc.org", "technology": "HTTPX: Web Server: apache | Programming Language: PHP | HTML5 | Webanalyze: no fingerprint matched"}, {"host": "https://lists.dmarc.org", "technology": "HTTPX: Web Server: apache | HTML5 | Webanalyze: no fingerprint matched"}]'
-         data-dmarc='[{"dmarc_record": "v=DMARC1; p=none; pct=100; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org", "domain": "www.dmarc.org", "host": "www.dmarc.org", "policy": "none", "policy_source": "p", "source": "dmarc.org", "source_domain": "dmarc.org", "source_type": "organizational", "status": "inherited"}, {"dmarc_record": "v=DMARC1; p=none; pct=100; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org", "domain": "stamp.dmarc.org", "host": "stamp.dmarc.org", "policy": "none", "policy_source": "p", "source": "dmarc.org", "source_domain": "dmarc.org", "source_type": "organizational", "status": "inherited"}, {"dmarc_record": "v=DMARC1; p=none; pct=100; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org", "domain": "wiki.dmarc.org", "host": "wiki.dmarc.org", "policy": "none", "policy_source": "p", "source": "dmarc.org", "source_domain": "dmarc.org", "source_type": "organizational", "status": "inherited"}, {"dmarc_record": "v=DMARC1; p=none; pct=100; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org", "domain": "lists.dmarc.org", "host": "lists.dmarc.org", "policy": "none", "policy_source": "p", "source": "dmarc.org", "source_domain": "dmarc.org", "source_type": "organizational", "status": "inherited"}]'
-         style="display:none;"></div>
-    <div class="container">
-        <div class="header">
-            <div class="header-top">
-                <div>
-                    <span class="kicker">Asset Discovery</span>
-                    <h1>Reconnaissance Report for dmarc.org</h1>
+
+<body data-target="dmarc.org">
+
+<!-- =============================================================
+     MOBILE HEADER
+============================================================= -->
+
+<div class="mobile-header">
+    <strong>Asset Discovery</strong>
+
+    <button
+        class="mobile-menu-btn"
+        id="mobileMenuBtn"
+        type="button"
+        aria-label="Open menu"
+    >
+        ☰
+    </button>
+</div>
+
+
+<!-- =============================================================
+     SIDEBAR
+============================================================= -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            A
+        </div>
+
+        <div>
+            <div class="brand-title">
+                Asset Discovery
+            </div>
+
+            <div class="brand-subtitle">
+                Reconnaissance Platform
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="sidebar-label">
+        Report
+    </div>
+
+
+    <nav class="nav">
+
+        <button
+            class="nav-item active"
+            data-section="overview"
+            type="button"
+        >
+            <span class="nav-icon">▣</span>
+            <span>Overview</span>
+        </button>
+
+
+        <button
+            class="nav-item"
+            data-section="subdomains"
+            type="button"
+        >
+            <span class="nav-icon">◉</span>
+            <span>Subdomains</span>
+
+            <span class="nav-count">
+                13
+            </span>
+        </button>
+
+
+        <button
+            class="nav-item"
+            data-section="live-hosts"
+            type="button"
+        >
+            <span class="nav-icon">●</span>
+            <span>Live Hosts</span>
+
+            <span class="nav-count">
+                4
+            </span>
+        </button>
+
+
+        <button
+            class="nav-item"
+            data-section="dead-hosts"
+            type="button"
+        >
+            <span class="nav-icon">○</span>
+            <span>Dead Hosts</span>
+
+            <span class="nav-count">
+                9
+            </span>
+        </button>
+
+
+        <button
+            class="nav-item"
+            data-section="open-ports"
+            type="button"
+        >
+            <span class="nav-icon">⌁</span>
+            <span>Open Ports</span>
+
+            <span class="nav-count">
+                10
+            </span>
+        </button>
+
+
+        <button
+            class="nav-item"
+            data-section="technologies"
+            type="button"
+        >
+            <span class="nav-icon">◇</span>
+            <span>Technologies</span>
+
+            <span class="nav-count">
+                4
+            </span>
+        </button>
+
+
+        <button
+            class="nav-item"
+            data-section="dmarc"
+            type="button"
+        >
+            <span class="nav-icon">✓</span>
+            <span>DMARC</span>
+
+            <span class="nav-count">
+                4
+            </span>
+        </button>
+
+    </nav>
+
+
+    <div class="sidebar-label">
+        Actions
+    </div>
+
+
+    <nav class="nav">
+
+        <button
+            class="nav-item"
+            id="sidebarExport"
+            type="button"
+        >
+            <span class="nav-icon">↓</span>
+            <span>Export Report</span>
+        </button>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="sidebar-bottom-title">
+            Target
+        </div>
+
+        <div class="sidebar-target">
+            dmarc.org
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- =============================================================
+     MAIN
+============================================================= -->
+
+<main class="main">
+
+<div class="content">
+
+
+    <!-- =========================================================
+         TOP HEADER
+    ========================================================= -->
+
+    <header class="topbar">
+
+        <div class="header-left">
+
+            <span class="kicker">
+                Asset Discovery
+            </span>
+
+            <h1 class="page-title">
+                Reconnaissance Report for
+                <span class="target-name">
+                    dmarc.org
+                </span>
+            </h1>
+
+            <p class="page-description">
+                Executive overview of discovered assets,
+                reachable endpoints, technologies and security posture.
+            </p>
+
+        </div>
+
+
+        <div class="header-actions">
+
+            <button
+                class="header-btn"
+                id="copyTargetBtn"
+                type="button"
+            >
+                Copy Target
+            </button>
+
+            <button
+                class="header-btn primary"
+                id="downloadReportBtn"
+                type="button"
+            >
+                ↓ Export HTML
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         OVERVIEW
+    ========================================================= -->
+
+    <section
+        class="report-section active"
+        id="section-overview"
+    >
+
+        <!-- Statistics -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span class="stat-label">
+                        Subdomains
+                    </span>
+
+                    <span class="stat-icon">
+                        ◉
+                    </span>
+
                 </div>
-                <div class="header-actions">
-                    <div class="filter-wrap">
-                        <button class="filter-btn" id="filterToggleBtn" type="button" aria-expanded="false" aria-controls="filterMenu">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
-                            <span>Filter</span>
-                        </button>
-                        <div class="filter-menu hidden" id="filterMenu" role="menu" aria-label="Report filters">
-                            <button class="filter-option active" data-filter="all" type="button">All sections</button>
-                            <button class="filter-option" data-filter="subdomains" type="button">Subdomains</button>
-                            <button class="filter-option" data-filter="live-hosts" type="button">Live Hosts</button>
-                            <button class="filter-option" data-filter="dead-hosts" type="button">Dead Hosts</button>
-                            <button class="filter-option" data-filter="open-ports" type="button">Open Ports</button>
-                            <button class="filter-option" data-filter="technologies" type="button">Technologies</button>
-                            <button class="filter-option" data-filter="dmarc" type="button">DMARC</button>
-                        </div>
+
+                <div class="stat-value">
+                    13
+                </div>
+
+                <div class="stat-description">
+                    Discovered domain assets
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span class="stat-label">
+                        Live Hosts
+                    </span>
+
+                    <span class="stat-icon">
+                        ●
+                    </span>
+
+                </div>
+
+                <div class="stat-value">
+                    4
+                </div>
+
+                <div class="stat-description">
+                    Reachable endpoints
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span class="stat-label">
+                        Dead Hosts
+                    </span>
+
+                    <span class="stat-icon">
+                        ○
+                    </span>
+
+                </div>
+
+                <div class="stat-value">
+                    9
+                </div>
+
+                <div class="stat-description">
+                    Unreachable assets
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span class="stat-label">
+                        Open Ports
+                    </span>
+
+                    <span class="stat-icon">
+                        ⌁
+                    </span>
+
+                </div>
+
+                <div class="stat-value">
+                    10
+                </div>
+
+                <div class="stat-description">
+                    Detected services
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span class="stat-label">
+                        Technologies
+                    </span>
+
+                    <span class="stat-icon">
+                        ◇
+                    </span>
+
+                </div>
+
+                <div class="stat-value">
+                    4
+                </div>
+
+                <div class="stat-description">
+                    Technology fingerprints
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Dashboard -->
+
+        <div class="dashboard-grid">
+
+
+            <!-- Security Posture -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2 class="card-title">
+                            Security Posture
+                        </h2>
+
+                        <p class="card-subtitle">
+                            High-level configuration indicators
+                        </p>
                     </div>
-                    <button class="download-btn" id="downloadReportBtn" type="button">Download HTML</button>
+
+                    
+
+                        <span class="badge success">
+                            DMARC Detected
+                        </span>
+
+                    
+
                 </div>
+
+
+                <div class="card-body">
+
+                    
+
+                        <div class="posture">
+
+                            <div class="posture-icon">
+                                ✓
+                            </div>
+
+                            <div>
+
+                                <div class="posture-title">
+                                    DMARC configuration detected
+                                </div>
+
+                                <div class="posture-description">
+                                    DMARC records were found for
+                                    4 discovered host(s).
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    
+
+
+                    <div class="checks">
+
+                        <div class="check-row">
+
+                            <span class="check-name">
+                                Asset Discovery
+                            </span>
+
+                            <span class="badge success">
+                                Complete
+                            </span>
+
+                        </div>
+
+
+                        <div class="check-row">
+
+                            <span class="check-name">
+                                Live Host Detection
+                            </span>
+
+                            
+                                <span class="badge success">
+                                    Detected
+                                </span>
+                            
+
+                        </div>
+
+
+                        <div class="check-row">
+
+                            <span class="check-name">
+                                Open Port Discovery
+                            </span>
+
+                            
+                                <span class="badge warning">
+                                    10 Found
+                                </span>
+                            
+
+                        </div>
+
+
+                        <div class="check-row">
+
+                            <span class="check-name">
+                                Technology Detection
+                            </span>
+
+                            
+                                <span class="badge blue">
+                                    Detected
+                                </span>
+                            
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
-            <div class="subtitle">Executive overview of discovered assets, reachable endpoints, and technology exposure.</div>
+
+
+            <!-- Asset Distribution -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2 class="card-title">
+                            Asset Distribution
+                        </h2>
+
+                        <p class="card-subtitle">
+                            Relative discovery volume
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card-body">
+
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    <div class="distribution">
+
+
+                        <div class="distribution-row">
+
+                            <span class="distribution-label">
+                                Subdomains
+                            </span>
+
+                            <div class="progress">
+
+                                <div
+                                    class="progress-bar"
+                                    data-percent="100.0"
+                                ></div>
+
+                            </div>
+
+                            <span class="distribution-value">
+                                13
+                            </span>
+
+                        </div>
+
+
+                        <div class="distribution-row">
+
+                            <span class="distribution-label">
+                                Live Hosts
+                            </span>
+
+                            <div class="progress">
+
+                                <div
+                                    class="progress-bar"
+                                    data-percent="30.8"
+                                ></div>
+
+                            </div>
+
+                            <span class="distribution-value">
+                                4
+                            </span>
+
+                        </div>
+
+
+                        <div class="distribution-row">
+
+                            <span class="distribution-label">
+                                Dead Hosts
+                            </span>
+
+                            <div class="progress">
+
+                                <div
+                                    class="progress-bar"
+                                    data-percent="69.2"
+                                ></div>
+
+                            </div>
+
+                            <span class="distribution-value">
+                                9
+                            </span>
+
+                        </div>
+
+
+                        <div class="distribution-row">
+
+                            <span class="distribution-label">
+                                Open Ports
+                            </span>
+
+                            <div class="progress">
+
+                                <div
+                                    class="progress-bar"
+                                    data-percent="76.9"
+                                ></div>
+
+                            </div>
+
+                            <span class="distribution-value">
+                                10
+                            </span>
+
+                        </div>
+
+
+                        <div class="distribution-row">
+
+                            <span class="distribution-label">
+                                Technologies
+                            </span>
+
+                            <div class="progress">
+
+                                <div
+                                    class="progress-bar"
+                                    data-percent="30.8"
+                                ></div>
+
+                            </div>
+
+                            <span class="distribution-value">
+                                4
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <!-- Pagination Controls -->
-        <div class="pagination">
-            <div class="pagination-nav">
-                <button class="nav-btn" id="prevBtn" type="button">
-                    <span>← Previous</span>
+
+        <!-- Quick DMARC -->
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2 class="card-title">
+                        DMARC Overview
+                    </h2>
+
+                    <p class="card-subtitle">
+                        Email authentication configuration discovered
+                        during reconnaissance.
+                    </p>
+
+                </div>
+
+                <button
+                    class="header-btn"
+                    type="button"
+                    onclick="showSection('dmarc')"
+                >
+                    View Details →
                 </button>
-                <button class="nav-btn" id="nextBtn" type="button">
-                    <span>Next →</span>
-                </button>
+
             </div>
-            <div class="page-indicator">
-                <span id="pageNumber">1</span> of <span id="pageTotal">7</span>
+
+
+            <div class="card-body">
+
+                
+
+                    <div class="dmarc-overview">
+
+                        <div class="dmarc-stat">
+
+                            <div class="dmarc-stat-label">
+                                Hosts Checked
+                            </div>
+
+                            <div class="dmarc-stat-value">
+                                4
+                            </div>
+
+                        </div>
+
+
+                        <div class="dmarc-stat">
+
+                            <div class="dmarc-stat-label">
+                                Hosts with DMARC
+                            </div>
+
+                            <div class="dmarc-stat-value"
+                                 style="color:#16a34a;">
+                                4
+                            </div>
+
+                        </div>
+
+
+                        <div class="dmarc-stat">
+
+                            <div class="dmarc-stat-label">
+                                Policy
+                            </div>
+
+                            <div class="dmarc-stat-value">
+
+                                
+                                    NONE
+                                
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="dmarc-stat">
+
+                            <div class="dmarc-stat-label">
+                                Source
+                            </div>
+
+                            <div class="dmarc-stat-value"
+                                 style="font-size:0.95rem;">
+
+                                dmarc.org
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                
+
             </div>
+
         </div>
 
-        <!-- Page 1: Summary -->
-        <div class="page active" data-page="0" data-section="summary">
-            <div class="stats">
-                <div class="stat"><span class="label">Subdomains</span><span class="value">13</span></div>
-                <div class="stat"><span class="label">Live Hosts</span><span class="value">4</span></div>
-                <div class="stat"><span class="label">Dead Hosts</span><span class="value">9</span></div>
-                <div class="stat"><span class="label">Open Ports</span><span class="value">14</span></div>
-                <div class="stat"><span class="label">Technologies</span><span class="value">4</span></div>
-            </div>
-        </div>
+    </section>
 
-        <!-- Page 2: Subdomains -->
-        <div class="page" data-page="1" data-section="subdomains">
-            <div class="section">
-                <div class="section-header">
-                    <h2>Subdomains</h2>
-                    <span class="pill">13 entries</span>
+
+    <!-- =========================================================
+         SUBDOMAINS
+    ========================================================= -->
+
+    <section
+        class="report-section"
+        id="section-subdomains"
+    >
+
+        <div class="section-card">
+
+            <div class="section-toolbar">
+
+                <div>
+
+                    <h2 class="section-title">
+                        Subdomains
+                    </h2>
+
+                    <p class="section-description">
+                        13
+                        discovered subdomain entries.
+                    </p>
+
                 </div>
-                
-                    <p class="section-meta">Showing all 13 discovered entries.</p>
-                    <ul>
-                        
-                            <li>lists.dmarc.org</li>
-                        
-                            <li>www.dmarc.org</li>
-                        
-                            <li>admin.dmarc.org</li>
-                        
-                            <li>test.dmarc.org</li>
-                        
-                            <li>web.dmarc.org</li>
-                        
-                            <li>stamp.dmarc.org</li>
-                        
-                            <li>wiki.dmarc.org</li>
-                        
-                            <li>cdn.dmarc.org</li>
-                        
-                            <li>dns1.dmarc.org</li>
-                        
-                            <li>ns2.dmarc.org</li>
-                        
-                            <li>public.dmarc.org</li>
-                        
-                            <li>staging.dmarc.org</li>
-                        
-                            <li>v3.dmarc.org</li>
-                        
-                    </ul>
-                
+
+                <div class="search-box">
+
+                    <span class="search-icon">
+                        🔍
+                    </span>
+
+                    <input
+                        type="search"
+                        placeholder="Search subdomains..."
+                        data-search="subdomains"
+                    >
+
+                </div>
+
             </div>
+
+
+            
+
+                <div
+                    class="asset-list searchable-list"
+                    id="subdomains-list"
+                >
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="wiki.dmarc.org"
+                        >
+
+                            <span class="asset-dot"></span>
+
+                            <span>
+                                wiki.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="wiki.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="www.dmarc.org"
+                        >
+
+                            <span class="asset-dot"></span>
+
+                            <span>
+                                www.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="www.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="admin.dmarc.org"
+                        >
+
+                            <span class="asset-dot"></span>
+
+                            <span>
+                                admin.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="admin.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="lists.dmarc.org"
+                        >
+
+                            <span class="asset-dot"></span>
+
+                            <span>
+                                lists.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="lists.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="ns2.dmarc.org"
+                        >
+
+                            <span class="asset-dot"></span>
+
+                            <span>
+                                ns2.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="ns2.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="public.dmarc.org"
+                        >
+
+                            <span class="asset-dot"></span>
+
+                            <span>
+                                public.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="public.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="staging.dmarc.org"
+                        >
+
+                            <span class="asset-dot"></span>
+
+                            <span>
+                                staging.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="staging.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="stamp.dmarc.org"
+                        >
+
+                            <span class="asset-dot"></span>
+
+                            <span>
+                                stamp.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="stamp.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="test.dmarc.org"
+                        >
+
+                            <span class="asset-dot"></span>
+
+                            <span>
+                                test.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="test.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="v3.dmarc.org"
+                        >
+
+                            <span class="asset-dot"></span>
+
+                            <span>
+                                v3.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="v3.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="cdn.dmarc.org"
+                        >
+
+                            <span class="asset-dot"></span>
+
+                            <span>
+                                cdn.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="cdn.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="dns1.dmarc.org"
+                        >
+
+                            <span class="asset-dot"></span>
+
+                            <span>
+                                dns1.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="dns1.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="web.dmarc.org"
+                        >
+
+                            <span class="asset-dot"></span>
+
+                            <span>
+                                web.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="web.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                </div>
+
+            
+
         </div>
 
-        <!-- Page 3: Live Hosts -->
-        <div class="page" data-page="2" data-section="live-hosts">
-            <div class="section">
-                <div class="section-header">
-                    <h2>Live Hosts</h2>
-                    <span class="pill">4 entries</span>
+    </section>
+
+
+    <!-- =========================================================
+         LIVE HOSTS
+    ========================================================= -->
+
+    <section
+        class="report-section"
+        id="section-live-hosts"
+    >
+
+        <div class="section-card">
+
+            <div class="section-toolbar">
+
+                <div>
+
+                    <h2 class="section-title">
+                        Live Hosts
+                    </h2>
+
+                    <p class="section-description">
+                        Reachable hosts identified during scanning.
+                    </p>
+
                 </div>
-                
-                    <p class="section-meta">Showing all 4 detected entries.</p>
-                    <ul>
-                        
-                            <li>https://www.dmarc.org</li>
-                        
-                            <li>https://stamp.dmarc.org</li>
-                        
-                            <li>https://wiki.dmarc.org</li>
-                        
-                            <li>https://lists.dmarc.org</li>
-                        
-                    </ul>
-                
+
+                <div class="search-box">
+
+                    <span class="search-icon">
+                        🔍
+                    </span>
+
+                    <input
+                        type="search"
+                        placeholder="Search live hosts..."
+                        data-search="live-hosts"
+                    >
+
+                </div>
+
             </div>
+
+
+            
+
+                <div class="asset-list">
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="https://www.dmarc.org"
+                        >
+
+                            <span
+                                class="asset-dot"
+                                style="background:#16a34a;"
+                            ></span>
+
+                            <span>
+                                https://www.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="https://www.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="https://stamp.dmarc.org"
+                        >
+
+                            <span
+                                class="asset-dot"
+                                style="background:#16a34a;"
+                            ></span>
+
+                            <span>
+                                https://stamp.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="https://stamp.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="https://lists.dmarc.org"
+                        >
+
+                            <span
+                                class="asset-dot"
+                                style="background:#16a34a;"
+                            ></span>
+
+                            <span>
+                                https://lists.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="https://lists.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="https://wiki.dmarc.org"
+                        >
+
+                            <span
+                                class="asset-dot"
+                                style="background:#16a34a;"
+                            ></span>
+
+                            <span>
+                                https://wiki.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="https://wiki.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                </div>
+
+            
+
         </div>
 
-        <!-- Page 4: Dead Hosts -->
-        <div class="page" data-page="3" data-section="dead-hosts">
-            <div class="section">
-                <div class="section-header">
-                    <h2>Dead Hosts</h2>
-                    <span class="pill">9 entries</span>
+    </section>
+
+
+    <!-- =========================================================
+         DEAD HOSTS
+    ========================================================= -->
+
+    <section
+        class="report-section"
+        id="section-dead-hosts"
+    >
+
+        <div class="section-card">
+
+            <div class="section-toolbar">
+
+                <div>
+
+                    <h2 class="section-title">
+                        Dead Hosts
+                    </h2>
+
+                    <p class="section-description">
+                        Hosts that were discovered but could not be
+                        reached.
+                    </p>
+
                 </div>
-                
-                    <p class="section-meta">Showing all 9 dead targets.</p>
-                    <ul>
-                        
-                            <li>https://admin.dmarc.org</li>
-                        
-                            <li>https://test.dmarc.org</li>
-                        
-                            <li>https://web.dmarc.org</li>
-                        
-                            <li>https://cdn.dmarc.org</li>
-                        
-                            <li>https://dns1.dmarc.org</li>
-                        
-                            <li>https://ns2.dmarc.org</li>
-                        
-                            <li>https://public.dmarc.org</li>
-                        
-                            <li>https://staging.dmarc.org</li>
-                        
-                            <li>https://v3.dmarc.org</li>
-                        
-                    </ul>
-                
+
+                <div class="search-box">
+
+                    <span class="search-icon">
+                        🔍
+                    </span>
+
+                    <input
+                        type="search"
+                        placeholder="Search dead hosts..."
+                        data-search="dead-hosts"
+                    >
+
+                </div>
+
             </div>
+
+
+            
+
+                <div class="asset-list">
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="https://admin.dmarc.org"
+                        >
+
+                            <span
+                                class="asset-dot"
+                                style="background:#94a3b8;"
+                            ></span>
+
+                            <span>
+                                https://admin.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="https://admin.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="https://ns2.dmarc.org"
+                        >
+
+                            <span
+                                class="asset-dot"
+                                style="background:#94a3b8;"
+                            ></span>
+
+                            <span>
+                                https://ns2.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="https://ns2.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="https://public.dmarc.org"
+                        >
+
+                            <span
+                                class="asset-dot"
+                                style="background:#94a3b8;"
+                            ></span>
+
+                            <span>
+                                https://public.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="https://public.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="https://staging.dmarc.org"
+                        >
+
+                            <span
+                                class="asset-dot"
+                                style="background:#94a3b8;"
+                            ></span>
+
+                            <span>
+                                https://staging.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="https://staging.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="https://test.dmarc.org"
+                        >
+
+                            <span
+                                class="asset-dot"
+                                style="background:#94a3b8;"
+                            ></span>
+
+                            <span>
+                                https://test.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="https://test.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="https://v3.dmarc.org"
+                        >
+
+                            <span
+                                class="asset-dot"
+                                style="background:#94a3b8;"
+                            ></span>
+
+                            <span>
+                                https://v3.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="https://v3.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="https://cdn.dmarc.org"
+                        >
+
+                            <span
+                                class="asset-dot"
+                                style="background:#94a3b8;"
+                            ></span>
+
+                            <span>
+                                https://cdn.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="https://cdn.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="https://dns1.dmarc.org"
+                        >
+
+                            <span
+                                class="asset-dot"
+                                style="background:#94a3b8;"
+                            ></span>
+
+                            <span>
+                                https://dns1.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="https://dns1.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                        <div
+                            class="asset-item searchable-item"
+                            data-search-value="https://web.dmarc.org"
+                        >
+
+                            <span
+                                class="asset-dot"
+                                style="background:#94a3b8;"
+                            ></span>
+
+                            <span>
+                                https://web.dmarc.org
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                type="button"
+                                data-copy="https://web.dmarc.org"
+                            >
+                                Copy
+                            </button>
+
+                        </div>
+
+                    
+
+                </div>
+
+            
+
         </div>
 
-        <!-- Page 5: Open Ports -->
-        <div class="page" data-page="4" data-section="open-ports">
-            <div class="section">
-                <div class="section-header">
-                    <h2>Open Ports</h2>
-                    <span class="pill">14 entries</span>
+    </section>
+
+
+    <!-- =========================================================
+         OPEN PORTS
+    ========================================================= -->
+
+    <section
+        class="report-section"
+        id="section-open-ports"
+    >
+
+        <div class="section-card">
+
+            <div class="section-toolbar">
+
+                <div>
+
+                    <h2 class="section-title">
+                        Open Ports
+                    </h2>
+
+                    <p class="section-description">
+                        10
+                        detected port and service entries.
+                    </p>
+
                 </div>
-                
-                    <p class="section-meta">Showing all 14 port entries.</p>
+
+                <div class="search-box">
+
+                    <span class="search-icon">
+                        🔍
+                    </span>
+
+                    <input
+                        type="search"
+                        placeholder="Search ports..."
+                        data-search="open-ports"
+                    >
+
+                </div>
+
+            </div>
+
+
+            
+
+                <div class="table-wrap">
+
                     <table>
-                        <thead>
-                            <tr><th>Host</th><th>Port</th><th>Service</th></tr>
-                        </thead>
-                        <tbody>
-                            
-                                <tr>
-                                    <td>lists.dmarc.org</td>
-                                    <td>25</td>
-                                    <td>smtp</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td>lists.dmarc.org</td>
-                                    <td>80</td>
-                                    <td>http; title=lists.dmarc.org; server=Apache/2.4.55 (FreeBSD) OpenSSL/1.1.1t-freebsd; status=302; redirect=https://lists.dmarc.org/</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td>lists.dmarc.org</td>
-                                    <td>443</td>
-                                    <td>https; title=lists.dmarc.org; server=Apache/2.4.55 (FreeBSD) OpenSSL/1.1.1t-freebsd; status=200</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td>lists.dmarc.org</td>
-                                    <td>465</td>
-                                    <td>urd</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td>lists.dmarc.org</td>
-                                    <td>587</td>
-                                    <td>submission</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td>stamp.dmarc.org</td>
-                                    <td>25</td>
-                                    <td>smtp</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td>stamp.dmarc.org</td>
-                                    <td>80</td>
-                                    <td>http; title=stamp.dmarc.org; server=Apache/2.4.55 (FreeBSD) OpenSSL/1.1.1t-freebsd; status=200</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td>stamp.dmarc.org</td>
-                                    <td>443</td>
-                                    <td>https; title=stamp.dmarc.org; server=Apache/2.4.55 (FreeBSD) OpenSSL/1.1.1t-freebsd; status=200</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td>stamp.dmarc.org</td>
-                                    <td>465</td>
-                                    <td>urd</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td>stamp.dmarc.org</td>
-                                    <td>587</td>
-                                    <td>submission</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td>wiki.dmarc.org</td>
-                                    <td>80</td>
-                                    <td>http; title=Login required - wiki.dmarc.org; server=Apache/2.4.29 (FreeBSD) PHP/7.2.3 OpenSSL/1.0.2u-freebsd; status=200</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td>wiki.dmarc.org</td>
-                                    <td>443</td>
-                                    <td>https; title=Login required - wiki.dmarc.org; server=Apache/2.4.29 (FreeBSD) PHP/7.2.3 OpenSSL/1.0.2u-freebsd; status=200</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td>www.dmarc.org</td>
-                                    <td>80</td>
-                                    <td>http; title=dmarc.org &#8211; Domain Message Authentication Reporting &amp; Conformance; server=Apache/2.4.29 (FreeBSD) PHP/7.2.3 OpenSSL/1.0.2u-freebsd; status=301; redirect=https://dmarc.org/</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td>www.dmarc.org</td>
-                                    <td>443</td>
-                                    <td>https; title=dmarc.org &#8211; Domain Message Authentication Reporting &amp; Conformance; server=Apache/2.4.29 (FreeBSD) PHP/7.2.3 OpenSSL/1.0.2u-freebsd; status=301; redirect=https://dmarc.org/</td>
-                                </tr>
-                            
-                        </tbody>
-                    </table>
-                
-            </div>
-        </div>
 
-        <!-- Page 6: Technologies -->
-        <div class="page" data-page="5" data-section="technologies">
-            <div class="section">
-                <div class="section-header">
-                    <h2>Technologies</h2>
-                    <span class="pill">4 entries</span>
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Host
+                                </th>
+
+                                <th>
+                                    Port
+                                </th>
+
+                                <th>
+                                    Service
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            
+
+                                <tr
+                                    class="searchable-row"
+                                    data-search-value="
+                                        lists.dmarc.org
+                                        25
+                                        smtp
+                                    "
+                                >
+
+                                    <td>
+
+                                        <span class="host">
+                                            lists.dmarc.org
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge blue">
+                                            25
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        smtp
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                                <tr
+                                    class="searchable-row"
+                                    data-search-value="
+                                        lists.dmarc.org
+                                        80
+                                        http; title=lists.dmarc.org; server=apache/2.4.55 (freebsd) openssl/1.1.1t-freebsd; status=302; redirect=https://lists.dmarc.org/
+                                    "
+                                >
+
+                                    <td>
+
+                                        <span class="host">
+                                            lists.dmarc.org
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge blue">
+                                            80
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        http; title=lists.dmarc.org; server=Apache/2.4.55 (FreeBSD) OpenSSL/1.1.1t-freebsd; status=302; redirect=https://lists.dmarc.org/
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                                <tr
+                                    class="searchable-row"
+                                    data-search-value="
+                                        lists.dmarc.org
+                                        443
+                                        https; title=lists.dmarc.org; server=apache/2.4.55 (freebsd) openssl/1.1.1t-freebsd; status=200
+                                    "
+                                >
+
+                                    <td>
+
+                                        <span class="host">
+                                            lists.dmarc.org
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge blue">
+                                            443
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        https; title=lists.dmarc.org; server=Apache/2.4.55 (FreeBSD) OpenSSL/1.1.1t-freebsd; status=200
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                                <tr
+                                    class="searchable-row"
+                                    data-search-value="
+                                        lists.dmarc.org
+                                        465
+                                        urd
+                                    "
+                                >
+
+                                    <td>
+
+                                        <span class="host">
+                                            lists.dmarc.org
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge blue">
+                                            465
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        urd
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                                <tr
+                                    class="searchable-row"
+                                    data-search-value="
+                                        stamp.dmarc.org
+                                        25
+                                        smtp
+                                    "
+                                >
+
+                                    <td>
+
+                                        <span class="host">
+                                            stamp.dmarc.org
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge blue">
+                                            25
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        smtp
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                                <tr
+                                    class="searchable-row"
+                                    data-search-value="
+                                        stamp.dmarc.org
+                                        80
+                                        http; title=stamp.dmarc.org; server=apache/2.4.55 (freebsd) openssl/1.1.1t-freebsd; status=200
+                                    "
+                                >
+
+                                    <td>
+
+                                        <span class="host">
+                                            stamp.dmarc.org
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge blue">
+                                            80
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        http; title=stamp.dmarc.org; server=Apache/2.4.55 (FreeBSD) OpenSSL/1.1.1t-freebsd; status=200
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                                <tr
+                                    class="searchable-row"
+                                    data-search-value="
+                                        stamp.dmarc.org
+                                        443
+                                        https; title=stamp.dmarc.org; server=apache/2.4.55 (freebsd) openssl/1.1.1t-freebsd; status=200
+                                    "
+                                >
+
+                                    <td>
+
+                                        <span class="host">
+                                            stamp.dmarc.org
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge blue">
+                                            443
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        https; title=stamp.dmarc.org; server=Apache/2.4.55 (FreeBSD) OpenSSL/1.1.1t-freebsd; status=200
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                                <tr
+                                    class="searchable-row"
+                                    data-search-value="
+                                        stamp.dmarc.org
+                                        465
+                                        urd
+                                    "
+                                >
+
+                                    <td>
+
+                                        <span class="host">
+                                            stamp.dmarc.org
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge blue">
+                                            465
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        urd
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                                <tr
+                                    class="searchable-row"
+                                    data-search-value="
+                                        wiki.dmarc.org
+                                        80
+                                        http; title=login required - wiki.dmarc.org; server=apache/2.4.29 (freebsd) php/7.2.3 openssl/1.0.2u-freebsd; status=200
+                                    "
+                                >
+
+                                    <td>
+
+                                        <span class="host">
+                                            wiki.dmarc.org
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge blue">
+                                            80
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        http; title=Login required - wiki.dmarc.org; server=Apache/2.4.29 (FreeBSD) PHP/7.2.3 OpenSSL/1.0.2u-freebsd; status=200
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                                <tr
+                                    class="searchable-row"
+                                    data-search-value="
+                                        www.dmarc.org
+                                        80
+                                        http; title=dmarc.org &#8211; domain message authentication reporting &amp; conformance; server=apache/2.4.29 (freebsd) php/7.2.3 openssl/1.0.2u-freebsd; status=301; redirect=https://dmarc.org/
+                                    "
+                                >
+
+                                    <td>
+
+                                        <span class="host">
+                                            www.dmarc.org
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge blue">
+                                            80
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        http; title=dmarc.org &#8211; Domain Message Authentication Reporting &amp; Conformance; server=Apache/2.4.29 (FreeBSD) PHP/7.2.3 OpenSSL/1.0.2u-freebsd; status=301; redirect=https://dmarc.org/
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                        </tbody>
+
+                    </table>
+
                 </div>
-                
-                    <p class="section-meta">Showing all 4 technology fingerprints.</p>
-                    <table>
-                        <thead>
-                            <tr><th>Host</th><th>Technology</th></tr>
-                        </thead>
-                        <tbody>
-                            
-                                <tr>
-                                    <td>https://www.dmarc.org</td>
-                                    <td>HTTPX: unreachable | Webanalyze: no fingerprint matched</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td>https://stamp.dmarc.org</td>
-                                    <td>HTTPX: Web Server: apache | HTML5 | Webanalyze: no fingerprint matched</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td>https://wiki.dmarc.org</td>
-                                    <td>HTTPX: Web Server: apache | Programming Language: PHP | HTML5 | Webanalyze: no fingerprint matched</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td>https://lists.dmarc.org</td>
-                                    <td>HTTPX: Web Server: apache | HTML5 | Webanalyze: no fingerprint matched</td>
-                                </tr>
-                            
-                        </tbody>
-                    </table>
-                
-            </div>
+
+            
+
         </div>
 
-        <!-- Page 7: DMARC -->
-        <div class="page" data-page="6" data-section="dmarc">
-            <div class="section">
-                <div class="section-header">
-                    <h2>DMARC</h2>
-                    <span class="pill">4 entries</span>
+    </section>
+
+
+    <!-- =========================================================
+         TECHNOLOGIES
+    ========================================================= -->
+
+    <section
+        class="report-section"
+        id="section-technologies"
+    >
+
+        <div class="section-card">
+
+            <div class="section-toolbar">
+
+                <div>
+
+                    <h2 class="section-title">
+                        Technologies
+                    </h2>
+
+                    <p class="section-description">
+                        Technology fingerprints identified across
+                        discovered hosts.
+                    </p>
+
                 </div>
-                
-                    <p class="section-meta">Showing DMARC findings for the discovered hosts.</p>
-                    <table>
-                        <thead>
-                            <tr><th>Host</th><th>Status</th><th>Policy</th><th>Policy Type</th><th>Source</th><th>Source Type</th><th>Policy Source</th><th>Record</th></tr>
-                        </thead>
-                        <tbody>
-                            
-                                <tr>
-                                    <td>www.dmarc.org</td>
-                                    <td>INHERITED</td>
-                                    <td>NONE</td>
-                                    <td>MONITORING</td>
-                                    <td>dmarc.org</td>
-                                    <td>ORGANIZATIONAL</td>
-                                    <td>ORGANIZATIONAL P</td>
-                                    <td>v=DMARC1; p=none; pct=100; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td>stamp.dmarc.org</td>
-                                    <td>INHERITED</td>
-                                    <td>NONE</td>
-                                    <td>MONITORING</td>
-                                    <td>dmarc.org</td>
-                                    <td>ORGANIZATIONAL</td>
-                                    <td>ORGANIZATIONAL P</td>
-                                    <td>v=DMARC1; p=none; pct=100; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td>wiki.dmarc.org</td>
-                                    <td>INHERITED</td>
-                                    <td>NONE</td>
-                                    <td>MONITORING</td>
-                                    <td>dmarc.org</td>
-                                    <td>ORGANIZATIONAL</td>
-                                    <td>ORGANIZATIONAL P</td>
-                                    <td>v=DMARC1; p=none; pct=100; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td>lists.dmarc.org</td>
-                                    <td>INHERITED</td>
-                                    <td>NONE</td>
-                                    <td>MONITORING</td>
-                                    <td>dmarc.org</td>
-                                    <td>ORGANIZATIONAL</td>
-                                    <td>ORGANIZATIONAL P</td>
-                                    <td>v=DMARC1; p=none; pct=100; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org</td>
-                                </tr>
-                            
-                        </tbody>
-                    </table>
-                
+
+                <div class="search-box">
+
+                    <span class="search-icon">
+                        🔍
+                    </span>
+
+                    <input
+                        type="search"
+                        placeholder="Search technologies..."
+                        data-search="technologies"
+                    >
+
+                </div>
+
             </div>
+
+
+            
+
+                <div class="table-wrap">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Host
+                                </th>
+
+                                <th>
+                                    Technology
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            
+
+                                <tr
+                                    class="searchable-row"
+                                    data-search-value="
+                                        https://www.dmarc.org
+                                        httpx: unreachable | webanalyze: no fingerprint matched
+                                    "
+                                >
+
+                                    <td>
+
+                                        <span class="host">
+                                            https://www.dmarc.org
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge blue">
+
+                                            HTTPX: unreachable | Webanalyze: no fingerprint matched
+
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                                <tr
+                                    class="searchable-row"
+                                    data-search-value="
+                                        https://stamp.dmarc.org
+                                        httpx: web server: apache | html5 | webanalyze: no fingerprint matched
+                                    "
+                                >
+
+                                    <td>
+
+                                        <span class="host">
+                                            https://stamp.dmarc.org
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge blue">
+
+                                            HTTPX: Web Server: apache | HTML5 | Webanalyze: no fingerprint matched
+
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                                <tr
+                                    class="searchable-row"
+                                    data-search-value="
+                                        https://lists.dmarc.org
+                                        httpx: web server: apache | html5 | webanalyze: no fingerprint matched
+                                    "
+                                >
+
+                                    <td>
+
+                                        <span class="host">
+                                            https://lists.dmarc.org
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge blue">
+
+                                            HTTPX: Web Server: apache | HTML5 | Webanalyze: no fingerprint matched
+
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                                <tr
+                                    class="searchable-row"
+                                    data-search-value="
+                                        https://wiki.dmarc.org
+                                        httpx: web server: apache | programming language: php | html5 | webanalyze: no fingerprint matched
+                                    "
+                                >
+
+                                    <td>
+
+                                        <span class="host">
+                                            https://wiki.dmarc.org
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge blue">
+
+                                            HTTPX: Web Server: apache | Programming Language: PHP | HTML5 | Webanalyze: no fingerprint matched
+
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            
+
         </div>
 
-    </div>
-    <script>
-        const reportData = document.getElementById('report-data');
-        const subdomains = JSON.parse(reportData.dataset.subdomains || '[]');
-        const liveHosts = JSON.parse(reportData.dataset.liveHosts || '[]');
-        const deadHosts = JSON.parse(reportData.dataset.deadHosts || '[]');
-        const ports = JSON.parse(reportData.dataset.ports || '[]');
-        const technologies = JSON.parse(reportData.dataset.technologies || '[]');
-        const dmarc = JSON.parse(reportData.dataset.dmarc || '[]');
+    </section>
 
-        // Pagination state
-        const totalPages = 7;
-        let currentPage = 0;
 
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const pageNumberSpan = document.getElementById('pageNumber');
-        const filterToggleBtn = document.getElementById('filterToggleBtn');
-        const filterMenu = document.getElementById('filterMenu');
-        const filterOptions = document.querySelectorAll('.filter-option');
+    <!-- =========================================================
+         DMARC
+    ========================================================= -->
 
-        function showPage(pageNum) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
+    <section
+        class="report-section"
+        id="section-dmarc"
+    >
+
+        <div class="section-card">
+
+            <div class="section-toolbar">
+
+                <div>
+
+                    <h2 class="section-title">
+                        DMARC Security
+                    </h2>
+
+                    <p class="section-description">
+                        DMARC configuration findings for discovered hosts.
+                    </p>
+
+                </div>
+
+                
+
+                    <span class="badge success">
+                        4 Entries
+                    </span>
+
+                
+
+            </div>
+
+
             
-            // Show current page
-            const currentPageEl = document.querySelector(`[data-page="${pageNum}"]`);
-            if (currentPageEl) {
-                currentPageEl.classList.add('active');
-            }
+
+
+                <!-- DMARC Summary -->
+
+                <div class="dmarc-overview">
+
+                    <div class="dmarc-stat">
+
+                        <div class="dmarc-stat-label">
+                            Hosts Checked
+                        </div>
+
+                        <div class="dmarc-stat-value">
+                            4
+                        </div>
+
+                    </div>
+
+
+                    <div class="dmarc-stat">
+
+                        <div class="dmarc-stat-label">
+                            Hosts with DMARC
+                        </div>
+
+                        <div
+                            class="dmarc-stat-value"
+                            style="color:#16a34a;"
+                        >
+                            4
+                        </div>
+
+                    </div>
+
+
+                    <div class="dmarc-stat">
+
+                        <div class="dmarc-stat-label">
+                            Policy
+                        </div>
+
+                        <div class="dmarc-stat-value">
+
+                            NONE
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="dmarc-stat">
+
+                        <div class="dmarc-stat-label">
+                            Source
+                        </div>
+
+                        <div
+                            class="dmarc-stat-value"
+                            style="
+                                font-size:0.92rem;
+                                word-break:break-word;
+                            "
+                        >
+
+                            dmarc.org
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DMARC Table -->
+
+                <div class="table-wrap">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Host
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Policy
+                                </th>
+
+                                <th>
+                                    Policy Type
+                                </th>
+
+                                <th>
+                                    Source
+                                </th>
+
+                                <th>
+                                    Source Type
+                                </th>
+
+                                <th>
+                                    Policy Source
+                                </th>
+
+                                <th>
+                                    Record
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            
+
+                                
+
+                                <tr>
+
+                                    <td>
+
+                                        <span class="host">
+                                            www.dmarc.org
+                                        </span>
+
+                                        <button
+                                            class="copy-btn"
+                                            type="button"
+                                            data-copy="www.dmarc.org"
+                                        >
+                                            Copy
+                                        </button>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        
+
+                                            <span class="badge blue">
+                                                INHERITED
+                                            </span>
+
+                                        
+
+                                    </td>
+
+
+                                    <td>
+
+                                        
+
+                                            <span class="badge neutral">
+                                                NONE
+                                            </span>
+
+                                        
+
+                                    </td>
+
+
+                                    <td>
+
+                                        
+
+                                            <span class="badge warning">
+                                                MONITORING
+                                            </span>
+
+                                        
+
+                                    </td>
+
+
+                                    <td>
+
+                                        dmarc.org
+
+                                    </td>
+
+
+                                    <td>
+
+                                        ORGANIZATIONAL
+
+                                    </td>
+
+
+                                    <td>
+
+                                        
+
+                                            organizational p
+
+                                        
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <div class="record">
+
+                                            v=DMARC1; p=none; pct=100; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org
+
+                                        </div>
+
+                                        
+
+                                            <button
+                                                class="copy-btn"
+                                                type="button"
+                                                data-copy="v=DMARC1; p=none; pct=100; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org"
+                                            >
+                                                Copy
+                                            </button>
+
+                                        
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                                
+
+                                <tr>
+
+                                    <td>
+
+                                        <span class="host">
+                                            stamp.dmarc.org
+                                        </span>
+
+                                        <button
+                                            class="copy-btn"
+                                            type="button"
+                                            data-copy="stamp.dmarc.org"
+                                        >
+                                            Copy
+                                        </button>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        
+
+                                            <span class="badge blue">
+                                                INHERITED
+                                            </span>
+
+                                        
+
+                                    </td>
+
+
+                                    <td>
+
+                                        
+
+                                            <span class="badge neutral">
+                                                NONE
+                                            </span>
+
+                                        
+
+                                    </td>
+
+
+                                    <td>
+
+                                        
+
+                                            <span class="badge warning">
+                                                MONITORING
+                                            </span>
+
+                                        
+
+                                    </td>
+
+
+                                    <td>
+
+                                        dmarc.org
+
+                                    </td>
+
+
+                                    <td>
+
+                                        ORGANIZATIONAL
+
+                                    </td>
+
+
+                                    <td>
+
+                                        
+
+                                            organizational p
+
+                                        
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <div class="record">
+
+                                            v=DMARC1; p=none; pct=100; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org
+
+                                        </div>
+
+                                        
+
+                                            <button
+                                                class="copy-btn"
+                                                type="button"
+                                                data-copy="v=DMARC1; p=none; pct=100; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org"
+                                            >
+                                                Copy
+                                            </button>
+
+                                        
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                                
+
+                                <tr>
+
+                                    <td>
+
+                                        <span class="host">
+                                            lists.dmarc.org
+                                        </span>
+
+                                        <button
+                                            class="copy-btn"
+                                            type="button"
+                                            data-copy="lists.dmarc.org"
+                                        >
+                                            Copy
+                                        </button>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        
+
+                                            <span class="badge blue">
+                                                INHERITED
+                                            </span>
+
+                                        
+
+                                    </td>
+
+
+                                    <td>
+
+                                        
+
+                                            <span class="badge neutral">
+                                                NONE
+                                            </span>
+
+                                        
+
+                                    </td>
+
+
+                                    <td>
+
+                                        
+
+                                            <span class="badge warning">
+                                                MONITORING
+                                            </span>
+
+                                        
+
+                                    </td>
+
+
+                                    <td>
+
+                                        dmarc.org
+
+                                    </td>
+
+
+                                    <td>
+
+                                        ORGANIZATIONAL
+
+                                    </td>
+
+
+                                    <td>
+
+                                        
+
+                                            organizational p
+
+                                        
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <div class="record">
+
+                                            v=DMARC1; p=none; pct=100; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org
+
+                                        </div>
+
+                                        
+
+                                            <button
+                                                class="copy-btn"
+                                                type="button"
+                                                data-copy="v=DMARC1; p=none; pct=100; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org"
+                                            >
+                                                Copy
+                                            </button>
+
+                                        
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                                
+
+                                <tr>
+
+                                    <td>
+
+                                        <span class="host">
+                                            wiki.dmarc.org
+                                        </span>
+
+                                        <button
+                                            class="copy-btn"
+                                            type="button"
+                                            data-copy="wiki.dmarc.org"
+                                        >
+                                            Copy
+                                        </button>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        
+
+                                            <span class="badge blue">
+                                                INHERITED
+                                            </span>
+
+                                        
+
+                                    </td>
+
+
+                                    <td>
+
+                                        
+
+                                            <span class="badge neutral">
+                                                NONE
+                                            </span>
+
+                                        
+
+                                    </td>
+
+
+                                    <td>
+
+                                        
+
+                                            <span class="badge warning">
+                                                MONITORING
+                                            </span>
+
+                                        
+
+                                    </td>
+
+
+                                    <td>
+
+                                        dmarc.org
+
+                                    </td>
+
+
+                                    <td>
+
+                                        ORGANIZATIONAL
+
+                                    </td>
+
+
+                                    <td>
+
+                                        
+
+                                            organizational p
+
+                                        
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <div class="record">
+
+                                            v=DMARC1; p=none; pct=100; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org
+
+                                        </div>
+
+                                        
+
+                                            <button
+                                                class="copy-btn"
+                                                type="button"
+                                                data-copy="v=DMARC1; p=none; pct=100; rua=mailto:reports@dmarc.org; ruf=mailto:reports@dmarc.org"
+                                            >
+                                                Copy
+                                            </button>
+
+                                        
+
+                                    </td>
+
+                                </tr>
+
+                            
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
             
-            // Update page number
-            pageNumberSpan.textContent = pageNum + 1;
-            
-            // Update button states
-            prevBtn.disabled = pageNum === 0;
-            nextBtn.disabled = pageNum === totalPages - 1;
-            
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        </div>
+
+    </section>
+
+
+</div>
+
+</main>
+
+
+<!-- =============================================================
+     JAVASCRIPT
+============================================================= -->
+
+<script>
+
+    /*
+     * ------------------------------------------------------------
+     * NAVIGATION
+     * ------------------------------------------------------------
+     */
+
+    const reportTarget = document.body.dataset.target || '';
+
+    const navItems =
+        document.querySelectorAll('.nav-item[data-section]');
+
+    const sections =
+        document.querySelectorAll('.report-section');
+
+    document.querySelectorAll('.progress-bar').forEach((bar) => {
+        const percent = Number(bar.dataset.percent || 0);
+        if (!Number.isFinite(percent)) {
+            bar.style.width = '0%';
+            return;
+        }
+        bar.style.width = percent + '%';
+    });
+
+    function showSection(sectionName) {
+
+        sections.forEach(section => {
+
+            section.classList.remove('active');
+
+        });
+
+
+        const selected =
+            document.getElementById(
+                'section-' + sectionName
+            );
+
+
+        if (selected) {
+
+            selected.classList.add('active');
+
         }
 
-        prevBtn.addEventListener('click', () => {
-            if (currentPage > 0) {
-                currentPage--;
-                showPage(currentPage);
-            }
+
+        navItems.forEach(item => {
+
+            item.classList.toggle(
+                'active',
+                item.dataset.section === sectionName
+            );
+
         });
 
-        nextBtn.addEventListener('click', () => {
-            if (currentPage < totalPages - 1) {
-                currentPage++;
-                showPage(currentPage);
-            }
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
 
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft' && currentPage > 0) {
-                currentPage--;
-                showPage(currentPage);
-            } else if (e.key === 'ArrowRight' && currentPage < totalPages - 1) {
-                currentPage++;
-                showPage(currentPage);
-            }
-        });
 
-        // Filter menu functionality
-        filterToggleBtn.addEventListener('click', function () {
-            const isHidden = filterMenu.classList.toggle('hidden');
-            filterToggleBtn.setAttribute('aria-expanded', String(!isHidden));
-        });
+        const sidebar =
+            document.getElementById('sidebar');
 
-        filterOptions.forEach((option) => {
-            option.addEventListener('click', function () {
-                const selectedFilter = this.dataset.filter;
-                filterOptions.forEach((item) => item.classList.toggle('active', item === this));
+        if (sidebar) {
 
-                if (selectedFilter === 'all') {
-                    document.querySelectorAll('.page').forEach((page) => {
-                        page.classList.remove('hidden-section');
-                    });
-                    currentPage = 0;
-                    showPage(currentPage);
-                } else {
-                    const targetPage = document.querySelector(`.page[data-section="${selectedFilter}"]`);
-                    document.querySelectorAll('.page').forEach((page) => {
-                        const shouldShow = page.dataset.section === selectedFilter;
-                        page.classList.toggle('hidden-section', !shouldShow);
-                    });
-                    if (targetPage) {
-                        currentPage = Number(targetPage.dataset.page);
-                        showPage(currentPage);
-                    }
-                }
+            sidebar.classList.remove('open');
 
-                filterMenu.classList.add('hidden');
-                filterToggleBtn.setAttribute('aria-expanded', 'false');
-            });
-        });
-
-        // Initialize
-        showPage(0);
-
-        function buildExecutiveSummaryExport() {
-
-            const renderList = (items, title) => {
-                if (!items || !items.length) {
-                    return '<div style="padding:14px;border:1px dashed #334155;border-radius:10px;color:#a9b9d1;">No ' + title.toLowerCase() + ' recorded.</div>';
-                }
-                return '<ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;">'
-                    + items.slice(0, 30).map((item) => '<li style="background:rgba(15,23,42,0.9);border:1px solid rgba(148,163,184,0.28);border-radius:10px;padding:10px 12px;color:#e5eefc;word-break:break-word;">' + item + '</li>').join('')
-                    + '</ul>';
-            };
-
-            const renderPortTable = () => {
-                if (!ports || !ports.length) {
-                    return '<div style="padding:14px;border:1px dashed #334155;border-radius:10px;color:#a9b9d1;">No open ports found.</div>';
-                }
-                return '<table style="width:100%;border-collapse:collapse;background:rgba(15,23,42,0.75);border:1px solid rgba(148,163,184,0.28);">'
-                    + '<thead><tr><th style="text-align:left;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#a9b9d1;text-transform:uppercase;letter-spacing:0.08em;">Host</th><th style="text-align:left;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#a9b9d1;text-transform:uppercase;letter-spacing:0.08em;">Port</th><th style="text-align:left;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#a9b9d1;text-transform:uppercase;letter-spacing:0.08em;">Service</th></tr></thead>'
-                    + '<tbody>'
-                    + ports.slice(0, 30).map((item) => '<tr><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.host || 'unknown') + '</td><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.port || 'unknown') + '</td><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.service || 'unknown') + '</td></tr>').join('')
-                    + '</tbody></table>';
-            };
-
-            const renderTechnologyTable = () => {
-                if (!technologies || !technologies.length) {
-                    return '<div style="padding:14px;border:1px dashed #334155;border-radius:10px;color:#a9b9d1;">No technology fingerprints detected.</div>';
-                }
-                return '<table style="width:100%;border-collapse:collapse;background:rgba(15,23,42,0.75);border:1px solid rgba(148,163,184,0.28);">'
-                    + '<thead><tr><th style="text-align:left;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#a9b9d1;text-transform:uppercase;letter-spacing:0.08em;">Host</th><th style="text-align:left;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#a9b9d1;text-transform:uppercase;letter-spacing:0.08em;">Technology</th></tr></thead>'
-                    + '<tbody>'
-                    + technologies.slice(0, 30).map((item) => '<tr><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.host || 'unknown') + '</td><td style="padding:12px 14px;border-bottom:1px solid rgba(148,163,184,0.28);color:#e5eefc;">' + (item.technology || 'unknown') + '</td></tr>').join('')
-                    + '</tbody></table>';
-            };
-
-            return `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>dmarc.org Executive Summary</title>
-  <style>
-    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: linear-gradient(180deg, #f3f7fb 0%, #eaf2ff 100%); color: #12263f; }
-    .container { max-width: 1200px; margin: 32px auto; padding: 0 20px 40px; }
-    .header { background: rgba(255,255,255,0.95); border:1px solid #dfeaf7; border-radius:20px; padding:24px 28px; box-shadow: 0 14px 32px rgba(15,23,42,0.08); }
-    .title { margin: 0; font-size: clamp(2rem, 3vw, 2.5rem); letter-spacing: -0.04em; }
-    .badge { display:inline-block; margin-top:16px; background: #eaf4ff; border:1px solid #bfd4ef; color:#0d5ec9; padding:8px 12px; border-radius:999px; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.06em; font-weight:700; }
-    .stats { display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-top: 24px; }
-    .stat { background: rgba(255,255,255,0.96); border:1px solid #dfeaf7; border-radius:16px; padding:18px; }
-    .label { display:block; font-size:0.7rem; color:#5e738d; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px; }
-    .value { font-size: clamp(1.7rem, 2vw, 2.4rem); font-weight:800; }
-    .section { background: rgba(255,255,255,0.96); border:1px solid #dfeaf7; border-radius:18px; padding:20px; margin-top:24px; box-shadow: 0 14px 32px rgba(15,23,42,0.08); }
-    h2 { margin:0 0 12px; font-size:1.35rem; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1 class="title">dmarc.org Executive Summary</h1>
-      <div class="badge">Asset Discovery Overview</div>
-    </div>
-
-    <div class="stats">
-      <div class="stat"><span class="label">Subdomains</span><span class="value">` + subdomains.length + `</span></div>
-      <div class="stat"><span class="label">Live Hosts</span><span class="value">` + liveHosts.length + `</span></div>
-      <div class="stat"><span class="label">Dead Hosts</span><span class="value">` + deadHosts.length + `</span></div>
-      <div class="stat"><span class="label">Open Ports</span><span class="value">` + ports.length + `</span></div>
-      <div class="stat"><span class="label">Technologies</span><span class="value">` + technologies.length + `</span></div>
-    </div>
-
-    <div class="section">
-      <h2>Subdomains</h2>
-      ` + renderList(subdomains, 'Subdomains') + `
-    </div>
-
-    <div class="section">
-      <h2>Live Hosts</h2>
-      ` + renderList(liveHosts, 'Live Hosts') + `
-    </div>
-
-    <div class="section">
-      <h2>Dead Hosts</h2>
-      ` + renderList(deadHosts, 'Dead Hosts') + `
-    </div>
-
-    <div class="section">
-      <h2>Open Ports</h2>
-      ` + renderPortTable() + `
-    </div>
-
-    <div class="section">
-      <h2>Technologies</h2>
-      ` + renderTechnologyTable() + `
-    </div>
-  </div>
-</body>
-</html>`;
         }
 
-        const downloadBtn = document.getElementById('downloadReportBtn');
-        if (downloadBtn) {
-            downloadBtn.addEventListener('click', function () {
-                const html = buildExecutiveSummaryExport();
-                const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
-                const url = URL.createObjectURL(blob);
-                const anchor = document.createElement('a');
-                anchor.href = url;
-                anchor.download = 'dmarc.org-executive-summary.html';
-                document.body.appendChild(anchor);
-                anchor.click();
-                anchor.remove();
-                URL.revokeObjectURL(url);
-            });
+    }
+
+
+    navItems.forEach(item => {
+
+        item.addEventListener('click', () => {
+
+            showSection(
+                item.dataset.section
+            );
+
+        });
+
+    });
+
+
+    /*
+     * ------------------------------------------------------------
+     * MOBILE SIDEBAR
+     * ------------------------------------------------------------
+     */
+
+    const mobileMenuBtn =
+        document.getElementById('mobileMenuBtn');
+
+    const sidebar =
+        document.getElementById('sidebar');
+
+
+    if (mobileMenuBtn && sidebar) {
+
+        mobileMenuBtn.addEventListener(
+            'click',
+            () => {
+
+                sidebar.classList.toggle('open');
+
+            }
+        );
+
+    }
+
+
+    /*
+     * ------------------------------------------------------------
+     * SEARCH
+     * ------------------------------------------------------------
+     */
+
+    const searchInputs =
+        document.querySelectorAll(
+            '[data-search]'
+        );
+
+
+    searchInputs.forEach(input => {
+
+        input.addEventListener(
+            'input',
+            () => {
+
+                const query =
+                    input.value
+                        .trim()
+                        .toLowerCase();
+
+
+                const section =
+                    input.closest(
+                        '.report-section'
+                    );
+
+
+                if (!section) {
+                    return;
+                }
+
+
+                const items =
+                    section.querySelectorAll(
+                        '.searchable-item, .searchable-row'
+                    );
+
+
+                items.forEach(item => {
+
+                    const value =
+                        (
+                            item.dataset.searchValue
+                            || item.textContent
+                        ).toLowerCase();
+
+
+                    item.style.display =
+                        !query || value.includes(query)
+                            ? ''
+                            : 'none';
+
+                });
+
+            }
+        );
+
+    });
+
+
+    /*
+     * ------------------------------------------------------------
+     * COPY
+     * ------------------------------------------------------------
+     */
+
+    document.addEventListener(
+        'click',
+        async event => {
+
+            const button =
+                event.target.closest(
+                    '[data-copy]'
+                );
+
+
+            if (!button) {
+                return;
+            }
+
+
+            const value =
+                button.dataset.copy;
+
+
+            try {
+
+                await navigator.clipboard.writeText(
+                    value
+                );
+
+
+                const original =
+                    button.textContent;
+
+
+                button.textContent =
+                    'Copied';
+
+
+                setTimeout(() => {
+
+                    button.textContent =
+                        original;
+
+                }, 1200);
+
+
+            } catch (error) {
+
+                console.error(
+                    'Copy failed:',
+                    error
+                );
+
+            }
+
         }
-    </script>
+    );
+
+
+    /*
+     * ------------------------------------------------------------
+     * COPY TARGET
+     * ------------------------------------------------------------
+     */
+
+    const copyTargetBtn =
+        document.getElementById(
+            'copyTargetBtn'
+        );
+
+
+    if (copyTargetBtn) {
+
+        copyTargetBtn.addEventListener(
+            'click',
+            async () => {
+
+                try {
+
+                    await navigator.clipboard.writeText(
+                        reportTarget
+                    );
+
+
+                    const original =
+                        copyTargetBtn.textContent;
+
+
+                    copyTargetBtn.textContent =
+                        'Copied';
+
+
+                    setTimeout(() => {
+
+                        copyTargetBtn.textContent =
+                            original;
+
+                    }, 1200);
+
+
+                } catch (error) {
+
+                    console.error(
+                        error
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /*
+     * ------------------------------------------------------------
+     * EXPORT REPORT
+     *
+     * Uses the current page HTML.
+     * ------------------------------------------------------------
+     */
+
+    const downloadBtn =
+        document.getElementById(
+            'downloadReportBtn'
+        );
+
+
+    const sidebarExport =
+        document.getElementById(
+            'sidebarExport'
+        );
+
+
+    function exportReport() {
+
+        const clonedDocument =
+            document.documentElement.cloneNode(
+                true
+            );
+
+
+        /*
+         * Remove interactive UI that isn't
+         * needed in the exported document.
+         */
+
+        const clonedSidebar =
+            clonedDocument.querySelector(
+                '.sidebar'
+            );
+
+
+        if (clonedSidebar) {
+
+            clonedSidebar.remove();
+
+        }
+
+
+        const clonedMobileHeader =
+            clonedDocument.querySelector(
+                '.mobile-header'
+            );
+
+
+        if (clonedMobileHeader) {
+
+            clonedMobileHeader.remove();
+
+        }
+
+
+        /*
+         * Show every report section
+         * in the exported HTML.
+         */
+
+        clonedDocument
+            .querySelectorAll(
+                '.report-section'
+            )
+            .forEach(section => {
+
+                section.classList.add(
+                    'active'
+                );
+
+            });
+
+
+        const html =
+            '<!DOCTYPE html>\n'
+            + clonedDocument.outerHTML;
+
+
+        const blob =
+            new Blob(
+                [html],
+                {
+                    type:
+                        'text/html;charset=utf-8'
+                }
+            );
+
+
+        const url =
+            URL.createObjectURL(blob);
+
+
+        const anchor =
+            document.createElement(
+                'a'
+            );
+
+
+        anchor.href = url;
+
+
+        anchor.download =
+            reportTarget + '-reconnaissance-report.html';
+
+
+        document.body.appendChild(
+            anchor
+        );
+
+
+        anchor.click();
+
+
+        anchor.remove();
+
+
+        URL.revokeObjectURL(
+            url
+        );
+
+    }
+
+
+    if (downloadBtn) {
+
+        downloadBtn.addEventListener(
+            'click',
+            exportReport
+        );
+
+    }
+
+
+    if (sidebarExport) {
+
+        sidebarExport.addEventListener(
+            'click',
+            exportReport
+        );
+
+    }
+
+
+    /*
+     * ------------------------------------------------------------
+     * GLOBAL FUNCTION
+     * ------------------------------------------------------------
+     */
+
+    window.showSection =
+        showSection;
+
+
+</script>
+
 </body>
 </html>
